@@ -7,10 +7,6 @@
 
 import Foundation
 
-struct BedsList {
-    var beds: [Bed];
-}
-
 struct Bed {
     var size: BedSize;
     var capacity: String;

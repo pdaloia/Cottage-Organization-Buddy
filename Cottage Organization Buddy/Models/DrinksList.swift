@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct DrinksList {
+struct PersonalDrinksList {
     var person: String;
     var drinkNames: [String];
 }

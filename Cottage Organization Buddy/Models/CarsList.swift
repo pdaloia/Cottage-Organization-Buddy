@@ -7,10 +7,6 @@
 
 import Foundation
 
-struct CarsList {
-    var carList: [Car];
-}
-
 struct Car {
     var driverName: String;
     var numberOfPassengers: Int;

@@ -8,7 +8,8 @@
 import Foundation
 
 struct GroceryLists {
-    var groceries: [GroceryList];
+    var allItems: [Grocery]
+    var groceriesPerPerson: [GroceryList];
 }
 
 struct GroceryList {
@@ -19,4 +20,5 @@ struct GroceryList {
 struct Grocery {
     var productName: String;
     var price: Double;
+    var Quantity: Int;
 }
