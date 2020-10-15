@@ -13,6 +13,11 @@
 		FE724EDD25375D7D00764387 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FE724EDB25375D7D00764387 /* Main.storyboard */; };
 		FE724EDF25375D8000764387 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FE724EDE25375D8000764387 /* Assets.xcassets */; };
 		FE724EE225375D8000764387 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FE724EE025375D8000764387 /* LaunchScreen.storyboard */; };
+		FE724EED2537D3A700764387 /* GroceryLists.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE724EEC2537D3A700764387 /* GroceryLists.swift */; };
+		FE724EF12537D3DF00764387 /* DrinksList.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE724EF02537D3DF00764387 /* DrinksList.swift */; };
+		FE724EF42537D3EE00764387 /* CarsList.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE724EF32537D3EE00764387 /* CarsList.swift */; };
+		FE724EF72537D40200764387 /* BedsList.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE724EF62537D40200764387 /* BedsList.swift */; };
+		FE724EFA2537DEEA00764387 /* CottageTrip.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE724EF92537DEEA00764387 /* CottageTrip.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +29,11 @@
 		FE724EDE25375D8000764387 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FE724EE125375D8000764387 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FE724EE325375D8000764387 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FE724EEC2537D3A700764387 /* GroceryLists.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroceryLists.swift; sourceTree = "<group>"; };
+		FE724EF02537D3DF00764387 /* DrinksList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinksList.swift; sourceTree = "<group>"; };
+		FE724EF32537D3EE00764387 /* CarsList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarsList.swift; sourceTree = "<group>"; };
+		FE724EF62537D40200764387 /* BedsList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BedsList.swift; sourceTree = "<group>"; };
+		FE724EF92537DEEA00764387 /* CottageTrip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CottageTrip.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +66,7 @@
 		FE724ED425375D7C00764387 /* Cottage Organization Buddy */ = {
 			isa = PBXGroup;
 			children = (
+				FE724EEB2537D37B00764387 /* Models */,
 				FE724ED525375D7C00764387 /* AppDelegate.swift */,
 				FE724ED725375D7C00764387 /* SceneDelegate.swift */,
 				FE724ED925375D7D00764387 /* ViewController.swift */,
@@ -65,6 +76,18 @@
 				FE724EE325375D8000764387 /* Info.plist */,
 			);
 			path = "Cottage Organization Buddy";
+			sourceTree = "<group>";
+		};
+		FE724EEB2537D37B00764387 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				FE724EF62537D40200764387 /* BedsList.swift */,
+				FE724EF32537D3EE00764387 /* CarsList.swift */,
+				FE724EF92537DEEA00764387 /* CottageTrip.swift */,
+				FE724EF02537D3DF00764387 /* DrinksList.swift */,
+				FE724EEC2537D3A700764387 /* GroceryLists.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -137,9 +160,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FE724EF42537D3EE00764387 /* CarsList.swift in Sources */,
 				FE724EDA25375D7D00764387 /* ViewController.swift in Sources */,
+				FE724EFA2537DEEA00764387 /* CottageTrip.swift in Sources */,
 				FE724ED625375D7C00764387 /* AppDelegate.swift in Sources */,
 				FE724ED825375D7C00764387 /* SceneDelegate.swift in Sources */,
+				FE724EED2537D3A700764387 /* GroceryLists.swift in Sources */,
+				FE724EF12537D3DF00764387 /* DrinksList.swift in Sources */,
+				FE724EF72537D40200764387 /* BedsList.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
