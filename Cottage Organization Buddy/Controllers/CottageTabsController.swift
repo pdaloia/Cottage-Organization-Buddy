@@ -1,19 +1,18 @@
 //
-//  ViewController.swift
+//  CottageTabsController.swift
 //  Cottage Organization Buddy
 //
-//  Created by Philip D'Aloia on 2020-10-14.
+//  Created by Philip D'Aloia on 2020-10-16.
 //
 
 import UIKit
 
-class ViewController: UIViewController {
+class CottageTabsController: UITabBarController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
         // Do any additional setup after loading the view.
     }
 
-
 }
-
