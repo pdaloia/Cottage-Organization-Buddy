@@ -13,7 +13,6 @@ class HomeController: UIViewController {
     @IBAction func enterCottageBuddyApp(_ sender: Any) {
         let storyBoard : UIStoryboard = UIStoryboard(name: "CottageTabs", bundle:nil)
         
-
         let nextViewController = storyBoard.instantiateViewController(withIdentifier: "CottageTabsView") as! CottageTabsController
         nextViewController.modalPresentationStyle = .fullScreen
         
