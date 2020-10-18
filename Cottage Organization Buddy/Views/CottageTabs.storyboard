@@ -3,67 +3,9 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
-        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Cars-->
-        <scene sceneID="pp3-jP-g2V">
-            <objects>
-                <viewController id="Uj2-wr-6K8" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="uHR-CC-w7L">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="This is where the cars will go" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LU3-C1-rdO">
-                                <rect key="frame" x="98" y="418" width="218" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
-                        <viewLayoutGuide key="safeArea" id="LsC-oL-mdW"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <constraints>
-                            <constraint firstItem="LU3-C1-rdO" firstAttribute="centerY" secondItem="LsC-oL-mdW" secondAttribute="centerY" id="C3U-eN-Sl2"/>
-                            <constraint firstItem="LU3-C1-rdO" firstAttribute="centerX" secondItem="LsC-oL-mdW" secondAttribute="centerX" id="ZUo-pm-lHl"/>
-                        </constraints>
-                    </view>
-                    <tabBarItem key="tabBarItem" title="Cars" id="GgI-QL-Rc5"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="nCN-d5-brx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="222" y="56"/>
-        </scene>
-        <!--Groceries-->
-        <scene sceneID="4LV-Bn-nCn">
-            <objects>
-                <viewController id="vNV-cj-ZoS" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="orU-fs-5RY">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="This is where the groceries will go" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="roG-Rl-216">
-                                <rect key="frame" x="78.5" y="418.5" width="257" height="20"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
-                        <viewLayoutGuide key="safeArea" id="Cnw-xb-Rcz"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <constraints>
-                            <constraint firstItem="roG-Rl-216" firstAttribute="centerX" secondItem="Cnw-xb-Rcz" secondAttribute="centerX" id="VE0-Vq-Off"/>
-                            <constraint firstItem="roG-Rl-216" firstAttribute="centerY" secondItem="Cnw-xb-Rcz" secondAttribute="centerY" id="XNd-Mb-WoZ"/>
-                        </constraints>
-                    </view>
-                    <tabBarItem key="tabBarItem" title="Groceries" selectedImage="seal" catalog="system" id="93K-Xf-YZd"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="EIC-dT-M44" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="223" y="-595"/>
-        </scene>
         <!--Cottage Tabs Controller-->
         <scene sceneID="Qln-KG-yzs">
             <objects>
@@ -73,20 +15,10 @@
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
-                    <connections>
-                        <segue destination="vNV-cj-ZoS" kind="relationship" relationship="viewControllers" id="zEh-Sv-2TH"/>
-                        <segue destination="Uj2-wr-6K8" kind="relationship" relationship="viewControllers" id="mKf-8C-bYZ"/>
-                    </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Gq6-i7-fzY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-667" y="-291"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="seal" catalog="system" width="128" height="128"/>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-    </resources>
 </document>
