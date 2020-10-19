@@ -11,8 +11,6 @@ class BedsController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        print("Beds has been loaded!");
     }
 
 }

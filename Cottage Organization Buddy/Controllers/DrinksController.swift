@@ -11,8 +11,6 @@ class DrinksController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        print("Drinks has been loaded!");
     }
 
 }

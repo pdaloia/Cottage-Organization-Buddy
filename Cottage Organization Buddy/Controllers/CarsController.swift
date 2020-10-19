@@ -11,8 +11,6 @@ class CarsController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        print("Cars has been loaded!");
     }
 
 }

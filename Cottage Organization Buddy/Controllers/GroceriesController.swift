@@ -8,12 +8,17 @@
 import UIKit
 
 class GroceriesController: UIViewController {
-
+    
+    @IBOutlet weak var groceriesList: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-        print("Groceries has been loaded!");
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        let tabBar = tabBarController as! CottageTabsController
+        
+        groceriesList.text = String(describing:tabBar.cottageModel.groceryList)
     }
 
 }
