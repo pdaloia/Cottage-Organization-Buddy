@@ -8,11 +8,11 @@
 import Foundation
 
 struct Bed {
-    var size: BedSize;
-    var capacity: String;
-    var occupants: [String];
+    var size: BedSize
+    var capacity: String
+    var occupants: [String]
 }
 
 enum BedSize {
-    case twin, double, queen, king;
+    case twin, double, queen, king
 }

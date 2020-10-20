@@ -13,10 +13,10 @@
 		FE724EDD25375D7D00764387 /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FE724EDB25375D7D00764387 /* Home.storyboard */; };
 		FE724EDF25375D8000764387 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FE724EDE25375D8000764387 /* Assets.xcassets */; };
 		FE724EE225375D8000764387 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FE724EE025375D8000764387 /* LaunchScreen.storyboard */; };
-		FE724EED2537D3A700764387 /* GroceryLists.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE724EEC2537D3A700764387 /* GroceryLists.swift */; };
-		FE724EF12537D3DF00764387 /* DrinksList.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE724EF02537D3DF00764387 /* DrinksList.swift */; };
-		FE724EF42537D3EE00764387 /* CarsList.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE724EF32537D3EE00764387 /* CarsList.swift */; };
-		FE724EF72537D40200764387 /* BedsList.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE724EF62537D40200764387 /* BedsList.swift */; };
+		FE724EED2537D3A700764387 /* GroceryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE724EEC2537D3A700764387 /* GroceryModel.swift */; };
+		FE724EF12537D3DF00764387 /* DrinksModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE724EF02537D3DF00764387 /* DrinksModel.swift */; };
+		FE724EF42537D3EE00764387 /* CarModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE724EF32537D3EE00764387 /* CarModel.swift */; };
+		FE724EF72537D40200764387 /* BedModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE724EF62537D40200764387 /* BedModel.swift */; };
 		FE724EFA2537DEEA00764387 /* CottageTrip.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE724EF92537DEEA00764387 /* CottageTrip.swift */; };
 		FE724F0A253A07F800764387 /* CottageTabs.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FE724F09253A07F800764387 /* CottageTabs.storyboard */; };
 		FE724F0D253A081C00764387 /* CottageTabsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE724F0C253A081C00764387 /* CottageTabsController.swift */; };
@@ -28,6 +28,9 @@
 		FE724F1F253CF14F00764387 /* Cars.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FE724F1E253CF14F00764387 /* Cars.storyboard */; };
 		FE724F22253CF17100764387 /* Beds.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FE724F21253CF17100764387 /* Beds.storyboard */; };
 		FE724F25253CF18700764387 /* Drinks.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FE724F24253CF18700764387 /* Drinks.storyboard */; };
+		FE724F28253E773F00764387 /* AttendeeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE724F27253E773F00764387 /* AttendeeModel.swift */; };
+		FE724F2D253E7A3200764387 /* Attendees.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FE724F2C253E7A3200764387 /* Attendees.storyboard */; };
+		FE724F30253E7A4E00764387 /* AttendeesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE724F2F253E7A4E00764387 /* AttendeesController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,10 +42,10 @@
 		FE724EDE25375D8000764387 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FE724EE125375D8000764387 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FE724EE325375D8000764387 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		FE724EEC2537D3A700764387 /* GroceryLists.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroceryLists.swift; sourceTree = "<group>"; };
-		FE724EF02537D3DF00764387 /* DrinksList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinksList.swift; sourceTree = "<group>"; };
-		FE724EF32537D3EE00764387 /* CarsList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarsList.swift; sourceTree = "<group>"; };
-		FE724EF62537D40200764387 /* BedsList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BedsList.swift; sourceTree = "<group>"; };
+		FE724EEC2537D3A700764387 /* GroceryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroceryModel.swift; sourceTree = "<group>"; };
+		FE724EF02537D3DF00764387 /* DrinksModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinksModel.swift; sourceTree = "<group>"; };
+		FE724EF32537D3EE00764387 /* CarModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarModel.swift; sourceTree = "<group>"; };
+		FE724EF62537D40200764387 /* BedModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BedModel.swift; sourceTree = "<group>"; };
 		FE724EF92537DEEA00764387 /* CottageTrip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CottageTrip.swift; sourceTree = "<group>"; };
 		FE724F09253A07F800764387 /* CottageTabs.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CottageTabs.storyboard; sourceTree = "<group>"; };
 		FE724F0C253A081C00764387 /* CottageTabsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CottageTabsController.swift; sourceTree = "<group>"; };
@@ -54,6 +57,9 @@
 		FE724F1E253CF14F00764387 /* Cars.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Cars.storyboard; sourceTree = "<group>"; };
 		FE724F21253CF17100764387 /* Beds.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Beds.storyboard; sourceTree = "<group>"; };
 		FE724F24253CF18700764387 /* Drinks.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Drinks.storyboard; sourceTree = "<group>"; };
+		FE724F27253E773F00764387 /* AttendeeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttendeeModel.swift; sourceTree = "<group>"; };
+		FE724F2C253E7A3200764387 /* Attendees.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Attendees.storyboard; sourceTree = "<group>"; };
+		FE724F2F253E7A4E00764387 /* AttendeesController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttendeesController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,11 +107,12 @@
 		FE724EEB2537D37B00764387 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				FE724EF62537D40200764387 /* BedsList.swift */,
-				FE724EF32537D3EE00764387 /* CarsList.swift */,
+				FE724EF62537D40200764387 /* BedModel.swift */,
+				FE724EF32537D3EE00764387 /* CarModel.swift */,
 				FE724EF92537DEEA00764387 /* CottageTrip.swift */,
-				FE724EF02537D3DF00764387 /* DrinksList.swift */,
-				FE724EEC2537D3A700764387 /* GroceryLists.swift */,
+				FE724EF02537D3DF00764387 /* DrinksModel.swift */,
+				FE724EEC2537D3A700764387 /* GroceryModel.swift */,
+				FE724F27253E773F00764387 /* AttendeeModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -119,6 +126,7 @@
 				FE724F1E253CF14F00764387 /* Cars.storyboard */,
 				FE724F21253CF17100764387 /* Beds.storyboard */,
 				FE724F24253CF18700764387 /* Drinks.storyboard */,
+				FE724F2C253E7A3200764387 /* Attendees.storyboard */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -132,6 +140,7 @@
 				FE724F12253CF08200764387 /* CarsController.swift */,
 				FE724F15253CF09B00764387 /* BedsController.swift */,
 				FE724F18253CF0AB00764387 /* DrinksController.swift */,
+				FE724F2F253E7A4E00764387 /* AttendeesController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -193,6 +202,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FE724F2D253E7A3200764387 /* Attendees.storyboard in Resources */,
 				FE724F1C253CF0CC00764387 /* Groceries.storyboard in Resources */,
 				FE724F1F253CF14F00764387 /* Cars.storyboard in Resources */,
 				FE724EE225375D8000764387 /* LaunchScreen.storyboard in Resources */,
@@ -211,19 +221,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FE724EF42537D3EE00764387 /* CarsList.swift in Sources */,
+				FE724EF42537D3EE00764387 /* CarModel.swift in Sources */,
+				FE724F28253E773F00764387 /* AttendeeModel.swift in Sources */,
 				FE724F16253CF09B00764387 /* BedsController.swift in Sources */,
 				FE724EDA25375D7D00764387 /* HomeController.swift in Sources */,
 				FE724EFA2537DEEA00764387 /* CottageTrip.swift in Sources */,
 				FE724ED625375D7C00764387 /* AppDelegate.swift in Sources */,
 				FE724F19253CF0AB00764387 /* DrinksController.swift in Sources */,
 				FE724ED825375D7C00764387 /* SceneDelegate.swift in Sources */,
-				FE724EED2537D3A700764387 /* GroceryLists.swift in Sources */,
+				FE724EED2537D3A700764387 /* GroceryModel.swift in Sources */,
 				FE724F0D253A081C00764387 /* CottageTabsController.swift in Sources */,
 				FE724F10253CF06C00764387 /* GroceriesController.swift in Sources */,
-				FE724EF12537D3DF00764387 /* DrinksList.swift in Sources */,
+				FE724F30253E7A4E00764387 /* AttendeesController.swift in Sources */,
+				FE724EF12537D3DF00764387 /* DrinksModel.swift in Sources */,
 				FE724F13253CF08200764387 /* CarsController.swift in Sources */,
-				FE724EF72537D40200764387 /* BedsList.swift in Sources */,
+				FE724EF72537D40200764387 /* BedModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

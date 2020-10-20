@@ -9,16 +9,16 @@ import Foundation
 
 struct GroceryLists {
     var allItems: [Grocery]
-    var groceriesPerPerson: [GroceryList];
+    var groceriesPerPerson: [GroceryList]
 }
 
 struct GroceryList {
-    var personsName: String;
-    var groceries: [Grocery];
+    var personsName: String
+    var groceries: [Grocery]
 }
 
 struct Grocery {
-    var productName: String;
-    var price: Double;
-    var Quantity: Int;
+    var productName: String
+    var price: Double
+    var Quantity: Int
 }

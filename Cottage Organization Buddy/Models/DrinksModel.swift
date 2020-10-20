@@ -8,6 +8,6 @@
 import Foundation
 
 struct PersonalDrinksList {
-    var person: String;
-    var drinkNames: [String];
+    var person: String
+    var drinkNames: [String]
 }

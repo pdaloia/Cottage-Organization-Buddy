@@ -8,7 +8,7 @@
 import Foundation
 
 struct Car {
-    var driverName: String;
-    var numberOfPassengers: Int;
-    var passengers: [String];
+    var driverName: String
+    var numberOfPassengers: Int
+    var passengers: [String]
 }
