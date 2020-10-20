@@ -13,6 +13,8 @@ class CottageTabsController: UITabBarController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        TestHelper.loadTestModel(into: cottageModel)
 
         loadViewControllers()
     }

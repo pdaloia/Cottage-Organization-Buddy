@@ -31,6 +31,7 @@
 		FE724F28253E773F00764387 /* AttendeeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE724F27253E773F00764387 /* AttendeeModel.swift */; };
 		FE724F2D253E7A3200764387 /* Attendees.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FE724F2C253E7A3200764387 /* Attendees.storyboard */; };
 		FE724F30253E7A4E00764387 /* AttendeesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE724F2F253E7A4E00764387 /* AttendeesController.swift */; };
+		FE724F34253E80DC00764387 /* TestHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE724F33253E80DC00764387 /* TestHelper.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -60,6 +61,7 @@
 		FE724F27253E773F00764387 /* AttendeeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttendeeModel.swift; sourceTree = "<group>"; };
 		FE724F2C253E7A3200764387 /* Attendees.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Attendees.storyboard; sourceTree = "<group>"; };
 		FE724F2F253E7A4E00764387 /* AttendeesController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttendeesController.swift; sourceTree = "<group>"; };
+		FE724F33253E80DC00764387 /* TestHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestHelper.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,6 +94,7 @@
 		FE724ED425375D7C00764387 /* Cottage Organization Buddy */ = {
 			isa = PBXGroup;
 			children = (
+				FE724F32253E80CD00764387 /* Helpers */,
 				FE724F0225394B6500764387 /* Controllers */,
 				FE724F0125394B3A00764387 /* Views */,
 				FE724EEB2537D37B00764387 /* Models */,
@@ -143,6 +146,14 @@
 				FE724F2F253E7A4E00764387 /* AttendeesController.swift */,
 			);
 			path = Controllers;
+			sourceTree = "<group>";
+		};
+		FE724F32253E80CD00764387 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				FE724F33253E80DC00764387 /* TestHelper.swift */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -232,6 +243,7 @@
 				FE724EED2537D3A700764387 /* GroceryModel.swift in Sources */,
 				FE724F0D253A081C00764387 /* CottageTabsController.swift in Sources */,
 				FE724F10253CF06C00764387 /* GroceriesController.swift in Sources */,
+				FE724F34253E80DC00764387 /* TestHelper.swift in Sources */,
 				FE724F30253E7A4E00764387 /* AttendeesController.swift in Sources */,
 				FE724EF12537D3DF00764387 /* DrinksModel.swift in Sources */,
 				FE724F13253CF08200764387 /* CarsController.swift in Sources */,
