@@ -7,7 +7,7 @@
 
 import UIKit
 
-class CarsController: UIViewController {
+class CarsController: UIViewController, TabBarItemControllerProtocol {
     
     var cottageModel: CottageTrip?
 

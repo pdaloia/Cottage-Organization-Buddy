@@ -7,7 +7,7 @@
 
 import Foundation
 
-class CottageTrip {
+class CottageTrip: CottageModelProtocol {
     var tripName: String = ""
     var tripOrganiser: Attendee = Attendee(name: "")
     var attendeesList: [Attendee] = []

@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct PersonalDrinksList {
+struct PersonalDrinksList: CottageModelProtocol {
     var person: Attendee
     var drinkNames: [Drink]
 }

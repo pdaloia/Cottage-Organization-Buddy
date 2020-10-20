@@ -32,6 +32,8 @@
 		FE724F2D253E7A3200764387 /* Attendees.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FE724F2C253E7A3200764387 /* Attendees.storyboard */; };
 		FE724F30253E7A4E00764387 /* AttendeesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE724F2F253E7A4E00764387 /* AttendeesController.swift */; };
 		FE724F34253E80DC00764387 /* TestHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE724F33253E80DC00764387 /* TestHelper.swift */; };
+		FE724F38253E89E000764387 /* TabBarItemControllerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE724F37253E89E000764387 /* TabBarItemControllerProtocol.swift */; };
+		FE724F3D253E8A6D00764387 /* CottageModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE724F3C253E8A6D00764387 /* CottageModelProtocol.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -62,6 +64,8 @@
 		FE724F2C253E7A3200764387 /* Attendees.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Attendees.storyboard; sourceTree = "<group>"; };
 		FE724F2F253E7A4E00764387 /* AttendeesController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttendeesController.swift; sourceTree = "<group>"; };
 		FE724F33253E80DC00764387 /* TestHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestHelper.swift; sourceTree = "<group>"; };
+		FE724F37253E89E000764387 /* TabBarItemControllerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarItemControllerProtocol.swift; sourceTree = "<group>"; };
+		FE724F3C253E8A6D00764387 /* CottageModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CottageModelProtocol.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,6 +114,7 @@
 		FE724EEB2537D37B00764387 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				FE724F3B253E8A5A00764387 /* Model Protocols */,
 				FE724EF62537D40200764387 /* BedModel.swift */,
 				FE724EF32537D3EE00764387 /* CarModel.swift */,
 				FE724EF92537DEEA00764387 /* CottageTrip.swift */,
@@ -137,6 +142,7 @@
 		FE724F0225394B6500764387 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				FE724F36253E899B00764387 /* Controller Protocols */,
 				FE724ED925375D7D00764387 /* HomeController.swift */,
 				FE724F0C253A081C00764387 /* CottageTabsController.swift */,
 				FE724F0F253CF06C00764387 /* GroceriesController.swift */,
@@ -154,6 +160,22 @@
 				FE724F33253E80DC00764387 /* TestHelper.swift */,
 			);
 			path = Helpers;
+			sourceTree = "<group>";
+		};
+		FE724F36253E899B00764387 /* Controller Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				FE724F37253E89E000764387 /* TabBarItemControllerProtocol.swift */,
+			);
+			path = "Controller Protocols";
+			sourceTree = "<group>";
+		};
+		FE724F3B253E8A5A00764387 /* Model Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				FE724F3C253E8A6D00764387 /* CottageModelProtocol.swift */,
+			);
+			path = "Model Protocols";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -233,6 +255,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FE724EF42537D3EE00764387 /* CarModel.swift in Sources */,
+				FE724F3D253E8A6D00764387 /* CottageModelProtocol.swift in Sources */,
 				FE724F28253E773F00764387 /* AttendeeModel.swift in Sources */,
 				FE724F16253CF09B00764387 /* BedsController.swift in Sources */,
 				FE724EDA25375D7D00764387 /* HomeController.swift in Sources */,
@@ -244,6 +267,7 @@
 				FE724F0D253A081C00764387 /* CottageTabsController.swift in Sources */,
 				FE724F10253CF06C00764387 /* GroceriesController.swift in Sources */,
 				FE724F34253E80DC00764387 /* TestHelper.swift in Sources */,
+				FE724F38253E89E000764387 /* TabBarItemControllerProtocol.swift in Sources */,
 				FE724F30253E7A4E00764387 /* AttendeesController.swift in Sources */,
 				FE724EF12537D3DF00764387 /* DrinksModel.swift in Sources */,
 				FE724F13253CF08200764387 /* CarsController.swift in Sources */,

@@ -7,7 +7,7 @@
 
 import UIKit
 
-class DrinksController: UIViewController {
+class DrinksController: UIViewController, TabBarItemControllerProtocol {
     
     var cottageModel: CottageTrip?
 

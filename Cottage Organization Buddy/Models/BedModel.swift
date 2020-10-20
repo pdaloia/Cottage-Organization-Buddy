@@ -7,7 +7,8 @@
 
 import Foundation
 
-struct Bed {
+struct Bed: CottageModelProtocol {
+    
     var size: BedSize
     var capacity: Int
     var occupants: [Attendee]

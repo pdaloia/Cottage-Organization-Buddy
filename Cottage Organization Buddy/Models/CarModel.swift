@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Car {
+struct Car: CottageModelProtocol {
     var driver: Attendee
     var numberOfPassengers: Int
     var passengers: [Attendee]

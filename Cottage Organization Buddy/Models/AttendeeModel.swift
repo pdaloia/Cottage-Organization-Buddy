@@ -7,6 +7,6 @@
 
 import Foundation
 
-struct Attendee {
+struct Attendee: CottageModelProtocol {
     var name: String
 }

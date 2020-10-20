@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct GroceryLists {
+struct GroceryLists: CottageModelProtocol {
     var allItems: [Grocery]
     var groceriesPerPerson: [GroceryList]
 }
