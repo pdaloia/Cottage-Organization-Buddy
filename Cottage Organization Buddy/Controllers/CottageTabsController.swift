@@ -24,16 +24,22 @@ class CottageTabsController: UITabBarController {
         let groceriesViewController = UIStoryboard(name: "Groceries", bundle:nil).instantiateViewController(identifier: "GroceriesView") as! GroceriesController
         let carsViewController = UIStoryboard(name: "Cars", bundle:nil).instantiateViewController(identifier: "CarsView") as! CarsController
         let bedsViewController = UIStoryboard(name: "Beds", bundle: nil).instantiateViewController(identifier: "BedsView") as! BedsController
-        let drinksViewContoller = UIStoryboard(name: "Drinks", bundle: nil).instantiateViewController(identifier: "DrinksView") as! DrinksController
+        let drinksViewController = UIStoryboard(name: "Drinks", bundle: nil).instantiateViewController(identifier: "DrinksView") as! DrinksController
+        
+        //Inject the model dependency into the view controllers
+        groceriesViewController.cottageModel = self.cottageModel
+        carsViewController.cottageModel = self.cottageModel
+        bedsViewController.cottageModel = self.cottageModel
+        drinksViewController.cottageModel = self.cottageModel
         
         //create the tab bar items for each view controller
-        groceriesViewController.tabBarItem = UITabBarItem(tabBarSystemItem: .more, tag: 0)
-        carsViewController.tabBarItem = UITabBarItem(tabBarSystemItem: .more, tag: 1)
-        bedsViewController.tabBarItem = UITabBarItem(tabBarSystemItem: .more, tag: 2)
-        drinksViewContoller.tabBarItem = UITabBarItem(tabBarSystemItem: .more, tag: 3)
+        groceriesViewController.tabBarItem = UITabBarItem(title: "Groceries", image: UIImage(systemName: "applelogo"), tag: 0)
+        carsViewController.tabBarItem = UITabBarItem(title: "Cars", image: UIImage(systemName: ""), tag: 1)
+        bedsViewController.tabBarItem = UITabBarItem(title: "Beds", image: UIImage(systemName: ""), tag: 2)
+        drinksViewController.tabBarItem = UITabBarItem(title: "Drinks", image: UIImage(systemName: ""), tag: 3)
         
         //create a list of all the controllers that will be loaded into the tab bar
-        let tabBarList = [groceriesViewController, carsViewController, bedsViewController, drinksViewContoller]
+        let tabBarList = [groceriesViewController, carsViewController, bedsViewController, drinksViewController]
         
         //load the tab bar
         viewControllers = tabBarList

@@ -8,6 +8,8 @@
 import UIKit
 
 class BedsController: UIViewController {
+    
+    var cottageModel: CottageTrip?
 
     override func viewDidLoad() {
         super.viewDidLoad()

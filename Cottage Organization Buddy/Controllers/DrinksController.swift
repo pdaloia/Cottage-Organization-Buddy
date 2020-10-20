@@ -8,6 +8,8 @@
 import UIKit
 
 class DrinksController: UIViewController {
+    
+    var cottageModel: CottageTrip?
 
     override func viewDidLoad() {
         super.viewDidLoad()

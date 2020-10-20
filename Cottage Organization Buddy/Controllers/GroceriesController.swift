@@ -9,6 +9,8 @@ import UIKit
 
 class GroceriesController: UIViewController {
     
+    var cottageModel: CottageTrip?
+    
     @IBOutlet weak var groceriesList: UILabel!
     
     override func viewDidLoad() {
@@ -16,9 +18,8 @@ class GroceriesController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        let tabBar = tabBarController as! CottageTabsController
         
-        groceriesList.text = String(describing:tabBar.cottageModel.groceryList)
+        groceriesList.text = String(describing:cottageModel!.groceryList)
     }
 
 }

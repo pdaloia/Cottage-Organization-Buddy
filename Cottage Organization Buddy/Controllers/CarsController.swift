@@ -8,6 +8,8 @@
 import UIKit
 
 class CarsController: UIViewController {
+    
+    var cottageModel: CottageTrip?
 
     override func viewDidLoad() {
         super.viewDidLoad()
