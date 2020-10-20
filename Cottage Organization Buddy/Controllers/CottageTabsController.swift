@@ -13,8 +13,6 @@ class CottageTabsController: UITabBarController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        loadTesterCottageData()
 
         loadViewControllers()
     }
@@ -46,47 +44,6 @@ class CottageTabsController: UITabBarController {
         
         //load the tab bar
         viewControllers = tabBarList
-    }
-    
-    func loadTesterCottageData() {
-        //load values
-        cottageModel.tripName = "Vic's Cottage"
-        cottageModel.tripOrganiser = Attendee(name: "Vic")
-        
-        //test cars
-        let philsCar: Car = Car(driverName: "Phil", numberOfPassengers: 3, passengers: ["Laura", "Medei", "Son"])
-        let julesCar: Car = Car(driverName: "Phil", numberOfPassengers: 2, passengers: ["Kim", "Lucas"])
-        let andrewsCar: Car = Car(driverName: "Phil", numberOfPassengers: 2, passengers: ["Vic", "Michael"])
-        cottageModel.carsList = [philsCar, julesCar, andrewsCar]
-        
-        //test groceries
-        let bananas: Grocery = Grocery(productName: "Banana", price: 2.00, Quantity: 5)
-        let apples: Grocery = Grocery(productName: "Apple", price: 1.50, Quantity: 10)
-        let burgers: Grocery = Grocery(productName: "Burger", price: 5.00, Quantity: 10)
-        let popsicles: Grocery = Grocery(productName: "Popsicle", price: 2.50, Quantity: 20)
-        
-        let allGroceries = [bananas, apples, burgers, popsicles]
-        
-        let philsGroceries: GroceryList = GroceryList(personsName: "Phil", groceries: [apples, bananas])
-        let vicsGroceries: GroceryList = GroceryList(personsName: "Vic", groceries: [burgers])
-        let laurasGroceries: GroceryList = GroceryList(personsName: "Laura", groceries: [popsicles])
-        
-        cottageModel.groceryList = GroceryLists(allItems: allGroceries, groceriesPerPerson: [philsGroceries, vicsGroceries, laurasGroceries])
-        
-        //test beds
-        let firstBed: Bed = Bed(size: .double, capacity: "2", occupants: ["Phil", "Laura"])
-        let secondBed: Bed = Bed(size: .queen, capacity: "2", occupants: ["Vic", "Andrew"])
-        let thirdBed: Bed = Bed(size: .twin, capacity: "1", occupants: ["Jules"])
-        
-        cottageModel.bedsList = [firstBed, secondBed, thirdBed]
-        
-        //test drinks
-        let philsList: PersonalDrinksList = PersonalDrinksList(person: "Phil", drinkNames: ["Tequila", "Vodka", "Cranberry Juice", "Cooler"])
-        let laurasList: PersonalDrinksList = PersonalDrinksList(person: "Laura", drinkNames: ["Water", "More Water", "Water but H2O"])
-        let medeisList: PersonalDrinksList = PersonalDrinksList(person: "Medei", drinkNames: ["Drink no one cares about", "Expensive drink no one cares about", "Drink that shows I work at LCBO", "Mike's hard"])
-        
-        cottageModel.drinksList = [philsList, laurasList, medeisList]
-        
     }
 
 }

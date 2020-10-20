@@ -8,7 +8,7 @@
 import Foundation
 
 class CottageTrip {
-    var tripName = ""
+    var tripName: String = ""
     var tripOrganiser: Attendee = Attendee(name: "")
     var attendeesList: [Attendee] = []
     var groceryList: GroceryLists = GroceryLists(allItems: [], groceriesPerPerson: [])

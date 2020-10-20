@@ -9,8 +9,8 @@ import Foundation
 
 struct Bed {
     var size: BedSize
-    var capacity: String
-    var occupants: [String]
+    var capacity: Int
+    var occupants: [Attendee]
 }
 
 enum BedSize {

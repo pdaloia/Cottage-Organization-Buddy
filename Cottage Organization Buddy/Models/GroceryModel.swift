@@ -13,7 +13,7 @@ struct GroceryLists {
 }
 
 struct GroceryList {
-    var personsName: String
+    var personsName: Attendee
     var groceries: [Grocery]
 }
 

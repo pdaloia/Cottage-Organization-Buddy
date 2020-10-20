@@ -8,6 +8,11 @@
 import Foundation
 
 struct PersonalDrinksList {
-    var person: String
-    var drinkNames: [String]
+    var person: Attendee
+    var drinkNames: [Drink]
+}
+
+struct Drink {
+    var name: String
+    var isAlcoholic: Bool
 }
