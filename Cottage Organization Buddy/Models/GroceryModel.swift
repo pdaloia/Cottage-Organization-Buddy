@@ -22,3 +22,7 @@ struct Grocery {
     var price: Double
     var Quantity: Int
 }
+
+enum GroceryType {
+    case produce, meat, snack, premade, drink, miscellaneous /*cheese,*/
+}

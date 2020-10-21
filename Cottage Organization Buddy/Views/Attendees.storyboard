@@ -16,18 +16,22 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="This is the Attendees section!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WgW-BO-TFL">
-                                <rect key="frame" x="94.5" y="442.5" width="225" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="QEy-LN-Rqz">
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="RJI-Kr-Y6p" id="YxX-AC-qEn"/>
+                                    <outlet property="delegate" destination="RJI-Kr-Y6p" id="w4n-8J-Bqu"/>
+                                </connections>
+                            </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="y3y-a3-Dso"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="WgW-BO-TFL" firstAttribute="centerX" secondItem="y3y-a3-Dso" secondAttribute="centerX" id="JiW-YA-37z"/>
-                            <constraint firstItem="WgW-BO-TFL" firstAttribute="centerY" secondItem="y3y-a3-Dso" secondAttribute="centerY" id="KeZ-xx-Tle"/>
+                            <constraint firstItem="QEy-LN-Rqz" firstAttribute="leading" secondItem="y3y-a3-Dso" secondAttribute="leading" id="Nag-6c-XNj"/>
+                            <constraint firstItem="y3y-a3-Dso" firstAttribute="trailing" secondItem="QEy-LN-Rqz" secondAttribute="trailing" id="thb-rh-anN"/>
+                            <constraint firstItem="y3y-a3-Dso" firstAttribute="bottom" secondItem="QEy-LN-Rqz" secondAttribute="bottom" id="uC6-BD-s2B"/>
+                            <constraint firstItem="QEy-LN-Rqz" firstAttribute="top" secondItem="y3y-a3-Dso" secondAttribute="top" id="zuz-B8-gtT"/>
                         </constraints>
                     </view>
                 </viewController>
