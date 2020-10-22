@@ -5,7 +5,7 @@ This app is a tool in which groups of friends can use when planning a trip in or
 
 #### Why Was It Created?
 
-In my group of friends, we try to plan at least one cottage trip every year. We have people in our group who are basically the organisers every trip. They do an amazing job planning the cottages every time, but sometimes communication between cottage members can get lost in translation. After some time, I thought about all the critical components of a cottage trip and figured why not create a mobile app which can track all this information and share it among users?
+In my group of friends, we try to plan at least one cottage trip every year. We have people in our group who are basically the organisers every trip. They do an amazing job planning the cottages every time, but sometimes communication between cottage members can get lost in translation. My girlfriend mentioned after our latest cottage trip how great it would be to have an app that could automate the grocery part of the trip. After hearing this, I thought about all the critical components of a cottage trip and figured why not create a mobile app which can track all this information and share it among users?
 
 #### Extra notes
 - None so far
