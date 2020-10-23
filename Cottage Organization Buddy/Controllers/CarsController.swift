@@ -34,13 +34,10 @@ extension CarsController: UICollectionViewDataSource, UICollectionViewDelegateFl
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CarCell", for: indexPath)
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CarCell", for: indexPath) as! CarCollectionViewCell
         
-        let carImageView = UIImageView(image: UIImage(systemName: "car"))
-        carImageView.frame = cell.contentView.bounds
-        carImageView.center = CGPoint(x: cell.bounds.width/2, y: cell.bounds.height/2)
-        carImageView.contentMode = .scaleAspectFit
-        cell.addSubview(carImageView)
+        //setup the cell with the information from the cottage model
+        cell.setup(carModel: cottageModel!.carsList[indexPath.item])
         
         return cell
         
@@ -48,16 +45,18 @@ extension CarsController: UICollectionViewDataSource, UICollectionViewDelegateFl
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
-        let columns: CGFloat = 2
+        //create the amount of desired rows
+        let rows: CGFloat = 2
         
-        let collectionViewWidth = collectionView.bounds.width
+        //create and calculate the dimensions for the cell size
+        let collectionViewHeight = collectionView.bounds.height
         let flowLayout = collectionViewLayout as! UICollectionViewFlowLayout
-        let spaceBetweenCells = flowLayout.minimumInteritemSpacing * (columns - 1)
+        let spaceBetweenCells = flowLayout.minimumInteritemSpacing * (rows - 1)
         
-        let adjustedWidth = collectionViewWidth - spaceBetweenCells
+        let adjustedHeight = collectionViewHeight - spaceBetweenCells
         
-        let width: CGFloat = floor(adjustedWidth / columns)
-        let height: CGFloat = width
+        let height: CGFloat = floor(adjustedHeight / rows)
+        let width: CGFloat = collectionView.bounds.width / 2.5
         
         return CGSize(width: width, height: height)
         
