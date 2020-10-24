@@ -56,7 +56,7 @@ extension CarsController: UICollectionViewDataSource, UICollectionViewDelegateFl
         let adjustedHeight = collectionViewHeight - spaceBetweenCells
         
         let height: CGFloat = floor(adjustedHeight / rows)
-        let width: CGFloat = collectionView.bounds.width / 2.5
+        let width: CGFloat = height
         
         return CGSize(width: width, height: height)
         

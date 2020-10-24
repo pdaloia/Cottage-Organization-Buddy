@@ -29,26 +29,43 @@ class CarCollectionViewCell: UICollectionViewCell {
         self.title = "\(carModel.driver.name)'s car"
         self.carImage = UIImage(systemName: "car")
         
+        contentView.backgroundColor = .black
+        
         //create and add the label for the text
-        let cellLabel = UILabel(frame: CGRect.zero)
-        cellLabel.frame.size = CGSize(width: self.frame.width, height: self.frame.height / 2)
+        let cellLabel = UILabel()
+        
+        //set up cell label properties
         cellLabel.text = self.title
         cellLabel.textAlignment = .center
         cellLabel.textColor = .black
         cellLabel.backgroundColor = .gray
+        
+        //add the cell label to the cell
         contentView.addSubview(cellLabel)
         
-        //create and add the image view for the image
-        let carImageView = UIImageView(frame: CGRect(x: self.bounds.minX, y: self.bounds.midY, width: self.frame.width, height: self.frame.height/2))
-        carImageView.frame.size = CGSize(width: self.frame.width, height: self.frame.height/2)
+        //add the constraints to the label
+        cellLabel.translatesAutoresizingMaskIntoConstraints = false
+        cellLabel.topAnchor.constraint(equalTo: self.contentView.topAnchor).isActive = true
+        cellLabel.bottomAnchor.constraint(equalTo: self.contentView.centerYAnchor).isActive = true
+        cellLabel.widthAnchor.constraint(equalTo: self.contentView.widthAnchor).isActive = true
+        
+        //create image view for the image
+        let carImageView = UIImageView()
         carImageView.image = carImage
+        
+        //add to the cell
         contentView.addSubview(carImageView)
         
-        contentView.backgroundColor = .black
+        //add constraints
+        carImageView.translatesAutoresizingMaskIntoConstraints = false
+        carImageView.topAnchor.constraint(equalTo: self.contentView.centerYAnchor).isActive = true
+        carImageView.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor).isActive = true
+        carImageView.widthAnchor.constraint(equalTo: self.contentView.widthAnchor).isActive = true
         
     }
     
     override func prepareForReuse() {
+        super.prepareForReuse()
         
         //removes all children views from the cell before reusing a cell
         for cell in self.contentView.subviews {
