@@ -103,7 +103,7 @@ class CarInformationView: UIView {
         
         self.driverDisplayName.text = "Driver Name: \(driverName)"
         self.passengersDisplayNames.text = "Passengers in car: \(passengerNames)"
-        self.seatsRemainingDisplayValue.text = "Seats remaining \(remainingSeats)"
+        self.seatsRemainingDisplayValue.text = "Seats remaining: \(remainingSeats)"
         
     }
 

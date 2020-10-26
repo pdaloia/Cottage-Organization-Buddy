@@ -58,6 +58,7 @@ class CarCollectionViewCell: UICollectionViewCell {
         //create image view for the image
         let carImageView = UIImageView()
         carImageView.image = carImage
+        carImageView.contentMode = .scaleAspectFit
         
         //add to the cell
         contentView.addSubview(carImageView)
