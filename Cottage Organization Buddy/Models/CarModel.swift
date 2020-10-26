@@ -21,5 +21,9 @@ struct Car: CottageModelProtocol {
         return passengersNames.joined(separator: ", ")
         
     }
+    
+    func calculateRemainingSeats() -> Int {
+        return self.numberOfSeats - self.passengers.count
+    }
 }
 

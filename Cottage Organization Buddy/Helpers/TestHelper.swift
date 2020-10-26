@@ -52,7 +52,7 @@ class TestHelper {
         //load cars
         let firstCar = Car(driver: phil, numberOfSeats: 3, passengers: [laura, medei, sonia])
         let secondCar = Car(driver: michael, numberOfSeats: 3, passengers: [vic, andrew, abosh])
-        let thirdCar = Car(driver: jules, numberOfSeats: 2, passengers: [kim, lucas])
+        let thirdCar = Car(driver: jules, numberOfSeats: 3, passengers: [kim, lucas])
         
         modelToLoad.carsList = [firstCar, secondCar, thirdCar, thirdCar, secondCar, firstCar, firstCar]
         

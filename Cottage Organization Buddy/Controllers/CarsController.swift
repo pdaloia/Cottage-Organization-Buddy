@@ -90,7 +90,13 @@ extension CarsController: UICollectionViewDataSource, UICollectionViewDelegateFl
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
+        //retrieve the selected car cell
+        let selectedCarCell = collectionView.cellForItem(at: indexPath) as! CarCollectionViewCell
         
+        //inject the information view's car model as the selected cell's car model
+        carInformationView.currentlySelectedCarModel = selectedCarCell.cellsCarModel
+        
+        carInformationView.displayInformation()
         
     }
     
