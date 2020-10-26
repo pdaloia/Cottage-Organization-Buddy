@@ -12,6 +12,7 @@ class CarsController: UIViewController, TabBarItemControllerProtocol {
     var cottageModel: CottageTrip?
     
     @IBOutlet weak var carsCollectionView: UICollectionView!
+    @IBOutlet weak var carInformationView: CarInformationView!
     
     override func viewDidLoad() {
         
@@ -19,6 +20,27 @@ class CarsController: UIViewController, TabBarItemControllerProtocol {
         
         carsCollectionView.dataSource = self
         carsCollectionView.delegate = self
+        
+        createCarInformationView()
+        
+    }
+    
+    func createCarInformationView() {
+        
+        let newCarInformationView = CarInformationView()
+        carInformationView = newCarInformationView
+        
+        //add the collection view to the view
+        self.view.addSubview(carInformationView)
+        
+        //set the constraints for this colleciton view
+        carInformationView.translatesAutoresizingMaskIntoConstraints = false
+        carInformationView.topAnchor.constraint(equalTo: self.carsCollectionView.bottomAnchor).isActive = true
+        carInformationView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor).isActive = true
+        carInformationView.widthAnchor.constraint(equalTo: self.view.widthAnchor).isActive = true
+        
+        //Now that the information view has been added, setup the view
+        carInformationView.setupView()
         
     }
     
@@ -35,9 +57,13 @@ extension CarsController: UICollectionViewDataSource, UICollectionViewDelegateFl
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CarCell", for: indexPath) as! CarCollectionViewCell
+        //cell.driver = cottageModel!.carsList[indexPath.item].driver.name
+        //cell.passengers = cottageModel!.carsList[indexPath.item].passengers
+        //cell.seatsRemaining = cottageModel!.carsList[indexPath.item].numberOfSeats - cottageModel!.carsList[indexPath.item].passengers.count
         
         //setup the cell with the information from the cottage model
-        cell.setup(carModel: cottageModel!.carsList[indexPath.item])
+        cell.cellsCarModel = cottageModel!.carsList[indexPath.item]
+        cell.setup()
         
         return cell
         
@@ -59,6 +85,12 @@ extension CarsController: UICollectionViewDataSource, UICollectionViewDelegateFl
         let width: CGFloat = height
         
         return CGSize(width: width, height: height)
+        
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        
         
     }
     

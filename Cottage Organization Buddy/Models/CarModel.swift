@@ -9,6 +9,17 @@ import Foundation
 
 struct Car: CottageModelProtocol {
     var driver: Attendee
-    var numberOfPassengers: Int
+    var numberOfSeats: Int
     var passengers: [Attendee]
+    
+    func returnPassengersNames() -> String {
+        
+        var passengersNames: [String] = []
+        for passenger in self.passengers {
+            passengersNames.append(passenger.name)
+        }
+        return passengersNames.joined(separator: ", ")
+        
+    }
 }
+

@@ -35,6 +35,7 @@
 		FE724F38253E89E000764387 /* TabBarItemControllerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE724F37253E89E000764387 /* TabBarItemControllerProtocol.swift */; };
 		FE724F3D253E8A6D00764387 /* CottageModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE724F3C253E8A6D00764387 /* CottageModelProtocol.swift */; };
 		FE724F4125431F2000764387 /* CarCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE724F4025431F1F00764387 /* CarCollectionViewCell.swift */; };
+		FE724F452543E97C00764387 /* CarInformationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE724F442543E97B00764387 /* CarInformationView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -68,6 +69,7 @@
 		FE724F37253E89E000764387 /* TabBarItemControllerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarItemControllerProtocol.swift; sourceTree = "<group>"; };
 		FE724F3C253E8A6D00764387 /* CottageModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CottageModelProtocol.swift; sourceTree = "<group>"; };
 		FE724F4025431F1F00764387 /* CarCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarCollectionViewCell.swift; sourceTree = "<group>"; };
+		FE724F442543E97B00764387 /* CarInformationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarInformationView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -137,6 +139,7 @@
 				FE724F21253CF17100764387 /* Beds.storyboard */,
 				FE724F24253CF18700764387 /* Drinks.storyboard */,
 				FE724F2C253E7A3200764387 /* Attendees.storyboard */,
+				FE724F442543E97B00764387 /* CarInformationView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -275,6 +278,7 @@
 				FE724F19253CF0AB00764387 /* DrinksController.swift in Sources */,
 				FE724ED825375D7C00764387 /* SceneDelegate.swift in Sources */,
 				FE724EED2537D3A700764387 /* GroceryModel.swift in Sources */,
+				FE724F452543E97C00764387 /* CarInformationView.swift in Sources */,
 				FE724F4125431F2000764387 /* CarCollectionViewCell.swift in Sources */,
 				FE724F0D253A081C00764387 /* CottageTabsController.swift in Sources */,
 				FE724F10253CF06C00764387 /* GroceriesController.swift in Sources */,

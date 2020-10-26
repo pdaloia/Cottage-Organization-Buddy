@@ -9,9 +9,7 @@ import UIKit
 
 class CarCollectionViewCell: UICollectionViewCell {
     
-    var carImage: UIImage?
-    var title: String?
-    var message: String?
+    var cellsCarModel: Car?
     
     override func awakeFromNib() {
         
@@ -23,19 +21,27 @@ class CarCollectionViewCell: UICollectionViewCell {
         
     }
     
-    func setup(carModel: Car) {
+    func setup() {
         
         //set the cell's properties according to the model
-        self.title = "\(carModel.driver.name)'s car"
-        self.carImage = UIImage(systemName: "car")
+        var cellTitle = ""
+        if let driver = cellsCarModel?.driver.name {
+            cellTitle = "\(driver)'s car"
+        }
+        else {
+            print("Car model's driver is nil!")
+        }
         
-        contentView.backgroundColor = .black
+        //create the car image
+        let carImage = UIImage(systemName: "car")
+        
+        contentView.backgroundColor = .clear
         
         //create and add the label for the text
         let cellLabel = UILabel()
         
         //set up cell label properties
-        cellLabel.text = self.title
+        cellLabel.text = cellTitle
         cellLabel.textAlignment = .center
         cellLabel.textColor = .black
         cellLabel.backgroundColor = .gray
