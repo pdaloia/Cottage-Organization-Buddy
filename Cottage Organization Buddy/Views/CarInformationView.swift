@@ -9,15 +9,31 @@ import UIKit
 
 class CarInformationView: UIView {
     
-    @IBOutlet weak var driverDisplayName: UILabel!
-    @IBOutlet weak var passengersDisplayNames: UILabel!
-    @IBOutlet weak var seatsRemainingDisplayValue: UILabel!
-    @IBOutlet weak var initialLabelMessage : UILabel!
-    
-    var cellWasSelected: Bool = false
-    
+    //model
     var currentlySelectedCarModel: Car?
     
+    //variable to see if a cell has not been selected yet
+    var cellWasSelected: Bool = false
+    
+    //initial label
+    var initialLabelMessage = UILabel()
+    
+    //display labels
+    var driverDisplayNameLabel = UILabel()
+    var passengersDisplayNamesLabel = UILabel()
+    var seatsRemainingDisplayValueLabel = UILabel()
+    
+    //value labels
+    var driverDisplayName = UILabel()
+    var passengersDisplayNames = UILabel()
+    var seatsRemainingDisplayValue = UILabel()
+    
+    //stack views
+    var labelStackView = UIStackView()
+    var dataStackView = UIStackView()
+    var tableStackView = UIStackView()
+    
+    //initializers
     override init(frame: CGRect) {
         super.init(frame: frame)
     }
@@ -26,31 +42,33 @@ class CarInformationView: UIView {
         super.init(coder: coder)
     }
     
-    func setupView() {
+    func setupViewInitialMessage() {
         
-        let initialLabel = UILabel()
-        initialLabelMessage = initialLabel
+        //set the initial label's message
         initialLabelMessage.text = "Select a car to view the car's information!"
         
+        //add the initial label to the view
         self.addSubview(initialLabelMessage)
         
+        //set the autolayout constraints
         initialLabelMessage.translatesAutoresizingMaskIntoConstraints = false
         initialLabelMessage.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
         initialLabelMessage.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
-        initialLabelMessage.leadingAnchor.constraint(equalTo: self.leadingAnchor).isActive = true
-        initialLabelMessage.trailingAnchor.constraint(equalTo: self.trailingAnchor).isActive = true
         initialLabelMessage.adjustsFontSizeToFitWidth = true
         
     }
     
-    func displayInformation() {
+    func displayInformationAfterCellSelection() {
         
+        //if a cell has not been selected yet, remove the initial label and initialize information labels
         if self.cellWasSelected == false {
             initialLabelMessage.removeFromSuperview()
-            initializeInformationLabels()
+            initializeDataInformationLabels()
+            initializeStackViews()
             self.cellWasSelected = true
             return
         }
+        //if cell has already been selected before this, just update the information labels
         else {
             updateCarInformation()
             return
@@ -58,40 +76,53 @@ class CarInformationView: UIView {
         
     }
     
-    func initializeInformationLabels() {
+    func initializeDataInformationLabels() {
         
+        //get the required information from the selected cell
         let driverName = currentlySelectedCarModel!.driver.name
         let passengerNames = currentlySelectedCarModel!.returnPassengersNames()
         let remainingSeats = String(currentlySelectedCarModel!.calculateRemainingSeats())
         
-        let initialDriverLabel = UILabel()
-        self.driverDisplayName = initialDriverLabel
+        //create the text labels
+        self.driverDisplayNameLabel.text = "Driver Name:"
+        self.passengersDisplayNamesLabel.text = "Passengers in car:"
+        self.seatsRemainingDisplayValueLabel.text = "Seats remaining:"
         
-        let initialPassengersLabel = UILabel()
-        self.passengersDisplayNames = initialPassengersLabel
+        //create the information labels
+        self.driverDisplayName.text = driverName
+        self.passengersDisplayNames.text = passengerNames
+        self.seatsRemainingDisplayValue.text = remainingSeats
         
-        let initialSeatsRemainingLabel = UILabel()
-        self.seatsRemainingDisplayValue = initialSeatsRemainingLabel
+    }
+    
+    func initializeStackViews() {
         
-        self.driverDisplayName.text = "Driver Name: \(driverName)"
-        self.passengersDisplayNames.text = "Passengers in car: \(passengerNames)"
-        self.seatsRemainingDisplayValue.text = "Seats remaining: \(remainingSeats)"
+        //set the label stack view and add it's labels
+        labelStackView.axis = .vertical
+        labelStackView.distribution = .fillEqually
+        labelStackView.addArrangedSubview(driverDisplayNameLabel)
+        labelStackView.addArrangedSubview(passengersDisplayNamesLabel)
+        labelStackView.addArrangedSubview(seatsRemainingDisplayValueLabel)
         
-        self.addSubview(self.driverDisplayName)
-        self.addSubview(self.passengersDisplayNames)
-        self.addSubview(self.seatsRemainingDisplayValue)
+        //set the data stack view and add it's data
+        dataStackView.axis = .vertical
+        dataStackView.distribution = .fillEqually
+        dataStackView.addArrangedSubview(driverDisplayName)
+        dataStackView.addArrangedSubview(passengersDisplayNames)
+        dataStackView.addArrangedSubview(seatsRemainingDisplayValue)
         
-        self.driverDisplayName.translatesAutoresizingMaskIntoConstraints = false
-        self.driverDisplayName.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
-        self.driverDisplayName.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
+        //set the table stack view and add the two stack views to it
+        tableStackView.axis = .horizontal
+        tableStackView.distribution = .fillEqually
+        tableStackView.addArrangedSubview(labelStackView)
+        tableStackView.addArrangedSubview(dataStackView)
         
-        self.passengersDisplayNames.translatesAutoresizingMaskIntoConstraints = false
-        self.passengersDisplayNames.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
-        self.passengersDisplayNames.topAnchor.constraint(equalTo: driverDisplayName.bottomAnchor).isActive = true
-        
-        self.seatsRemainingDisplayValue.translatesAutoresizingMaskIntoConstraints = false
-        self.seatsRemainingDisplayValue.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
-        self.seatsRemainingDisplayValue.topAnchor.constraint(equalTo: passengersDisplayNames.bottomAnchor).isActive = true
+        //add the table stack view to this view and set its constraints
+        self.addSubview(tableStackView)
+        tableStackView.translatesAutoresizingMaskIntoConstraints = false
+        tableStackView.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor, constant: 50).isActive = true
+        tableStackView.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor, constant: -50).isActive = true
+        tableStackView.topAnchor.constraint(equalTo: self.topAnchor, constant: 50).isActive = true
         
     }
     
@@ -101,9 +132,9 @@ class CarInformationView: UIView {
         let passengerNames = currentlySelectedCarModel!.returnPassengersNames()
         let remainingSeats = String(currentlySelectedCarModel!.calculateRemainingSeats())
         
-        self.driverDisplayName.text = "Driver Name: \(driverName)"
-        self.passengersDisplayNames.text = "Passengers in car: \(passengerNames)"
-        self.seatsRemainingDisplayValue.text = "Seats remaining: \(remainingSeats)"
+        self.driverDisplayName.text = driverName
+        self.passengersDisplayNames.text = passengerNames
+        self.seatsRemainingDisplayValue.text = remainingSeats
         
     }
 

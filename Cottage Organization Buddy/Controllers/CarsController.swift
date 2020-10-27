@@ -40,7 +40,7 @@ class CarsController: UIViewController, TabBarItemControllerProtocol {
         carInformationView.widthAnchor.constraint(equalTo: self.view.widthAnchor).isActive = true
         
         //Now that the information view has been added, setup the view
-        carInformationView.setupView()
+        carInformationView.setupViewInitialMessage()
         
     }
     
@@ -96,7 +96,7 @@ extension CarsController: UICollectionViewDataSource, UICollectionViewDelegateFl
         //inject the information view's car model as the selected cell's car model
         carInformationView.currentlySelectedCarModel = selectedCarCell.cellsCarModel
         
-        carInformationView.displayInformation()
+        carInformationView.displayInformationAfterCellSelection()
         
     }
     
