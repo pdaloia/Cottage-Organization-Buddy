@@ -52,7 +52,7 @@ class CarInformationView: UIView {
         
         //set the autolayout constraints
         initialLabelMessage.translatesAutoresizingMaskIntoConstraints = false
-        initialLabelMessage.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
+        initialLabelMessage.topAnchor.constraint(equalTo: self.topAnchor, constant: 50).isActive = true
         initialLabelMessage.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
         initialLabelMessage.adjustsFontSizeToFitWidth = true
         
@@ -86,11 +86,13 @@ class CarInformationView: UIView {
         //create the text labels
         self.driverDisplayNameLabel.text = "Driver Name:"
         self.passengersDisplayNamesLabel.text = "Passengers in car:"
+        self.passengersDisplayNamesLabel.numberOfLines = 2
         self.seatsRemainingDisplayValueLabel.text = "Seats remaining:"
         
         //create the information labels
         self.driverDisplayName.text = driverName
         self.passengersDisplayNames.text = passengerNames
+        self.passengersDisplayNames.numberOfLines = 2
         self.seatsRemainingDisplayValue.text = remainingSeats
         
     }
@@ -122,7 +124,7 @@ class CarInformationView: UIView {
         tableStackView.translatesAutoresizingMaskIntoConstraints = false
         tableStackView.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor, constant: 50).isActive = true
         tableStackView.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor, constant: -50).isActive = true
-        tableStackView.topAnchor.constraint(equalTo: self.topAnchor, constant: 50).isActive = true
+        tableStackView.topAnchor.constraint(equalTo: self.topAnchor, constant: 20).isActive = true
         
     }
     
