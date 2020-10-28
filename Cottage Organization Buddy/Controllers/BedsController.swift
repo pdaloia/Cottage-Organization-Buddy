@@ -35,6 +35,7 @@ extension BedsController: UICollectionViewDataSource, UICollectionViewDelegateFl
         let bedCell = collectionView.dequeueReusableCell(withReuseIdentifier: "BedCell", for: indexPath) as! BedCollectionViewCell
         
         bedCell.cellsBedModel = cottageModel!.bedsList[indexPath.item]
+        bedCell.setupBedCell()
         
         return bedCell
         
