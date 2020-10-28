@@ -34,17 +34,20 @@ class BedCollectionViewCell: UICollectionViewCell {
         
         contentView.backgroundColor = .clear
         
+        //set the label's contents
         bedSizeLabel.text = String(describing: cellsBedModel!.size)
         bedSizeLabel.textAlignment = .center
-        bedSizeLabel.textColor = .black
         bedSizeLabel.backgroundColor = .gray
-        
-        //add the view objects to the cell's content view
+        if cellsBedModel!.checkIfBedAtRecommendedCapacity(bed: cellsBedModel!) {
+            bedSizeLabel.textColor = .red
+        }
+        else {
+            bedSizeLabel.textColor = .black
+        }
         
         //set the cell's content constraints
         setImageConstraints()
         setLabelConstraints()
-        
         
     }
     

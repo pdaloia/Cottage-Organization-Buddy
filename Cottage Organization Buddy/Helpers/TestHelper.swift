@@ -58,11 +58,13 @@ class TestHelper {
         modelToLoad.carsList = [firstCar, secondCar, thirdCar, fourthCar]
         
         //load beds
-        let firstBed: Bed = Bed(size: .double, occupants: [phil, laura])
-        let secondBed: Bed = Bed(size: .queen, occupants: [vic, andrew])
-        let thirdBed: Bed = Bed(size: .twin, occupants: [jules])
+        let firstBed: Bed = Bed(size: .queen, occupants: [phil, laura])
+        let secondBed: Bed = Bed(size: .king, occupants: [vic, andrew])
+        let thirdBed: Bed = Bed(size: .double, occupants: [jules])
+        let fourthBed: Bed = Bed(size: .double, occupants: [medei, sonia])
+        let fifthBed: Bed = Bed(size: .twin, occupants: [ricky])
         
-        modelToLoad.bedsList = [firstBed, secondBed, thirdBed, firstBed, firstBed, firstBed, firstBed]
+        modelToLoad.bedsList = [firstBed, secondBed, thirdBed, fourthBed, fifthBed]
         
         //load drinks
         let tequila: Drink = Drink(name: "Tequila", isAlcoholic: true)
