@@ -11,6 +11,9 @@ class CarCollectionViewCell: UICollectionViewCell {
     
     var cellsCarModel: Car?
     
+    var carImageView = UIImageView()
+    var cellLabel = UILabel()
+    
     override func awakeFromNib() {
         
         super.awakeFromNib()
@@ -23,25 +26,16 @@ class CarCollectionViewCell: UICollectionViewCell {
     
     func setup() {
         
-        //set the cell's properties according to the model
-        var cellTitle = ""
-        if let driver = cellsCarModel?.driver.name {
-            cellTitle = "\(driver)'s car"
-        }
-        else {
-            print("Car model's driver is nil!")
-        }
-        
-        //create the car image
-        let carImage = UIImage(systemName: "car")
-        
         contentView.backgroundColor = .clear
         
-        //create and add the label for the text
-        let cellLabel = UILabel()
+        setLabelConstraints()
+        setImageViewConstraints()
         
+    }
+    
+    func setLabelConstraints() {
         //set up cell label properties
-        cellLabel.text = cellTitle
+        cellLabel.text = String(describing: cellsCarModel!.driver.name) + "'s car"
         cellLabel.textAlignment = .center
         cellLabel.textColor = .black
         cellLabel.backgroundColor = .gray
@@ -54,13 +48,13 @@ class CarCollectionViewCell: UICollectionViewCell {
         cellLabel.topAnchor.constraint(equalTo: self.contentView.topAnchor).isActive = true
         cellLabel.bottomAnchor.constraint(equalTo: self.contentView.centerYAnchor).isActive = true
         cellLabel.widthAnchor.constraint(equalTo: self.contentView.widthAnchor).isActive = true
-        
-        //create image view for the image
-        let carImageView = UIImageView()
-        carImageView.image = carImage
-        carImageView.contentMode = .scaleAspectFit
-        
+    }
+    
+    func setImageViewConstraints() {
+        //create the car image
+        let carImage = UIImage(systemName: "car")
         //add to the cell
+        carImageView.image = carImage
         contentView.addSubview(carImageView)
         
         //add constraints
@@ -68,7 +62,7 @@ class CarCollectionViewCell: UICollectionViewCell {
         carImageView.topAnchor.constraint(equalTo: self.contentView.centerYAnchor).isActive = true
         carImageView.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor).isActive = true
         carImageView.widthAnchor.constraint(equalTo: self.contentView.widthAnchor).isActive = true
-        
+        carImageView.contentMode = .scaleAspectFit
     }
     
     override func prepareForReuse() {
