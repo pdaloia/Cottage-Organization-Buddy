@@ -67,16 +67,16 @@ class TestHelper {
         modelToLoad.bedsList = [firstBed, secondBed, thirdBed, fourthBed, fifthBed]
         
         //load drinks
-        let tequila: Drink = Drink(name: "Tequila", isAlcoholic: true)
-        let cranberryJuice = Drink(name: "Cranberry Juice", isAlcoholic: false)
-        let Vodka = Drink(name: "Vodka", isAlcoholic: true)
-        let water = Drink(name: "Water", isAlcoholic: false)
-        let moreWater = Drink(name: "More Water", isAlcoholic: false)
-        let waterWithExtraH2O = Drink(name: "Water with extra H2O", isAlcoholic: false)
-        let lcboDrink = Drink(name: "Drink no one cares about", isAlcoholic: true)
-        let lcboDrink2 = Drink(name: "Expensive drink no one cares about", isAlcoholic: true)
-        let lcboDrink3 = Drink(name: "Drink that shows I work at LCBO", isAlcoholic: true)
-        let mikesHard = Drink(name: "Mike's hard", isAlcoholic: true)
+        let tequila: Drink = Drink(name: "Tequila", isAlcoholic: true, forSharing: true)
+        let cranberryJuice = Drink(name: "Cranberry Juice", isAlcoholic: false, forSharing: false)
+        let Vodka = Drink(name: "Vodka", isAlcoholic: true, forSharing: true)
+        let water = Drink(name: "Water", isAlcoholic: false, forSharing: true)
+        let moreWater = Drink(name: "More Water", isAlcoholic: false, forSharing: true)
+        let waterWithExtraH2O = Drink(name: "Water with extra H2O", isAlcoholic: false, forSharing: false)
+        let lcboDrink = Drink(name: "Drink no one cares about", isAlcoholic: true, forSharing: true)
+        let lcboDrink2 = Drink(name: "Expensive drink no one cares about", isAlcoholic: true, forSharing: true)
+        let lcboDrink3 = Drink(name: "Drink that shows I work at LCBO", isAlcoholic: true, forSharing: true)
+        let mikesHard = Drink(name: "Mike's hard", isAlcoholic: true, forSharing: false)
         
         let philsList: PersonalDrinksList = PersonalDrinksList(person: phil, drinkNames: [tequila, cranberryJuice, Vodka])
         let laurasList: PersonalDrinksList = PersonalDrinksList(person: laura, drinkNames: [water, moreWater, waterWithExtraH2O])

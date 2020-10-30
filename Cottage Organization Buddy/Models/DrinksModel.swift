@@ -15,4 +15,5 @@ struct PersonalDrinksList: CottageModelProtocol {
 struct Drink {
     var name: String
     var isAlcoholic: Bool
+    var forSharing: Bool
 }
