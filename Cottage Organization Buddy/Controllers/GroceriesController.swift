@@ -10,16 +10,77 @@ import UIKit
 class GroceriesController: UIViewController, TabBarItemControllerProtocol {
     
     var cottageModel: CottageTrip?
+    var groceriesTableView: UITableView?
     
     @IBOutlet weak var groceriesList: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        groceriesTableView = UITableView()
+        self.view.addSubview(groceriesTableView!)
+        groceriesTableView?.dataSource = self
+        groceriesTableView?.delegate = self
+        setGroceriesTableViewConstraints()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         
-        groceriesList.text = String(describing:cottageModel!.groceryList)
+        
+        
     }
 
+}
+
+extension GroceriesController: UITableViewDataSource, UITableViewDelegate {
+    
+    func setGroceriesTableViewConstraints() {
+        
+        groceriesTableView?.translatesAutoresizingMaskIntoConstraints = false
+        groceriesTableView?.topAnchor.constraint(equalTo: self.view.topAnchor).isActive = true
+        groceriesTableView?.bottomAnchor.constraint(equalTo: self.view.bottomAnchor).isActive = true
+        groceriesTableView?.leadingAnchor.constraint(equalTo: self.view.leadingAnchor).isActive = true
+        groceriesTableView?.trailingAnchor.constraint(equalTo: self.view.trailingAnchor).isActive = true
+        
+    }
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 2
+    }
+    
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        switch section {
+        case 1:
+            return "Personal Groceries Lists"
+        default:
+            return nil
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        switch section {
+        case 0:
+            return 1
+        case 1:
+            return cottageModel!.groceryList.groceriesPerPerson.count
+        default:
+            return 0
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let currentCell = GroceriesTableViewCell()
+        
+        switch indexPath.section {
+        case 0:
+            currentCell.textLabel?.text = "All Grocery Items"
+        case 1:
+            currentCell.textLabel?.text = cottageModel!.groceryList.groceriesPerPerson[indexPath.row].person.name + "'s grocery list"
+        default:
+            currentCell.textLabel?.text = "Error"
+        }
+        
+        return currentCell
+    }
+    
 }

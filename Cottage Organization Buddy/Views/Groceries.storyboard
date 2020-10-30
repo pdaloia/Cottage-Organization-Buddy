@@ -2,7 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="W7l-Tc-ESR">
     <device id="retina6_5" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -15,34 +15,9 @@
                     <view key="view" contentMode="scaleToFill" id="LKb-f2-jaS">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="This is the groceries section!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eDt-8i-ir1">
-                                <rect key="frame" x="97.666666666666686" y="89" width="219" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Groceries" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iw9-1B-utj">
-                                <rect key="frame" x="0.0" y="143" width="414" height="20.333333333333343"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
                         <viewLayoutGuide key="safeArea" id="dHp-vf-CnF"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <constraints>
-                            <constraint firstItem="eDt-8i-ir1" firstAttribute="centerX" secondItem="dHp-vf-CnF" secondAttribute="centerX" id="3mV-PV-r1M"/>
-                            <constraint firstItem="eDt-8i-ir1" firstAttribute="top" secondItem="dHp-vf-CnF" secondAttribute="top" constant="45" id="5xX-GA-8pz"/>
-                            <constraint firstItem="iw9-1B-utj" firstAttribute="top" secondItem="eDt-8i-ir1" secondAttribute="bottom" constant="33" id="CDz-Xa-w5e"/>
-                            <constraint firstItem="dHp-vf-CnF" firstAttribute="trailing" secondItem="iw9-1B-utj" secondAttribute="trailing" id="Rc0-Ns-Y1B"/>
-                            <constraint firstItem="iw9-1B-utj" firstAttribute="leading" secondItem="dHp-vf-CnF" secondAttribute="leading" id="dMv-Dz-1FH"/>
-                            <constraint firstItem="iw9-1B-utj" firstAttribute="centerX" secondItem="dHp-vf-CnF" secondAttribute="centerX" id="v8K-Mg-U1b"/>
-                        </constraints>
                     </view>
-                    <connections>
-                        <outlet property="groceriesList" destination="iw9-1B-utj" id="Tqy-Lc-7JD"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mPO-EK-eBL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

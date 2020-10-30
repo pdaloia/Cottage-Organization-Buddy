@@ -38,6 +38,7 @@
 		FE724F4125431F2000764387 /* CarCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE724F4025431F1F00764387 /* CarCollectionViewCell.swift */; };
 		FE724F452543E97C00764387 /* CarInformationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE724F442543E97B00764387 /* CarInformationView.swift */; };
 		FEAC9744254BB4EA007B83B1 /* DrinksTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEAC9743254BB4EA007B83B1 /* DrinksTableViewCell.swift */; };
+		FEAC9747254BB8C7007B83B1 /* GroceriesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEAC9746254BB8C7007B83B1 /* GroceriesTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -74,6 +75,7 @@
 		FE724F4025431F1F00764387 /* CarCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarCollectionViewCell.swift; sourceTree = "<group>"; };
 		FE724F442543E97B00764387 /* CarInformationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarInformationView.swift; sourceTree = "<group>"; };
 		FEAC9743254BB4EA007B83B1 /* DrinksTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinksTableViewCell.swift; sourceTree = "<group>"; };
+		FEAC9746254BB8C7007B83B1 /* GroceriesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroceriesTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -194,6 +196,7 @@
 				FE724F4025431F1F00764387 /* CarCollectionViewCell.swift */,
 				FE148E882547C94C00DA5A16 /* BedCollectionViewCell.swift */,
 				FEAC9743254BB4EA007B83B1 /* DrinksTableViewCell.swift */,
+				FEAC9746254BB8C7007B83B1 /* GroceriesTableViewCell.swift */,
 			);
 			path = "UI Object Controllers";
 			sourceTree = "<group>";
@@ -279,6 +282,7 @@
 				FE724F28253E773F00764387 /* AttendeeModel.swift in Sources */,
 				FE724F16253CF09B00764387 /* BedsController.swift in Sources */,
 				FE724EDA25375D7D00764387 /* HomeController.swift in Sources */,
+				FEAC9747254BB8C7007B83B1 /* GroceriesTableViewCell.swift in Sources */,
 				FE724EFA2537DEEA00764387 /* CottageTrip.swift in Sources */,
 				FEAC9744254BB4EA007B83B1 /* DrinksTableViewCell.swift in Sources */,
 				FE148E892547C94C00DA5A16 /* BedCollectionViewCell.swift in Sources */,
