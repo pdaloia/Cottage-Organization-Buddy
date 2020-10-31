@@ -122,9 +122,10 @@ class CarInformationView: UIView {
         //add the table stack view to this view and set its constraints
         self.addSubview(tableStackView)
         tableStackView.translatesAutoresizingMaskIntoConstraints = false
-        tableStackView.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor, constant: 50).isActive = true
-        tableStackView.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor, constant: -50).isActive = true
+        tableStackView.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor, constant: 20).isActive = true
+        tableStackView.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor, constant: -20).isActive = true
         tableStackView.topAnchor.constraint(equalTo: self.topAnchor, constant: 20).isActive = true
+        tableStackView.bottomAnchor.constraint(equalTo: self.safeAreaLayoutGuide.bottomAnchor).isActive = true
         
     }
     
