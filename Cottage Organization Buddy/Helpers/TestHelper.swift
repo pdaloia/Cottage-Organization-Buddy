@@ -15,11 +15,11 @@ class TestHelper {
         
         //create attendees
         let phil = Attendee(name: "Phil")
-        let laura = Attendee(name: "Laura")
         let vic = Attendee(name: "Vic")
         let andrew = Attendee(name: "Andrew")
         let medei = Attendee(name: "Medei")
         let sonia = Attendee(name: "Sonia")
+        let laura = Attendee(name: "Laura")
         let jules = Attendee(name: "Jules")
         let kim = Attendee(name: "Kim")
         let abosh = Attendee(name: "Abosh")
@@ -33,7 +33,7 @@ class TestHelper {
         
         //load the attendees into the trip
         modelToLoad.tripOrganiser = vic
-        modelToLoad.attendeesList = [phil, laura, vic, andrew, medei, sonia, jules, kim, abosh, erica, michael, lucas, ricky]
+        modelToLoad.attendeesList = [phil, vic, andrew, medei, sonia, laura, jules, kim, abosh, erica, michael, lucas, ricky]
         
         //load the groceries
         let bananas: Grocery = Grocery(productName: "Banana", price: 2.00, Quantity: 5)
@@ -45,12 +45,12 @@ class TestHelper {
         
         let philsGroceries: GroceryList = GroceryList(person: phil, groceries: [apples, bananas])
         let vicsGroceries: GroceryList = GroceryList(person: vic, groceries: [burgers])
-        let laurasGroceries: GroceryList = GroceryList(person: laura, groceries: [popsicles])
+        let medeisGroceries: GroceryList = GroceryList(person: medei, groceries: [popsicles])
     
-        modelToLoad.groceryList = GroceryLists(allItems: allGroceries, groceriesPerPerson: [philsGroceries, vicsGroceries, laurasGroceries])
+        modelToLoad.groceryList = GroceryLists(allItems: allGroceries, groceriesPerPerson: [philsGroceries, vicsGroceries, medeisGroceries])
         
         //load cars
-        let firstCar = Car(driver: phil, numberOfSeats: 3, passengers: [laura, medei, sonia])
+        let firstCar = Car(driver: phil, numberOfSeats: 3, passengers: [medei, sonia])
         let secondCar = Car(driver: michael, numberOfSeats: 3, passengers: [vic, andrew, ricky])
         let thirdCar = Car(driver: jules, numberOfSeats: 3, passengers: [kim, lucas])
         let fourthCar = Car(driver: abosh, numberOfSeats: 3, passengers: [erica])
@@ -58,7 +58,7 @@ class TestHelper {
         modelToLoad.carsList = [firstCar, secondCar, thirdCar, fourthCar]
         
         //load beds
-        let firstBed: Bed = Bed(size: .queen, occupants: [phil, laura])
+        let firstBed: Bed = Bed(size: .twin, occupants: [phil])
         let secondBed: Bed = Bed(size: .king, occupants: [vic, andrew])
         let thirdBed: Bed = Bed(size: .double, occupants: [jules])
         let fourthBed: Bed = Bed(size: .double, occupants: [medei, sonia])
@@ -79,10 +79,10 @@ class TestHelper {
         let mikesHard = Drink(name: "Mike's hard", isAlcoholic: true, forSharing: false)
         
         let philsList: PersonalDrinksList = PersonalDrinksList(person: phil, drinkNames: [tequila, cranberryJuice, Vodka])
-        let laurasList: PersonalDrinksList = PersonalDrinksList(person: laura, drinkNames: [water, moreWater, waterWithExtraH2O])
         let medeisList: PersonalDrinksList = PersonalDrinksList(person: medei, drinkNames: [lcboDrink, lcboDrink2, lcboDrink3, mikesHard])
+        let julesList: PersonalDrinksList = PersonalDrinksList(person: jules, drinkNames: [water, moreWater, waterWithExtraH2O])
         
-        modelToLoad.drinksList = [philsList, laurasList, medeisList]
+        modelToLoad.drinksList = [philsList, medeisList, julesList]
         
     }
     
