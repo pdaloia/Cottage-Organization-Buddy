@@ -18,9 +18,7 @@ class GroceriesController: UIViewController, TabBarItemControllerProtocol {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //set up navigation bar
-        navBar = UINavigationBar(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: 44))
-        setUpNavBar()
+        title = "Groceries"
         
         //set up groceries table view
         groceriesTableView = UITableView()
@@ -33,26 +31,11 @@ class GroceriesController: UIViewController, TabBarItemControllerProtocol {
 
 extension GroceriesController: UITableViewDataSource, UITableViewDelegate {
     
-    func setUpNavBar() {
-        //add navigation bar to view and set its constraints
-        self.view.addSubview(navBar!)
-        navBar?.translatesAutoresizingMaskIntoConstraints = false
-        navBar?.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor).isActive = true
-        navBar?.leadingAnchor.constraint(equalTo: self.view.leadingAnchor).isActive = true
-        navBar?.trailingAnchor.constraint(equalTo: self.view.trailingAnchor).isActive = true
-        
-        //set its title item
-        let navBarTitle = UINavigationItem(title: "Groceries")
-        
-        //add the navigation bar's items
-        navBar!.setItems([navBarTitle], animated: false)
-    }
-    
     func setGroceriesTableViewConstraints() {
         //add table to the view and set its constraints
         self.view.addSubview(groceriesTableView!)
         groceriesTableView?.translatesAutoresizingMaskIntoConstraints = false
-        groceriesTableView?.topAnchor.constraint(equalTo: self.navBar!.bottomAnchor).isActive = true
+        groceriesTableView?.topAnchor.constraint(equalTo: self.view.topAnchor).isActive = true
         groceriesTableView?.bottomAnchor.constraint(equalTo: self.view.bottomAnchor).isActive = true
         groceriesTableView?.leadingAnchor.constraint(equalTo: self.view.leadingAnchor).isActive = true
         groceriesTableView?.trailingAnchor.constraint(equalTo: self.view.trailingAnchor).isActive = true

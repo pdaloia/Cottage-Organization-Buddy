@@ -16,12 +16,12 @@ class CottageTabsController: UITabBarController {
         
         TestHelper.loadTestModel(into: cottageModel)
 
-        loadViewControllers()
+        loadViewControllersIntoTabBarController()
     }
     
     
     //a function which is used to initiate the storyboards with their controller for each tab, dependency inject the model into each controllers, and add these tabs to the tab bar controller.
-    func loadViewControllers() {
+    func loadViewControllersIntoTabBarController() {
         
         //initialize the storyboards with their respective controllers
         let groceriesViewController = UIStoryboard(name: "Groceries", bundle:nil).instantiateViewController(identifier: "GroceriesView") as! GroceriesController
@@ -47,8 +47,10 @@ class CottageTabsController: UITabBarController {
         //create a list of all the controllers that will be loaded into the tab bar
         let tabBarList = [groceriesViewController, carsViewController, bedsViewController, drinksViewController, attendeesViewController]
         
-        //load the tab bar
-        viewControllers = tabBarList
+        //Create a navigation controller for each tab and assign the respective tab as it's root view controller
+        self.viewControllers = tabBarList.map {
+            UINavigationController(rootViewController: $0)
+        }
         
     }
 

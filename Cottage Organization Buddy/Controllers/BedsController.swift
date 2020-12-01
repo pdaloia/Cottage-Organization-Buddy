@@ -16,6 +16,8 @@ class BedsController: UIViewController, TabBarItemControllerProtocol {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        title = "Beds"
+        
         bedsCollectionView.dataSource = self
         bedsCollectionView.delegate = self
     }

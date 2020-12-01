@@ -14,7 +14,7 @@ class AttendeesController: UIViewController, TabBarItemControllerProtocol, UITab
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        title = "Attendees"
     }
     
     //UITable data source methods

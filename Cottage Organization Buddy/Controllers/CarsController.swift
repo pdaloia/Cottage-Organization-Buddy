@@ -18,6 +18,8 @@ class CarsController: UIViewController, TabBarItemControllerProtocol {
         
         super.viewDidLoad()
         
+        title = "Cars"
+        
         carsCollectionView.dataSource = self
         carsCollectionView.delegate = self
         

@@ -13,6 +13,8 @@ class DrinksController: UIViewController, TabBarItemControllerProtocol {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        title = "Drinks"
     }
 
 }
