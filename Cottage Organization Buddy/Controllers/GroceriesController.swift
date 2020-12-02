@@ -81,4 +81,23 @@ extension GroceriesController: UITableViewDataSource, UITableViewDelegate {
         return currentCell
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        let groceryListController = GroceryListController()
+        
+        switch(indexPath.section) {
+        case 0:
+            groceryListController.groceryListToDisplay = self.cottageModel?.groceryList.allItems
+            groceryListController.groceryListTitle = "All Items"
+        case 1:
+            groceryListController.groceryListToDisplay = self.cottageModel?.groceryList.groceriesPerPerson[indexPath.item].groceries
+            groceryListController.groceryListTitle = "\(self.cottageModel?.groceryList.groceriesPerPerson[indexPath.item].person.name ?? "Error")'s List"
+        default:
+            groceryListController.groceryListToDisplay = []
+        }
+        
+        self.navigationController?.pushViewController(groceryListController, animated: true)
+        
+    }
+    
 }
