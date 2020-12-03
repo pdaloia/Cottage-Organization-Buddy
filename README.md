@@ -1,4 +1,4 @@
-# Welcome to Cottage Organization Buddy (name is 99-110% going to change)
+# Welcome to Cottage Buddy
 
 #### What Is It?
 This app is a tool in which groups of friends can use when planning a trip in order to modify and display important aspects of any cottage trip to people who are going to be attending the trip.
