@@ -16,3 +16,25 @@ class CottageTrip: CottageModelProtocol {
     var carsList: [Car] = []
     var bedsList: [Bed] = []
 }
+
+
+extension CottageTrip {
+    
+    func returnSharedDrinksList() -> [Drink] {
+        
+        var allSharedDrinks: [Drink]
+        allSharedDrinks = []
+        
+        for personalList in drinksList {
+            for drink in personalList.drinkNames {
+                if drink.forSharing{
+                    allSharedDrinks.append(drink)
+                }
+            }
+        }
+        
+        return allSharedDrinks
+        
+    }
+    
+}

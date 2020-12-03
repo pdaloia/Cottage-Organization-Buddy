@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		FE148E892547C94C00DA5A16 /* BedCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE148E882547C94C00DA5A16 /* BedCollectionViewCell.swift */; };
+		FE42A3212578826200538A99 /* DrinkListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE42A3202578826200538A99 /* DrinkListController.swift */; };
 		FE724ED625375D7C00764387 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE724ED525375D7C00764387 /* AppDelegate.swift */; };
 		FE724ED825375D7C00764387 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE724ED725375D7C00764387 /* SceneDelegate.swift */; };
 		FE724EDA25375D7D00764387 /* HomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE724ED925375D7D00764387 /* HomeController.swift */; };
@@ -44,6 +45,7 @@
 
 /* Begin PBXFileReference section */
 		FE148E882547C94C00DA5A16 /* BedCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BedCollectionViewCell.swift; sourceTree = "<group>"; };
+		FE42A3202578826200538A99 /* DrinkListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkListController.swift; sourceTree = "<group>"; };
 		FE724ED225375D7C00764387 /* Cottage Organization Buddy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Cottage Organization Buddy.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FE724ED525375D7C00764387 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FE724ED725375D7C00764387 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -165,6 +167,7 @@
 				FE724F18253CF0AB00764387 /* DrinksController.swift */,
 				FE724F2F253E7A4E00764387 /* AttendeesController.swift */,
 				FEC156132577299E004FB37E /* GroceryListController.swift */,
+				FE42A3202578826200538A99 /* DrinkListController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -293,6 +296,7 @@
 				FE724F19253CF0AB00764387 /* DrinksController.swift in Sources */,
 				FE724ED825375D7C00764387 /* SceneDelegate.swift in Sources */,
 				FE724EED2537D3A700764387 /* GroceryModel.swift in Sources */,
+				FE42A3212578826200538A99 /* DrinkListController.swift in Sources */,
 				FE724F452543E97C00764387 /* CarInformationView.swift in Sources */,
 				FE724F4125431F2000764387 /* CarCollectionViewCell.swift in Sources */,
 				FE724F0D253A081C00764387 /* CottageTabsController.swift in Sources */,

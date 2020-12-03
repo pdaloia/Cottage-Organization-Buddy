@@ -62,4 +62,23 @@ extension DrinksController: UITableViewDataSource, UITableViewDelegate {
         return currentCell
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        let drinkListController = DrinkListController()
+        
+        switch(indexPath.section) {
+        case 0:
+            drinkListController.drinksToDisplay = cottageModel?.returnSharedDrinksList()
+            drinkListController.title = "Shared Drinks"
+        case 1:
+            drinkListController.drinksToDisplay = cottageModel?.drinksList[indexPath.item].drinkNames
+            drinkListController.title = "\(cottageModel?.drinksList[indexPath.item].person.name ?? "Error")'s list"
+        default:
+            drinkListController.drinksToDisplay = []
+        }
+        
+        self.navigationController?.pushViewController(drinkListController, animated: true)
+        
+    }
+    
 }
