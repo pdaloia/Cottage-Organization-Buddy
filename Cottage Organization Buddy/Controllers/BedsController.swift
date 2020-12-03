@@ -12,6 +12,7 @@ class BedsController: UIViewController, TabBarItemControllerProtocol {
     var cottageModel: CottageTrip?
 
     @IBOutlet weak var bedsCollectionView: UICollectionView!
+    var bedInformationView = BedInformationView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,6 +21,20 @@ class BedsController: UIViewController, TabBarItemControllerProtocol {
         
         bedsCollectionView.dataSource = self
         bedsCollectionView.delegate = self
+        
+        setupBedInformationView()
+        
+    }
+    
+    func setupBedInformationView() {
+        
+        self.view.addSubview(bedInformationView)
+        bedInformationView.translatesAutoresizingMaskIntoConstraints = false
+        bedInformationView.topAnchor.constraint(equalTo: bedsCollectionView.bottomAnchor).isActive = true
+        bedInformationView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor).isActive = true
+        bedInformationView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor).isActive = true
+        bedInformationView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor).isActive = true
+        
     }
 
 }
