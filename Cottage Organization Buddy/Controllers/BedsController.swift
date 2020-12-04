@@ -29,11 +29,14 @@ class BedsController: UIViewController, TabBarItemControllerProtocol {
     func setupBedInformationView() {
         
         self.view.addSubview(bedInformationView)
+        
         bedInformationView.translatesAutoresizingMaskIntoConstraints = false
         bedInformationView.topAnchor.constraint(equalTo: bedsCollectionView.bottomAnchor).isActive = true
-        bedInformationView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor).isActive = true
+        bedInformationView.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor).isActive = true
         bedInformationView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor).isActive = true
         bedInformationView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor).isActive = true
+        
+        bedInformationView.intializeView()
         
     }
 
@@ -75,6 +78,16 @@ extension BedsController: UICollectionViewDataSource, UICollectionViewDelegateFl
         height = width
         
         return CGSize(width: width, height: height)
+        
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        let selectedBedModel = cottageModel?.bedsList[indexPath.item]
+        
+        bedInformationView.bedModelToDisplay = selectedBedModel
+        
+        bedInformationView.updateBedInformationToDisplay()
         
     }
     

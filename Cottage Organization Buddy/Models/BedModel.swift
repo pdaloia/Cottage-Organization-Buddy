@@ -25,6 +25,16 @@ struct Bed: CottageModelProtocol {
         
     }
     
+    func returnOccupantNames() -> String {
+        
+        var occupantNames: [String] = []
+        for occupant in occupants {
+            occupantNames.append(occupant.name)
+        }
+        return occupantNames.joined(separator: ", ")
+        
+    }
+    
 }
 
 enum BedSize {
