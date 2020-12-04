@@ -144,15 +144,14 @@
 		FE724F0125394B3A00764387 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				FEE82BAC2579E0DB00058A5A /* Trip Information Tab Views */,
+				FEE82BAB2579E0D300058A5A /* Drinks Tab Views */,
+				FEE82BAA2579E0C700058A5A /* Beds Tab Views */,
+				FEE82BA82579E0A200058A5A /* Groceries Tab Views */,
+				FEE82BA72579E09100058A5A /* Cars Tab Views */,
+				FE724F3F25431ED600764387 /* Custom Cell Objects */,
 				FE724EDB25375D7D00764387 /* Home.storyboard */,
 				FE724F09253A07F800764387 /* CottageTabs.storyboard */,
-				FE724F1B253CF0CC00764387 /* Groceries.storyboard */,
-				FE724F1E253CF14F00764387 /* Cars.storyboard */,
-				FE724F21253CF17100764387 /* Beds.storyboard */,
-				FE724F24253CF18700764387 /* Drinks.storyboard */,
-				FE724F2C253E7A3200764387 /* Attendees.storyboard */,
-				FE724F442543E97B00764387 /* CarInformationView.swift */,
-				FE42A3232578946E00538A99 /* BedInformationView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -160,17 +159,14 @@
 		FE724F0225394B6500764387 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				FE724F3F25431ED600764387 /* UI Object Controllers */,
+				FEE82BA62579E06300058A5A /* Trip Information Tab Controllers */,
+				FEE82BA52579E05300058A5A /* Beds Tab Controllers */,
+				FEE82BA42579E04300058A5A /* Cars Tab Controllers */,
+				FEE82BA32579E02E00058A5A /* Drinks Tab Controllers */,
+				FEE82BA22579DFFE00058A5A /* Groceries Tab Controllers */,
 				FE724F36253E899B00764387 /* Controller Protocols */,
 				FE724ED925375D7D00764387 /* HomeController.swift */,
 				FE724F0C253A081C00764387 /* CottageTabsController.swift */,
-				FE724F0F253CF06C00764387 /* GroceriesController.swift */,
-				FE724F12253CF08200764387 /* CarsController.swift */,
-				FE724F15253CF09B00764387 /* BedsController.swift */,
-				FE724F18253CF0AB00764387 /* DrinksController.swift */,
-				FE724F2F253E7A4E00764387 /* AttendeesController.swift */,
-				FEC156132577299E004FB37E /* GroceryListController.swift */,
-				FE42A3202578826200538A99 /* DrinkListController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -199,15 +195,99 @@
 			path = "Model Protocols";
 			sourceTree = "<group>";
 		};
-		FE724F3F25431ED600764387 /* UI Object Controllers */ = {
+		FE724F3F25431ED600764387 /* Custom Cell Objects */ = {
 			isa = PBXGroup;
 			children = (
+			);
+			path = "Custom Cell Objects";
+			sourceTree = "<group>";
+		};
+		FEE82BA22579DFFE00058A5A /* Groceries Tab Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				FE724F0F253CF06C00764387 /* GroceriesController.swift */,
+				FEC156132577299E004FB37E /* GroceryListController.swift */,
+			);
+			path = "Groceries Tab Controllers";
+			sourceTree = "<group>";
+		};
+		FEE82BA32579E02E00058A5A /* Drinks Tab Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				FE42A3202578826200538A99 /* DrinkListController.swift */,
+				FE724F18253CF0AB00764387 /* DrinksController.swift */,
+			);
+			path = "Drinks Tab Controllers";
+			sourceTree = "<group>";
+		};
+		FEE82BA42579E04300058A5A /* Cars Tab Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				FE724F12253CF08200764387 /* CarsController.swift */,
+			);
+			path = "Cars Tab Controllers";
+			sourceTree = "<group>";
+		};
+		FEE82BA52579E05300058A5A /* Beds Tab Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				FE724F15253CF09B00764387 /* BedsController.swift */,
+			);
+			path = "Beds Tab Controllers";
+			sourceTree = "<group>";
+		};
+		FEE82BA62579E06300058A5A /* Trip Information Tab Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				FE724F2F253E7A4E00764387 /* AttendeesController.swift */,
+			);
+			path = "Trip Information Tab Controllers";
+			sourceTree = "<group>";
+		};
+		FEE82BA72579E09100058A5A /* Cars Tab Views */ = {
+			isa = PBXGroup;
+			children = (
+				FE724F1E253CF14F00764387 /* Cars.storyboard */,
+				FE724F442543E97B00764387 /* CarInformationView.swift */,
 				FE724F4025431F1F00764387 /* CarCollectionViewCell.swift */,
-				FE148E882547C94C00DA5A16 /* BedCollectionViewCell.swift */,
-				FEAC9743254BB4EA007B83B1 /* DrinksTableViewCell.swift */,
+			);
+			path = "Cars Tab Views";
+			sourceTree = "<group>";
+		};
+		FEE82BA82579E0A200058A5A /* Groceries Tab Views */ = {
+			isa = PBXGroup;
+			children = (
+				FE724F1B253CF0CC00764387 /* Groceries.storyboard */,
 				FEAC9746254BB8C7007B83B1 /* GroceriesTableViewCell.swift */,
 			);
-			path = "UI Object Controllers";
+			path = "Groceries Tab Views";
+			sourceTree = "<group>";
+		};
+		FEE82BAA2579E0C700058A5A /* Beds Tab Views */ = {
+			isa = PBXGroup;
+			children = (
+				FE724F21253CF17100764387 /* Beds.storyboard */,
+				FE42A3232578946E00538A99 /* BedInformationView.swift */,
+				FE148E882547C94C00DA5A16 /* BedCollectionViewCell.swift */,
+			);
+			path = "Beds Tab Views";
+			sourceTree = "<group>";
+		};
+		FEE82BAB2579E0D300058A5A /* Drinks Tab Views */ = {
+			isa = PBXGroup;
+			children = (
+				FE724F24253CF18700764387 /* Drinks.storyboard */,
+				FEAC9743254BB4EA007B83B1 /* DrinksTableViewCell.swift */,
+			);
+			path = "Drinks Tab Views";
+			sourceTree = "<group>";
+		};
+		FEE82BAC2579E0DB00058A5A /* Trip Information Tab Views */ = {
+			isa = PBXGroup;
+			children = (
+				FE724F2C253E7A3200764387 /* Attendees.storyboard */,
+			);
+			path = "Trip Information Tab Views";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
