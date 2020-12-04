@@ -42,7 +42,7 @@ class CottageTabsController: UITabBarController {
         carsViewController.tabBarItem = UITabBarItem(title: "Cars", image: UIImage(systemName: "car.2"), tag: 1)
         bedsViewController.tabBarItem = UITabBarItem(title: "Beds", image: UIImage(systemName: "bed.double"), tag: 2)
         drinksViewController.tabBarItem = UITabBarItem(title: "Drinks", image: UIImage(systemName: "drop"), tag: 3)
-        attendeesViewController.tabBarItem = UITabBarItem(title: "Attendees", image: UIImage(systemName: "person"), tag: 4)
+        attendeesViewController.tabBarItem = UITabBarItem(title: "Trip Info", image: UIImage(systemName: "info.circle"), tag: 4)
         
         //create a list of all the controllers that will be loaded into the tab bar
         let tabBarList = [groceriesViewController, carsViewController, bedsViewController, drinksViewController, attendeesViewController]

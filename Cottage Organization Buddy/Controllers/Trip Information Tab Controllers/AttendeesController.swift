@@ -14,7 +14,7 @@ class AttendeesController: UIViewController, TabBarItemControllerProtocol, UITab
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        title = "Attendees"
+        title = "Trip Info"
     }
     
     //UITable data source methods
