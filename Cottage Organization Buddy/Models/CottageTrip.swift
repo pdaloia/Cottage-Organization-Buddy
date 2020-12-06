@@ -10,6 +10,9 @@ import Foundation
 class CottageTrip: CottageModelProtocol {
     var tripName: String = ""
     var tripOrganiser: Attendee = Attendee(name: "")
+    var startDate: Date = Date()
+    var endDate: Date = Date()
+    var address: String = ""
     var attendeesList: [Attendee] = []
     var groceryList: GroceryLists = GroceryLists(allItems: [], groceriesPerPerson: [])
     var drinksList: [PersonalDrinksList] = []

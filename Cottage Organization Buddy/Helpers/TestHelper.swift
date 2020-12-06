@@ -35,6 +35,26 @@ class TestHelper {
         modelToLoad.tripOrganiser = vic
         modelToLoad.attendeesList = [phil, vic, andrew, medei, sonia, laura, jules, kim, abosh, erica, michael, lucas, ricky]
         
+        //load the trip's information
+        var startDateComponents = DateComponents()
+        startDateComponents.year = 2020
+        startDateComponents.month = 8
+        startDateComponents.day = 16
+        startDateComponents.hour = 12
+        
+        var endDateComponents = DateComponents()
+        endDateComponents.year = 2020
+        endDateComponents.month = 8
+        endDateComponents.day = 20
+        endDateComponents.hour = 12
+        
+        let calendar = Calendar(identifier: .gregorian)
+        
+        modelToLoad.startDate = calendar.date(from: startDateComponents)!
+        modelToLoad.endDate = calendar.date(from: endDateComponents)!
+        
+        modelToLoad.address = "19 Ann Street"
+        
         //load the groceries
         let bananas: Grocery = Grocery(productName: "Banana", price: 2.00, Quantity: 5)
         let apples: Grocery = Grocery(productName: "Apple", price: 1.50, Quantity: 10)
