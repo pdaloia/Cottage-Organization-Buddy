@@ -23,7 +23,7 @@ class TripInformationCollectionView: UICollectionView {
     
 }
 
-extension TripInformationCollectionView: UICollectionViewDelegate, UICollectionViewDataSource {
+extension TripInformationCollectionView: UICollectionViewDelegateFlowLayout, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
@@ -36,8 +36,28 @@ extension TripInformationCollectionView: UICollectionViewDelegate, UICollectionV
         let currentCell = collectionView.dequeueReusableCell(withReuseIdentifier: "TripInformationCell", for: indexPath)
         
         currentCell.backgroundColor = .green
+        currentCell.layer.cornerRadius = 20
         
         return currentCell
+        
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        
+        var height: CGFloat
+        var width: CGFloat
+        
+        let numberOfRowsOnScreen: CGFloat = 4
+        
+        let collectionViewHeight = collectionView.bounds.height
+        let layout = collectionViewLayout as! UICollectionViewFlowLayout
+        let verticalSpacing = layout.minimumLineSpacing * (numberOfRowsOnScreen - 1)
+        let topAndBottomInset = layout.sectionInset.top + layout.sectionInset.bottom
+        
+        width = collectionView.bounds.width - layout.sectionInset.right - layout.sectionInset.left
+        height = (collectionViewHeight - verticalSpacing - topAndBottomInset) / numberOfRowsOnScreen
+        
+        return CGSize(width: width, height: height)
         
     }
     
