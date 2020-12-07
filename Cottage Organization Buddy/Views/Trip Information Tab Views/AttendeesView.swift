@@ -1,21 +1,29 @@
 //
-//  AttendeesController.swift
+//  AttendeesView.swift
 //  Cottage Organization Buddy
 //
-//  Created by Philip D'Aloia on 2020-10-19.
+//  Created by Philip D'Aloia on 2020-12-06.
 //
 
 import UIKit
 
-class AttendeesController: UIViewController, TabBarItemControllerProtocol, UITableViewDataSource, UITableViewDelegate {
+class AttendeesView: UITableView {
     
-    var cottageModel: CottageTrip?
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    var attendeesList: [Attendee]?
 
-        title = "Trip Info"
+    var attendeeTableView = UITableView()
+
+    override init(frame: CGRect, style: UITableView.Style) {
+        super.init(frame: frame, style: style)
     }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+}
+
+extension AttendeesView: UITableViewDelegate, UITableViewDataSource {
     
     //UITable data source methods
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -27,7 +35,7 @@ class AttendeesController: UIViewController, TabBarItemControllerProtocol, UITab
         case 0:
             return 1
         case 1:
-            return cottageModel!.attendeesList.count
+            return attendeesList!.count
         default:
             return 0
         }
@@ -40,9 +48,7 @@ class AttendeesController: UIViewController, TabBarItemControllerProtocol, UITab
         
         switch indexPath.section {
         case 0:
-            currentAttendee = cottageModel!.tripOrganiser
-        case 1:
-            currentAttendee = cottageModel!.attendeesList[indexPath.row]
+            currentAttendee = attendeesList![indexPath.row]
         default:
             break;
         }
@@ -57,13 +63,11 @@ class AttendeesController: UIViewController, TabBarItemControllerProtocol, UITab
         
         switch(section) {
         case 0:
-            return "Trip Organiser"
-        case 1:
             return "Attendees"
         default:
             return ""
         }
         
     }
-
+    
 }
