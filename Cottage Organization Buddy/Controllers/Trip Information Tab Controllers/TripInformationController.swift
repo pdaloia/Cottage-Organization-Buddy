@@ -18,25 +18,28 @@ class TripInformationController: UIViewController, TabBarItemControllerProtocol 
 
         title = "Trip Info"
         
+        self.view.backgroundColor = .white
+        
         initializeCollectionView()
     }
     
     func initializeCollectionView() {
         
         let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
-        layout.sectionInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
+        layout.sectionInset = UIEdgeInsets(top: 10, left: 3, bottom: 10, right: 3)
         layout.itemSize = CGSize(width: 60, height: 60)
         
         tripInformationCollectionView = TripInformationCollectionView(frame: self.view.frame, collectionViewLayout: layout)
+        tripInformationCollectionView?.cottageModel = cottageModel
         
         tripInformationCollectionView?.isScrollEnabled = false
         
         tripInformationCollectionView?.register(TripInformationCollectionViewCell.self, forCellWithReuseIdentifier: "TripInformationCell")
-        tripInformationCollectionView?.backgroundColor = .yellow
         
         tripInformationCollectionView?.delegate = tripInformationCollectionView
         tripInformationCollectionView?.dataSource = tripInformationCollectionView
         
+        tripInformationCollectionView?.backgroundColor = .clear
         view.addSubview(tripInformationCollectionView!)
         
         tripInformationCollectionView?.translatesAutoresizingMaskIntoConstraints = false
