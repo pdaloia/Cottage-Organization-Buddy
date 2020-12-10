@@ -30,7 +30,6 @@
 		FE724F13253CF08200764387 /* CarsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE724F12253CF08200764387 /* CarsController.swift */; };
 		FE724F16253CF09B00764387 /* BedsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE724F15253CF09B00764387 /* BedsController.swift */; };
 		FE724F19253CF0AB00764387 /* DrinksController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE724F18253CF0AB00764387 /* DrinksController.swift */; };
-		FE724F1C253CF0CC00764387 /* Groceries.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FE724F1B253CF0CC00764387 /* Groceries.storyboard */; };
 		FE724F1F253CF14F00764387 /* Cars.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FE724F1E253CF14F00764387 /* Cars.storyboard */; };
 		FE724F22253CF17100764387 /* Beds.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FE724F21253CF17100764387 /* Beds.storyboard */; };
 		FE724F25253CF18700764387 /* Drinks.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FE724F24253CF18700764387 /* Drinks.storyboard */; };
@@ -72,7 +71,6 @@
 		FE724F12253CF08200764387 /* CarsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarsController.swift; sourceTree = "<group>"; };
 		FE724F15253CF09B00764387 /* BedsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BedsController.swift; sourceTree = "<group>"; };
 		FE724F18253CF0AB00764387 /* DrinksController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinksController.swift; sourceTree = "<group>"; };
-		FE724F1B253CF0CC00764387 /* Groceries.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Groceries.storyboard; sourceTree = "<group>"; };
 		FE724F1E253CF14F00764387 /* Cars.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Cars.storyboard; sourceTree = "<group>"; };
 		FE724F21253CF17100764387 /* Beds.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Beds.storyboard; sourceTree = "<group>"; };
 		FE724F24253CF18700764387 /* Drinks.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Drinks.storyboard; sourceTree = "<group>"; };
@@ -261,7 +259,6 @@
 		FEE82BA82579E0A200058A5A /* Groceries Tab Views */ = {
 			isa = PBXGroup;
 			children = (
-				FE724F1B253CF0CC00764387 /* Groceries.storyboard */,
 				FEAC9746254BB8C7007B83B1 /* GroceriesTableViewCell.swift */,
 			);
 			path = "Groceries Tab Views";
@@ -353,7 +350,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FE724F1C253CF0CC00764387 /* Groceries.storyboard in Resources */,
 				FE724F1F253CF14F00764387 /* Cars.storyboard in Resources */,
 				FE724EE225375D8000764387 /* LaunchScreen.storyboard in Resources */,
 				FE724F25253CF18700764387 /* Drinks.storyboard in Resources */,

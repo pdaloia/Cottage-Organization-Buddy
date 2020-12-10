@@ -13,8 +13,6 @@ class GroceriesController: UIViewController, TabBarItemControllerProtocol {
     var groceriesTableView: UITableView?
     var navBar: UINavigationBar?
     
-    @IBOutlet weak var groceriesList: UILabel!
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
