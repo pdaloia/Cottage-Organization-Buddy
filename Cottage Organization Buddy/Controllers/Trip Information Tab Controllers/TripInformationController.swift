@@ -18,7 +18,7 @@ class TripInformationController: UIViewController, TabBarItemControllerProtocol 
 
         title = "Trip Info"
         
-        self.view.backgroundColor = .white
+        self.view.backgroundColor = .systemBackground
         
         initializeCollectionView()
     }
