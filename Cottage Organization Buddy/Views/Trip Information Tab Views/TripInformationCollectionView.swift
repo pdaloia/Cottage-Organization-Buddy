@@ -39,10 +39,7 @@ extension TripInformationCollectionView: UICollectionViewDelegateFlowLayout, UIC
         currentCell.backgroundColor = .green
         currentCell.layer.cornerRadius = 10
         
-        currentCell.cellInformationTitle = tripInformationItems[indexPath.row]
-        currentCell.rowNumber = indexPath.row
-        
-        currentCell.setCellValues()
+        currentCell.setupCell(forCell: indexPath.item)
         
         return currentCell
         

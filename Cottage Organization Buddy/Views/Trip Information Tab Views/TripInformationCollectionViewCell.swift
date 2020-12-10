@@ -10,106 +10,107 @@ import UIKit
 class TripInformationCollectionViewCell: UICollectionViewCell {
         
     var cottageModel: CottageTrip?
-    var rowNumber: Int?
-    var cellInformationTitle: String?
+    private let tripInformationItems = ["Trip Name", "Trip Organiser", "Trip Dates", "Attendees"]
     
-    let cellTitle = UILabel()
-    let informationData = UILabel()
-    var infoImageView: UIImageView?
+    var cellDataLabel: UILabel?
     
     override init(frame: CGRect) {
+        
         super.init(frame: frame)
         
-        setupInformationCell()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func setupInformationCell() {
+    func setupCell(forCell index: Int) {
         
-        //stack view to place in the cell. bottom stack view is for picture and data, while the horizontal stack view is to add all components for the cell
-        let horizontalStackView = UIStackView()
-        let bottomStackView = UIStackView()
+        //create the cell's custom content view and constrain it to entire cell
+        let customContentView = UIView()
+        self.contentView.addSubview(customContentView)
+        customContentView.translatesAutoresizingMaskIntoConstraints = false
+        customContentView.topAnchor.constraint(equalTo: self.contentView.topAnchor).isActive = true
+        customContentView.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor).isActive = true
+        customContentView.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor).isActive = true
+        customContentView.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor).isActive = true
+                
+        //get the cells contents by its index number
+        let cellsContents = getCellContents(forCell: index)
+        let image = cellsContents.0
+        let titleLabel = cellsContents.1
+        let dataLabel = cellsContents.2
         
-        setImage()
+        //setup the image and image view
+        let imageView = UIImageView(image: image.withRenderingMode(.alwaysOriginal))
+        imageView.backgroundColor = .clear
         
-        //labels for the title and data of cell
-        cellTitle.textAlignment = .center
+        //set the picture and data in another view to go below the title
+        let bottomView = UIView()
+        bottomView.addSubview(imageView)
+        bottomView.addSubview(dataLabel)
         
-        //setup the bottom stack view which we will place in the horizontal stack view
-        bottomStackView.axis = .horizontal
-        bottomStackView.addArrangedSubview(infoImageView!)
-        bottomStackView.addArrangedSubview(informationData)
-        bottomStackView.distribution = .fillProportionally
+        //add the title label and bottom custom view to the custom view of the cell
+        titleLabel.textAlignment = .center
+        customContentView.addSubview(titleLabel)
+        customContentView.addSubview(bottomView)
+        titleLabel.translatesAutoresizingMaskIntoConstraints = false
+        bottomView.translatesAutoresizingMaskIntoConstraints = false
+        titleLabel.topAnchor.constraint(equalTo: customContentView.topAnchor).isActive = true
+        titleLabel.leadingAnchor.constraint(equalTo: customContentView.leadingAnchor).isActive = true
+        titleLabel.trailingAnchor.constraint(equalTo: customContentView.trailingAnchor).isActive = true
+        titleLabel.heightAnchor.constraint(equalToConstant: self.contentView.bounds.height/4).isActive = true
+        bottomView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor).isActive = true
+        bottomView.bottomAnchor.constraint(equalTo: customContentView.bottomAnchor).isActive = true
+        bottomView.trailingAnchor.constraint(equalTo: customContentView.trailingAnchor).isActive = true
+        bottomView.leadingAnchor.constraint(equalTo: customContentView.leadingAnchor).isActive = true
         
-        //configure the horizontal stack view
-        horizontalStackView.axis = .vertical
-        horizontalStackView.addArrangedSubview(cellTitle)
-        cellTitle.translatesAutoresizingMaskIntoConstraints = false
-        cellTitle.heightAnchor.constraint(equalToConstant: self.contentView.bounds.height/4).isActive = true
-        horizontalStackView.addArrangedSubview(bottomStackView)
-        horizontalStackView.distribution = .fill
-        
-        //horizontal stack view constraints
-        self.contentView.addSubview(horizontalStackView)
-        horizontalStackView.translatesAutoresizingMaskIntoConstraints = false
-        horizontalStackView.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
-        horizontalStackView.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
-        horizontalStackView.leadingAnchor.constraint(equalTo: self.leadingAnchor).isActive = true
-        horizontalStackView.trailingAnchor.constraint(equalTo: self.trailingAnchor).isActive = true
-        
+        //set the bottom view's constraints
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        dataLabel.translatesAutoresizingMaskIntoConstraints = false
+        imageView.topAnchor.constraint(equalTo: bottomView.topAnchor).isActive = true
+        imageView.bottomAnchor.constraint(equalTo: bottomView.bottomAnchor).isActive = true
+        imageView.leadingAnchor.constraint(equalTo: bottomView.leadingAnchor).isActive = true
+        imageView.contentMode = .scaleAspectFit
+        dataLabel.topAnchor.constraint(equalTo: bottomView.topAnchor).isActive = true
+        dataLabel.bottomAnchor.constraint(equalTo: bottomView.bottomAnchor).isActive = true
+        dataLabel.leadingAnchor.constraint(equalTo: imageView.trailingAnchor, constant: 10).isActive = true
+        dataLabel.trailingAnchor.constraint(equalTo: bottomView.trailingAnchor).isActive = true
+        customContentView.layoutIfNeeded()
+        imageView.widthAnchor.constraint(equalToConstant: imageView.bounds.height).isActive = true
         
     }
     
-    func setImage() {
+    func getCellContents(forCell index: Int) -> (UIImage, UILabel, UILabel) {
         
-        var image: UIImage
+        let cellsImage: UIImage
+        let cellsTitle = UILabel()
+        let cellsData = UILabel()
         
-        //image view for the cell's image
-        switch(rowNumber) {
+        //get the cells image depending on the index
+        switch(index){
         case 0:
-            image = UIImage(systemName: "house")!
+            cellsImage = UIImage(systemName: "house")!
+            cellsData.text = cottageModel?.tripName
         case 1:
-            image = UIImage(systemName: "person")!
+            cellsImage = UIImage(systemName: "person")!
+            cellsData.text = cottageModel?.tripOrganiser.name
         case 2:
-            image = UIImage(systemName: "calendar")!
+            cellsImage = UIImage(systemName: "calendar")!
+            cellsData.text = "\(cottageModel?.startDate.description ?? "Error") - \(cottageModel?.endDate.description ?? "Error")"
         case 3:
-            image = UIImage(systemName: "person.3")!
+            cellsImage = UIImage(systemName: "person.3")!
+            cellsData.text = "Number of Attendees: \(cottageModel?.attendeesList.count.description ?? "Error")"
         default:
-            image = UIImage(systemName: "xmark.octagon")!
-        }
-       
-        infoImageView = UIImageView(image: image.withRenderingMode(.alwaysOriginal))
-        infoImageView!.contentMode = .scaleAspectFit
-        infoImageView!.backgroundColor = .clear
-        
-    }
-    
-    func setCellValues() {
-        
-        cellTitle.text = cellInformationTitle
-        
-        switch(rowNumber) {
-        case 0:
-            informationData.text = cottageModel?.tripName
-        case 1:
-            informationData.text = cottageModel?.tripOrganiser.name
-        case 2:
-            informationData.text = "\(cottageModel?.startDate.description ?? "Error") - \(cottageModel?.endDate.description ?? "Error")"
-        case 3:
-            informationData.text = "Number of Attendees: \(cottageModel?.attendeesList.count.description ?? "Error")"
-        default:
-            informationData.text = "Error"
+            cellsImage = UIImage(systemName: "xmark.octagon")!
+            cellsData.text = "Error"
         }
         
+        //get the cells title and data based on the index
+        cellsTitle.text = tripInformationItems[index]
+        
+        return (cellsImage, cellsTitle, cellsData)
+        
     }
-    
-}
-
-extension TripInformationCollectionViewCell {
-    
-    
     
 }
