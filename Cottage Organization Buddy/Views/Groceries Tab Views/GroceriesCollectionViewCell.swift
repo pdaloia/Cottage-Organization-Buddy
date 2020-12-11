@@ -15,7 +15,7 @@ class GroceriesCollectionViewCell: UICollectionViewCell {
         super.awakeFromNib()
     }
     
-    func setupGroceryCell() {
+    func setupGroceryCell(forSection index: Int) {
         
         //set up the cells label
         let cellTitleLabel = UILabel()
@@ -25,13 +25,22 @@ class GroceriesCollectionViewCell: UICollectionViewCell {
         self.contentView.addSubview(cellTitleLabel)
         cellTitleLabel.translatesAutoresizingMaskIntoConstraints = false
         cellTitleLabel.topAnchor.constraint(equalTo: self.contentView.topAnchor).isActive = true
-        cellTitleLabel.heightAnchor.constraint(equalTo: self.contentView.heightAnchor, multiplier: 0.5).isActive = true
+        cellTitleLabel.heightAnchor.constraint(equalTo: self.contentView.heightAnchor, multiplier: 0.4).isActive = true
         cellTitleLabel.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor).isActive = true
         cellTitleLabel.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor).isActive = true
         
         //set up the cells image
-        let cellImage = UIImage(systemName: "person")
-        let cellImageView = UIImageView(image: cellImage?.withRenderingMode(.alwaysOriginal))
+        let cellImage: UIImage
+        
+        switch(index) {
+        case 0:
+            cellImage = UIImage(systemName: "person.3")!
+        case 1:
+            cellImage = UIImage(systemName: "person")!
+        default:
+            cellImage = UIImage(systemName: "person")!
+        }
+        let cellImageView = UIImageView(image: cellImage.withRenderingMode(.alwaysOriginal))
         cellImageView.contentMode = .scaleAspectFit
         
         self.contentView.addSubview(cellImageView)
