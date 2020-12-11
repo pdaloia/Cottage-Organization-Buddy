@@ -7,7 +7,7 @@
 
 import UIKit
 
-class GroceriesController: UIViewController, TabBarItemControllerProtocol {
+class GroceriesController: UIViewController, GroceriesCollectionViewDelegate, TabBarItemControllerProtocol {
     
     var cottageModel: CottageTrip?
     
@@ -31,6 +31,7 @@ class GroceriesController: UIViewController, TabBarItemControllerProtocol {
         
         groceriesCollectionView = GroceriesCollectionView(frame: self.view.frame, collectionViewLayout: layout)
         groceriesCollectionView?.cottageModel = cottageModel
+        groceriesCollectionView?.controllerDelegate = self
         
         groceriesCollectionView?.register(GroceriesCollectionViewCell.self, forCellWithReuseIdentifier: "GroceriesCell")
         
@@ -45,6 +46,12 @@ class GroceriesController: UIViewController, TabBarItemControllerProtocol {
         groceriesCollectionView?.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor).isActive = true
         groceriesCollectionView?.leadingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leadingAnchor).isActive = true
         groceriesCollectionView?.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor).isActive = true
+        
+    }
+    
+    func displayGroceryList(controller: GroceryListController) {
+        
+        self.navigationController?.pushViewController(controller, animated: true)
         
     }
 

@@ -14,6 +14,7 @@
 		FE148E892547C94C00DA5A16 /* BedCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE148E882547C94C00DA5A16 /* BedCollectionViewCell.swift */; };
 		FE42A3212578826200538A99 /* DrinkListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE42A3202578826200538A99 /* DrinkListController.swift */; };
 		FE42A3242578946E00538A99 /* BedInformationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE42A3232578946E00538A99 /* BedInformationView.swift */; };
+		FE4383342583150600FE3FFB /* GroceriesCollectionViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE4383332583150600FE3FFB /* GroceriesCollectionViewDelegate.swift */; };
 		FE724ED625375D7C00764387 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE724ED525375D7C00764387 /* AppDelegate.swift */; };
 		FE724ED825375D7C00764387 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE724ED725375D7C00764387 /* SceneDelegate.swift */; };
 		FE724EDA25375D7D00764387 /* HomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE724ED925375D7D00764387 /* HomeController.swift */; };
@@ -54,6 +55,7 @@
 		FE148E882547C94C00DA5A16 /* BedCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BedCollectionViewCell.swift; sourceTree = "<group>"; };
 		FE42A3202578826200538A99 /* DrinkListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkListController.swift; sourceTree = "<group>"; };
 		FE42A3232578946E00538A99 /* BedInformationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BedInformationView.swift; sourceTree = "<group>"; };
+		FE4383332583150600FE3FFB /* GroceriesCollectionViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroceriesCollectionViewDelegate.swift; sourceTree = "<group>"; };
 		FE724ED225375D7C00764387 /* Cottage Organization Buddy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Cottage Organization Buddy.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FE724ED525375D7C00764387 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FE724ED725375D7C00764387 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -263,6 +265,7 @@
 			children = (
 				FEAC9746254BB8C7007B83B1 /* GroceriesCollectionViewCell.swift */,
 				FE12953625829CFD00043F41 /* GroceriesCollectionView.swift */,
+				FE4383332583150600FE3FFB /* GroceriesCollectionViewDelegate.swift */,
 			);
 			path = "Groceries Tab Views";
 			sourceTree = "<group>";
@@ -377,6 +380,7 @@
 				FE724F16253CF09B00764387 /* BedsController.swift in Sources */,
 				FE724EDA25375D7D00764387 /* HomeController.swift in Sources */,
 				FEAC9747254BB8C7007B83B1 /* GroceriesCollectionViewCell.swift in Sources */,
+				FE4383342583150600FE3FFB /* GroceriesCollectionViewDelegate.swift in Sources */,
 				FE724EFA2537DEEA00764387 /* CottageTrip.swift in Sources */,
 				FEAC9744254BB4EA007B83B1 /* DrinksTableViewCell.swift in Sources */,
 				FE148E892547C94C00DA5A16 /* BedCollectionViewCell.swift in Sources */,

@@ -9,6 +9,8 @@ import UIKit
 
 class GroceriesCollectionView: UICollectionView {
     
+    weak var controllerDelegate: GroceriesCollectionViewDelegate?
+    
     var cottageModel: CottageTrip?
 
     override init(frame: CGRect, collectionViewLayout layout: UICollectionViewLayout) {
@@ -111,7 +113,9 @@ extension GroceriesCollectionView: UICollectionViewDelegateFlowLayout, UICollect
             groceryListController.groceryListToDisplay = []
         }
         
-        //self.navigationController?.pushViewController(groceryListController, animated: true)
+        if let del = self.controllerDelegate {
+            del.displayGroceryList(controller: groceryListController)
+        }
         
     }
     
