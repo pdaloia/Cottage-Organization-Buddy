@@ -10,7 +10,8 @@ import UIKit
 class TripInformationCollectionViewCell: UICollectionViewCell {
         
     var cottageModel: CottageTrip?
-    private let tripInformationItems = ["Trip Name", "Trip Organiser", "Trip Dates", "Attendees"]
+    
+    private let tripInformationItems = ["Trip Organiser", "Cottage Address", "Trip Dates", "Attendees"]
     
     var cellDataLabel: UILabel?
     
@@ -90,11 +91,11 @@ class TripInformationCollectionViewCell: UICollectionViewCell {
         //get the cells image depending on the index
         switch(index){
         case 0:
-            cellsImage = UIImage(systemName: "house")!
-            cellsData.text = cottageModel?.tripName
-        case 1:
             cellsImage = UIImage(systemName: "person")!
             cellsData.text = cottageModel?.tripOrganiser.name
+        case 1:
+            cellsImage = UIImage(systemName: "house")!
+            cellsData.text = cottageModel?.address
         case 2:
             cellsImage = UIImage(systemName: "calendar")!
             cellsData.text = "\(cottageModel?.startDate.description ?? "Error") - \(cottageModel?.endDate.description ?? "Error")"

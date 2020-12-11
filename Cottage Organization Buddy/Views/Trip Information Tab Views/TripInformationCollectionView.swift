@@ -11,7 +11,7 @@ class TripInformationCollectionView: UICollectionView {
     
     var cottageModel: CottageTrip?
     
-    private let tripInformationItems = ["Trip Name", "Trip Organiser", "Trip Dates", "Attendees"]
+    private let tripInformationItems = ["Trip Organiser", "Cottage Address", "Trip Dates", "Attendees"]
 
     override init(frame: CGRect, collectionViewLayout layout: UICollectionViewLayout) {
         super.init(frame: frame, collectionViewLayout: layout)
