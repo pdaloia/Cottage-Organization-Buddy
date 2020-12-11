@@ -10,6 +10,7 @@
 		FE034C43257DB04D00822907 /* AttendeesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE034C42257DB04D00822907 /* AttendeesView.swift */; };
 		FE034C47257DB34B00822907 /* TripInformationCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE034C46257DB34B00822907 /* TripInformationCollectionView.swift */; };
 		FE034C4A257DD15C00822907 /* TripInformationCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE034C49257DD15C00822907 /* TripInformationCollectionViewCell.swift */; };
+		FE12953725829CFD00043F41 /* GroceriesCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE12953625829CFD00043F41 /* GroceriesCollectionView.swift */; };
 		FE148E892547C94C00DA5A16 /* BedCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE148E882547C94C00DA5A16 /* BedCollectionViewCell.swift */; };
 		FE42A3212578826200538A99 /* DrinkListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE42A3202578826200538A99 /* DrinkListController.swift */; };
 		FE42A3242578946E00538A99 /* BedInformationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE42A3232578946E00538A99 /* BedInformationView.swift */; };
@@ -41,7 +42,7 @@
 		FE724F4125431F2000764387 /* CarCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE724F4025431F1F00764387 /* CarCollectionViewCell.swift */; };
 		FE724F452543E97C00764387 /* CarInformationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE724F442543E97B00764387 /* CarInformationView.swift */; };
 		FEAC9744254BB4EA007B83B1 /* DrinksTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEAC9743254BB4EA007B83B1 /* DrinksTableViewCell.swift */; };
-		FEAC9747254BB8C7007B83B1 /* GroceriesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEAC9746254BB8C7007B83B1 /* GroceriesTableViewCell.swift */; };
+		FEAC9747254BB8C7007B83B1 /* GroceriesCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEAC9746254BB8C7007B83B1 /* GroceriesCollectionViewCell.swift */; };
 		FEC156142577299E004FB37E /* GroceryListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEC156132577299E004FB37E /* GroceryListController.swift */; };
 /* End PBXBuildFile section */
 
@@ -49,6 +50,7 @@
 		FE034C42257DB04D00822907 /* AttendeesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttendeesView.swift; sourceTree = "<group>"; };
 		FE034C46257DB34B00822907 /* TripInformationCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripInformationCollectionView.swift; sourceTree = "<group>"; };
 		FE034C49257DD15C00822907 /* TripInformationCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripInformationCollectionViewCell.swift; sourceTree = "<group>"; };
+		FE12953625829CFD00043F41 /* GroceriesCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroceriesCollectionView.swift; sourceTree = "<group>"; };
 		FE148E882547C94C00DA5A16 /* BedCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BedCollectionViewCell.swift; sourceTree = "<group>"; };
 		FE42A3202578826200538A99 /* DrinkListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkListController.swift; sourceTree = "<group>"; };
 		FE42A3232578946E00538A99 /* BedInformationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BedInformationView.swift; sourceTree = "<group>"; };
@@ -82,7 +84,7 @@
 		FE724F4025431F1F00764387 /* CarCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarCollectionViewCell.swift; sourceTree = "<group>"; };
 		FE724F442543E97B00764387 /* CarInformationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarInformationView.swift; sourceTree = "<group>"; };
 		FEAC9743254BB4EA007B83B1 /* DrinksTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinksTableViewCell.swift; sourceTree = "<group>"; };
-		FEAC9746254BB8C7007B83B1 /* GroceriesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroceriesTableViewCell.swift; sourceTree = "<group>"; };
+		FEAC9746254BB8C7007B83B1 /* GroceriesCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroceriesCollectionViewCell.swift; sourceTree = "<group>"; };
 		FEC156132577299E004FB37E /* GroceryListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroceryListController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -259,7 +261,8 @@
 		FEE82BA82579E0A200058A5A /* Groceries Tab Views */ = {
 			isa = PBXGroup;
 			children = (
-				FEAC9746254BB8C7007B83B1 /* GroceriesTableViewCell.swift */,
+				FEAC9746254BB8C7007B83B1 /* GroceriesCollectionViewCell.swift */,
+				FE12953625829CFD00043F41 /* GroceriesCollectionView.swift */,
 			);
 			path = "Groceries Tab Views";
 			sourceTree = "<group>";
@@ -373,7 +376,7 @@
 				FE724F28253E773F00764387 /* AttendeeModel.swift in Sources */,
 				FE724F16253CF09B00764387 /* BedsController.swift in Sources */,
 				FE724EDA25375D7D00764387 /* HomeController.swift in Sources */,
-				FEAC9747254BB8C7007B83B1 /* GroceriesTableViewCell.swift in Sources */,
+				FEAC9747254BB8C7007B83B1 /* GroceriesCollectionViewCell.swift in Sources */,
 				FE724EFA2537DEEA00764387 /* CottageTrip.swift in Sources */,
 				FEAC9744254BB4EA007B83B1 /* DrinksTableViewCell.swift in Sources */,
 				FE148E892547C94C00DA5A16 /* BedCollectionViewCell.swift in Sources */,
@@ -391,6 +394,7 @@
 				FE724F10253CF06C00764387 /* GroceriesController.swift in Sources */,
 				FEC156142577299E004FB37E /* GroceryListController.swift in Sources */,
 				FE724F34253E80DC00764387 /* TestHelper.swift in Sources */,
+				FE12953725829CFD00043F41 /* GroceriesCollectionView.swift in Sources */,
 				FE724F38253E89E000764387 /* TabBarItemControllerProtocol.swift in Sources */,
 				FE724F30253E7A4E00764387 /* TripInformationController.swift in Sources */,
 				FE724EF12537D3DF00764387 /* DrinksModel.swift in Sources */,
