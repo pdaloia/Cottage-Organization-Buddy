@@ -19,7 +19,7 @@ class BedCollectionViewCell: UICollectionViewCell {
         
         super.awakeFromNib()
         
-        layer.cornerRadius = 10
+        layer.cornerRadius = 20
         layer.shadowOpacity = 1
         layer.shadowOffset = CGSize(width: 1, height: 1)
         
@@ -37,7 +37,7 @@ class BedCollectionViewCell: UICollectionViewCell {
         //set the label's contents
         bedSizeLabel.text = String(describing: cellsBedModel!.size)
         bedSizeLabel.textAlignment = .center
-        bedSizeLabel.backgroundColor = .gray
+        bedSizeLabel.backgroundColor = .green
         if cellsBedModel!.checkIfBedAtRecommendedCapacity(bed: cellsBedModel!) {
             bedSizeLabel.textColor = .red
         }

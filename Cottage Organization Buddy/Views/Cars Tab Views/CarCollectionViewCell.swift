@@ -38,7 +38,7 @@ class CarCollectionViewCell: UICollectionViewCell {
         cellLabel.text = String(describing: cellsCarModel!.driver.name) + "'s car"
         cellLabel.textAlignment = .center
         cellLabel.textColor = .black
-        cellLabel.backgroundColor = .gray
+        cellLabel.backgroundColor = .green
         
         //add the cell label to the cell
         contentView.addSubview(cellLabel)
