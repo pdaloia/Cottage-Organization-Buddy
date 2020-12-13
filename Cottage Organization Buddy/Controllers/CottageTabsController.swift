@@ -27,7 +27,7 @@ class CottageTabsController: UITabBarController {
         let groceriesViewController = GroceriesController()
         let carsViewController = UIStoryboard(name: "Cars", bundle:nil).instantiateViewController(identifier: "CarsView") as! CarsController
         let bedsViewController = UIStoryboard(name: "Beds", bundle: nil).instantiateViewController(identifier: "BedsView") as! BedsController
-        let drinksViewController = UIStoryboard(name: "Drinks", bundle: nil).instantiateViewController(identifier: "DrinksView") as! DrinksController
+        let drinksViewController = DrinksController()
         let tripInformationViewController = TripInformationController()
         
         //Inject the model dependency into the view controllers
