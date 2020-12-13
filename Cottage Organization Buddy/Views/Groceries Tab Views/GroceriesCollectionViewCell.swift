@@ -36,9 +36,9 @@ class GroceriesCollectionViewCell: UICollectionViewCell {
         case 0:
             cellImage = UIImage(systemName: "person.3")!
         case 1:
-            cellImage = UIImage(systemName: "person")!
+            cellImage = UIImage(systemName: "cart")!
         default:
-            cellImage = UIImage(systemName: "person")!
+            cellImage = UIImage(systemName: "cart")!
         }
         let cellImageView = UIImageView(image: cellImage.withRenderingMode(.alwaysOriginal))
         cellImageView.contentMode = .scaleAspectFit
