@@ -7,7 +7,7 @@
 
 import UIKit
 
-class DrinksController: UIViewController, TabBarItemControllerProtocol {
+class DrinksController: UIViewController, DrinksCollectionViewDelegate, TabBarItemControllerProtocol {
     
     var cottageModel: CottageTrip?
 
@@ -30,6 +30,7 @@ class DrinksController: UIViewController, TabBarItemControllerProtocol {
         drinksView.dataSource = drinksView
         drinksView.delegate = drinksView
         drinksView.cottageModel = self.cottageModel
+        drinksView.drinksListDelegate = self
         
         drinksView.register(DrinksCollectionViewCell.self, forCellWithReuseIdentifier: "DrinksCell")
         
@@ -37,10 +38,16 @@ class DrinksController: UIViewController, TabBarItemControllerProtocol {
         
         self.view.addSubview(drinksView)
         drinksView.translatesAutoresizingMaskIntoConstraints = false
-        drinksView.topAnchor.constraint(equalTo: self.view.topAnchor).isActive = true
-        drinksView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor).isActive = true
-        drinksView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor).isActive = true
-        drinksView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor).isActive = true
+        drinksView.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor).isActive = true
+        drinksView.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor).isActive = true
+        drinksView.leadingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leadingAnchor).isActive = true
+        drinksView.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor).isActive = true
+        
+    }
+    
+    func displayGroceryList(controller: DrinkListController) {
+        
+        self.navigationController?.pushViewController(controller, animated: true)
         
     }
 
