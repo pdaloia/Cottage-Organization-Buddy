@@ -52,7 +52,7 @@ extension DrinksCollectionView: UICollectionViewDataSource, UICollectionViewDele
             currentCell.cellTitle = "Error"
         }
         
-        currentCell.initializeDrinksCell()
+        currentCell.initializeDrinksCell(forSection: indexPath.section)
         
         return currentCell
     }

@@ -24,7 +24,7 @@ class DrinksController: UIViewController, DrinksCollectionViewDelegate, TabBarIt
     func initializeDrinksCollectionView() {
         
         let layout = UICollectionViewFlowLayout()
-        layout.sectionInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
+        layout.sectionInset = UIEdgeInsets(top: 10, left: 3, bottom: 10, right: 3)
         
         let drinksView = DrinksCollectionView(frame: self.view.frame, collectionViewLayout: layout)
         drinksView.dataSource = drinksView
