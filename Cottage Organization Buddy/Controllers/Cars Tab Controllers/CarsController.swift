@@ -59,9 +59,6 @@ extension CarsController: UICollectionViewDataSource, UICollectionViewDelegateFl
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CarCell", for: indexPath) as! CarCollectionViewCell
-        //cell.driver = cottageModel!.carsList[indexPath.item].driver.name
-        //cell.passengers = cottageModel!.carsList[indexPath.item].passengers
-        //cell.seatsRemaining = cottageModel!.carsList[indexPath.item].numberOfSeats - cottageModel!.carsList[indexPath.item].passengers.count
         
         //setup the cell with the information from the cottage model
         cell.cellsCarModel = cottageModel!.carsList[indexPath.item]
@@ -74,17 +71,31 @@ extension CarsController: UICollectionViewDataSource, UICollectionViewDelegateFl
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
         //create the amount of desired rows
-        let rows: CGFloat = 2
+        let rows: CGFloat
+        let columns: CGFloat
+        switch(collectionView.numberOfItems(inSection: indexPath.section)) {
+        case 0..<3:
+            rows = 1
+            columns = 1
+        default:
+            rows = 2
+            columns = 2
+            
+        }
         
         //create and calculate the dimensions for the cell size
         let collectionViewHeight = collectionView.bounds.height
+        let collectionViewWidth = collectionView.bounds.width
         let flowLayout = collectionViewLayout as! UICollectionViewFlowLayout
-        let spaceBetweenCells = flowLayout.minimumInteritemSpacing * (rows - 1)
         
-        let adjustedHeight = collectionViewHeight - spaceBetweenCells
+        let spaceBetweenRows = (flowLayout.minimumLineSpacing * (rows - 1)) + flowLayout.sectionInset.top + flowLayout.sectionInset.bottom
+        let spaceBetweenCellsInRow = (flowLayout.minimumInteritemSpacing * (columns - 1)) + flowLayout.sectionInset.right + flowLayout.sectionInset.left
+        
+        let adjustedHeight = collectionViewHeight - spaceBetweenRows
+        let adjustedWidth = collectionViewWidth - spaceBetweenCellsInRow
         
         let height: CGFloat = floor(adjustedHeight / rows)
-        let width: CGFloat = collectionView.bounds.width
+        let width: CGFloat = floor(adjustedWidth / rows)
         
         return CGSize(width: width, height: height)
         
