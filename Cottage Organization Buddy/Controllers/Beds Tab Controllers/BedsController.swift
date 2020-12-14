@@ -63,19 +63,32 @@ extension BedsController: UICollectionViewDataSource, UICollectionViewDelegateFl
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
-        let columns: CGFloat = 2
+        //create the amount of desired rows
+        let rows: CGFloat
+        let columns: CGFloat
+        switch(collectionView.numberOfItems(inSection: indexPath.section)) {
+        case 0..<3:
+            rows = 1
+            columns = 1
+        default:
+            rows = 2
+            columns = 2
+            
+        }
         
-        var width: CGFloat
-        var height: CGFloat
-        
-        let widthOfCollection = collectionView.bounds.width
+        //create and calculate the dimensions for the cell size
+        let collectionViewHeight = collectionView.bounds.height
+        let collectionViewWidth = collectionView.bounds.width
         let flowLayout = collectionViewLayout as! UICollectionViewFlowLayout
-        let spaceBetweenCells = flowLayout.minimumInteritemSpacing * (columns - 1)
         
-        let adjustedWidth = widthOfCollection - spaceBetweenCells
+        let spaceBetweenRows = (flowLayout.minimumLineSpacing * (rows - 1)) + flowLayout.sectionInset.top + flowLayout.sectionInset.bottom
+        let spaceBetweenCellsInRow = (flowLayout.minimumInteritemSpacing * (columns - 1)) + flowLayout.sectionInset.right + flowLayout.sectionInset.left
         
-        width = floor(adjustedWidth / columns)
-        height = width
+        let adjustedHeight = collectionViewHeight - spaceBetweenRows
+        let adjustedWidth = collectionViewWidth - spaceBetweenCellsInRow
+        
+        let height: CGFloat = floor(adjustedHeight / rows)
+        let width: CGFloat = floor(adjustedWidth / rows)
         
         return CGSize(width: width, height: height)
         
