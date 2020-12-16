@@ -19,11 +19,20 @@ class GroceryListController: UIViewController {
         
         title = groceryListTitle
         
+        if self.title == "All Items" {
+            let addButton = UIBarButtonItem(title: "Add", style: .plain, target: self, action: #selector(self.test))
+            self.navigationItem.rightBarButtonItem = addButton
+        }
+        
         groceryListTableView = UITableView()
         groceryListTableView?.dataSource = self
         groceryListTableView?.delegate = self
         setupGroceryListTableView()
 
+    }
+    
+    @objc func test() {
+        print("add button clicked")
     }
 
 }
