@@ -33,6 +33,8 @@ class GroceryListController: UIViewController {
     
     @objc func test() {
         print("add button clicked")
+        let addGroceryVC = AddGroceryViewController()
+        self.navigationController?.pushViewController(addGroceryVC, animated: true)
     }
 
 }
