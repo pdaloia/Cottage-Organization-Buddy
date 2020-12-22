@@ -43,6 +43,7 @@
 		FE724F452543E97C00764387 /* CarInformationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE724F442543E97B00764387 /* CarInformationView.swift */; };
 		FE909897258ABB38002E00FB /* AddGroceryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE909896258ABB38002E00FB /* AddGroceryViewController.swift */; };
 		FE90989A258ABB4D002E00FB /* AddGroceryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE909899258ABB4D002E00FB /* AddGroceryView.swift */; };
+		FE959BDE259290870087A046 /* ToastMessageDisplayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE959BDD259290870087A046 /* ToastMessageDisplayer.swift */; };
 		FEAC9744254BB4EA007B83B1 /* DrinksCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEAC9743254BB4EA007B83B1 /* DrinksCollectionViewCell.swift */; };
 		FEAC9747254BB8C7007B83B1 /* GroceriesCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEAC9746254BB8C7007B83B1 /* GroceriesCollectionViewCell.swift */; };
 		FEBD42B02585A927002D81A6 /* DrinksCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEBD42AF2585A927002D81A6 /* DrinksCollectionView.swift */; };
@@ -89,6 +90,7 @@
 		FE724F442543E97B00764387 /* CarInformationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarInformationView.swift; sourceTree = "<group>"; };
 		FE909896258ABB38002E00FB /* AddGroceryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddGroceryViewController.swift; sourceTree = "<group>"; };
 		FE909899258ABB4D002E00FB /* AddGroceryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddGroceryView.swift; sourceTree = "<group>"; };
+		FE959BDD259290870087A046 /* ToastMessageDisplayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastMessageDisplayer.swift; sourceTree = "<group>"; };
 		FEAC9743254BB4EA007B83B1 /* DrinksCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinksCollectionViewCell.swift; sourceTree = "<group>"; };
 		FEAC9746254BB8C7007B83B1 /* GroceriesCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroceriesCollectionViewCell.swift; sourceTree = "<group>"; };
 		FEBD42AF2585A927002D81A6 /* DrinksCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinksCollectionView.swift; sourceTree = "<group>"; };
@@ -187,6 +189,7 @@
 			isa = PBXGroup;
 			children = (
 				FE724F33253E80DC00764387 /* TestHelper.swift */,
+				FE959BDD259290870087A046 /* ToastMessageDisplayer.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -384,6 +387,7 @@
 				FE909897258ABB38002E00FB /* AddGroceryViewController.swift in Sources */,
 				FE034C47257DB34B00822907 /* TripInformationCollectionView.swift in Sources */,
 				FE724EF42537D3EE00764387 /* CarModel.swift in Sources */,
+				FE959BDE259290870087A046 /* ToastMessageDisplayer.swift in Sources */,
 				FE724F3D253E8A6D00764387 /* CottageModelProtocol.swift in Sources */,
 				FE724F28253E773F00764387 /* AttendeeModel.swift in Sources */,
 				FE724F16253CF09B00764387 /* BedsController.swift in Sources */,

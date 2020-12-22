@@ -77,9 +77,20 @@ class AddGroceryView: UIView {
     
     @objc func addButtonPressed(sender: UIButton!) {
         
-        let groceryName: String = groceryNameInput.text!
-        let groceryPrice: Double = Double(pricePerGroceryInput.text!)!
-        let groceryQuantity: Int = Int(quantityOfGroceryInput.text!)!
+        let groceryName: String = groceryNameInput.text ?? ""
+        let groceryPrice: Double = Double(pricePerGroceryInput.text!) ?? 0
+        let groceryQuantity: Int = Int(quantityOfGroceryInput.text!) ?? 0
+        
+        var validated: Bool = false
+        
+        if let del = self.uploadGroceryDelegate {
+            validated = del.validateInputs(name: groceryName, price: groceryPrice, quantity: groceryQuantity)
+        }
+        
+        if validated == false {
+            //break
+            return
+        }
         
         let groceryToAdd = Grocery(productName: groceryName, price: groceryPrice, Quantity: groceryQuantity)
         
@@ -94,5 +105,7 @@ class AddGroceryView: UIView {
 protocol AddGroceryDelegate: class {
     
     func uploadToVC(Grocery groceryInformation: Grocery)
+    
+    func validateInputs(name: String, price: Double, quantity: Int) -> Bool
     
 }

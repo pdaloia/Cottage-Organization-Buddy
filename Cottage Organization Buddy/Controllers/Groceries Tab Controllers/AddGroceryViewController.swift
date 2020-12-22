@@ -38,6 +38,25 @@ class AddGroceryViewController: UIViewController {
 
 extension AddGroceryViewController: AddGroceryDelegate {
     
+    func validateInputs(name: String, price: Double, quantity: Int) -> Bool {
+        
+        if name.isEmpty {
+            ToastMessageDisplayer.showToast(controller: self, message: "Enter a name", seconds: 1)
+            return false
+        }
+        if price == 0 {
+            ToastMessageDisplayer.showToast(controller: self, message: "Price can not be $0.00", seconds: 1)
+            return false
+        }
+        if quantity == 0 {
+            ToastMessageDisplayer.showToast(controller: self, message: "Quantity can not be 0", seconds: 1)
+            return false
+        }
+        
+        return true
+        
+    }
+    
     func uploadToVC(Grocery groceryInformation: Grocery) {
         
         let groceryToAddToList: Grocery = groceryInformation
