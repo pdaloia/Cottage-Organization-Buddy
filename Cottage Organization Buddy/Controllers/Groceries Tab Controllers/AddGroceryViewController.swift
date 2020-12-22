@@ -8,6 +8,8 @@
 import UIKit
 
 class AddGroceryViewController: UIViewController {
+    
+    weak var addGroceryToListDelegate: AddGroceryToListDelegate?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,6 +22,7 @@ class AddGroceryViewController: UIViewController {
     func initializeViewController() {
         
         let addGroceryView = AddGroceryView()
+        addGroceryView.uploadGroceryDelegate = self
         
         self.view.addSubview(addGroceryView)
         
@@ -31,4 +34,26 @@ class AddGroceryViewController: UIViewController {
         
     }
 
+}
+
+extension AddGroceryViewController: AddGroceryDelegate {
+    
+    func uploadToVC(Grocery groceryInformation: Grocery) {
+        
+        let groceryToAddToList: Grocery = groceryInformation
+        
+        if let del = self.addGroceryToListDelegate {
+            del.addToAllItemsList(Grocery: groceryToAddToList)
+        }
+        
+        self.navigationController?.popViewController(animated: true)
+        
+    }
+    
+}
+
+protocol AddGroceryToListDelegate: class {
+    
+    func addToAllItemsList(Grocery groceryModel: Grocery)
+    
 }

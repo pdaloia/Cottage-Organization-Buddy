@@ -101,6 +101,7 @@ extension GroceriesCollectionView: UICollectionViewDelegateFlowLayout, UICollect
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
         let groceryListController = GroceryListController()
+        groceryListController.cottageModel = cottageModel
         
         switch(indexPath.section) {
         case 0:

@@ -9,6 +9,10 @@ import UIKit
 
 class GroceryListController: UIViewController {
     
+    //the cottage model which will use dependency injection. We have it here as a reference for adding groceries when needed.
+    var cottageModel: CottageTrip?
+    
+    //information for the table view to use to display
     var groceryListToDisplay: [Grocery]?
     var groceryListTitle: String?
     var groceryListTableView: UITableView?
@@ -32,8 +36,8 @@ class GroceryListController: UIViewController {
     }
     
     @objc func test() {
-        print("add button clicked")
         let addGroceryVC = AddGroceryViewController()
+        addGroceryVC.addGroceryToListDelegate = self
         self.navigationController?.pushViewController(addGroceryVC, animated: true)
     }
 
@@ -71,6 +75,18 @@ extension GroceryListController: UITableViewDelegate, UITableViewDataSource {
         currentCell.textLabel?.text = groceryListToDisplay?[indexPath.item].productName
         
         return currentCell
+        
+    }
+    
+}
+
+extension GroceryListController: AddGroceryToListDelegate {
+    
+    func addToAllItemsList(Grocery groceryModel: Grocery) {
+        
+        self.cottageModel?.groceryList.allItems.append(groceryModel)
+        self.groceryListToDisplay = self.cottageModel?.groceryList.allItems
+        groceryListTableView?.reloadData()
         
     }
     
