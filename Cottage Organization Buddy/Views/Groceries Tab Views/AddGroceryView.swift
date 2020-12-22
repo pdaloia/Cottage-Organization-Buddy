@@ -47,7 +47,7 @@ class AddGroceryView: UIView {
         quantityOfGroceryInput.placeholder = "Enter quantity of grocery"
         quantityOfGroceryInput.backgroundColor = .green
         quantityOfGroceryInput.borderStyle = .roundedRect
-        quantityOfGroceryInput.keyboardType = .decimalPad
+        quantityOfGroceryInput.keyboardType = .numberPad
         
         //create the stack view which will contain all text fields
         let textFieldStackView = UIStackView()
