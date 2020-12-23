@@ -7,7 +7,7 @@
 
 import UIKit
 
-class DrinksController: UIViewController, DrinksCollectionViewDelegate, TabBarItemControllerProtocol {
+class DrinksController: UIViewController, TabBarItemControllerProtocol {
     
     var cottageModel: CottageTrip?
 
@@ -19,6 +19,7 @@ class DrinksController: UIViewController, DrinksCollectionViewDelegate, TabBarIt
         self.view.backgroundColor = .systemBackground
         
         initializeDrinksCollectionView()
+        createNavBarButtons()
     }
     
     func initializeDrinksCollectionView() {
@@ -44,6 +45,23 @@ class DrinksController: UIViewController, DrinksCollectionViewDelegate, TabBarIt
         drinksView.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor).isActive = true
         
     }
+    
+    func createNavBarButtons() {
+        
+        let addButton = UIBarButtonItem(title: "Add", style: .plain, target: self, action: #selector(addButtonPressed))
+        self.navigationItem.rightBarButtonItem = addButton
+        
+    }
+    
+    @objc func addButtonPressed() {
+        
+        print("add button pressed")
+        
+    }
+    
+}
+
+extension DrinksController: DrinksCollectionViewDelegate {
     
     func displayGroceryList(controller: DrinkListController) {
         

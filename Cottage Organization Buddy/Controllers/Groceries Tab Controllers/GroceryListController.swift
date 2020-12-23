@@ -24,7 +24,7 @@ class GroceryListController: UIViewController {
         title = groceryListTitle
         
         if self.title == "All Items" {
-            let addButton = UIBarButtonItem(title: "Add", style: .plain, target: self, action: #selector(self.test))
+            let addButton = UIBarButtonItem(title: "Add", style: .plain, target: self, action: #selector(self.addBarButtonPressed))
             self.navigationItem.rightBarButtonItem = addButton
         }
         
@@ -35,7 +35,7 @@ class GroceryListController: UIViewController {
 
     }
     
-    @objc func test() {
+    @objc func addBarButtonPressed() {
         let addGroceryVC = AddGroceryViewController()
         addGroceryVC.addGroceryToListDelegate = self
         self.navigationController?.pushViewController(addGroceryVC, animated: true)
