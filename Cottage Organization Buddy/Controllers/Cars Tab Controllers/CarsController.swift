@@ -23,6 +23,7 @@ class CarsController: UIViewController, TabBarItemControllerProtocol {
         carsCollectionView.dataSource = self
         carsCollectionView.delegate = self
         
+        createNavBarButtons()
         createCarInformationView()
         
     }
@@ -43,6 +44,19 @@ class CarsController: UIViewController, TabBarItemControllerProtocol {
         
         //Now that the information view has been added, setup the view
         carInformationView.setupViewInitialMessage()
+        
+    }
+    
+    func createNavBarButtons() {
+        
+        let addDriverButton = UIBarButtonItem(title: "Add", style: .plain, target: self, action: #selector(addDriverButtonPressed))
+        self.navigationItem.rightBarButtonItem = addDriverButton
+        
+    }
+    
+    @objc func addDriverButtonPressed() {
+        
+        print("pressed")
         
     }
     
