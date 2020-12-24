@@ -86,9 +86,21 @@ class AddDrinkView: UIView {
     }
     
     @objc func addButtonPressed(sender: UIButton!) {
+        
+        let drinkName = drinkNameTextField.text ?? ""
+        
+        var validated: Bool = false
+        if let del = self.addDrinkDelegate {
+            validated = del.validateDrinkInputs(drinkName: drinkName)
+        }
+        
+        if validated == false {
+            //break
+            return
+        }
      
         if let del = self.addDrinkDelegate {
-            del.uploadDrinkInformation(drinkName: "test", isAlcoholic: true, isForSharing: true)
+            del.uploadDrinkInformation(drinkName: drinkName, isAlcoholic: isAlcoholicSwitch.isOn, isForSharing: isForSharingSwitch.isOn)
         }
         
     }
@@ -98,5 +110,7 @@ class AddDrinkView: UIView {
 protocol DrinkInformationDelegate: class {
     
     func uploadDrinkInformation(drinkName: String, isAlcoholic: Bool, isForSharing: Bool)
+    
+    func validateDrinkInputs(drinkName: String) -> Bool
     
 }

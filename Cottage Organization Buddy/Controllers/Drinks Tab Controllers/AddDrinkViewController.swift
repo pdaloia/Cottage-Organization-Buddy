@@ -37,6 +37,17 @@ class AddDrinkViewController: UIViewController {
 
 extension AddDrinkViewController: DrinkInformationDelegate {
     
+    func validateDrinkInputs(drinkName: String) -> Bool {
+        
+        if drinkName.isEmpty {
+            ToastMessageDisplayer.showToast(controller: self, message: "Enter a name", seconds: 1)
+            return false
+        }
+        
+        return true
+        
+    }
+    
     func uploadDrinkInformation(drinkName: String, isAlcoholic: Bool, isForSharing: Bool) {
         
         let drinkToUpload = Drink(name: drinkName, isAlcoholic: isAlcoholic, forSharing: isForSharing)
