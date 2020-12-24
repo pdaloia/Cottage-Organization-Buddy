@@ -56,13 +56,29 @@ class DrinksController: UIViewController, TabBarItemControllerProtocol {
     @objc func addButtonPressed() {
         
         let addDrinkVC = AddDrinkViewController()
+        addDrinkVC.drinkUploadDelegate = self
+        
         self.navigationController?.pushViewController(addDrinkVC, animated: true)
         
     }
     
 }
 
-extension DrinksController: DrinksCollectionViewDelegate {
+extension DrinksController: DrinksCollectionViewDelegate, AddDrinkToModelDelegate {
+    
+    func upload(drink: Drink) {
+        
+        //this is where you will have to check for the list of the currently logged in attendee and add to their list
+        //for now, just add to list that matches my name
+        
+        if let newDrinksList = cottageModel!.drinksList.first(where: {$0.person.name == "Phil"}) {
+            newDrinksList.drinkNames.append(drink)
+        }
+        else {
+            ToastMessageDisplayer.showToast(controller: self, message: "Error", seconds: 1)
+        }
+        
+    }
     
     func displayGroceryList(controller: DrinkListController) {
         

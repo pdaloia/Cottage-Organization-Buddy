@@ -9,6 +9,8 @@ import UIKit
 
 class AddDrinkView: UIView {
     
+    weak var addDrinkDelegate: DrinkInformationDelegate?
+    
     private let drinkNameTextField = UITextField()
     private let isAlcoholicSwitch = UISwitch()
     private let isForSharingSwitch = UISwitch()
@@ -85,8 +87,16 @@ class AddDrinkView: UIView {
     
     @objc func addButtonPressed(sender: UIButton!) {
      
-        print("adding drink")
+        if let del = self.addDrinkDelegate {
+            del.uploadDrinkInformation(drinkName: "test", isAlcoholic: true, isForSharing: true)
+        }
         
     }
+    
+}
+
+protocol DrinkInformationDelegate: class {
+    
+    func uploadDrinkInformation(drinkName: String, isAlcoholic: Bool, isForSharing: Bool)
     
 }

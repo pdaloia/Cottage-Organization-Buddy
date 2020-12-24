@@ -8,6 +8,8 @@
 import UIKit
 
 class AddDrinkViewController: UIViewController {
+    
+    weak var drinkUploadDelegate: AddDrinkToModelDelegate?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,6 +22,7 @@ class AddDrinkViewController: UIViewController {
     func initializeViewController() {
         
         let addDrinkView = AddDrinkView()
+        addDrinkView.addDrinkDelegate = self
         
         self.view.addSubview(addDrinkView)
         addDrinkView.translatesAutoresizingMaskIntoConstraints = false
@@ -30,4 +33,26 @@ class AddDrinkViewController: UIViewController {
         
     }
 
+}
+
+extension AddDrinkViewController: DrinkInformationDelegate {
+    
+    func uploadDrinkInformation(drinkName: String, isAlcoholic: Bool, isForSharing: Bool) {
+        
+        let drinkToUpload = Drink(name: drinkName, isAlcoholic: isAlcoholic, forSharing: isForSharing)
+        
+        if let del = self.drinkUploadDelegate {
+            del.upload(drink: drinkToUpload)
+        }
+        
+        self.navigationController?.popViewController(animated: true)
+        
+    }
+    
+}
+
+protocol AddDrinkToModelDelegate: class {
+    
+    func upload(drink: Drink)
+    
 }

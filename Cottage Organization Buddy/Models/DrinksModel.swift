@@ -7,9 +7,14 @@
 
 import Foundation
 
-struct PersonalDrinksList: CottageModelProtocol {
+class PersonalDrinksList: CottageModelProtocol {
     var person: Attendee
     var drinkNames: [Drink]
+    
+    init(person: Attendee, drinkNames: [Drink]) {
+        self.person = person
+        self.drinkNames = drinkNames
+    }
 }
 
 struct Drink {
