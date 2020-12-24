@@ -55,7 +55,8 @@ class DrinksController: UIViewController, TabBarItemControllerProtocol {
     
     @objc func addButtonPressed() {
         
-        print("add button pressed")
+        let addDrinkVC = AddDrinkViewController()
+        self.navigationController?.pushViewController(addDrinkVC, animated: true)
         
     }
     

@@ -15,6 +15,8 @@
 		FE42A3212578826200538A99 /* DrinkListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE42A3202578826200538A99 /* DrinkListController.swift */; };
 		FE42A3242578946E00538A99 /* BedInformationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE42A3232578946E00538A99 /* BedInformationView.swift */; };
 		FE4383342583150600FE3FFB /* GroceriesCollectionViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE4383332583150600FE3FFB /* GroceriesCollectionViewDelegate.swift */; };
+		FE681D112593FE4E007B4DEC /* AddDrinkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE681D102593FE4E007B4DEC /* AddDrinkViewController.swift */; };
+		FE681D142593FE72007B4DEC /* AddDrinkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE681D132593FE72007B4DEC /* AddDrinkView.swift */; };
 		FE724ED625375D7C00764387 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE724ED525375D7C00764387 /* AppDelegate.swift */; };
 		FE724ED825375D7C00764387 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE724ED725375D7C00764387 /* SceneDelegate.swift */; };
 		FE724EDA25375D7D00764387 /* HomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE724ED925375D7D00764387 /* HomeController.swift */; };
@@ -60,6 +62,8 @@
 		FE42A3202578826200538A99 /* DrinkListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkListController.swift; sourceTree = "<group>"; };
 		FE42A3232578946E00538A99 /* BedInformationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BedInformationView.swift; sourceTree = "<group>"; };
 		FE4383332583150600FE3FFB /* GroceriesCollectionViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroceriesCollectionViewDelegate.swift; sourceTree = "<group>"; };
+		FE681D102593FE4E007B4DEC /* AddDrinkViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddDrinkViewController.swift; sourceTree = "<group>"; };
+		FE681D132593FE72007B4DEC /* AddDrinkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddDrinkView.swift; sourceTree = "<group>"; };
 		FE724ED225375D7C00764387 /* Cottage Organization Buddy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Cottage Organization Buddy.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FE724ED525375D7C00764387 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FE724ED725375D7C00764387 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -232,6 +236,7 @@
 			children = (
 				FE42A3202578826200538A99 /* DrinkListController.swift */,
 				FE724F18253CF0AB00764387 /* DrinksController.swift */,
+				FE681D102593FE4E007B4DEC /* AddDrinkViewController.swift */,
 			);
 			path = "Drinks Tab Controllers";
 			sourceTree = "<group>";
@@ -297,6 +302,7 @@
 				FEAC9743254BB4EA007B83B1 /* DrinksCollectionViewCell.swift */,
 				FEBD42AF2585A927002D81A6 /* DrinksCollectionView.swift */,
 				FEBD42B42585B107002D81A6 /* DrinksCollectionViewDelegate.swift */,
+				FE681D132593FE72007B4DEC /* AddDrinkView.swift */,
 			);
 			path = "Drinks Tab Views";
 			sourceTree = "<group>";
@@ -392,6 +398,7 @@
 				FE724F28253E773F00764387 /* AttendeeModel.swift in Sources */,
 				FE724F16253CF09B00764387 /* BedsController.swift in Sources */,
 				FE724EDA25375D7D00764387 /* HomeController.swift in Sources */,
+				FE681D112593FE4E007B4DEC /* AddDrinkViewController.swift in Sources */,
 				FEAC9747254BB8C7007B83B1 /* GroceriesCollectionViewCell.swift in Sources */,
 				FEBD42B02585A927002D81A6 /* DrinksCollectionView.swift in Sources */,
 				FE4383342583150600FE3FFB /* GroceriesCollectionViewDelegate.swift in Sources */,
@@ -416,6 +423,7 @@
 				FE12953725829CFD00043F41 /* GroceriesCollectionView.swift in Sources */,
 				FE724F38253E89E000764387 /* TabBarItemControllerProtocol.swift in Sources */,
 				FE724F30253E7A4E00764387 /* TripInformationController.swift in Sources */,
+				FE681D142593FE72007B4DEC /* AddDrinkView.swift in Sources */,
 				FEBD42B52585B107002D81A6 /* DrinksCollectionViewDelegate.swift in Sources */,
 				FE724EF12537D3DF00764387 /* DrinksModel.swift in Sources */,
 				FE724F13253CF08200764387 /* CarsController.swift in Sources */,
