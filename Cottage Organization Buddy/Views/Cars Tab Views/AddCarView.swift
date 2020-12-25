@@ -8,6 +8,10 @@
 import UIKit
 
 class AddCarView: UIView {
+    
+    weak var addDriverDelegate: CarInformationDelegate?
+        
+    let numberOfAvailableSeatsInput = UITextField()
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -35,7 +39,6 @@ class AddCarView: UIView {
         addDriverLabel.lineBreakMode = .byWordWrapping
         
         //configure input boxes
-        let numberOfAvailableSeatsInput = UITextField()
         numberOfAvailableSeatsInput.placeholder = "Enter number of available seats"
         numberOfAvailableSeatsInput.backgroundColor = .green
         numberOfAvailableSeatsInput.borderStyle = .roundedRect
@@ -64,8 +67,29 @@ class AddCarView: UIView {
     
     @objc func addButtonPressed(sender: UIButton!) {
         
-        print("pressed")
+        let numberOfPassengers: Int = Int(numberOfAvailableSeatsInput.text!) ?? 0
+        
+        var validated: Bool = false
+        if let del = self.addDriverDelegate {
+            validated = del.validateDriverInputs(numberOfPassengers: numberOfPassengers)
+        }
+        
+        if validated == false {
+            return
+        }
+        
+        if let del = self.addDriverDelegate {
+            del.sendDriverInfo(numberOfPassengers: numberOfPassengers)
+        }
         
     }
+    
+}
+
+protocol CarInformationDelegate: class {
+    
+    func sendDriverInfo(numberOfPassengers: Int)
+    
+    func validateDriverInputs(numberOfPassengers: Int) -> Bool
     
 }

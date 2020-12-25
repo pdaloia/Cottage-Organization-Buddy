@@ -57,6 +57,8 @@ class CarsController: UIViewController, TabBarItemControllerProtocol {
     @objc func addDriverButtonPressed() {
         
         let addDriverVC = AddCarViewController()
+        addDriverVC.cottageModel = self.cottageModel
+        addDriverVC.addDriverDelegate = self
         self.navigationController?.pushViewController(addDriverVC, animated: true)
         
     }
@@ -125,6 +127,33 @@ extension CarsController: UICollectionViewDataSource, UICollectionViewDelegateFl
         carInformationView.currentlySelectedCarModel = selectedCarCell.cellsCarModel
         
         carInformationView.displayInformationAfterCellSelection()
+        
+    }
+    
+}
+
+extension CarsController: AddDriverDelegate {
+    
+    func addCarToModel(numberOfPassengers: Int) {
+        
+        //we will first get the currently logged in user
+        //for now we will hard code it to my user instance
+        var loggedInUser = Attendee(name: "")
+        if cottageModel?.attendeesList.first(where: {$0.name == "Phil"}) != nil {
+            loggedInUser = (cottageModel?.attendeesList.first(where: {$0.name == "Phil"}))!
+        }
+        else {
+            ToastMessageDisplayer.showToast(controller: self, message: "Error adding as a driver", seconds: 1)
+        }
+        
+        let newCar = Car(driver: loggedInUser, numberOfSeats: numberOfPassengers, passengers: [])
+        
+        cottageModel?.carsList.append(newCar)
+                
+        self.carsCollectionView.reloadData()
+        self.navigationController?.popViewController(animated: true)
+        
+        ToastMessageDisplayer.showToast(controller: self, message: "You have been added as a driver!", seconds: 2)
         
     }
     

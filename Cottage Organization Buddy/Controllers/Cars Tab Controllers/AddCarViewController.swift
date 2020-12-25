@@ -8,6 +8,10 @@
 import UIKit
 
 class AddCarViewController: UIViewController {
+    
+    var cottageModel: CottageTrip?
+    
+    weak var addDriverDelegate: AddDriverDelegate?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,6 +26,7 @@ class AddCarViewController: UIViewController {
         
         //create the view
         let addDriverView = AddCarView()
+        addDriverView.addDriverDelegate = self
         
         //add the view to the VC
         self.view.addSubview(addDriverView)
@@ -35,4 +40,31 @@ class AddCarViewController: UIViewController {
         
     }
 
+}
+
+extension AddCarViewController: CarInformationDelegate {
+    
+    func sendDriverInfo(numberOfPassengers: Int) {
+        
+        addDriverDelegate?.addCarToModel(numberOfPassengers: numberOfPassengers)
+        
+    }
+    
+    func validateDriverInputs(numberOfPassengers: Int) -> Bool {
+        
+        if numberOfPassengers <= 0 {
+            ToastMessageDisplayer.showToast(controller: self, message: "Number of passengers can not be 0 (or less)", seconds: 1)
+            return false
+        }
+        
+        return true
+        
+    }
+    
+}
+
+protocol AddDriverDelegate: class {
+    
+    func addCarToModel(numberOfPassengers: Int)
+    
 }
