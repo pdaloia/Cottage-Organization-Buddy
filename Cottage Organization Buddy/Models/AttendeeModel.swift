@@ -7,6 +7,12 @@
 
 import Foundation
 
-struct Attendee: CottageModelProtocol {
+class Attendee: CottageModelProtocol {
+    
     var name: String
+    
+    init(name: String) {
+        self.name = name
+    }
+    
 }
