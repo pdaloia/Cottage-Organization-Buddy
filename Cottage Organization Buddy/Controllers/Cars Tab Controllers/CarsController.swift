@@ -56,7 +56,8 @@ class CarsController: UIViewController, TabBarItemControllerProtocol {
     
     @objc func addDriverButtonPressed() {
         
-        print("pressed")
+        let addDriverVC = AddCarViewController()
+        self.navigationController?.pushViewController(addDriverVC, animated: true)
         
     }
     
