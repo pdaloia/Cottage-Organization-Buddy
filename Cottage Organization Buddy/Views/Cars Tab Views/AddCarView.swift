@@ -30,6 +30,9 @@ class AddCarView: UIView {
         //label for the view
         let addDriverLabel = UILabel()
         addDriverLabel.text = "Please fill out this information to add yourself as a driver to this trip"
+        addDriverLabel.textAlignment = .center
+        addDriverLabel.numberOfLines = 0
+        addDriverLabel.lineBreakMode = .byWordWrapping
         
         //configure input boxes
         let numberOfAvailableSeatsInput = UITextField()
