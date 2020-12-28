@@ -7,10 +7,15 @@
 
 import Foundation
 
-struct Bed: CottageModelProtocol {
+class Bed: CottageModelProtocol {
     
     var size: BedSize
     var occupants: [Attendee]
+    
+    init(size: BedSize, occupants: [Attendee]) {
+        self.size = size
+        self.occupants = occupants
+    }
     
     func checkIfBedAtRecommendedCapacity(bed: Bed) -> Bool {
         

@@ -7,20 +7,36 @@
 
 import Foundation
 
-struct GroceryLists: CottageModelProtocol {
+class GroceryLists: CottageModelProtocol {
     var allItems: [Grocery]
     var groceriesPerPerson: [GroceryList]
+    
+    init(allItems: [Grocery], groceriesPerPerson: [GroceryList]) {
+        self.allItems = allItems
+        self.groceriesPerPerson = groceriesPerPerson
+    }
 }
 
-struct GroceryList {
+class GroceryList {
     var person: Attendee
     var groceries: [Grocery]
+    
+    init(person: Attendee, groceries: [Grocery]) {
+        self.person = person
+        self.groceries = groceries
+    }
 }
 
-struct Grocery {
+class Grocery {
     var productName: String
     var price: Double
-    var Quantity: Int
+    var quantity: Int
+    
+    init(productName: String, price: Double, quantity: Int) {
+        self.productName = productName
+        self.price = price
+        self.quantity = quantity
+    }
 }
 
 enum GroceryType {

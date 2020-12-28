@@ -7,10 +7,16 @@
 
 import Foundation
 
-struct Car: CottageModelProtocol {
+class Car: CottageModelProtocol {
     var driver: Attendee
     var numberOfSeats: Int
     var passengers: [Attendee]
+    
+    init(driver: Attendee, numberOfSeats: Int, passengers: [Attendee]) {
+        self.driver = driver
+        self.numberOfSeats = numberOfSeats
+        self.passengers = passengers
+    }
     
     func returnPassengersNames() -> String {
         
