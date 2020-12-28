@@ -50,7 +50,27 @@ class CarsController: UIViewController, TabBarItemControllerProtocol {
     func createNavBarButtons() {
         
         let addDriverButton = UIBarButtonItem(title: "Add", style: .plain, target: self, action: #selector(addDriverButtonPressed))
-        self.navigationItem.rightBarButtonItem = addDriverButton
+        let removeDriverButton = UIBarButtonItem(title: "Remove", style: .plain, target: self, action: #selector(removeDriverButtonPressed))
+        
+        var currentlyLoggedInUser: Attendee
+        do {
+            try currentlyLoggedInUser = UserService.GetLoggedInUser(model: cottageModel!)
+        } catch UserError.cantFindUserError {
+            ToastMessageDisplayer.showToast(controller: self, message: "Can not find your user in this trip", seconds: 2)
+            return
+        } catch {
+            ToastMessageDisplayer.showToast(controller: self, message: "Unknown error, please restart app", seconds: 2)
+            return
+        }
+        
+        let isADriver = cottageModel?.carsList.contains(where: { $0.driver === currentlyLoggedInUser })
+        
+        if isADriver == true {
+            self.navigationItem.rightBarButtonItem = removeDriverButton
+        }
+        else {
+            self.navigationItem.rightBarButtonItem = addDriverButton
+        }
         
     }
     
@@ -60,6 +80,39 @@ class CarsController: UIViewController, TabBarItemControllerProtocol {
         addDriverVC.cottageModel = self.cottageModel
         addDriverVC.addDriverDelegate = self
         self.navigationController?.pushViewController(addDriverVC, animated: true)
+        
+    }
+    
+    @objc func removeDriverButtonPressed() {
+        
+        let removeAlert = UIAlertController(title: "Remove yourself as a driver?", message: "Are you sure?", preferredStyle: .alert)
+        
+        removeAlert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (action: UIAlertAction!) in
+            
+            let currentlyLoggedInUser: Attendee
+            do {
+                try currentlyLoggedInUser = UserService.GetLoggedInUser(model: self.cottageModel!)
+            } catch UserError.cantFindUserError {
+                ToastMessageDisplayer.showToast(controller: self, message: "Can not find your user in this trip", seconds: 2)
+                return
+            } catch {
+                ToastMessageDisplayer.showToast(controller: self, message: "Unknown error, please restart app", seconds: 2)
+                return
+            }
+            
+            self.cottageModel?.carsList.removeAll(where: { $0.driver === currentlyLoggedInUser })
+            self.carsCollectionView.reloadData()
+            self.carInformationView.reloadCarInformationView()
+            
+            self.createNavBarButtons()
+            
+        }))
+        
+        removeAlert.addAction(UIAlertAction(title: "Cancel", style: .default, handler: { (action: UIAlertAction!) in
+            //do nothing
+        }))
+        
+        present(removeAlert, animated: true, completion: nil)
         
     }
     
@@ -155,8 +208,9 @@ extension CarsController: AddDriverDelegate {
         cottageModel?.carsList.append(newCar)
                 
         self.carsCollectionView.reloadData()
-        self.navigationController?.popViewController(animated: true)
+        self.createNavBarButtons()
         
+        self.navigationController?.popViewController(animated: true)
         ToastMessageDisplayer.showToast(controller: self, message: "You have been added as a driver!", seconds: 2)
         
     }

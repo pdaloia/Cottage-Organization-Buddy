@@ -140,5 +140,13 @@ class CarInformationView: UIView {
         self.seatsRemainingDisplayValue.text = remainingSeats
         
     }
+    
+    func reloadCarInformationView() {
+        
+        self.subviews.forEach({ $0.removeFromSuperview() })
+        self.cellWasSelected = false
+        self.setupViewInitialMessage()
+        
+    }
 
 }
