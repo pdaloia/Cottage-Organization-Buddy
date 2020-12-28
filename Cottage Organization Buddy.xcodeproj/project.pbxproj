@@ -53,6 +53,7 @@
 		FEBD42B02585A927002D81A6 /* DrinksCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEBD42AF2585A927002D81A6 /* DrinksCollectionView.swift */; };
 		FEBD42B52585B107002D81A6 /* DrinksCollectionViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEBD42B42585B107002D81A6 /* DrinksCollectionViewDelegate.swift */; };
 		FEC156142577299E004FB37E /* GroceryListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEC156132577299E004FB37E /* GroceryListController.swift */; };
+		FEDCEEE0259A747400C7AAB1 /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEDCEEDF259A747300C7AAB1 /* UserService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -104,6 +105,7 @@
 		FEBD42AF2585A927002D81A6 /* DrinksCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinksCollectionView.swift; sourceTree = "<group>"; };
 		FEBD42B42585B107002D81A6 /* DrinksCollectionViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinksCollectionViewDelegate.swift; sourceTree = "<group>"; };
 		FEC156132577299E004FB37E /* GroceryListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroceryListController.swift; sourceTree = "<group>"; };
+		FEDCEEDF259A747300C7AAB1 /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -198,6 +200,7 @@
 			children = (
 				FE724F33253E80DC00764387 /* TestHelper.swift */,
 				FE959BDD259290870087A046 /* ToastMessageDisplayer.swift */,
+				FEDCEEDF259A747300C7AAB1 /* UserService.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -435,6 +438,7 @@
 				FE724EF12537D3DF00764387 /* DrinksModel.swift in Sources */,
 				FEABB59B25953F9700D60A66 /* AddCarView.swift in Sources */,
 				FE724F13253CF08200764387 /* CarsController.swift in Sources */,
+				FEDCEEE0259A747400C7AAB1 /* UserService.swift in Sources */,
 				FE724EF72537D40200764387 /* BedModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

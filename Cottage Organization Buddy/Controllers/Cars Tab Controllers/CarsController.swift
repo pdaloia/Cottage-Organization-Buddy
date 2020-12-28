@@ -139,11 +139,15 @@ extension CarsController: AddDriverDelegate {
         //we will first get the currently logged in user
         //for now we will hard code it to my user instance
         var loggedInUser = Attendee(name: "")
-        if cottageModel?.attendeesList.first(where: {$0.name == "Phil"}) != nil {
-            loggedInUser = (cottageModel?.attendeesList.first(where: {$0.name == "Phil"}))!
-        }
-        else {
-            ToastMessageDisplayer.showToast(controller: self, message: "Error adding as a driver", seconds: 1)
+        
+        do {
+            try loggedInUser = UserService.GetLoggedInUser(model: cottageModel!)
+        } catch UserError.cantFindUserError {
+            ToastMessageDisplayer.showToast(controller: self, message: "Can not find your user account in this trip", seconds: 2)
+            return
+        } catch {
+            ToastMessageDisplayer.showToast(controller: self, message: "Unexpected error, please restart the app", seconds: 2)
+            return
         }
         
         let newCar = Car(driver: loggedInUser, numberOfSeats: numberOfPassengers, passengers: [])
