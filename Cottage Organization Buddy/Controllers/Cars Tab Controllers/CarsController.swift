@@ -203,7 +203,7 @@ extension CarsController: AddDriverDelegate {
             return
         }
         
-        let newCar = Car(driver: loggedInUser, numberOfSeats: numberOfPassengers, passengers: [])
+        let newCar = Car(driver: loggedInUser, numberOfSeats: numberOfPassengers, passengers: [], requesters: [])
         
         cottageModel?.carsList.append(newCar)
                 
