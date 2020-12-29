@@ -11,6 +11,7 @@ class CarsController: UIViewController, TabBarItemControllerProtocol {
     
     var cottageModel: CottageTrip?
     
+    //views for the tab
     @IBOutlet weak var carsCollectionView: UICollectionView!
     @IBOutlet weak var carInformationView: CarInformationView!
     
@@ -28,6 +29,7 @@ class CarsController: UIViewController, TabBarItemControllerProtocol {
         
     }
     
+    //function we use to create the car information view, as well as set its constraints
     func createCarInformationView() {
         
         let newCarInformationView = CarInformationView()
@@ -47,11 +49,14 @@ class CarsController: UIViewController, TabBarItemControllerProtocol {
         
     }
     
+    //this function creates the nav bar buttons as well as adds the proper ones to the nav bar
     func createNavBarButtons() {
         
+        //add and remove buttons
         let addDriverButton = UIBarButtonItem(title: "Add", style: .plain, target: self, action: #selector(addDriverButtonPressed))
         let removeDriverButton = UIBarButtonItem(title: "Remove", style: .plain, target: self, action: #selector(removeDriverButtonPressed))
         
+        //get the currently logged in user
         var currentlyLoggedInUser: Attendee
         do {
             try currentlyLoggedInUser = UserService.GetLoggedInUser(model: cottageModel!)
@@ -63,8 +68,8 @@ class CarsController: UIViewController, TabBarItemControllerProtocol {
             return
         }
         
+        //check to see if the currently logged in user is a driver, then add the proper nav bar button
         let isADriver = cottageModel?.carsList.contains(where: { $0.driver === currentlyLoggedInUser })
-        
         if isADriver == true {
             self.navigationItem.rightBarButtonItem = removeDriverButton
         }
@@ -74,8 +79,10 @@ class CarsController: UIViewController, TabBarItemControllerProtocol {
         
     }
     
+    //function for when the add button is pressed
     @objc func addDriverButtonPressed() {
         
+        //create the add car VC, dependency inject it, and push it on the view stack
         let addDriverVC = AddCarViewController()
         addDriverVC.cottageModel = self.cottageModel
         addDriverVC.addDriverDelegate = self
@@ -83,12 +90,16 @@ class CarsController: UIViewController, TabBarItemControllerProtocol {
         
     }
     
+    //function for when the remove button is pressed
     @objc func removeDriverButtonPressed() {
         
+        //create the alert for removing the driver
         let removeAlert = UIAlertController(title: "Remove yourself as a driver?", message: "Are you sure?", preferredStyle: .alert)
         
+        //create the action for if the removal is confirmed
         removeAlert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (action: UIAlertAction!) in
             
+            //get the currently logged in user
             let currentlyLoggedInUser: Attendee
             do {
                 try currentlyLoggedInUser = UserService.GetLoggedInUser(model: self.cottageModel!)
@@ -100,10 +111,12 @@ class CarsController: UIViewController, TabBarItemControllerProtocol {
                 return
             }
             
+            //remove the car in which the driver is the currently logged in user (if it exists) and then reload the views
             self.cottageModel?.carsList.removeAll(where: { $0.driver === currentlyLoggedInUser })
             self.carsCollectionView.reloadData()
             self.carInformationView.reloadCarInformationView()
             
+            //recreate the nav bar buttons
             self.createNavBarButtons()
             
         }))
@@ -112,20 +125,26 @@ class CarsController: UIViewController, TabBarItemControllerProtocol {
             //do nothing
         }))
         
+        //present the confirmation pop-up
         present(removeAlert, animated: true, completion: nil)
         
     }
     
 }
 
+//extension to deal with necessary collection view data source/delegate functions
 extension CarsController: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
+    //number of items in section
+    //since theres only one section, we return the count of cars
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
         return cottageModel!.carsList.count
         
     }
     
+    //cell for item at
+    //we use our custom car collection view cell and dependency inject a car model into it
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CarCell", for: indexPath) as! CarCollectionViewCell
@@ -138,6 +157,7 @@ extension CarsController: UICollectionViewDataSource, UICollectionViewDelegateFl
         
     }
     
+    //sizing function for the collection view cells
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
         //create the amount of desired rows
@@ -171,6 +191,7 @@ extension CarsController: UICollectionViewDataSource, UICollectionViewDelegateFl
         
     }
     
+    //handling the seleciton of a cell
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
         //retrieve the selected car cell
@@ -185,8 +206,10 @@ extension CarsController: UICollectionViewDataSource, UICollectionViewDelegateFl
     
 }
 
+//extension of VC class to deal with delegation from other VCs/views
 extension CarsController: AddDriverDelegate {
     
+    //delegate to deal with uploading a car to the model
     func addCarToModel(numberOfPassengers: Int) {
         
         //we will first get the currently logged in user
@@ -203,13 +226,15 @@ extension CarsController: AddDriverDelegate {
             return
         }
         
+        //create a new car for the currently logged in user and add it to the list of cars in the cottage model
         let newCar = Car(driver: loggedInUser, numberOfSeats: numberOfPassengers, passengers: [], requesters: [])
-        
         cottageModel?.carsList.append(newCar)
                 
+        //reload the collection view and recreate the nav bar buttons
         self.carsCollectionView.reloadData()
         self.createNavBarButtons()
         
+        //remove the add car view and display a success message
         self.navigationController?.popViewController(animated: true)
         ToastMessageDisplayer.showToast(controller: self, message: "You have been added as a driver!", seconds: 2)
         
