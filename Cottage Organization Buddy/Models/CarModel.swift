@@ -22,6 +22,10 @@ class Car: CottageModelProtocol {
     
     func returnPassengersNames() -> String {
         
+        if self.passengers.count == 0 {
+            return "No passengers yet"
+        }
+        
         var passengersNames: [String] = []
         for passenger in self.passengers {
             passengersNames.append(passenger.name)
