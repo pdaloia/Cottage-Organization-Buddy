@@ -59,6 +59,7 @@
 		FEEA1DD925C7531F0050E6FA /* CarRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEEA1DD825C7531F0050E6FA /* CarRequest.swift */; };
 		FEEA1DE125C7685C0050E6FA /* RequestInboxViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEEA1DE025C7685C0050E6FA /* RequestInboxViewController.swift */; };
 		FEEA1DE625C76B2C0050E6FA /* RequestCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEEA1DE525C76B2C0050E6FA /* RequestCell.swift */; };
+		FEEA1DE925C76DF60050E6FA /* RequestCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEEA1DE825C76DF60050E6FA /* RequestCollectionView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -116,6 +117,7 @@
 		FEEA1DD825C7531F0050E6FA /* CarRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarRequest.swift; sourceTree = "<group>"; };
 		FEEA1DE025C7685C0050E6FA /* RequestInboxViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestInboxViewController.swift; sourceTree = "<group>"; };
 		FEEA1DE525C76B2C0050E6FA /* RequestCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestCell.swift; sourceTree = "<group>"; };
+		FEEA1DE825C76DF60050E6FA /* RequestCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestCollectionView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -361,6 +363,7 @@
 			children = (
 				FEEA1DE025C7685C0050E6FA /* RequestInboxViewController.swift */,
 				FEEA1DE525C76B2C0050E6FA /* RequestCell.swift */,
+				FEEA1DE825C76DF60050E6FA /* RequestCollectionView.swift */,
 			);
 			path = "Request Inbox";
 			sourceTree = "<group>";
@@ -452,6 +455,7 @@
 				FEBD42B02585A927002D81A6 /* DrinksCollectionView.swift in Sources */,
 				FE4383342583150600FE3FFB /* GroceriesCollectionViewDelegate.swift in Sources */,
 				FE724EFA2537DEEA00764387 /* CottageTrip.swift in Sources */,
+				FEEA1DE925C76DF60050E6FA /* RequestCollectionView.swift in Sources */,
 				FEAC9744254BB4EA007B83B1 /* DrinksCollectionViewCell.swift in Sources */,
 				FEEA1DE625C76B2C0050E6FA /* RequestCell.swift in Sources */,
 				FE90989A258ABB4D002E00FB /* AddGroceryView.swift in Sources */,

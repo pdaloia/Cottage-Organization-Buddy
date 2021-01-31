@@ -9,4 +9,8 @@ import UIKit
 
 class RequestCell: UICollectionViewCell {
     
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+    }
+    
 }
