@@ -57,6 +57,8 @@
 		FEEA1DD225C738250050E6FA /* RequestProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEEA1DD125C738250050E6FA /* RequestProtocol.swift */; };
 		FEEA1DD625C752760050E6FA /* BedRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEEA1DD525C752760050E6FA /* BedRequest.swift */; };
 		FEEA1DD925C7531F0050E6FA /* CarRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEEA1DD825C7531F0050E6FA /* CarRequest.swift */; };
+		FEEA1DE125C7685C0050E6FA /* RequestInboxViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEEA1DE025C7685C0050E6FA /* RequestInboxViewController.swift */; };
+		FEEA1DE625C76B2C0050E6FA /* RequestCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEEA1DE525C76B2C0050E6FA /* RequestCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -112,6 +114,8 @@
 		FEEA1DD125C738250050E6FA /* RequestProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestProtocol.swift; sourceTree = "<group>"; };
 		FEEA1DD525C752760050E6FA /* BedRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BedRequest.swift; sourceTree = "<group>"; };
 		FEEA1DD825C7531F0050E6FA /* CarRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarRequest.swift; sourceTree = "<group>"; };
+		FEEA1DE025C7685C0050E6FA /* RequestInboxViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestInboxViewController.swift; sourceTree = "<group>"; };
+		FEEA1DE525C76B2C0050E6FA /* RequestCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -144,6 +148,7 @@
 		FE724ED425375D7C00764387 /* Cottage Organization Buddy */ = {
 			isa = PBXGroup;
 			children = (
+				FEEA1DDE25C7683D0050E6FA /* Reusable Components */,
 				FE724F32253E80CD00764387 /* Helpers */,
 				FE724F0225394B6500764387 /* Controllers */,
 				FE724F0125394B3A00764387 /* Views */,
@@ -343,6 +348,23 @@
 			path = "Request Models";
 			sourceTree = "<group>";
 		};
+		FEEA1DDE25C7683D0050E6FA /* Reusable Components */ = {
+			isa = PBXGroup;
+			children = (
+				FEEA1DDF25C768450050E6FA /* Request Inbox */,
+			);
+			path = "Reusable Components";
+			sourceTree = "<group>";
+		};
+		FEEA1DDF25C768450050E6FA /* Request Inbox */ = {
+			isa = PBXGroup;
+			children = (
+				FEEA1DE025C7685C0050E6FA /* RequestInboxViewController.swift */,
+				FEEA1DE525C76B2C0050E6FA /* RequestCell.swift */,
+			);
+			path = "Request Inbox";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -431,6 +453,7 @@
 				FE4383342583150600FE3FFB /* GroceriesCollectionViewDelegate.swift in Sources */,
 				FE724EFA2537DEEA00764387 /* CottageTrip.swift in Sources */,
 				FEAC9744254BB4EA007B83B1 /* DrinksCollectionViewCell.swift in Sources */,
+				FEEA1DE625C76B2C0050E6FA /* RequestCell.swift in Sources */,
 				FE90989A258ABB4D002E00FB /* AddGroceryView.swift in Sources */,
 				FE148E892547C94C00DA5A16 /* BedCollectionViewCell.swift in Sources */,
 				FE034C43257DB04D00822907 /* AttendeesView.swift in Sources */,
@@ -442,6 +465,7 @@
 				FE42A3212578826200538A99 /* DrinkListController.swift in Sources */,
 				FE724F452543E97C00764387 /* CarInformationView.swift in Sources */,
 				FE724F4125431F2000764387 /* CarCollectionViewCell.swift in Sources */,
+				FEEA1DE125C7685C0050E6FA /* RequestInboxViewController.swift in Sources */,
 				FE724F0D253A081C00764387 /* CottageTabsController.swift in Sources */,
 				FEEA1DD225C738250050E6FA /* RequestProtocol.swift in Sources */,
 				FE034C4A257DD15C00822907 /* TripInformationCollectionViewCell.swift in Sources */,
