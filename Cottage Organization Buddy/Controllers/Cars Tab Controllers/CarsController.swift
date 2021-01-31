@@ -71,11 +71,21 @@ class CarsController: UIViewController, TabBarItemControllerProtocol {
         //check to see if the currently logged in user is a driver, then add the proper nav bar button
         let isADriver = cottageModel?.carsList.contains(where: { $0.driver === currentlyLoggedInUser })
         if isADriver == true {
-            self.navigationItem.rightBarButtonItem = removeDriverButton
+            self.navigationItem.rightBarButtonItems = [removeDriverButton]
         }
         else {
-            self.navigationItem.rightBarButtonItem = addDriverButton
+            self.navigationItem.rightBarButtonItems = [addDriverButton]
         }
+        
+        //create the request inbox navbar button
+        let requestInbox = UIBarButtonItem(title: "Requests", style: .plain, target: self, action: #selector(requestInboxButtonPressed))
+        self.navigationItem.rightBarButtonItems?.append(requestInbox)
+        
+    }
+    
+    @objc func requestInboxButtonPressed() {
+        
+        print("test")
         
     }
     
