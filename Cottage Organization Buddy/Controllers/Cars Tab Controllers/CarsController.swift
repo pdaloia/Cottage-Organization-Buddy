@@ -85,7 +85,8 @@ class CarsController: UIViewController, TabBarItemControllerProtocol {
     
     @objc func requestInboxButtonPressed() {
         
-        print("test")
+        let requestInbox = RequestInboxViewController()
+        self.navigationController?.pushViewController(requestInbox, animated: true)
         
     }
     

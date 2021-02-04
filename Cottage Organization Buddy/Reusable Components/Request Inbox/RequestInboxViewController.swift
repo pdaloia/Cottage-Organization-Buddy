@@ -13,6 +13,8 @@ class RequestInboxViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        setupRequestViewController()
 
         // Do any additional setup after loading the view.
     }
