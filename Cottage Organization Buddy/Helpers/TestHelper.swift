@@ -69,14 +69,16 @@ class TestHelper {
     
         modelToLoad.groceryList = GroceryLists(allItems: allGroceries, groceriesPerPerson: [philsGroceries, vicsGroceries, medeisGroceries])
         
-        //load cars
+        //load cars and requests
         let firstCar = Car(driver: phil, numberOfSeats: 3, passengers: [medei, sonia], requesters: [])
         let secondCar = Car(driver: michael, numberOfSeats: 3, passengers: [vic, andrew], requesters: [])
         let thirdCar = Car(driver: jules, numberOfSeats: 3, passengers: [kim, lucas], requesters: [])
         let fourthCar = Car(driver: abosh, numberOfSeats: 3, passengers: [erica], requesters: [])
-        let fifthCar = Car(driver: ricky, numberOfSeats: 3, passengers: [], requesters: [])
         
-        modelToLoad.carsList = [firstCar, secondCar, thirdCar, fourthCar, fifthCar]
+        let rickyCarRequest = CarRequest(requester: ricky)
+        firstCar.requests = [rickyCarRequest]
+        
+        modelToLoad.carsList = [firstCar, secondCar, thirdCar, fourthCar]
         
         //load beds
         let firstBed: Bed = Bed(size: .twin, occupants: [phil])
