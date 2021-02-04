@@ -85,7 +85,27 @@ class CarsController: UIViewController, TabBarItemControllerProtocol {
     
     @objc func requestInboxButtonPressed() {
         
-        let requestInbox = RequestInboxViewController()
+        
+        //load the request inbox list with the correct car requests
+        let currentlyLoggedInUser: Attendee
+        do {
+            try currentlyLoggedInUser = UserService.GetLoggedInUser(model: self.cottageModel!)
+        } catch UserError.cantFindUserError {
+            ToastMessageDisplayer.showToast(controller: self, message: "Can not find your user in this trip", seconds: 2)
+            return
+        } catch {
+            ToastMessageDisplayer.showToast(controller: self, message: "Unknown error, please restart app", seconds: 2)
+            return
+        }
+        
+        guard let requestList = self.cottageModel?.carsList.first(where: { $0.driver === currentlyLoggedInUser })?.requests else {
+            return
+        }
+        
+        //create the VC for the request inbox
+        let requestInbox = RequestInboxViewController(requests: requestList)
+            
+        //push the VC onto the stack
         self.navigationController?.pushViewController(requestInbox, animated: true)
         
     }

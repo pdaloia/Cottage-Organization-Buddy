@@ -10,13 +10,27 @@ import UIKit
 class RequestInboxViewController: UIViewController {
     
     var requestCollectionView: RequestCollectionView?
+    var requestList: [RequestProtocol]
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.view.backgroundColor = .systemBackground
+        
         setupRequestViewController()
 
         // Do any additional setup after loading the view.
+    }
+    
+    init(requests: [RequestProtocol]) {
+        
+        self.requestList = requests
+        super.init(nibName: nil, bundle: nil)
+        
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
     
     func setupRequestViewController() {
@@ -27,6 +41,7 @@ class RequestInboxViewController: UIViewController {
         
         //create the request collection view for the inbox
         self.requestCollectionView = RequestCollectionView(frame: self.view.frame, collectionViewLayout: requestFlowLayout)
+        self.requestCollectionView?.requestList = self.requestList
         
         //register the cells for the request collection view
         self.requestCollectionView?.register(RequestCell.self, forCellWithReuseIdentifier: "RequestCell")
