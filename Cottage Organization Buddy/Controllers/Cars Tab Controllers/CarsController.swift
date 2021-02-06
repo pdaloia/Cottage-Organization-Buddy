@@ -302,6 +302,10 @@ extension CarsController: RequestInboxDelegate {
         
         //reload the collection view and recreate the nav bar buttons
         self.carsCollectionView.reloadData()
+        self.carInformationView.reloadCarInformationView()
+        
+        //recreate the nav bar buttons
+        self.createNavBarButtons()
         
         //remove the add car view and display a success message
         self.navigationController?.popViewController(animated: true)
@@ -311,7 +315,37 @@ extension CarsController: RequestInboxDelegate {
     
     func decline(request: RequestProtocol) {
         
-        print("VC decline: " + request.requester.name)
+        //we will first get the currently logged in user
+        //for now we will hard code it to my user instance
+        var loggedInUser = Attendee(name: "")
+        
+        do {
+            try loggedInUser = UserService.GetLoggedInUser(model: cottageModel!)
+        } catch UserError.cantFindUserError {
+            ToastMessageDisplayer.showToast(controller: self, message: "Can not find your user account in this trip", seconds: 2)
+            return
+        } catch {
+            ToastMessageDisplayer.showToast(controller: self, message: "Unexpected error, please restart the app", seconds: 2)
+            return
+        }
+        
+        //get the necessary information
+        let currentCar = cottageModel?.carsList.last(where: { $0.driver === loggedInUser } )
+        let requestToDelete = request
+        
+        //add the requester to the passengers and remove the attendee's request
+        currentCar?.requests.removeAll(where: { $0 === requestToDelete } )
+        
+        //reload the collection view and recreate the nav bar buttons
+        self.carsCollectionView.reloadData()
+        self.carInformationView.reloadCarInformationView()
+        
+        //recreate the nav bar buttons
+        self.createNavBarButtons()
+        
+        //remove the add car view and display a success message
+        self.navigationController?.popViewController(animated: true)
+        ToastMessageDisplayer.showToast(controller: self, message: "Passenger declined!", seconds: 2)
         
     }
     
