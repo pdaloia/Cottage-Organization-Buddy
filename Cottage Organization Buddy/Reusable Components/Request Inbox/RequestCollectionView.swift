@@ -41,6 +41,8 @@ extension RequestCollectionView: UICollectionViewDelegateFlowLayout, UICollectio
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let currentCell = collectionView.dequeueReusableCell(withReuseIdentifier: "RequestCell", for: indexPath) as! RequestCell
+        currentCell.request = requestList?[indexPath.item]
+        currentCell.setupRequestLabel()
         
         return currentCell
         
@@ -51,7 +53,7 @@ extension RequestCollectionView: UICollectionViewDelegateFlowLayout, UICollectio
         var height: CGFloat
         var width: CGFloat
         
-        let numberOfRowsOnScreen: CGFloat = 4
+        let numberOfRowsOnScreen: CGFloat = 8
         
         let collectionViewHeight = collectionView.bounds.height
         let layout = collectionViewLayout as! UICollectionViewFlowLayout
