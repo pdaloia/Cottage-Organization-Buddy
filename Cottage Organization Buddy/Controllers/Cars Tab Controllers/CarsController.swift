@@ -104,6 +104,7 @@ class CarsController: UIViewController, TabBarItemControllerProtocol {
         
         //create the VC for the request inbox
         let requestInbox = RequestInboxViewController(requests: requestList)
+        requestInbox.cottageModel = self.cottageModel
             
         //push the VC onto the stack
         self.navigationController?.pushViewController(requestInbox, animated: true)

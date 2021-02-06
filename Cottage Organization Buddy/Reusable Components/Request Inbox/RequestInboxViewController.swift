@@ -9,6 +9,7 @@ import UIKit
 
 class RequestInboxViewController: UIViewController {
     
+    var cottageModel: CottageTrip?
     var requestCollectionView: RequestCollectionView?
     var requestList: [RequestProtocol]
 
@@ -41,6 +42,7 @@ class RequestInboxViewController: UIViewController {
         
         //create the request collection view for the inbox
         self.requestCollectionView = RequestCollectionView(frame: self.view.frame, collectionViewLayout: requestFlowLayout)
+        self.requestCollectionView?.requestCollectionDelegate = self
         self.requestCollectionView?.requestList = self.requestList
         
         //register the cells for the request collection view
@@ -60,6 +62,22 @@ class RequestInboxViewController: UIViewController {
         self.requestCollectionView?.bottomAnchor.constraint(equalTo: self.view.bottomAnchor).isActive = true
         self.requestCollectionView?.leadingAnchor.constraint(equalTo: self.view.leadingAnchor).isActive = true
         self.requestCollectionView?.trailingAnchor.constraint(equalTo: self.view.trailingAnchor).isActive = true
+        
+    }
+    
+}
+
+extension RequestInboxViewController: RequestCollectionViewDelegate {
+    
+    func accept(request: RequestProtocol) {
+        
+        print("VC accept: " + request.requester.name)
+        
+    }
+    
+    func decline(request: RequestProtocol) {
+        
+        print("VC decline: " + request.requester.name)
         
     }
     

@@ -17,6 +17,9 @@ class RequestCell: UICollectionViewCell {
     var acceptButton = UIButton(type: .custom)
     var declineButton = UIButton(type: .custom)
     
+    //delegates
+    var buttonsDelegate: RequestCellButtonsDelegate?
+    
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -84,11 +87,19 @@ class RequestCell: UICollectionViewCell {
     }
     
     @objc func addButtonClicked() {
-        print("accepted")
+        buttonsDelegate?.acceptButtonClicked(request: request!)
     }
     
     @objc func declineButtonClicked() {
-        print("rejected")
+        buttonsDelegate?.declineButtonClicked(request: request!)
     }
+    
+}
+
+protocol RequestCellButtonsDelegate: class {
+    
+    func acceptButtonClicked(request: RequestProtocol)
+    
+    func declineButtonClicked(request: RequestProtocol)
     
 }

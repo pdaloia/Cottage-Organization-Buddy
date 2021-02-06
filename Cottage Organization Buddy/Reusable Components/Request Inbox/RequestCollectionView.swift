@@ -9,7 +9,11 @@ import UIKit
 
 class RequestCollectionView: UICollectionView {
     
+    //requests to be displayed in the inbox
     var requestList: [RequestProtocol]?
+    
+    //delegates
+    var requestCollectionDelegate: RequestCollectionViewDelegate?
 
     override init(frame: CGRect, collectionViewLayout layout: UICollectionViewLayout) {
         super.init(frame: frame, collectionViewLayout: layout)
@@ -43,6 +47,7 @@ extension RequestCollectionView: UICollectionViewDelegateFlowLayout, UICollectio
         let currentCell = collectionView.dequeueReusableCell(withReuseIdentifier: "RequestCell", for: indexPath) as! RequestCell
         currentCell.request = requestList?[indexPath.item]
         currentCell.setupRequestLabel()
+        currentCell.buttonsDelegate = self
         
         return currentCell
         
@@ -66,5 +71,29 @@ extension RequestCollectionView: UICollectionViewDelegateFlowLayout, UICollectio
         return CGSize(width: width, height: height)
         
     }
+    
+}
+
+extension RequestCollectionView: RequestCellButtonsDelegate {
+    
+    func acceptButtonClicked(request: RequestProtocol) {
+        
+        requestCollectionDelegate?.accept(request: request)
+        
+    }
+    
+    func declineButtonClicked(request: RequestProtocol) {
+        
+        requestCollectionDelegate?.decline(request: request)
+        
+    }
+    
+}
+
+protocol RequestCollectionViewDelegate {
+    
+    func accept(request: RequestProtocol)
+    
+    func decline(request: RequestProtocol)
     
 }
