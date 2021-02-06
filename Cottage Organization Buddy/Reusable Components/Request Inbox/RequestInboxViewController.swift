@@ -9,9 +9,11 @@ import UIKit
 
 class RequestInboxViewController: UIViewController {
     
-    var cottageModel: CottageTrip?
     var requestCollectionView: RequestCollectionView?
     var requestList: [RequestProtocol]
+    
+    //delegates
+    var requestInboxDelegate: RequestInboxDelegate?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -71,14 +73,22 @@ extension RequestInboxViewController: RequestCollectionViewDelegate {
     
     func accept(request: RequestProtocol) {
         
-        print("VC accept: " + request.requester.name)
+        requestInboxDelegate?.accept(request: request)
         
     }
     
     func decline(request: RequestProtocol) {
         
-        print("VC decline: " + request.requester.name)
+        requestInboxDelegate?.decline(request: request)
         
     }
+    
+}
+
+protocol RequestInboxDelegate {
+    
+    func accept(request: RequestProtocol)
+    
+    func decline(request: RequestProtocol)
     
 }

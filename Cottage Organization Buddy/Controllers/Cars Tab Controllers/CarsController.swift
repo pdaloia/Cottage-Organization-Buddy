@@ -104,7 +104,7 @@ class CarsController: UIViewController, TabBarItemControllerProtocol {
         
         //create the VC for the request inbox
         let requestInbox = RequestInboxViewController(requests: requestList)
-        requestInbox.cottageModel = self.cottageModel
+        requestInbox.requestInboxDelegate = self
             
         //push the VC onto the stack
         self.navigationController?.pushViewController(requestInbox, animated: true)
@@ -269,6 +269,22 @@ extension CarsController: AddDriverDelegate {
         //remove the add car view and display a success message
         self.navigationController?.popViewController(animated: true)
         ToastMessageDisplayer.showToast(controller: self, message: "You have been added as a driver!", seconds: 2)
+        
+    }
+    
+}
+
+extension CarsController: RequestInboxDelegate {
+    
+    func accept(request: RequestProtocol) {
+        
+        print("VC accept: " + request.requester.name)
+        
+    }
+    
+    func decline(request: RequestProtocol) {
+        
+        print("VC decline: " + request.requester.name)
         
     }
     
