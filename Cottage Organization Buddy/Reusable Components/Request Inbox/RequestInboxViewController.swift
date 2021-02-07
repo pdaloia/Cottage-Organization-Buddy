@@ -73,13 +73,29 @@ extension RequestInboxViewController: RequestCollectionViewDelegate {
     
     func accept(request: RequestProtocol) {
         
-        requestInboxDelegate?.accept(request: request)
+        let acceptRequestConfirmation = UIAlertController(title: "Confirm Accept", message: "Accept " + request.requester.name + "'s request?", preferredStyle: .alert)
+        acceptRequestConfirmation.addAction(UIAlertAction(title: "Cancel", style: .default, handler: {_ in
+            //do nothing
+        }))
+        acceptRequestConfirmation.addAction(UIAlertAction(title: "OK", style: .default, handler: {_ in
+            self.requestInboxDelegate?.accept(request: request)
+        }))
+        
+        present(acceptRequestConfirmation, animated: true, completion: nil)
         
     }
     
     func decline(request: RequestProtocol) {
         
-        requestInboxDelegate?.decline(request: request)
+        let declineRequestConfirmation = UIAlertController(title: "Confirm Decline", message: "Decline " + request.requester.name + "'s request'?", preferredStyle: .alert)
+        declineRequestConfirmation.addAction(UIAlertAction(title: "Cancel", style: .default, handler: {_ in
+            //do nothing
+        }))
+        declineRequestConfirmation.addAction(UIAlertAction(title: "OK", style: .default, handler: {_ in
+            self.requestInboxDelegate?.decline(request: request)
+        }))
+        
+        present(declineRequestConfirmation, animated: true, completion: nil)
         
     }
     
