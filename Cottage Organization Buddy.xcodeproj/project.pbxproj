@@ -17,6 +17,7 @@
 		FE4383342583150600FE3FFB /* GroceriesCollectionViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE4383332583150600FE3FFB /* GroceriesCollectionViewDelegate.swift */; };
 		FE681D112593FE4E007B4DEC /* AddDrinkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE681D102593FE4E007B4DEC /* AddDrinkViewController.swift */; };
 		FE681D142593FE72007B4DEC /* AddDrinkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE681D132593FE72007B4DEC /* AddDrinkView.swift */; };
+		FE6BAA8025D2142D0054282D /* CarsCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE6BAA7F25D2142D0054282D /* CarsCollectionView.swift */; };
 		FE724ED625375D7C00764387 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE724ED525375D7C00764387 /* AppDelegate.swift */; };
 		FE724ED825375D7C00764387 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE724ED725375D7C00764387 /* SceneDelegate.swift */; };
 		FE724EDA25375D7D00764387 /* HomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE724ED925375D7D00764387 /* HomeController.swift */; };
@@ -34,7 +35,6 @@
 		FE724F13253CF08200764387 /* CarsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE724F12253CF08200764387 /* CarsController.swift */; };
 		FE724F16253CF09B00764387 /* BedsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE724F15253CF09B00764387 /* BedsController.swift */; };
 		FE724F19253CF0AB00764387 /* DrinksController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE724F18253CF0AB00764387 /* DrinksController.swift */; };
-		FE724F1F253CF14F00764387 /* Cars.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FE724F1E253CF14F00764387 /* Cars.storyboard */; };
 		FE724F22253CF17100764387 /* Beds.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FE724F21253CF17100764387 /* Beds.storyboard */; };
 		FE724F28253E773F00764387 /* AttendeeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE724F27253E773F00764387 /* AttendeeModel.swift */; };
 		FE724F30253E7A4E00764387 /* TripInformationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE724F2F253E7A4E00764387 /* TripInformationController.swift */; };
@@ -73,6 +73,7 @@
 		FE4383332583150600FE3FFB /* GroceriesCollectionViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroceriesCollectionViewDelegate.swift; sourceTree = "<group>"; };
 		FE681D102593FE4E007B4DEC /* AddDrinkViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddDrinkViewController.swift; sourceTree = "<group>"; };
 		FE681D132593FE72007B4DEC /* AddDrinkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddDrinkView.swift; sourceTree = "<group>"; };
+		FE6BAA7F25D2142D0054282D /* CarsCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarsCollectionView.swift; sourceTree = "<group>"; };
 		FE724ED225375D7C00764387 /* Cottage Organization Buddy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Cottage Organization Buddy.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FE724ED525375D7C00764387 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FE724ED725375D7C00764387 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -92,7 +93,6 @@
 		FE724F12253CF08200764387 /* CarsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarsController.swift; sourceTree = "<group>"; };
 		FE724F15253CF09B00764387 /* BedsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BedsController.swift; sourceTree = "<group>"; };
 		FE724F18253CF0AB00764387 /* DrinksController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinksController.swift; sourceTree = "<group>"; };
-		FE724F1E253CF14F00764387 /* Cars.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Cars.storyboard; sourceTree = "<group>"; };
 		FE724F21253CF17100764387 /* Beds.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Beds.storyboard; sourceTree = "<group>"; };
 		FE724F27253E773F00764387 /* AttendeeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttendeeModel.swift; sourceTree = "<group>"; };
 		FE724F2F253E7A4E00764387 /* TripInformationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripInformationController.swift; sourceTree = "<group>"; };
@@ -291,7 +291,6 @@
 		FEE82BA72579E09100058A5A /* Cars Tab Views */ = {
 			isa = PBXGroup;
 			children = (
-				FE724F1E253CF14F00764387 /* Cars.storyboard */,
 				FE724F442543E97B00764387 /* CarInformationView.swift */,
 				FE724F4025431F1F00764387 /* CarCollectionViewCell.swift */,
 				FEABB59A25953F9700D60A66 /* AddCarView.swift */,
@@ -337,6 +336,7 @@
 				FE034C42257DB04D00822907 /* AttendeesView.swift */,
 				FE034C46257DB34B00822907 /* TripInformationCollectionView.swift */,
 				FE034C49257DD15C00822907 /* TripInformationCollectionViewCell.swift */,
+				FE6BAA7F25D2142D0054282D /* CarsCollectionView.swift */,
 			);
 			path = "Trip Information Tab Views";
 			sourceTree = "<group>";
@@ -425,7 +425,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FE724F1F253CF14F00764387 /* Cars.storyboard in Resources */,
 				FE724EE225375D8000764387 /* LaunchScreen.storyboard in Resources */,
 				FE724EDF25375D8000764387 /* Assets.xcassets in Resources */,
 				FE724F0A253A07F800764387 /* CottageTabs.storyboard in Resources */,
@@ -476,6 +475,7 @@
 				FE724F10253CF06C00764387 /* GroceriesController.swift in Sources */,
 				FEC156142577299E004FB37E /* GroceryListController.swift in Sources */,
 				FE724F34253E80DC00764387 /* TestHelper.swift in Sources */,
+				FE6BAA8025D2142D0054282D /* CarsCollectionView.swift in Sources */,
 				FEEA1DD625C752760050E6FA /* BedRequest.swift in Sources */,
 				FE12953725829CFD00043F41 /* GroceriesCollectionView.swift in Sources */,
 				FEEA1DD925C7531F0050E6FA /* CarRequest.swift in Sources */,

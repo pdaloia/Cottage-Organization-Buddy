@@ -12,8 +12,7 @@ class CarsController: UIViewController, TabBarItemControllerProtocol {
     var cottageModel: CottageTrip?
     
     //views for the tab
-    @IBOutlet weak var carsCollectionView: UICollectionView!
-    @IBOutlet weak var carInformationView: CarInformationView!
+    var carsCollectionView: CarsCollectionView?
     
     override func viewDidLoad() {
         
@@ -21,31 +20,34 @@ class CarsController: UIViewController, TabBarItemControllerProtocol {
         
         title = "Cars"
         
-        carsCollectionView.dataSource = self
-        carsCollectionView.delegate = self
+        self.view.backgroundColor = .systemBackground
         
         createNavBarButtons()
-        createCarInformationView()
+        initializeCollectionView()
         
     }
     
-    //function we use to create the car information view, as well as set its constraints
-    func createCarInformationView() {
+    func initializeCollectionView() {
         
-        let newCarInformationView = CarInformationView()
-        carInformationView = newCarInformationView
+        let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
+        layout.sectionInset = UIEdgeInsets(top: 10, left: 3, bottom: 10, right: 3)
+        layout.itemSize = CGSize(width: 60, height: 60)
         
-        //add the collection view to the view
-        self.view.addSubview(carInformationView)
+        carsCollectionView = CarsCollectionView(frame: self.view.frame, collectionViewLayout: layout)
+        carsCollectionView?.cottageModel = cottageModel
         
-        //set the constraints for this colleciton view
-        carInformationView.translatesAutoresizingMaskIntoConstraints = false
-        carInformationView.topAnchor.constraint(equalTo: self.carsCollectionView.bottomAnchor).isActive = true
-        carInformationView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor).isActive = true
-        carInformationView.widthAnchor.constraint(equalTo: self.view.widthAnchor).isActive = true
+        carsCollectionView?.register(CarCollectionViewCell.self, forCellWithReuseIdentifier: "CarCell")
         
-        //Now that the information view has been added, setup the view
-        carInformationView.setupViewInitialMessage()
+        carsCollectionView?.delegate = carsCollectionView
+        carsCollectionView?.dataSource = carsCollectionView
+        
+        carsCollectionView?.backgroundColor = .clear
+        view.addSubview(carsCollectionView!)
+        
+        carsCollectionView?.translatesAutoresizingMaskIntoConstraints = false
+        carsCollectionView?.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor).isActive = true
+        carsCollectionView?.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor).isActive = true
+        carsCollectionView?.widthAnchor.constraint(equalTo: self.view.widthAnchor).isActive = true
         
     }
     
@@ -145,8 +147,7 @@ class CarsController: UIViewController, TabBarItemControllerProtocol {
             
             //remove the car in which the driver is the currently logged in user (if it exists) and then reload the views
             self.cottageModel?.carsList.removeAll(where: { $0.driver === currentlyLoggedInUser })
-            self.carsCollectionView.reloadData()
-            self.carInformationView.reloadCarInformationView()
+            self.carsCollectionView!.reloadData()
             
             //recreate the nav bar buttons
             self.createNavBarButtons()
@@ -159,80 +160,6 @@ class CarsController: UIViewController, TabBarItemControllerProtocol {
         
         //present the confirmation pop-up
         present(removeAlert, animated: true, completion: nil)
-        
-    }
-    
-}
-
-//extension to deal with necessary collection view data source/delegate functions
-extension CarsController: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
-    
-    //number of items in section
-    //since theres only one section, we return the count of cars
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        
-        return cottageModel!.carsList.count
-        
-    }
-    
-    //cell for item at
-    //we use our custom car collection view cell and dependency inject a car model into it
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CarCell", for: indexPath) as! CarCollectionViewCell
-        
-        //setup the cell with the information from the cottage model
-        cell.cellsCarModel = cottageModel!.carsList[indexPath.item]
-        cell.setup()
-        
-        return cell
-        
-    }
-    
-    //sizing function for the collection view cells
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        
-        //create the amount of desired rows
-        let rows: CGFloat
-        let columns: CGFloat
-        switch(collectionView.numberOfItems(inSection: indexPath.section)) {
-        case 0..<3:
-            rows = 1
-            columns = 1
-        default:
-            rows = 2
-            columns = 2
-            
-        }
-        
-        //create and calculate the dimensions for the cell size
-        let collectionViewHeight = collectionView.bounds.height
-        let collectionViewWidth = collectionView.bounds.width
-        let flowLayout = collectionViewLayout as! UICollectionViewFlowLayout
-        
-        let spaceBetweenRows = (flowLayout.minimumLineSpacing * (rows - 1)) + flowLayout.sectionInset.top + flowLayout.sectionInset.bottom
-        let spaceBetweenCellsInRow = (flowLayout.minimumInteritemSpacing * (columns - 1)) + flowLayout.sectionInset.right + flowLayout.sectionInset.left
-        
-        let adjustedHeight = collectionViewHeight - spaceBetweenRows
-        let adjustedWidth = collectionViewWidth - spaceBetweenCellsInRow
-        
-        let height: CGFloat = floor(adjustedHeight / rows)
-        let width: CGFloat = floor(adjustedWidth / rows)
-        
-        return CGSize(width: width, height: height)
-        
-    }
-    
-    //handling the seleciton of a cell
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
-        //retrieve the selected car cell
-        let selectedCarCell = collectionView.cellForItem(at: indexPath) as! CarCollectionViewCell
-        
-        //inject the information view's car model as the selected cell's car model
-        carInformationView.currentlySelectedCarModel = selectedCarCell.cellsCarModel
-        
-        carInformationView.displayInformationAfterCellSelection()
         
     }
     
@@ -263,7 +190,7 @@ extension CarsController: AddDriverDelegate {
         cottageModel?.carsList.append(newCar)
                 
         //reload the collection view and recreate the nav bar buttons
-        self.carsCollectionView.reloadData()
+        self.carsCollectionView!.reloadData()
         self.createNavBarButtons()
         
         //remove the add car view and display a success message
@@ -301,8 +228,7 @@ extension CarsController: RequestInboxDelegate {
         currentCar?.requests.removeAll(where: { $0.requester === attendeeToAddToPassengers } )
         
         //reload the collection view and recreate the nav bar buttons
-        self.carsCollectionView.reloadData()
-        self.carInformationView.reloadCarInformationView()
+        self.carsCollectionView!.reloadData()
         
         //recreate the nav bar buttons
         self.createNavBarButtons()
@@ -337,8 +263,7 @@ extension CarsController: RequestInboxDelegate {
         currentCar?.requests.removeAll(where: { $0 === requestToDelete } )
         
         //reload the collection view and recreate the nav bar buttons
-        self.carsCollectionView.reloadData()
-        self.carInformationView.reloadCarInformationView()
+        self.carsCollectionView!.reloadData()
         
         //recreate the nav bar buttons
         self.createNavBarButtons()

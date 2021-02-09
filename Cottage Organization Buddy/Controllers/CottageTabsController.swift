@@ -25,7 +25,7 @@ class CottageTabsController: UITabBarController {
         
         //initialize the storyboards with their respective controllers
         let groceriesViewController = GroceriesController()
-        let carsViewController = UIStoryboard(name: "Cars", bundle:nil).instantiateViewController(identifier: "CarsView") as! CarsController
+        let carsViewController = CarsController()
         let bedsViewController = UIStoryboard(name: "Beds", bundle: nil).instantiateViewController(identifier: "BedsView") as! BedsController
         let drinksViewController = DrinksController()
         let tripInformationViewController = TripInformationController()
