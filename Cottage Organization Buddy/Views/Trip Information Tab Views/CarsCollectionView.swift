@@ -45,6 +45,8 @@ extension CarsCollectionView: UICollectionViewDataSource, UICollectionViewDelega
         cell.cellsCarModel = cottageModel!.carsList[indexPath.item]
         cell.indexPath = indexPath
         cell.expandCellDelegate = self
+        cell.isExpanded = isExpanded[indexPath.row]
+        cell.carInformationView.currentlySelectedCarModel = cottageModel?.carsList[indexPath.row]
         cell.setup()
         
         return cell
@@ -66,14 +68,11 @@ extension CarsCollectionView: UICollectionViewDataSource, UICollectionViewDelega
         
         width = collectionView.bounds.width - layout.sectionInset.right - layout.sectionInset.left
         height = (collectionViewHeight - verticalSpacing - topAndBottomInset) / numberOfRowsOnScreen
-        print(height)
         
         if isExpanded[indexPath.row] == true {
-            print("if")
             return CGSize(width: width, height: height * 2)
         }
         else {
-            print("else")
             return CGSize(width: width, height: height)
         }
         
@@ -91,6 +90,7 @@ extension CarsCollectionView: ExpandedCarCollectionViewCellDelegate {
             }, completion: { success in
                 print("success")
         })
+        
         
     }
         
