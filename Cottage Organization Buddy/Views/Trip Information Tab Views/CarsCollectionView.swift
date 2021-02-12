@@ -46,7 +46,6 @@ extension CarsCollectionView: UICollectionViewDataSource, UICollectionViewDelega
         cell.indexPath = indexPath
         cell.expandCellDelegate = self
         cell.isExpanded = isExpanded[indexPath.row]
-        cell.carInformationView.currentlySelectedCarModel = cottageModel?.carsList[indexPath.row]
         cell.setup()
         
         return cell

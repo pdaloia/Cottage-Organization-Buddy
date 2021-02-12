@@ -15,9 +15,6 @@ class CarInformationView: UIView {
     //variable to see if a cell has not been selected yet
     var cellWasSelected: Bool = false
     
-    //initial label
-    var initialLabelMessage = UILabel()
-    
     //display labels
     var driverDisplayNameLabel = UILabel()
     var passengersDisplayNamesLabel = UILabel()
@@ -38,42 +35,17 @@ class CarInformationView: UIView {
         super.init(frame: frame)
     }
     
+    init(carModel: Car) {
+        self.init()
+        
+        currentlySelectedCarModel = carModel
+        initializeDataInformationLabels()
+        initializeStackViews()
+        updateCarInformation()
+    }
+    
     required init?(coder: NSCoder) {
         super.init(coder: coder)
-    }
-    
-    func setupViewInitialMessage() {
-        
-        //set the initial label's message
-        initialLabelMessage.text = "Select a car to view the car's information!"
-        
-        //add the initial label to the view
-        self.addSubview(initialLabelMessage)
-        
-        //set the autolayout constraints
-        initialLabelMessage.translatesAutoresizingMaskIntoConstraints = false
-        initialLabelMessage.topAnchor.constraint(equalTo: self.topAnchor, constant: 50).isActive = true
-        initialLabelMessage.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
-        initialLabelMessage.adjustsFontSizeToFitWidth = true
-        
-    }
-    
-    func displayInformationAfterCellSelection() {
-        
-        //if a cell has not been selected yet, remove the initial label and initialize information labels
-        if self.cellWasSelected == false {
-            initialLabelMessage.removeFromSuperview()
-            initializeDataInformationLabels()
-            initializeStackViews()
-            self.cellWasSelected = true
-            return
-        }
-        //if cell has already been selected before this, just update the information labels
-        else {
-            updateCarInformation()
-            return
-        }
-        
     }
     
     func initializeDataInformationLabels() {
@@ -138,14 +110,6 @@ class CarInformationView: UIView {
         self.driverDisplayName.text = driverName
         self.passengersDisplayNames.text = passengerNames
         self.seatsRemainingDisplayValue.text = remainingSeats
-        
-    }
-    
-    func reloadCarInformationView() {
-        
-        self.subviews.forEach({ $0.removeFromSuperview() })
-        self.cellWasSelected = false
-        self.setupViewInitialMessage()
         
     }
 

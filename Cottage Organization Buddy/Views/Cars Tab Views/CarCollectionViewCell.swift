@@ -15,7 +15,7 @@ class CarCollectionViewCell: UICollectionViewCell {
     var cellLabel = UILabel()
     var disclosureButton = UIButton()
     
-    var carInformationView = CarInformationView()
+    var carInformationView: CarInformationView?
     
     var indexPath: IndexPath!
     var isExpanded: Bool = false
@@ -113,12 +113,14 @@ class CarCollectionViewCell: UICollectionViewCell {
     
     func setExpandableSection() {
         
-        contentView.addSubview(carInformationView)
+        carInformationView = CarInformationView(carModel: cellsCarModel!)
         
-        carInformationView.translatesAutoresizingMaskIntoConstraints = false
-        carInformationView.topAnchor.constraint(equalTo: carImageView.bottomAnchor).isActive = true
-        carInformationView.bottomAnchor.constraint(equalTo: disclosureButton.topAnchor).isActive = true
-        carInformationView.widthAnchor.constraint(equalTo: self.contentView.widthAnchor).isActive = true
+        contentView.addSubview(carInformationView!)
+        
+        carInformationView!.translatesAutoresizingMaskIntoConstraints = false
+        carInformationView!.topAnchor.constraint(equalTo: carImageView.bottomAnchor).isActive = true
+        carInformationView!.bottomAnchor.constraint(equalTo: disclosureButton.topAnchor).isActive = true
+        carInformationView!.widthAnchor.constraint(equalTo: self.contentView.widthAnchor).isActive = true
         
     }
     
