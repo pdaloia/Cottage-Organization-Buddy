@@ -98,7 +98,12 @@ class CarCollectionViewCell: UICollectionViewCell {
         
         disclosureButton.translatesAutoresizingMaskIntoConstraints = false
         disclosureButton.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor).isActive = true
-        disclosureButton.heightAnchor.constraint(equalTo: self.contentView.heightAnchor, multiplier: 0.25).isActive = true
+        if isExpanded == true {
+            disclosureButton.heightAnchor.constraint(equalTo: self.contentView.heightAnchor, multiplier: 0.125).isActive = true
+        }
+        else {
+            disclosureButton.heightAnchor.constraint(equalTo: self.contentView.heightAnchor, multiplier: 0.25).isActive = true
+        }
         disclosureButton.centerXAnchor.constraint(equalTo: self.contentView.centerXAnchor).isActive = true
         
     }
