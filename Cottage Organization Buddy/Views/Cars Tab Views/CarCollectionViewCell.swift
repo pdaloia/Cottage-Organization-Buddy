@@ -40,7 +40,6 @@ class CarCollectionViewCell: UICollectionViewCell {
         setImageViewConstraints()
         setExpandButtonConstraints()
         if isExpanded == true {
-            print("here")
             setExpandableSection()
         }
         
@@ -91,7 +90,12 @@ class CarCollectionViewCell: UICollectionViewCell {
     
     func setExpandButtonConstraints() {
         
-        disclosureButton.setImage(UIImage(systemName: "chevron.down"), for: .normal)
+        if isExpanded == true {
+            disclosureButton.setImage(UIImage(systemName: "chevron.up"), for: .normal)
+        }
+        else {
+            disclosureButton.setImage(UIImage(systemName: "chevron.down"), for: .normal)
+        }
         disclosureButton.addTarget(self, action: #selector(expandButtonPressed), for: .touchUpInside)
         
         contentView.addSubview(disclosureButton)
