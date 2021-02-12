@@ -33,7 +33,7 @@ class CarsController: UIViewController, TabBarItemControllerProtocol {
         layout.sectionInset = UIEdgeInsets(top: 10, left: 3, bottom: 10, right: 3)
         layout.itemSize = CGSize(width: 60, height: 60)
         
-        carsCollectionView = CarsCollectionView(frame: self.view.frame, collectionViewLayout: layout)
+        carsCollectionView = CarsCollectionView(frame: self.view.frame, collectionViewLayout: layout, cellCount: cottageModel!.carsList.count)
         carsCollectionView?.cottageModel = cottageModel
         
         carsCollectionView?.register(CarCollectionViewCell.self, forCellWithReuseIdentifier: "CarCell")

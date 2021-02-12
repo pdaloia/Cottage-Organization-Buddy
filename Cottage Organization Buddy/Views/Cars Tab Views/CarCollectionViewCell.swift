@@ -13,6 +13,11 @@ class CarCollectionViewCell: UICollectionViewCell {
     
     var carImageView = UIImageView()
     var cellLabel = UILabel()
+    var disclosureButton = UIButton()
+    
+    var indexPath: IndexPath!
+    
+    var expandCellDelegate: ExpandedCarCollectionViewCellDelegate!
     
     override func awakeFromNib() {
         
@@ -30,7 +35,7 @@ class CarCollectionViewCell: UICollectionViewCell {
         
         setLabelConstraints()
         setImageViewConstraints()
-        
+        setExpandButtonConstraints()
     }
     
     func setLabelConstraints() {
@@ -46,7 +51,7 @@ class CarCollectionViewCell: UICollectionViewCell {
         //add the constraints to the label
         cellLabel.translatesAutoresizingMaskIntoConstraints = false
         cellLabel.topAnchor.constraint(equalTo: self.contentView.topAnchor).isActive = true
-        cellLabel.bottomAnchor.constraint(equalTo: self.contentView.centerYAnchor).isActive = true
+        cellLabel.heightAnchor.constraint(equalTo: self.contentView.heightAnchor, multiplier: 0.25).isActive = true
         cellLabel.widthAnchor.constraint(equalTo: self.contentView.widthAnchor).isActive = true
     }
     
@@ -59,10 +64,41 @@ class CarCollectionViewCell: UICollectionViewCell {
         
         //add constraints
         carImageView.translatesAutoresizingMaskIntoConstraints = false
-        carImageView.topAnchor.constraint(equalTo: self.contentView.centerYAnchor).isActive = true
-        carImageView.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor).isActive = true
+        carImageView.topAnchor.constraint(equalTo: self.cellLabel.bottomAnchor).isActive = true
+        carImageView.heightAnchor.constraint(equalTo: self.contentView.heightAnchor, multiplier: 0.5).isActive = true
         carImageView.widthAnchor.constraint(equalTo: self.contentView.widthAnchor).isActive = true
         carImageView.contentMode = .scaleAspectFit
+                
+    }
+    
+    func setExpandButtonConstraints() {
+        
+        let disclosureButton = UIButton()
+        disclosureButton.setImage(UIImage(systemName: "chevron.down"), for: .normal)
+        disclosureButton.addTarget(self, action: #selector(expandButtonPressed), for: .touchUpInside)
+        
+        contentView.addSubview(disclosureButton)
+        
+        disclosureButton.translatesAutoresizingMaskIntoConstraints = false
+        disclosureButton.topAnchor.constraint(equalTo: self.carImageView.bottomAnchor).isActive = true
+        disclosureButton.heightAnchor.constraint(equalTo: self.contentView.heightAnchor, multiplier: 0.25).isActive = true
+        disclosureButton.centerXAnchor.constraint(equalTo: self.contentView.centerXAnchor).isActive = true
+        
+    }
+    
+    @objc func expandButtonPressed() {
+    
+        if let delegate = self.expandCellDelegate{
+            delegate.expandButtonTouched(indexPath: indexPath)
+        }
+    
+    }
+    
+    func setExpandableSection() {
+        
+        let testLabel = UILabel()
+        testLabel.text = "testestest"
+        
     }
     
     override func prepareForReuse() {
@@ -74,5 +110,11 @@ class CarCollectionViewCell: UICollectionViewCell {
         }
         
     }
+    
+}
+
+protocol ExpandedCarCollectionViewCellDelegate {
+    
+   func expandButtonTouched(indexPath:IndexPath)
     
 }

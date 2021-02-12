@@ -11,8 +11,12 @@ class CarsCollectionView: UICollectionView {
 
     var cottageModel: CottageTrip?
     
-    override init(frame: CGRect, collectionViewLayout layout: UICollectionViewLayout) {
+    var isExpanded = [Bool]()
+    
+    init(frame: CGRect, collectionViewLayout layout: UICollectionViewLayout, cellCount: Int) {
         super.init(frame: frame, collectionViewLayout: layout)
+        
+        isExpanded = Array(repeating: false, count: cellCount)
     }
     
     required init?(coder: NSCoder) {
@@ -39,6 +43,8 @@ extension CarsCollectionView: UICollectionViewDataSource, UICollectionViewDelega
         
         //setup the cell with the information from the cottage model
         cell.cellsCarModel = cottageModel!.carsList[indexPath.item]
+        cell.indexPath = indexPath
+        cell.expandCellDelegate = self
         cell.setup()
         
         return cell
@@ -47,7 +53,7 @@ extension CarsCollectionView: UICollectionViewDataSource, UICollectionViewDelega
     
     //sizing function for the collection view cells
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        
+                
         var height: CGFloat
         var width: CGFloat
         
@@ -60,17 +66,32 @@ extension CarsCollectionView: UICollectionViewDataSource, UICollectionViewDelega
         
         width = collectionView.bounds.width - layout.sectionInset.right - layout.sectionInset.left
         height = (collectionViewHeight - verticalSpacing - topAndBottomInset) / numberOfRowsOnScreen
+        print(height)
         
-        return CGSize(width: width, height: height)
+        if isExpanded[indexPath.row] == true {
+            print("if")
+            return CGSize(width: width, height: height * 2)
+        }
+        else {
+            print("else")
+            return CGSize(width: width, height: height)
+        }
         
     }
     
-    //handling the seleciton of a cell
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+}
+
+extension CarsCollectionView: ExpandedCarCollectionViewCellDelegate {
+    
+    func expandButtonTouched(indexPath: IndexPath) {
         
-        //retrieve the selected car cell
-        let selectedCarCell = collectionView.cellForItem(at: indexPath) as! CarCollectionViewCell
+        isExpanded[indexPath.row] = !isExpanded[indexPath.row]
+        UIView.animate(withDuration: 0.8, delay: 0.0, usingSpringWithDamping: 0.9, initialSpringVelocity: 0.9, options: UIView.AnimationOptions.curveEaseInOut, animations: {
+              self.reloadItems(at: [indexPath])
+            }, completion: { success in
+                print("success")
+        })
         
     }
-    
+        
 }
