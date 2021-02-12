@@ -16,6 +16,7 @@ class CarCollectionViewCell: UICollectionViewCell {
     var disclosureButton = UIButton()
     
     var carInformationView: CarInformationView?
+    var requestSpotButton: UIButton?
     
     var indexPath: IndexPath!
     var isExpanded: Bool = false
@@ -122,14 +123,33 @@ class CarCollectionViewCell: UICollectionViewCell {
     
     func setExpandableSection() {
         
+        //add the car information view and initialize it with constraints
         carInformationView = CarInformationView(carModel: cellsCarModel!)
         
         contentView.addSubview(carInformationView!)
         
         carInformationView!.translatesAutoresizingMaskIntoConstraints = false
         carInformationView!.topAnchor.constraint(equalTo: carImageView.bottomAnchor).isActive = true
-        carInformationView!.bottomAnchor.constraint(equalTo: disclosureButton.topAnchor).isActive = true
+        carInformationView!.heightAnchor.constraint(equalTo: self.contentView.heightAnchor, multiplier: 0.4).isActive = true
         carInformationView!.widthAnchor.constraint(equalTo: self.contentView.widthAnchor).isActive = true
+        
+        //create the request button
+        requestSpotButton = UIButton()
+        requestSpotButton?.setTitle("Request Spot", for: .normal)
+        requestSpotButton?.setTitleColor(.systemBlue, for: .normal)
+        requestSpotButton?.addTarget(self, action: #selector(requestCarSpotButtonPressed), for: .touchUpInside)
+        
+        self.contentView.addSubview(requestSpotButton!)
+        requestSpotButton?.translatesAutoresizingMaskIntoConstraints = false
+        requestSpotButton?.topAnchor.constraint(equalTo: carInformationView!.bottomAnchor).isActive = true
+        requestSpotButton?.bottomAnchor.constraint(equalTo: disclosureButton.topAnchor).isActive = true
+        requestSpotButton?.centerXAnchor.constraint(equalTo: self.contentView.centerXAnchor).isActive = true
+        
+    }
+    
+    @objc func requestCarSpotButtonPressed() {
+        
+        print("requesting car")
         
     }
     
