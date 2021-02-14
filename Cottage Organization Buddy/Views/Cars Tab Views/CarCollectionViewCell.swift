@@ -150,7 +150,7 @@ class CarCollectionViewCell: UICollectionViewCell {
     @objc func requestCarSpotButtonPressed() {
         
         if let delegate = self.expandCellDelegate {
-            delegate.requestSpotInCar(carToRequest: self.cellsCarModel!)
+            delegate.requestSpot(in: self.cellsCarModel!)
         }
         
     }
@@ -171,6 +171,6 @@ protocol ExpandedCarCollectionViewCellDelegate {
     
     func expandButtonTouched(indexPath: IndexPath)
     
-    func requestSpotInCar(carToRequest: Car)
+    func requestSpot(in car: Car)
     
 }

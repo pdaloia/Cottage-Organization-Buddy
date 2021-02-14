@@ -279,9 +279,9 @@ extension CarsController: RequestInboxDelegate {
 
 extension CarsController: CarCollectionViewDelegate {
     
-    func createRequest(forCar: Car) {
+    func createRequest(for car: Car) {
         
-        let carToAddRequestTo = cottageModel?.carsList.first(where: { $0 === forCar } )
+        print("add request from controller")
         
     }
     

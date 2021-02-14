@@ -94,10 +94,10 @@ extension CarsCollectionView: ExpandedCarCollectionViewCellDelegate {
         
     }
     
-    func requestSpotInCar(carToRequest: Car) {
+    func requestSpot(in car: Car) {
         
         if let delegate = self.collectionViewDelegate {
-            delegate.createRequest(forCar: carToRequest)
+            delegate.createRequest(for: car)
         }
         
     }
@@ -106,6 +106,6 @@ extension CarsCollectionView: ExpandedCarCollectionViewCellDelegate {
 
 protocol CarCollectionViewDelegate {
     
-    func createRequest(forCar: Car) 
+    func createRequest(for car: Car) 
     
 }

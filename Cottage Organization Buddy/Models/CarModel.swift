@@ -14,10 +14,12 @@ class Car: CottageModelProtocol {
     var requests : [CarRequest]
     
     init(driver: Attendee, numberOfSeats: Int, passengers: [Attendee], requesters: [CarRequest]) {
+        
         self.driver = driver
         self.numberOfSeats = numberOfSeats
         self.passengers = passengers
         self.requests = requesters
+        
     }
     
     func returnPassengersNames() -> String {
@@ -35,7 +37,17 @@ class Car: CottageModelProtocol {
     }
     
     func calculateRemainingSeats() -> Int {
+        
         return self.numberOfSeats - self.passengers.count
+        
     }
+    
+    func createRequest(for attendeee: Attendee) {
+        
+        let newRequest = CarRequest(requester: attendeee)
+        self.requests.append(newRequest)
+        
+    }
+    
 }
 
