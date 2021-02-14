@@ -38,6 +38,7 @@ class CarsController: UIViewController, TabBarItemControllerProtocol {
         
         carsCollectionView?.register(CarCollectionViewCell.self, forCellWithReuseIdentifier: "CarCell")
         
+        carsCollectionView?.collectionViewDelegate = self
         carsCollectionView?.delegate = carsCollectionView
         carsCollectionView?.dataSource = carsCollectionView
         
@@ -271,6 +272,16 @@ extension CarsController: RequestInboxDelegate {
         //remove the add car view and display a success message
         self.navigationController?.popViewController(animated: true)
         ToastMessageDisplayer.showToast(controller: self, message: "Passenger declined!", seconds: 2)
+        
+    }
+    
+}
+
+extension CarsController: CarCollectionViewDelegate {
+    
+    func createRequest(forCar: Car) {
+        
+        let carToAddRequestTo = cottageModel?.carsList.first(where: { $0 === forCar } )
         
     }
     

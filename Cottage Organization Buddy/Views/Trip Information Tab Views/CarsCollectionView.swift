@@ -13,6 +13,8 @@ class CarsCollectionView: UICollectionView {
     
     var isExpanded = [Bool]()
     
+    var collectionViewDelegate: CarCollectionViewDelegate?
+    
     init(frame: CGRect, collectionViewLayout layout: UICollectionViewLayout, cellCount: Int) {
         super.init(frame: frame, collectionViewLayout: layout)
         
@@ -90,7 +92,20 @@ extension CarsCollectionView: ExpandedCarCollectionViewCellDelegate {
                 print("success")
         })
         
+    }
+    
+    func requestSpotInCar(carToRequest: Car) {
+        
+        if let delegate = self.collectionViewDelegate {
+            delegate.createRequest(forCar: carToRequest)
+        }
         
     }
         
+}
+
+protocol CarCollectionViewDelegate {
+    
+    func createRequest(forCar: Car) 
+    
 }
