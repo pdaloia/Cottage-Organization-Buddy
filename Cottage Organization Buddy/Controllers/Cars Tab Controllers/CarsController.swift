@@ -186,9 +186,10 @@ extension CarsController: AddDriverDelegate {
             return
         }
         
-        //create a new car for the currently logged in user and add it to the list of cars in the cottage model
+        //create a new car for the currently logged in user and add it to the list of cars in the cottage model. Also remove any request created by the new driver.
         let newCar = Car(driver: loggedInUser, numberOfSeats: numberOfPassengers, passengers: [], requesters: [])
         cottageModel?.carsList.append(newCar)
+        cottageModel?.removeAllCarRequests(for: loggedInUser)
                 
         //reload the collection view and recreate the nav bar buttons
         self.carsCollectionView!.reloadData()
@@ -295,6 +296,13 @@ extension CarsController: CarCollectionViewDelegate {
             return
         }
         
+        //check if user can request a spot in this car
+        let canRequestSpot = self.cottageModel?.checkIfAttendeeCanRequestCarSpot(loggedInUser, car)
+        if canRequestSpot == false {
+            ToastMessageDisplayer.showToast(controller: self, message: "Can't create request in this car", seconds: 2)
+        }
+        
+        //confirm the user would like to create a request
         let confirmationAlert = UIAlertController(title: "Create Request", message: "Request a spot in " + car.driver.name + "'s car?", preferredStyle: .alert)
         confirmationAlert.addAction(UIAlertAction(title: "Cancel", style: .default, handler: {_ in
             //do nothing

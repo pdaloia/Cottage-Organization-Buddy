@@ -52,6 +52,11 @@ extension CottageTrip {
             return false
         }
         
+        //check if attendee already requested a spot in this car
+        if car.requests.contains(where: { $0.requester === attendee }) {
+            return false
+        }
+        
         //check if attendee is a passenger in another car
         //Very bad implementation, please make more efficient in future rather than searching through all passengers.
         for car in self.carsList {
@@ -63,6 +68,12 @@ extension CottageTrip {
         //if no above conditions return false, we can return true here
         return true
         
+    }
+    
+    func removeAllCarRequests(for attendee: Attendee) {
+        for car in self.carsList {
+            car.requests.removeAll(where: { $0.requester === attendee })
+        }
     }
     
 }
