@@ -281,7 +281,29 @@ extension CarsController: CarCollectionViewDelegate {
     
     func createRequest(for car: Car) {
         
-        print("add request from controller")
+        //we will first get the currently logged in user
+        //for now we will hard code it to my user instance
+        var loggedInUser = Attendee(name: "")
+        
+        do {
+            try loggedInUser = UserService.GetLoggedInUser(model: cottageModel!)
+        } catch UserError.cantFindUserError {
+            ToastMessageDisplayer.showToast(controller: self, message: "Can not find your user account in this trip", seconds: 2)
+            return
+        } catch {
+            ToastMessageDisplayer.showToast(controller: self, message: "Unexpected error, please restart the app", seconds: 2)
+            return
+        }
+        
+        let confirmationAlert = UIAlertController(title: "Create Request", message: "Request a spot in " + car.driver.name + "'s car?", preferredStyle: .alert)
+        confirmationAlert.addAction(UIAlertAction(title: "Cancel", style: .default, handler: {_ in
+            //do nothing
+        }))
+        confirmationAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: {_ in
+            car.createRequest(for: loggedInUser)
+        }))
+        
+        present(confirmationAlert, animated: true, completion: nil)
         
     }
     
