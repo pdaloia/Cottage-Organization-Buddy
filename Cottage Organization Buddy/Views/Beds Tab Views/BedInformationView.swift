@@ -9,12 +9,6 @@ import UIKit
 
 class BedInformationView: UIView {
     
-    //initial message
-    let initialMessageLabel = UILabel()
-    
-    //variable to see if a cell has been selected yet
-    var cellHasBeenSelected = false
-    
     //model for the information to display
     var bedModelToDisplay: Bed?
     
@@ -33,19 +27,15 @@ class BedInformationView: UIView {
         super.init(frame: frame)
     }
     
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+    init(bedModel: Bed) {
+        self.init()
+        
+        bedModelToDisplay = bedModel
+        setupStackViews()
     }
     
-    func intializeView() {
-        
-        initialMessageLabel.text = "Select a bed to view its information"
-        self.addSubview(initialMessageLabel)
-        
-        initialMessageLabel.translatesAutoresizingMaskIntoConstraints = false
-        initialMessageLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
-        initialMessageLabel.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
-        
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
     
     func setupStackViews() {
@@ -68,17 +58,6 @@ class BedInformationView: UIView {
         tableStackView.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
         tableStackView.trailingAnchor.constraint(equalTo: self.trailingAnchor).isActive = true
         tableStackView.leadingAnchor.constraint(equalTo: self.leadingAnchor).isActive = true
-        
-    }
-    
-    func updateBedInformationToDisplay() {
-        
-        //check to see if this is the first time a bed has been selected
-        if cellHasBeenSelected == false {
-            initialMessageLabel.removeFromSuperview()
-            setupStackViews()
-            self.cellHasBeenSelected = true
-        }
         
         occupantNames.text = bedModelToDisplay?.returnOccupantNames()
         

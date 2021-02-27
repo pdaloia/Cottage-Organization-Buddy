@@ -31,7 +31,7 @@ class BedsController: UIViewController, TabBarItemControllerProtocol {
         flowLayout.sectionInset = UIEdgeInsets(top: 10, left: 3, bottom: 10, right: 3)
         flowLayout.itemSize = CGSize(width: 60, height: 60)
         
-        bedsCollectionView = BedCollectionView(frame: self.view.frame, collectionViewLayout: flowLayout)
+        bedsCollectionView = BedCollectionView(frame: self.view.frame, collectionViewLayout: flowLayout, cellCount: cottageModel!.bedsList.count)
         bedsCollectionView?.cottageModel = self.cottageModel
         
         bedsCollectionView?.register(BedCollectionViewCell.self, forCellWithReuseIdentifier: "BedCell")

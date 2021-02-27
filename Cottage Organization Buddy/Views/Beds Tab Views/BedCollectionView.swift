@@ -10,9 +10,13 @@ import UIKit
 class BedCollectionView: UICollectionView {
     
     var cottageModel: CottageTrip?
+    
+    var isExpanded = [Bool]()
 
-    override init(frame: CGRect, collectionViewLayout layout: UICollectionViewLayout) {
+    init(frame: CGRect, collectionViewLayout layout: UICollectionViewLayout, cellCount: Int) {
         super.init(frame: frame, collectionViewLayout: layout)
+        
+        isExpanded = Array(repeating: false, count: cellCount)
     }
     
     required init?(coder: NSCoder) {
@@ -33,7 +37,10 @@ extension BedCollectionView: UICollectionViewDataSource, UICollectionViewDelegat
         
         let bedCell = collectionView.dequeueReusableCell(withReuseIdentifier: "BedCell", for: indexPath) as! BedCollectionViewCell
         
+        bedCell.expandCellDelegate = self
         bedCell.cellsBedModel = cottageModel!.bedsList[indexPath.item]
+        bedCell.indexPath = indexPath
+        bedCell.isExpanded = isExpanded[indexPath.row]
         bedCell.setupBedCell()
         
         return bedCell
@@ -55,8 +62,28 @@ extension BedCollectionView: UICollectionViewDataSource, UICollectionViewDelegat
         width = collectionView.bounds.width - layout.sectionInset.right - layout.sectionInset.left
         height = (collectionViewHeight - verticalSpacing - topAndBottomInset) / numberOfRowsOnScreen
         
-        return CGSize(width: width, height: height)
+        if isExpanded[indexPath.row] == true {
+            return CGSize(width: width, height: height * 1.5)
+        }
+        else {
+            return CGSize(width: width, height: height)
+        }
         
     }
     
+}
+
+extension BedCollectionView: ExpandedBedCollectionViewCellDelegate {
+    
+    func expandButtonTouched(indexPath: IndexPath) {
+        
+        isExpanded[indexPath.row] = !isExpanded[indexPath.row]
+        UIView.animate(withDuration: 0.8, delay: 0.0, usingSpringWithDamping: 0.9, initialSpringVelocity: 0.9, options: UIView.AnimationOptions.curveEaseInOut, animations: {
+              self.reloadItems(at: [indexPath])
+            }, completion: { success in
+                print("success")
+        })
+        
+    }
+        
 }
