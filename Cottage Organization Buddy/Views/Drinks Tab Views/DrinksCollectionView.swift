@@ -41,7 +41,6 @@ extension DrinksCollectionView: UICollectionViewDataSource, UICollectionViewDele
         let currentCell = collectionView.dequeueReusableCell(withReuseIdentifier: "DrinksCell", for: indexPath) as! DrinksCollectionViewCell
         
         currentCell.layer.cornerRadius = 10
-        currentCell.backgroundColor = .green
             
         switch indexPath.section {
         case 0:

@@ -17,10 +17,17 @@ class DrinksCollectionViewCell: UICollectionViewCell {
     
     func initializeDrinksCell(forSection index: Int) {
         
+        // cell rounded section
+        self.layer.cornerRadius = 15.0
+        self.layer.masksToBounds = true
+        self.layer.borderWidth = 1
+        self.layer.borderColor = UIColor.gray.cgColor
+        
         //set up the cells label
         let cellTitleLabel = UILabel()
         cellTitleLabel.text = cellTitle!
         cellTitleLabel.textAlignment = .center
+        cellTitleLabel.backgroundColor = .green
         
         self.contentView.addSubview(cellTitleLabel)
         cellTitleLabel.translatesAutoresizingMaskIntoConstraints = false

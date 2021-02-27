@@ -27,6 +27,12 @@ class TripInformationCollectionViewCell: UICollectionViewCell {
     
     func setupCell(forCell index: Int) {
         
+        // cell rounded section
+        self.layer.cornerRadius = 15.0
+        self.layer.masksToBounds = true
+        self.layer.borderWidth = 1
+        self.layer.borderColor = UIColor.gray.cgColor
+        
         //create the cell's custom content view and constrain it to entire cell
         let customContentView = UIView()
         self.contentView.addSubview(customContentView)
@@ -40,6 +46,7 @@ class TripInformationCollectionViewCell: UICollectionViewCell {
         let cellsContents = getCellContents(forCell: index)
         let image = cellsContents.0
         let titleLabel = cellsContents.1
+        titleLabel.backgroundColor = .green
         let dataLabel = cellsContents.2
         
         //setup the image and image view

@@ -36,7 +36,6 @@ extension TripInformationCollectionView: UICollectionViewDelegateFlowLayout, UIC
         let currentCell = collectionView.dequeueReusableCell(withReuseIdentifier: "TripInformationCell", for: indexPath) as! TripInformationCollectionViewCell
         currentCell.cottageModel = cottageModel
         
-        currentCell.backgroundColor = .green
         currentCell.layer.cornerRadius = 10
         
         currentCell.setupCell(forCell: indexPath.item)
