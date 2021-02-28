@@ -17,6 +17,7 @@ class CottageTrip: CottageModelProtocol {
     var groceryList: GroceryLists = GroceryLists(allItems: [], groceriesPerPerson: [])
     var drinksList: [PersonalDrinksList] = []
     var carsList: [Car] = []
+    var roomsList: [Room] = []
     var bedsList: [Bed] = []
 }
 

@@ -10,6 +10,7 @@
 		FE034C43257DB04D00822907 /* AttendeesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE034C42257DB04D00822907 /* AttendeesView.swift */; };
 		FE034C47257DB34B00822907 /* TripInformationCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE034C46257DB34B00822907 /* TripInformationCollectionView.swift */; };
 		FE034C4A257DD15C00822907 /* TripInformationCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE034C49257DD15C00822907 /* TripInformationCollectionViewCell.swift */; };
+		FE0C79B025EC498E00AB92ED /* RoomModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE0C79AF25EC498E00AB92ED /* RoomModel.swift */; };
 		FE12953725829CFD00043F41 /* GroceriesCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE12953625829CFD00043F41 /* GroceriesCollectionView.swift */; };
 		FE148E892547C94C00DA5A16 /* BedCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE148E882547C94C00DA5A16 /* BedCollectionViewCell.swift */; };
 		FE30D2F625E88DC700ACC441 /* BedCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE30D2F525E88DC700ACC441 /* BedCollectionView.swift */; };
@@ -66,6 +67,7 @@
 		FE034C42257DB04D00822907 /* AttendeesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttendeesView.swift; sourceTree = "<group>"; };
 		FE034C46257DB34B00822907 /* TripInformationCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripInformationCollectionView.swift; sourceTree = "<group>"; };
 		FE034C49257DD15C00822907 /* TripInformationCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripInformationCollectionViewCell.swift; sourceTree = "<group>"; };
+		FE0C79AF25EC498E00AB92ED /* RoomModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomModel.swift; sourceTree = "<group>"; };
 		FE12953625829CFD00043F41 /* GroceriesCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroceriesCollectionView.swift; sourceTree = "<group>"; };
 		FE148E882547C94C00DA5A16 /* BedCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BedCollectionViewCell.swift; sourceTree = "<group>"; };
 		FE30D2F525E88DC700ACC441 /* BedCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BedCollectionView.swift; sourceTree = "<group>"; };
@@ -175,6 +177,7 @@
 				FE724EF02537D3DF00764387 /* DrinksModel.swift */,
 				FE724EEC2537D3A700764387 /* GroceryModel.swift */,
 				FE724F27253E773F00764387 /* AttendeeModel.swift */,
+				FE0C79AF25EC498E00AB92ED /* RoomModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -471,6 +474,7 @@
 				FE724F0D253A081C00764387 /* CottageTabsController.swift in Sources */,
 				FEEA1DD225C738250050E6FA /* RequestProtocol.swift in Sources */,
 				FE034C4A257DD15C00822907 /* TripInformationCollectionViewCell.swift in Sources */,
+				FE0C79B025EC498E00AB92ED /* RoomModel.swift in Sources */,
 				FE724F10253CF06C00764387 /* GroceriesController.swift in Sources */,
 				FEC156142577299E004FB37E /* GroceryListController.swift in Sources */,
 				FE724F34253E80DC00764387 /* TestHelper.swift in Sources */,
