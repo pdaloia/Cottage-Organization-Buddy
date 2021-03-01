@@ -63,7 +63,7 @@ extension RoomCollectionView: UICollectionViewDataSource, UICollectionViewDelega
         height = (collectionViewHeight - verticalSpacing - topAndBottomInset) / numberOfRowsOnScreen
         
         if isExpanded[indexPath.row] == true {
-            return CGSize(width: width, height: height * 1.5)
+            return CGSize(width: width, height: height + ( (height / 4) * CGFloat(cottageModel!.roomsList[indexPath.row].bedList.count) ) )
         }
         else {
             return CGSize(width: width, height: height)

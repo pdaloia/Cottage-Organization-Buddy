@@ -64,7 +64,8 @@ class RoomCollectionViewCell: UICollectionViewCell {
         roomLabel.translatesAutoresizingMaskIntoConstraints = false
         roomLabel.topAnchor.constraint(equalTo: self.contentView.topAnchor).isActive = true
         if isExpanded == true {
-            roomLabel.heightAnchor.constraint(equalTo: self.contentView.heightAnchor, multiplier: 0.25/1.5).isActive = true
+            let multiplier: CGFloat = CGFloat(Float(1) / Float(4 + cellsRoomModel!.bedList.count))
+            roomLabel.heightAnchor.constraint(equalTo: self.contentView.heightAnchor, multiplier: multiplier).isActive = true
         }
         else {
             roomLabel.heightAnchor.constraint(equalTo: self.contentView.heightAnchor, multiplier: 0.25).isActive = true
@@ -80,7 +81,8 @@ class RoomCollectionViewCell: UICollectionViewCell {
         bedImageView.translatesAutoresizingMaskIntoConstraints = false
         bedImageView.topAnchor.constraint(equalTo: self.roomLabel.bottomAnchor).isActive = true
         if isExpanded == true {
-            bedImageView.heightAnchor.constraint(equalTo: self.contentView.heightAnchor, multiplier: 0.5/1.5).isActive = true
+            let multiplier: CGFloat = CGFloat(Float(1) / Float(4 + cellsRoomModel!.bedList.count)) * 2
+            bedImageView.heightAnchor.constraint(equalTo: self.contentView.heightAnchor, multiplier: multiplier).isActive = true
         }
         else {
             bedImageView.heightAnchor.constraint(equalTo: self.contentView.heightAnchor, multiplier: 0.5).isActive = true
@@ -105,7 +107,8 @@ class RoomCollectionViewCell: UICollectionViewCell {
         disclosureButton.translatesAutoresizingMaskIntoConstraints = false
         disclosureButton.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor).isActive = true
         if isExpanded == true {
-            disclosureButton.heightAnchor.constraint(equalTo: self.contentView.heightAnchor, multiplier: 0.25/1.5).isActive = true
+            let multiplier: CGFloat = CGFloat(Float(1) / Float(4 + cellsRoomModel!.bedList.count))
+            disclosureButton.heightAnchor.constraint(equalTo: self.contentView.heightAnchor, multiplier: multiplier).isActive = true
         }
         else {
             disclosureButton.heightAnchor.constraint(equalTo: self.contentView.heightAnchor, multiplier: 0.25).isActive = true
