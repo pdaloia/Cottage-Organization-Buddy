@@ -7,18 +7,15 @@
 
 import UIKit
 
-class BedCollectionViewCell: UICollectionViewCell {
+class RoomCollectionViewCell: UICollectionViewCell {
     
-    var cellsBedModel: Bed?
+    var cellsRoomModel: Room?
     
     //view objects to place in the cell
     var bedImageView = UIImageView()
-    var bedSizeLabel = UILabel()
+    var roomLabel = UILabel()
     var disclosureButton = UIButton()
-    
-    var bedInformationView: BedInformationView?
-    var requestSpotButton: UIButton?
-    
+        
     var indexPath: IndexPath!
     var isExpanded: Bool = false
     
@@ -44,15 +41,10 @@ class BedCollectionViewCell: UICollectionViewCell {
         contentView.backgroundColor = .clear
         
         //set the label's contents
-        bedSizeLabel.text = String(describing: cellsBedModel!.size)
-        bedSizeLabel.textAlignment = .center
-        bedSizeLabel.backgroundColor = .green
-        if cellsBedModel!.checkIfBedAtRecommendedCapacity(bed: cellsBedModel!) {
-            bedSizeLabel.textColor = .red
-        }
-        else {
-            bedSizeLabel.textColor = .black
-        }
+        roomLabel.text = "Room #" + String(indexPath.row + 1)
+        roomLabel.textAlignment = .center
+        roomLabel.backgroundColor = .green
+        roomLabel.textColor = .black
         
         //set the cell's content constraints
         setLabelConstraints()
@@ -66,18 +58,18 @@ class BedCollectionViewCell: UICollectionViewCell {
     
     func setLabelConstraints() {
         
-        self.contentView.addSubview(bedSizeLabel)
+        self.contentView.addSubview(roomLabel)
         
         //add the constraints to the label
-        bedSizeLabel.translatesAutoresizingMaskIntoConstraints = false
-        bedSizeLabel.topAnchor.constraint(equalTo: self.contentView.topAnchor).isActive = true
+        roomLabel.translatesAutoresizingMaskIntoConstraints = false
+        roomLabel.topAnchor.constraint(equalTo: self.contentView.topAnchor).isActive = true
         if isExpanded == true {
-            bedSizeLabel.heightAnchor.constraint(equalTo: self.contentView.heightAnchor, multiplier: 0.25/1.5).isActive = true
+            roomLabel.heightAnchor.constraint(equalTo: self.contentView.heightAnchor, multiplier: 0.25/1.5).isActive = true
         }
         else {
-            bedSizeLabel.heightAnchor.constraint(equalTo: self.contentView.heightAnchor, multiplier: 0.25).isActive = true
+            roomLabel.heightAnchor.constraint(equalTo: self.contentView.heightAnchor, multiplier: 0.25).isActive = true
         }
-        bedSizeLabel.widthAnchor.constraint(equalTo: self.contentView.widthAnchor).isActive = true
+        roomLabel.widthAnchor.constraint(equalTo: self.contentView.widthAnchor).isActive = true
         
     }
     
@@ -86,7 +78,7 @@ class BedCollectionViewCell: UICollectionViewCell {
         self.contentView.addSubview(bedImageView)
         //add constraints
         bedImageView.translatesAutoresizingMaskIntoConstraints = false
-        bedImageView.topAnchor.constraint(equalTo: self.bedSizeLabel.bottomAnchor).isActive = true
+        bedImageView.topAnchor.constraint(equalTo: self.roomLabel.bottomAnchor).isActive = true
         if isExpanded == true {
             bedImageView.heightAnchor.constraint(equalTo: self.contentView.heightAnchor, multiplier: 0.5/1.5).isActive = true
         }
@@ -132,27 +124,22 @@ class BedCollectionViewCell: UICollectionViewCell {
     
     func setExpandableSection() {
         
-        //add the car information view and initialize it with constraints
-        bedInformationView = BedInformationView(bedModel: cellsBedModel!)
+        let bedStackView = UIStackView()
+        bedStackView.axis = .vertical
+        bedStackView.distribution = .fillEqually
+        bedStackView.alignment = .center
         
-        contentView.addSubview(bedInformationView!)
+        for bed in self.cellsRoomModel!.bedList {
+            let bedLabel = UILabel()
+            bedLabel.text = String(describing: bed.size)
+            bedStackView.addArrangedSubview(bedLabel)
+        }
         
-        bedInformationView!.translatesAutoresizingMaskIntoConstraints = false
-        bedInformationView!.topAnchor.constraint(equalTo: bedImageView.bottomAnchor).isActive = true
-        bedInformationView!.heightAnchor.constraint(equalTo: self.contentView.heightAnchor, multiplier: 0.2).isActive = true
-        bedInformationView!.widthAnchor.constraint(equalTo: self.contentView.widthAnchor).isActive = true
-        
-        //create the request button
-        requestSpotButton = UIButton()
-        requestSpotButton?.setTitle("Request Bed", for: .normal)
-        requestSpotButton?.setTitleColor(.systemBlue, for: .normal)
-        requestSpotButton?.addTarget(self, action: #selector(requestBedButtonPressed), for: .touchUpInside)
-        
-        self.contentView.addSubview(requestSpotButton!)
-        requestSpotButton?.translatesAutoresizingMaskIntoConstraints = false
-        requestSpotButton?.topAnchor.constraint(equalTo: bedInformationView!.bottomAnchor).isActive = true
-        requestSpotButton?.bottomAnchor.constraint(equalTo: disclosureButton.topAnchor).isActive = true
-        requestSpotButton?.centerXAnchor.constraint(equalTo: self.contentView.centerXAnchor).isActive = true
+        self.contentView.addSubview(bedStackView)
+        bedStackView.translatesAutoresizingMaskIntoConstraints = false
+        bedStackView.topAnchor.constraint(equalTo: bedImageView.bottomAnchor).isActive = true
+        bedStackView.bottomAnchor.constraint(equalTo: disclosureButton.topAnchor).isActive = true
+        bedStackView.widthAnchor.constraint(equalTo: self.contentView.widthAnchor).isActive = true
         
     }
     

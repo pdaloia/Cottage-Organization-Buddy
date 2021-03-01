@@ -18,7 +18,6 @@ class CottageTrip: CottageModelProtocol {
     var drinksList: [PersonalDrinksList] = []
     var carsList: [Car] = []
     var roomsList: [Room] = []
-    var bedsList: [Bed] = []
 }
 
 

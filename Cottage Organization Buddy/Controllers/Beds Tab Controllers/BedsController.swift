@@ -11,8 +11,7 @@ class BedsController: UIViewController, TabBarItemControllerProtocol {
     
     var cottageModel: CottageTrip?
 
-    var bedsCollectionView: BedCollectionView?
-    var bedInformationView = BedInformationView()
+    var roomCollectionView: RoomCollectionView?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,21 +30,21 @@ class BedsController: UIViewController, TabBarItemControllerProtocol {
         flowLayout.sectionInset = UIEdgeInsets(top: 10, left: 3, bottom: 10, right: 3)
         flowLayout.itemSize = CGSize(width: 60, height: 60)
         
-        bedsCollectionView = BedCollectionView(frame: self.view.frame, collectionViewLayout: flowLayout, cellCount: cottageModel!.bedsList.count)
-        bedsCollectionView?.cottageModel = self.cottageModel
+        roomCollectionView = RoomCollectionView(frame: self.view.frame, collectionViewLayout: flowLayout, cellCount: cottageModel!.roomsList.count)
+        roomCollectionView?.cottageModel = self.cottageModel
         
-        bedsCollectionView?.register(BedCollectionViewCell.self, forCellWithReuseIdentifier: "BedCell")
+        roomCollectionView?.register(RoomCollectionViewCell.self, forCellWithReuseIdentifier: "BedCell")
         
-        bedsCollectionView?.dataSource = bedsCollectionView.self
-        bedsCollectionView?.delegate = bedsCollectionView.self
+        roomCollectionView?.dataSource = roomCollectionView.self
+        roomCollectionView?.delegate = roomCollectionView.self
         
-        bedsCollectionView?.backgroundColor = .clear
-        view.addSubview(bedsCollectionView!)
+        roomCollectionView?.backgroundColor = .clear
+        view.addSubview(roomCollectionView!)
         
-        bedsCollectionView?.translatesAutoresizingMaskIntoConstraints = false
-        bedsCollectionView?.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor).isActive = true
-        bedsCollectionView?.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor).isActive = true
-        bedsCollectionView?.widthAnchor.constraint(equalTo: self.view.widthAnchor).isActive = true
+        roomCollectionView?.translatesAutoresizingMaskIntoConstraints = false
+        roomCollectionView?.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor).isActive = true
+        roomCollectionView?.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor).isActive = true
+        roomCollectionView?.widthAnchor.constraint(equalTo: self.view.widthAnchor).isActive = true
         
     }
 

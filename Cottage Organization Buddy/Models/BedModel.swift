@@ -10,33 +10,10 @@ import Foundation
 class Bed: CottageModelProtocol {
     
     var size: BedSize
-    var occupants: [Attendee]
     
     init(size: BedSize, occupants: [Attendee]) {
+        
         self.size = size
-        self.occupants = occupants
-    }
-    
-    func checkIfBedAtRecommendedCapacity(bed: Bed) -> Bool {
-        
-        switch (bed.size, bed.occupants.count) {
-        case (.twin, 0):
-            return false
-        case (.double, 0...1), (.queen, 0...1), (.king, 0...1):
-            return false
-        default:
-            return true
-        }
-        
-    }
-    
-    func returnOccupantNames() -> String {
-        
-        var occupantNames: [String] = []
-        for occupant in occupants {
-            occupantNames.append(occupant.name)
-        }
-        return occupantNames.joined(separator: ", ")
         
     }
     

@@ -7,7 +7,7 @@
 
 import UIKit
 
-class BedCollectionView: UICollectionView {
+class RoomCollectionView: UICollectionView {
     
     var cottageModel: CottageTrip?
     
@@ -25,20 +25,20 @@ class BedCollectionView: UICollectionView {
     
 }
 
-extension BedCollectionView: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+extension RoomCollectionView: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
-        return cottageModel!.bedsList.count
+        return cottageModel!.roomsList.count
         
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        let bedCell = collectionView.dequeueReusableCell(withReuseIdentifier: "BedCell", for: indexPath) as! BedCollectionViewCell
+        let bedCell = collectionView.dequeueReusableCell(withReuseIdentifier: "BedCell", for: indexPath) as! RoomCollectionViewCell
         
         bedCell.expandCellDelegate = self
-        bedCell.cellsBedModel = cottageModel!.bedsList[indexPath.item]
+        bedCell.cellsRoomModel = cottageModel!.roomsList[indexPath.item]
         bedCell.indexPath = indexPath
         bedCell.isExpanded = isExpanded[indexPath.row]
         bedCell.setupBedCell()
@@ -73,7 +73,7 @@ extension BedCollectionView: UICollectionViewDataSource, UICollectionViewDelegat
     
 }
 
-extension BedCollectionView: ExpandedBedCollectionViewCellDelegate {
+extension RoomCollectionView: ExpandedBedCollectionViewCellDelegate {
     
     func expandButtonTouched(indexPath: IndexPath) {
         
