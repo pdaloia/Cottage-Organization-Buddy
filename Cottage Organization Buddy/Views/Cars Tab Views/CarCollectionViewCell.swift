@@ -133,17 +133,45 @@ class CarCollectionViewCell: UICollectionViewCell {
         carInformationView!.heightAnchor.constraint(equalTo: self.contentView.heightAnchor, multiplier: 0.4).isActive = true
         carInformationView!.widthAnchor.constraint(equalTo: self.contentView.widthAnchor).isActive = true
         
-        //create the request button
+        //create the button stack view
+        let carCellButtonsStackView = UIStackView()
+        carCellButtonsStackView.axis = .horizontal
+        carCellButtonsStackView.alignment = .center
+        carCellButtonsStackView.distribution = .fill
+        
+        //create the buttons
         requestSpotButton = UIButton()
-        requestSpotButton?.setTitle("Request Spot", for: .normal)
+        requestSpotButton?.setTitle("Request", for: .normal)
         requestSpotButton?.setTitleColor(.systemBlue, for: .normal)
         requestSpotButton?.addTarget(self, action: #selector(requestCarSpotButtonPressed), for: .touchUpInside)
         
-        self.contentView.addSubview(requestSpotButton!)
-        requestSpotButton?.translatesAutoresizingMaskIntoConstraints = false
-        requestSpotButton?.topAnchor.constraint(equalTo: carInformationView!.bottomAnchor).isActive = true
-        requestSpotButton?.bottomAnchor.constraint(equalTo: disclosureButton.topAnchor).isActive = true
-        requestSpotButton?.centerXAnchor.constraint(equalTo: self.contentView.centerXAnchor).isActive = true
+        let deleteCarButton = UIButton()
+        deleteCarButton.setTitle("Delete", for: .normal)
+        deleteCarButton.setTitleColor(.systemBlue, for: .normal)
+        deleteCarButton.addTarget(self, action: #selector(deleteCarButtonPressed), for: .touchUpInside)
+        
+        let removePassengerButton = UIButton()
+        removePassengerButton.setTitle("Remove", for: .normal)
+        removePassengerButton.setTitleColor(.systemBlue, for: .normal)
+        removePassengerButton.addTarget(self, action: #selector(removePassengerButtonPressed), for: .touchUpInside)
+        
+        let leaveCarButton = UIButton()
+        leaveCarButton.setTitle("Leave", for: .normal)
+        leaveCarButton.setTitleColor(.systemBlue, for: .normal)
+        leaveCarButton.addTarget(self, action: #selector(leaveCarButtonPressed), for: .touchUpInside)
+        
+        //add the appropriate buttons to the stack view
+        carCellButtonsStackView.addArrangedSubview(requestSpotButton!)
+        carCellButtonsStackView.addArrangedSubview(deleteCarButton)
+        carCellButtonsStackView.addArrangedSubview(removePassengerButton)
+        carCellButtonsStackView.addArrangedSubview(leaveCarButton)
+        
+        //add the constraints on the stack view
+        self.contentView.addSubview(carCellButtonsStackView)
+        carCellButtonsStackView.translatesAutoresizingMaskIntoConstraints = false
+        carCellButtonsStackView.topAnchor.constraint(equalTo: carInformationView!.bottomAnchor).isActive = true
+        carCellButtonsStackView.bottomAnchor.constraint(equalTo: disclosureButton.topAnchor).isActive = true
+        carCellButtonsStackView.centerXAnchor.constraint(equalTo: self.contentView.centerXAnchor).isActive = true
         
     }
     
@@ -152,6 +180,24 @@ class CarCollectionViewCell: UICollectionViewCell {
         if let delegate = self.expandCellDelegate {
             delegate.requestSpot(in: self.cellsCarModel!)
         }
+        
+    }
+    
+    @objc func deleteCarButtonPressed() {
+        
+        print("test")
+        
+    }
+    
+    @objc func removePassengerButtonPressed() {
+        
+        print("test")
+        
+    }
+    
+    @objc func leaveCarButtonPressed() {
+        
+        print("test")
         
     }
     
