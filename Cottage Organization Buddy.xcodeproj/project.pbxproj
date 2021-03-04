@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -152,7 +152,6 @@
 				A02D09AE9600F819FA10CD75 /* Pods-Cottage Organization Buddy.debug.xcconfig */,
 				05632C5855D6080366031E51 /* Pods-Cottage Organization Buddy.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
