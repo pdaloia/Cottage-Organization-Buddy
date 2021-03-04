@@ -6,5 +6,8 @@ target 'Cottage Organization Buddy' do
   use_frameworks!
 
   # Pods for Cottage Organization Buddy
+  pod 'Firebase/Analytics'
+  pod 'Firebase/Auth'
+  pod 'GoogleSignIn'
 
 end
