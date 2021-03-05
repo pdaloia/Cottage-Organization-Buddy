@@ -11,6 +11,7 @@ import GoogleSignIn
 class HomeController: UIViewController {
     
     var googleSignInbutton = GIDSignInButton()
+    var homeLabel: UILabel?
 
     //Action when clicking the button to enter the next UIViewController application from the HomeController
     @IBAction func enterCottageBuddyApp(_ sender: Any) {
@@ -29,9 +30,22 @@ class HomeController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
+        GIDSignIn.sharedInstance()?.presentingViewController = self
+        GIDSignIn.sharedInstance()?.signIn()
+                       
+        homeLabel = UILabel()
+        homeLabel!.text = "Cottage Organization Buddy"
+        homeLabel!.font = homeLabel!.font.withSize(23)
+        
+        self.view.addSubview(homeLabel!)
+        homeLabel?.translatesAutoresizingMaskIntoConstraints = false
+        homeLabel?.bottomAnchor.constraint(equalTo: self.view.centerYAnchor).isActive = true
+        homeLabel?.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
+        
+        
         self.view.addSubview(googleSignInbutton)
         googleSignInbutton.translatesAutoresizingMaskIntoConstraints = false
-        googleSignInbutton.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor).isActive = true
+        googleSignInbutton.topAnchor.constraint(equalTo: self.homeLabel!.bottomAnchor).isActive = true
         googleSignInbutton.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
         
     }
