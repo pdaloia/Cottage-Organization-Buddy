@@ -6,32 +6,19 @@
 //
 
 import UIKit
+import Firebase
 import GoogleSignIn
 
 class HomeController: UIViewController {
     
     var googleSignInbutton = GIDSignInButton()
     var homeLabel: UILabel?
-
-    //Action when clicking the button to enter the next UIViewController application from the HomeController
-    @IBAction func enterCottageBuddyApp(_ sender: Any) {
-        
-        //this if where we will sign in with gmail
-        
-        let storyBoard : UIStoryboard = UIStoryboard(name: "CottageTabs", bundle:nil)
-        
-        let nextViewController = storyBoard.instantiateViewController(withIdentifier: "CottageTabsView") as! CottageTabsController
-        nextViewController.modalPresentationStyle = .fullScreen
-        
-        self.present(nextViewController, animated:true, completion:nil)
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
         
+        GIDSignIn.sharedInstance()?.delegate = self
         GIDSignIn.sharedInstance()?.presentingViewController = self
-        GIDSignIn.sharedInstance()?.signIn()
                        
         homeLabel = UILabel()
         homeLabel!.text = "Cottage Organization Buddy"
@@ -42,7 +29,6 @@ class HomeController: UIViewController {
         homeLabel?.bottomAnchor.constraint(equalTo: self.view.centerYAnchor).isActive = true
         homeLabel?.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
         
-        
         self.view.addSubview(googleSignInbutton)
         googleSignInbutton.translatesAutoresizingMaskIntoConstraints = false
         googleSignInbutton.topAnchor.constraint(equalTo: self.homeLabel!.bottomAnchor).isActive = true
@@ -50,6 +36,37 @@ class HomeController: UIViewController {
         
     }
 
+}
 
+extension HomeController: GIDSignInDelegate{
+
+    
+    func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
+        
+        if let error = error {
+            // ...
+            return
+        }
+
+        guard let authentication = user.authentication else { return }
+        let credential = GoogleAuthProvider.credential(withIDToken: authentication.idToken, accessToken: authentication.accessToken)
+        
+        print("here")
+        
+        let storyBoard : UIStoryboard = UIStoryboard(name: "CottageTabs", bundle:nil)
+        
+        let nextViewController = storyBoard.instantiateViewController(withIdentifier: "CottageTabsView") as! CottageTabsController
+        nextViewController.modalPresentationStyle = .fullScreen
+        
+        self.present(nextViewController, animated:true, completion:nil)
+        
+    }
+    
+    func sign(_ signIn: GIDSignIn!, didDisconnectWith user: GIDGoogleUser!, withError error: Error!) {
+        // Perform any operations when the user disconnects from app here.
+        // ...
+        print("disconnecting")
+    }
+    
 }
 
