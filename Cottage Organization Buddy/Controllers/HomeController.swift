@@ -51,6 +51,19 @@ class HomeController: UIViewController {
         }
         
     }
+    
+    func pushCottageTabsController() {
+        
+        print("here")
+        
+        let storyBoard : UIStoryboard = UIStoryboard(name: "CottageTabs", bundle:nil)
+        
+        let nextViewController = storyBoard.instantiateViewController(withIdentifier: "CottageTabsView") as! CottageTabsController
+        nextViewController.modalPresentationStyle = .fullScreen
+        
+        self.present(nextViewController, animated:false, completion:nil)
+        
+    }
 
 }
 
@@ -81,14 +94,14 @@ extension HomeController: GIDSignInDelegate{
         guard let authentication = user.authentication else { return }
         let credential = GoogleAuthProvider.credential(withIDToken: authentication.idToken, accessToken: authentication.accessToken)
         
-        print("here")
+        // Authenticate with Firebase using the credential object
+        Auth.auth().signIn(with: credential) { (authResult, error) in
+            if let error = error {
+                print("authentication error \(error.localizedDescription)")
+            }
+        }
         
-        let storyBoard : UIStoryboard = UIStoryboard(name: "CottageTabs", bundle:nil)
-        
-        let nextViewController = storyBoard.instantiateViewController(withIdentifier: "CottageTabsView") as! CottageTabsController
-        nextViewController.modalPresentationStyle = .fullScreen
-        
-        self.present(nextViewController, animated:false, completion:nil)
+        pushCottageTabsController()
         
     }
     
