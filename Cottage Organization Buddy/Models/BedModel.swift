@@ -7,7 +7,7 @@
 
 import Foundation
 
-class Bed: CottageModelProtocol {
+class Bed: Codable, CottageModelProtocol {
     
     var size: BedSize
     
@@ -19,6 +19,7 @@ class Bed: CottageModelProtocol {
     
 }
 
-enum BedSize {
+enum BedSize: String, Codable {
+    
     case twin, double, queen, king
 }

@@ -7,7 +7,7 @@
 
 import Foundation
 
-class Attendee: CottageModelProtocol {
+class Attendee: Codable, CottageModelProtocol {
     
     var name: String
     

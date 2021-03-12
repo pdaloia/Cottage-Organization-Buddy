@@ -7,7 +7,7 @@
 
 import Foundation
 
-class CarRequest: RequestProtocol {
+class CarRequest: Codable, RequestProtocol {
     
     private(set) var requester: Attendee
     

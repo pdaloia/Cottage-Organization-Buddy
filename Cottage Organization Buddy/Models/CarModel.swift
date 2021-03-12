@@ -7,7 +7,7 @@
 
 import Foundation
 
-class Car: CottageModelProtocol {
+class Car: Codable, CottageModelProtocol {
     var driver: Attendee
     var numberOfSeats: Int
     var passengers: [Attendee]

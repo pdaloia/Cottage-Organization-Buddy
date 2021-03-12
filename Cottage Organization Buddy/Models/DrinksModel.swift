@@ -7,7 +7,7 @@
 
 import Foundation
 
-class PersonalDrinksList: CottageModelProtocol {
+class PersonalDrinksList: Codable, CottageModelProtocol {
     var person: Attendee
     var drinkNames: [Drink]
     
@@ -17,7 +17,7 @@ class PersonalDrinksList: CottageModelProtocol {
     }
 }
 
-struct Drink {
+struct Drink: Codable {
     var name: String
     var isAlcoholic: Bool
     var forSharing: Bool

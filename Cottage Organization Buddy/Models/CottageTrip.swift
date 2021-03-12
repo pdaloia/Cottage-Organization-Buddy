@@ -7,7 +7,7 @@
 
 import Foundation
 
-class CottageTrip: CottageModelProtocol {
+class CottageTrip: Codable, CottageModelProtocol {
     var tripName: String = ""
     var tripOrganiser: Attendee = Attendee(name: "")
     var startDate: Date = Date()

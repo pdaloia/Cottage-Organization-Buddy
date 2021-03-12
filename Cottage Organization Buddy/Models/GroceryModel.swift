@@ -7,7 +7,7 @@
 
 import Foundation
 
-class GroceryLists: CottageModelProtocol {
+class GroceryLists: Codable, CottageModelProtocol {
     var allItems: [Grocery]
     var groceriesPerPerson: [GroceryList]
     
@@ -17,7 +17,7 @@ class GroceryLists: CottageModelProtocol {
     }
 }
 
-class GroceryList {
+class GroceryList: Codable {
     var person: Attendee
     var groceries: [Grocery]
     
@@ -27,7 +27,7 @@ class GroceryList {
     }
 }
 
-class Grocery {
+class Grocery: Codable {
     var productName: String
     var price: Double
     var quantity: Int
@@ -39,6 +39,6 @@ class Grocery {
     }
 }
 
-enum GroceryType {
+enum GroceryType: String, Codable {
     case produce, meat, snack, premade, drink, miscellaneous /*cheese,*/
 }

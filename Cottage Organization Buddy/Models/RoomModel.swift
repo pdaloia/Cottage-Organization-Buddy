@@ -7,7 +7,7 @@
 
 import Foundation
 
-class Room: CottageModelProtocol {
+class Room: Codable, CottageModelProtocol {
     
     var bedList: [Bed]
     
