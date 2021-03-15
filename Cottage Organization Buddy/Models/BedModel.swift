@@ -11,7 +11,7 @@ class Bed: Codable, CottageModelProtocol {
     
     var size: BedSize
     
-    init(size: BedSize, occupants: [Attendee]) {
+    init(size: BedSize) {
         
         self.size = size
         
