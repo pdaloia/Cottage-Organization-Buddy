@@ -10,9 +10,11 @@ import Foundation
 class Attendee: Codable, CottageModelProtocol {
     
     var name: String
+    var firebaseUserID: String
     
-    init(name: String) {
+    init(name: String, firebaseUserID: String) {
         self.name = name
+        self.firebaseUserID = firebaseUserID
     }
     
 }

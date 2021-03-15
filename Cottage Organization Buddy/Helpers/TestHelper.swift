@@ -14,19 +14,19 @@ class TestHelper {
         let modelToLoad = model
         
         //create attendees
-        let phil = Attendee(name: "Phil")
-        let vic = Attendee(name: "Vic")
-        let andrew = Attendee(name: "Andrew")
-        let medei = Attendee(name: "Medei")
-        let sonia = Attendee(name: "Sonia")
-        let laura = Attendee(name: "Laura")
-        let jules = Attendee(name: "Jules")
-        let kim = Attendee(name: "Kim")
-        let abosh = Attendee(name: "Abosh")
-        let erica = Attendee(name: "Erica")
-        let michael = Attendee(name: "Michael")
-        let lucas = Attendee(name: "Lucas")
-        let ricky = Attendee(name: "Ricky")
+        let phil = Attendee(name: "Phil", firebaseUserID: "")
+        let vic = Attendee(name: "Vic", firebaseUserID: "")
+        let andrew = Attendee(name: "Andrew", firebaseUserID: "")
+        let medei = Attendee(name: "Medei", firebaseUserID: "")
+        let sonia = Attendee(name: "Sonia", firebaseUserID: "")
+        let laura = Attendee(name: "Laura", firebaseUserID: "")
+        let jules = Attendee(name: "Jules", firebaseUserID: "")
+        let kim = Attendee(name: "Kim", firebaseUserID: "")
+        let abosh = Attendee(name: "Abosh", firebaseUserID: "")
+        let erica = Attendee(name: "Erica", firebaseUserID: "")
+        let michael = Attendee(name: "Michael", firebaseUserID: "")
+        let lucas = Attendee(name: "Lucas", firebaseUserID: "")
+        let ricky = Attendee(name: "Ricky", firebaseUserID: "")
         
         //name the trip
         modelToLoad.tripName = "Vic's Cottage 2020"

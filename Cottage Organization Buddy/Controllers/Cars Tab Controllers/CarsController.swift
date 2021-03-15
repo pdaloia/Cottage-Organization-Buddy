@@ -174,7 +174,7 @@ extension CarsController: AddDriverDelegate {
         
         //we will first get the currently logged in user
         //for now we will hard code it to my user instance
-        var loggedInUser = Attendee(name: "")
+        var loggedInUser = Attendee(name: "", firebaseUserID: "")
         
         do {
             try loggedInUser = UserService.GetLoggedInUser(model: cottageModel!)
@@ -209,7 +209,7 @@ extension CarsController: RequestInboxDelegate {
         
         //we will first get the currently logged in user
         //for now we will hard code it to my user instance
-        var loggedInUser = Attendee(name: "")
+        var loggedInUser = Attendee(name: "", firebaseUserID: "")
         
         do {
             try loggedInUser = UserService.GetLoggedInUser(model: cottageModel!)
@@ -245,7 +245,7 @@ extension CarsController: RequestInboxDelegate {
         
         //we will first get the currently logged in user
         //for now we will hard code it to my user instance
-        var loggedInUser = Attendee(name: "")
+        var loggedInUser = Attendee(name: "", firebaseUserID: "")
         
         do {
             try loggedInUser = UserService.GetLoggedInUser(model: cottageModel!)
@@ -284,7 +284,7 @@ extension CarsController: CarCollectionViewDelegate {
         
         //we will first get the currently logged in user
         //for now we will hard code it to my user instance
-        var loggedInUser = Attendee(name: "")
+        var loggedInUser = Attendee(name: "", firebaseUserID: "")
         
         do {
             try loggedInUser = UserService.GetLoggedInUser(model: cottageModel!)
