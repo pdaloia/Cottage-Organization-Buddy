@@ -52,6 +52,7 @@
 		FEAC9744254BB4EA007B83B1 /* DrinksCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEAC9743254BB4EA007B83B1 /* DrinksCollectionViewCell.swift */; };
 		FEAC9747254BB8C7007B83B1 /* GroceriesCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEAC9746254BB8C7007B83B1 /* GroceriesCollectionViewCell.swift */; };
 		FEB7F0DE25F07F3B00CAACB1 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FEB7F0DD25F07F3B00CAACB1 /* GoogleService-Info.plist */; };
+		FEBC424E25FEDEFD00C35FE1 /* FirestoreServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEBC424D25FEDEFD00C35FE1 /* FirestoreServices.swift */; };
 		FEBD42B02585A927002D81A6 /* DrinksCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEBD42AF2585A927002D81A6 /* DrinksCollectionView.swift */; };
 		FEBD42B52585B107002D81A6 /* DrinksCollectionViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEBD42B42585B107002D81A6 /* DrinksCollectionViewDelegate.swift */; };
 		FEC156142577299E004FB37E /* GroceryListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEC156132577299E004FB37E /* GroceryListController.swift */; };
@@ -114,6 +115,7 @@
 		FEAC9743254BB4EA007B83B1 /* DrinksCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinksCollectionViewCell.swift; sourceTree = "<group>"; };
 		FEAC9746254BB8C7007B83B1 /* GroceriesCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroceriesCollectionViewCell.swift; sourceTree = "<group>"; };
 		FEB7F0DD25F07F3B00CAACB1 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		FEBC424D25FEDEFD00C35FE1 /* FirestoreServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreServices.swift; sourceTree = "<group>"; };
 		FEBD42AF2585A927002D81A6 /* DrinksCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinksCollectionView.swift; sourceTree = "<group>"; };
 		FEBD42B42585B107002D81A6 /* DrinksCollectionViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinksCollectionViewDelegate.swift; sourceTree = "<group>"; };
 		FEC156132577299E004FB37E /* GroceryListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroceryListController.swift; sourceTree = "<group>"; };
@@ -243,6 +245,7 @@
 				FE724F33253E80DC00764387 /* TestHelper.swift */,
 				FE959BDD259290870087A046 /* ToastMessageDisplayer.swift */,
 				FEDCEEDF259A747300C7AAB1 /* UserService.swift */,
+				FEBC424D25FEDEFD00C35FE1 /* FirestoreServices.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -578,6 +581,7 @@
 				FE724F13253CF08200764387 /* CarsController.swift in Sources */,
 				FEDCEEE0259A747400C7AAB1 /* UserService.swift in Sources */,
 				FE724EF72537D40200764387 /* BedModel.swift in Sources */,
+				FEBC424E25FEDEFD00C35FE1 /* FirestoreServices.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

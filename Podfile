@@ -9,5 +9,7 @@ target 'Cottage Organization Buddy' do
   pod 'Firebase/Analytics'
   pod 'Firebase/Auth'
   pod 'GoogleSignIn'
+  pod 'Firebase/Firestore'
+  pod 'FirebaseFirestoreSwift', '~> 7.0-beta'
 
 end
