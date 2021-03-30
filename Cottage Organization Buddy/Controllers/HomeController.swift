@@ -54,14 +54,22 @@ class HomeController: UIViewController {
     
     func pushCottageTabsController() {
         
-        print("here")
-        
         let storyBoard : UIStoryboard = UIStoryboard(name: "CottageTabs", bundle:nil)
         
         let nextViewController = storyBoard.instantiateViewController(withIdentifier: "CottageTabsView") as! CottageTabsController
         nextViewController.modalPresentationStyle = .fullScreen
         
-        self.present(nextViewController, animated:false, completion:nil)
+        let df = DateFormatter()
+        df.dateFormat = "yyyy-MM-dd"
+        
+        let service = FirestoreServices()
+        service.get(cottage: "test123456789") { model in
+            
+            nextViewController.cottageModel = model!
+            self.present(nextViewController, animated:true, completion:nil)
+            
+        }
+        
         
     }
 

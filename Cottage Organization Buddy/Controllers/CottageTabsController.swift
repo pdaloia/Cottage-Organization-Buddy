@@ -12,11 +12,11 @@ class CottageTabsController: UITabBarController {
     var cottageModel: CottageTrip = CottageTrip()
 
     override func viewDidLoad() {
+        
         super.viewDidLoad()
         
-        TestHelper.loadTestModel(into: cottageModel)
-
         loadViewControllersIntoTabBarController()
+        
     }
     
     

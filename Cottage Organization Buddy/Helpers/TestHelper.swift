@@ -110,15 +110,6 @@ class TestHelper {
         
         modelToLoad.drinksList = [philsList, medeisList, julesList]
         
-        let jsonEncoder = JSONEncoder()
-        do {
-            let data = try jsonEncoder.encode(modelToLoad)
-            let json = String(data: data, encoding: .utf8)
-            print(json ?? "")
-        } catch {
-            print(error)
-        }
-        
     }
     
 }
