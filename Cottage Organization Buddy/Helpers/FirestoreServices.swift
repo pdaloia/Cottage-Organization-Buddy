@@ -76,6 +76,7 @@ class FirestoreServices {
                             let attendeeToAdd = Attendee(name: document.get("name") as! String, firebaseUserID: document.documentID)
                             cottageModel.attendeesList.append(attendeeToAdd)
                         }
+                        print("after attendees data")
                         
                         //get the cars
                         group.enter()
@@ -84,11 +85,35 @@ class FirestoreServices {
                                     print("Error getting documents: \(err)")
                             } else {
                                 print("car data")
-                                //for document in querySnapshot!.documents {
-                                    //let driverID = document.documentID
-                                    //let driverAttendeeModel: Attendee? = cottageModel.attendeesList.first(where: { $0.firebaseUserID == driverID } )
-                                    //let carToAdd = Car(driver: driverAttendeeModel, numberOfSeats: document.get("numberOfSeats"), passengers: , requesters: )
-                                //}
+                                for document in querySnapshot!.documents {
+                                    //get the driver attendee model
+                                    let driverID = document.documentID
+                                    let driverAttendeeModel: Attendee? = cottageModel.attendeesList.first(where: { $0.firebaseUserID == driverID } )
+                                    
+                                    //get number of seats
+                                    let numberOfSeats: Int = document.get("numberOfSeats") as! Int
+                                    
+                                    //get the passengers
+                                    let passengerIDs = document.get("passengers") as! [String]
+                                    var passengers: [Attendee] = []
+                                    for passengerID in passengerIDs {
+                                        let passenger: Attendee? = cottageModel.attendeesList.first(where: { $0.firebaseUserID == passengerID } )
+                                        passengers.append(passenger!)
+                                    }
+                                    
+                                    //get the requests
+                                    let requesterIDs = document.get("requests") as! [String]
+                                    var requests: [CarRequest] = []
+                                    for requestID in requesterIDs {
+                                        let requester: Attendee? = cottageModel.attendeesList.first(where: { $0.firebaseUserID == requestID } )
+                                        let request = CarRequest(requester: requester!)
+                                        requests.append(request)
+                                    }
+                                    
+                                    let carToAdd = Car(driver: driverAttendeeModel!, numberOfSeats: numberOfSeats, passengers: passengers, requests: requests)
+                                    
+                                    cottageModel.carsList.append(carToAdd)
+                                }
                             }
                             print("done car data")
                             group.leave()

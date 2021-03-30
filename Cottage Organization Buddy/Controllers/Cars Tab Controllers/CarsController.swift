@@ -187,7 +187,7 @@ extension CarsController: AddDriverDelegate {
         }
         
         //create a new car for the currently logged in user and add it to the list of cars in the cottage model. Also remove any request created by the new driver.
-        let newCar = Car(driver: loggedInUser, numberOfSeats: numberOfPassengers, passengers: [], requesters: [])
+        let newCar = Car(driver: loggedInUser, numberOfSeats: numberOfPassengers, passengers: [], requests: [])
         cottageModel?.carsList.append(newCar)
         cottageModel?.removeAllCarRequests(for: loggedInUser)
                 

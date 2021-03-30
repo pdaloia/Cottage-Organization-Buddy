@@ -13,12 +13,12 @@ class Car: Codable, CottageModelProtocol {
     var passengers: [Attendee]
     var requests : [CarRequest]
     
-    init(driver: Attendee, numberOfSeats: Int, passengers: [Attendee], requesters: [CarRequest]) {
+    init(driver: Attendee, numberOfSeats: Int, passengers: [Attendee], requests: [CarRequest]) {
         
         self.driver = driver
         self.numberOfSeats = numberOfSeats
         self.passengers = passengers
-        self.requests = requesters
+        self.requests = requests
         
     }
     
