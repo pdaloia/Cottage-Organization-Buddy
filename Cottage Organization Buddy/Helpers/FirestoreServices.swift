@@ -22,7 +22,6 @@ class FirestoreServices {
         
         //get the references to the collections
         let cottageRef = db.collection("cottages").document(cottage)
-        let usersRef = db.collection("users")
         
         //get the fields from the initial document and load them into the cottage model
         cottageRef.getDocument { (document, error) in
@@ -127,6 +126,29 @@ class FirestoreServices {
                             } else {
                                 //drink data manipulation
                                 print("drink data")
+                                
+                                for document in querySnapshot!.documents {
+                                    
+                                    let drinkListUserID = document.documentID
+                                    let drinkListAttendee: Attendee = cottageModel.attendeesList.first(where: { $0.firebaseUserID == drinkListUserID } )!
+                                    
+                                    var userDrinks: [Drink] = []
+                                    
+                                    let drinks = document.data()
+                                    for (key, values) in drinks {
+                                        let drinkName: String = key
+                                        let drinkInfo: [Bool] = values as! [Bool]
+                                        let isAlcoholic: Bool = drinkInfo[0]
+                                        let isForSharing: Bool = drinkInfo[1]
+                                        
+                                        let drinkToAdd: Drink = Drink(name: drinkName, isAlcoholic: isAlcoholic, forSharing: isForSharing)
+                                        userDrinks.append(drinkToAdd)
+                                    }
+                                    
+                                    let currentUserDrinkList: PersonalDrinksList = PersonalDrinksList(person: drinkListAttendee, drinkNames: userDrinks)
+                                    cottageModel.drinksList.append(currentUserDrinkList)
+                                    
+                                }
                             }
                             print("done drink data")
                             group.leave()
