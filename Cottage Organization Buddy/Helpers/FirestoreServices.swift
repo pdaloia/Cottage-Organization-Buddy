@@ -162,6 +162,30 @@ class FirestoreServices {
                             } else {
                                 //groceries data manipulation
                                 print("groceries data")
+                                
+                                for document in querySnapshot!.documents {
+                                    
+                                    let groceryName = document.documentID
+                                    let price: Double = document.get("price") as! Double
+                                    let quantity: Int = document.get("quantity") as! Int
+                                    
+                                    let assignedUserId = document.get("assignedTo") as! String
+                                    
+                                    let groceryToAdd = Grocery(productName: groceryName, price: price, quantity: quantity)
+                                    
+                                    if assignedUserId != "" {
+                                        let assignedAttendee: Attendee = cottageModel.attendeesList.first(where: { $0.firebaseUserID == assignedUserId } )!
+                                        if cottageModel.groceryList.groceryLists[assignedAttendee] == nil {
+                                            cottageModel.groceryList.groceryLists[assignedAttendee] = []
+                                        }
+                                        cottageModel.groceryList.groceryLists[assignedAttendee]!.append(groceryToAdd)
+                                        cottageModel.groceryList.allItems.append(groceryToAdd)
+                                    }
+                                    else {
+                                        cottageModel.groceryList.allItems.append(groceryToAdd)
+                                    }
+                                    
+                                }
                             }
                             print("done groceries data")
                             group.leave()
