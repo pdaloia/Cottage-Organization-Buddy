@@ -199,6 +199,19 @@ class FirestoreServices {
                             } else {
                                 //room/bed data manipulation
                                 print("room data")
+                                
+                                for document in querySnapshot!.documents {
+                                    
+                                    let roomToAdd = Room(bedList: [])
+                                    let bedsToAdd = document.get("beds") as! [String]
+                                    for bed in bedsToAdd {
+                                        let bedToAdd = Bed(size: BedSize(rawValue: bed)!)
+                                        roomToAdd.bedList.append(bedToAdd)
+                                    }
+                                    
+                                    cottageModel.roomsList.append(roomToAdd)
+                                    
+                                }
                             }
                             print("done room data")
                             group.leave()
