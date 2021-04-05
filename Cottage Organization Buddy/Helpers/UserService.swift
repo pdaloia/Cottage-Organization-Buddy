@@ -6,17 +6,17 @@
 //
 
 import Foundation
+import Firebase
 
 class UserService {
     
     //The service used to get the currently logged in user's attendee model
-    //will be hard-coded to my user for now
     static func GetLoggedInUser(model: CottageTrip) throws -> Attendee {
         
         var currentLoggedInUser: Attendee
         
-        if let getUser = model.attendeesList.first(where: {$0.name == "Phil"}) {
-            currentLoggedInUser = getUser
+        if let user = model.attendeesList.first(where: { $0.firebaseUserID == Auth.auth().currentUser?.uid }) {
+            currentLoggedInUser = user
         }
         else {
             throw UserError.cantFindUserError
