@@ -43,7 +43,7 @@ extension GroceriesCollectionView: UICollectionViewDelegateFlowLayout, UICollect
         case 0:
             return 1
         case 1:
-            return cottageModel!.groceryList.groceriesPerPerson.count
+            return cottageModel!.attendeesList.count
         default:
             return 0
         }
@@ -60,7 +60,7 @@ extension GroceriesCollectionView: UICollectionViewDelegateFlowLayout, UICollect
         case 0:
             currentCell.cellTitle = "All Grocery Items"
         case 1:
-            currentCell.cellTitle = cottageModel!.groceryList.groceriesPerPerson[indexPath.row].person.name + "'s grocery list"
+            currentCell.cellTitle = cottageModel!.attendeesList[indexPath.row].name + "'s grocery list"
         default:
             currentCell.cellTitle = "Error"
         }
@@ -108,8 +108,10 @@ extension GroceriesCollectionView: UICollectionViewDelegateFlowLayout, UICollect
             groceryListController.groceryListToDisplay = self.cottageModel?.groceryList.allItems
             groceryListController.groceryListTitle = "All Items"
         case 1:
-            groceryListController.groceryListToDisplay = self.cottageModel?.groceryList.groceriesPerPerson[indexPath.item].groceries
-            groceryListController.groceryListTitle = "\(self.cottageModel?.groceryList.groceriesPerPerson[indexPath.item].person.name ?? "Error")'s List"
+            let attendee: Attendee = (cottageModel?.attendeesList[indexPath.item])!
+            let groceryListToDisplay: [Grocery] = cottageModel?.groceryList.groceryLists[attendee] ?? []
+            groceryListController.groceryListToDisplay = groceryListToDisplay
+            groceryListController.groceryListTitle = "\(attendee.name)'s List"
         default:
             groceryListController.groceryListToDisplay = []
         }

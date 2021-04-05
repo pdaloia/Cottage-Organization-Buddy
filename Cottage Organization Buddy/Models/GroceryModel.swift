@@ -9,21 +9,11 @@ import Foundation
 
 class GroceryLists: Codable, CottageModelProtocol {
     var allItems: [Grocery]
-    var groceriesPerPerson: [GroceryList]
+    var groceryLists: [Attendee:[Grocery]]
     
-    init(allItems: [Grocery], groceriesPerPerson: [GroceryList]) {
+    init(allItems: [Grocery], groceryLists: [Attendee:[Grocery]]) {
         self.allItems = allItems
-        self.groceriesPerPerson = groceriesPerPerson
-    }
-}
-
-class GroceryList: Codable {
-    var person: Attendee
-    var groceries: [Grocery]
-    
-    init(person: Attendee, groceries: [Grocery]) {
-        self.person = person
-        self.groceries = groceries
+        self.groceryLists = groceryLists
     }
 }
 

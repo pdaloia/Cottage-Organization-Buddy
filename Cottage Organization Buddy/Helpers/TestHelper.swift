@@ -62,12 +62,15 @@ class TestHelper {
         let popsicles: Grocery = Grocery(productName: "Popsicle", price: 2.50, quantity: 20)
         
         let allGroceries = [bananas, apples, burgers, popsicles]
-        
-        let philsGroceries: GroceryList = GroceryList(person: phil, groceries: [apples, bananas])
-        let vicsGroceries: GroceryList = GroceryList(person: vic, groceries: [burgers])
-        let medeisGroceries: GroceryList = GroceryList(person: medei, groceries: [popsicles])
+        var groceryListsDict = [Attendee:[Grocery]]()
+        groceryListsDict[phil] = []
+        groceryListsDict[phil]?.append(contentsOf: [apples, bananas])
+        groceryListsDict[vic] = []
+        groceryListsDict[vic]?.append(contentsOf: [burgers])
+        groceryListsDict[medei] = []
+        groceryListsDict[medei]?.append(contentsOf: [popsicles])
     
-        modelToLoad.groceryList = GroceryLists(allItems: allGroceries, groceriesPerPerson: [philsGroceries, vicsGroceries, medeisGroceries])
+        modelToLoad.groceryList = GroceryLists(allItems: allGroceries, groceryLists: groceryListsDict)
         
         //load cars and requests
         let firstCar = Car(driver: phil, numberOfSeats: 3, passengers: [medei, sonia], requests: [])

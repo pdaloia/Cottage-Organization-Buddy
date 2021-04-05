@@ -14,7 +14,7 @@ class CottageTrip: Codable, CottageModelProtocol {
     var endDate: Date = Date()
     var address: String = ""
     var attendeesList: [Attendee] = []
-    var groceryList: GroceryLists = GroceryLists(allItems: [], groceriesPerPerson: [])
+    var groceryList: GroceryLists = GroceryLists(allItems: [], groceryLists: [Attendee:[Grocery]]())
     var drinksList: [PersonalDrinksList] = []
     var carsList: [Car] = []
     var roomsList: [Room] = []
