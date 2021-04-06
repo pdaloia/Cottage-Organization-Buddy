@@ -82,8 +82,24 @@ extension GroceryListController: UITableViewDelegate, UITableViewDataSource {
 
 extension GroceryListController: AddGroceryToListDelegate {
     
+    func groceryAlreadyInList(grocery: String) -> Bool {
+        
+        if cottageModel!.groceryList.allItems.contains(where: { $0.productName.lowercased() == grocery.lowercased() } ) {
+            return true
+        }
+        else {
+            return false
+        }
+        
+    }
+    
     func addToAllItemsList(Grocery groceryModel: Grocery) {
         
+        //add to firebase
+        let firestoreService = FirestoreServices()
+        firestoreService.upload(grocery: groceryModel, to: cottageModel!.cottageID)
+        
+        //add to currently loaded model
         self.cottageModel?.groceryList.allItems.append(groceryModel)
         self.groceryListToDisplay = self.cottageModel?.groceryList.allItems
         groceryListTableView?.reloadData()

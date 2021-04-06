@@ -40,6 +40,12 @@ extension AddGroceryViewController: AddGroceryDelegate {
     
     func validateInputs(name: String, price: Double, quantity: Int) -> Bool {
         
+        if let del = self.addGroceryToListDelegate {
+            if del.groceryAlreadyInList(grocery: name) {
+                ToastMessageDisplayer.showToast(controller: self, message: "Grocery already in list, edit instead.", seconds: 1)
+                return false
+            }
+        }
         if name.isEmpty {
             ToastMessageDisplayer.showToast(controller: self, message: "Enter a name", seconds: 1)
             return false
@@ -74,5 +80,7 @@ extension AddGroceryViewController: AddGroceryDelegate {
 protocol AddGroceryToListDelegate: class {
     
     func addToAllItemsList(Grocery groceryModel: Grocery)
+    
+    func groceryAlreadyInList(grocery: String) -> Bool
     
 }

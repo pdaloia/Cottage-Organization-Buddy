@@ -241,4 +241,32 @@ class FirestoreServices {
         
     }
     
+    func upload(grocery: Grocery, to cottage: String) {
+        
+        //get a reference to the firestore
+        let db = Firestore.firestore()
+        
+        //get the references to the collections
+        let cottageRef = db.collection("cottages").document(cottage)
+        
+        //get the groceries collection
+        let groceriesCollection = cottageRef.collection("groceries")
+        
+        //add the document to the groceries collection
+        groceriesCollection.document(grocery.productName).setData([
+            "assignedTo" : "",
+            "price" : grocery.price,
+            "quantity" : grocery.quantity
+        ]) { err in
+            
+            if let err = err {
+                print("Error writing document: \(err)")
+            } else {
+                print("Document successfully written!")
+            }
+            
+        }
+        
+    }
+    
 }
