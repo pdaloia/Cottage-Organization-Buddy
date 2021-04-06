@@ -29,6 +29,7 @@ class FirestoreServices {
                 
                 //create the cottage model to return
                 let cottageModel: CottageTrip = CottageTrip()
+                cottageModel.cottageID = cottage
                 
                 //get the subcollections of this document
                 let attendeesCollection = cottageRef.collection("attendees")

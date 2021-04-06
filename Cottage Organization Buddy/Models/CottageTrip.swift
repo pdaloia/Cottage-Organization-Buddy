@@ -8,6 +8,7 @@
 import Foundation
 
 class CottageTrip: Codable, CottageModelProtocol {
+    var cottageID = ""
     var tripName: String = ""
     var tripOrganiser: Attendee = Attendee(name: "", firebaseUserID: "")
     var startDate: Date = Date()
