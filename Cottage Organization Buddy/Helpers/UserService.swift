@@ -26,6 +26,12 @@ class UserService {
         
     }
     
+    static func checkIfOrganiser(model: CottageTrip) -> Bool {
+        
+        return Auth.auth().currentUser?.uid == model.tripOrganiser.firebaseUserID
+        
+    }
+    
 }
 
 enum UserError: Error {

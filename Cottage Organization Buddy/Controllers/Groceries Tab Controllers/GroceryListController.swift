@@ -23,7 +23,7 @@ class GroceryListController: UIViewController {
         
         title = groceryListTitle
         
-        if self.title == "All Items" {
+        if self.title == "All Items" && UserService.checkIfOrganiser(model: cottageModel!) {
             let addButton = UIBarButtonItem(title: "Add", style: .plain, target: self, action: #selector(self.addBarButtonPressed))
             self.navigationItem.rightBarButtonItem = addButton
         }
