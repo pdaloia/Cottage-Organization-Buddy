@@ -15,6 +15,10 @@ class AddGroceryView: UIView {
     private let groceryNameInput = UITextField()
     private let pricePerGroceryInput = UITextField()
     private let quantityOfGroceryInput = UITextField()
+    private let attendeePicker = UIPickerView()
+    
+    //attendees list to display in picker
+    var attendeesToPick: [Attendee] = []
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -66,10 +70,31 @@ class AddGroceryView: UIView {
         textFieldStackView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -20).isActive = true
         textFieldStackView.heightAnchor.constraint(equalTo: self.heightAnchor, multiplier: 1/3).isActive = true
         
+        //create label for pickery view
+        let attendeePickerLabel = UILabel()
+        attendeePickerLabel.text = "Assign grocery to user"
+        self.addSubview(attendeePickerLabel)
+        attendeePickerLabel.translatesAutoresizingMaskIntoConstraints = false
+        attendeePickerLabel.topAnchor.constraint(equalTo: textFieldStackView.bottomAnchor, constant: 20).isActive = true
+        attendeePickerLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 20).isActive = true
+        attendeePickerLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -20).isActive = true
+        
+        //create the picker item
+        attendeePicker.delegate = self
+        attendeePicker.dataSource = self
+        
+        //add the pickery view to the view
+        self.addSubview(attendeePicker)
+        attendeePicker.translatesAutoresizingMaskIntoConstraints = false
+        attendeePicker.topAnchor.constraint(equalTo: attendeePickerLabel.bottomAnchor).isActive = true
+        attendeePicker.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 20).isActive = true
+        attendeePicker.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -20).isActive = true
+        //attendeePicker.heightAnchor.constraint(equalTo: self.heightAnchor, multiplier: 1/3).isActive = true
+        
         //add the add button below the stack view
         self.addSubview(addButton)
         addButton.translatesAutoresizingMaskIntoConstraints = false
-        addButton.topAnchor.constraint(equalTo: textFieldStackView.bottomAnchor, constant: 50).isActive = true
+        addButton.topAnchor.constraint(equalTo: attendeePicker.bottomAnchor).isActive = true
         addButton.widthAnchor.constraint(equalToConstant: 100).isActive = true
         addButton.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
         
@@ -96,6 +121,33 @@ class AddGroceryView: UIView {
         
         if let del = self.uploadGroceryDelegate {
             del.uploadToVC(Grocery: groceryToAdd)
+        }
+        
+    }
+    
+}
+
+extension AddGroceryView: UIPickerViewDelegate, UIPickerViewDataSource {
+    
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        
+        return 1
+        
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        
+        return attendeesToPick.count + 1
+        
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        
+        if row == 0 {
+            return "Unassigned"
+        }
+        else {
+            return attendeesToPick[row - 1].name
         }
         
     }

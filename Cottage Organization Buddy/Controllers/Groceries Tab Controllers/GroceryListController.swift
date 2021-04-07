@@ -37,6 +37,7 @@ class GroceryListController: UIViewController {
     
     @objc func addBarButtonPressed() {
         let addGroceryVC = AddGroceryViewController()
+        addGroceryVC.cottageModel = cottageModel
         addGroceryVC.addGroceryToListDelegate = self
         self.navigationController?.pushViewController(addGroceryVC, animated: true)
     }

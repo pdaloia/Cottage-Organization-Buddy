@@ -10,6 +10,7 @@ import UIKit
 class AddGroceryViewController: UIViewController {
     
     weak var addGroceryToListDelegate: AddGroceryToListDelegate?
+    var cottageModel: CottageTrip?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,6 +24,7 @@ class AddGroceryViewController: UIViewController {
         
         let addGroceryView = AddGroceryView()
         addGroceryView.uploadGroceryDelegate = self
+        addGroceryView.attendeesToPick = cottageModel!.attendeesList
         
         self.view.addSubview(addGroceryView)
         
