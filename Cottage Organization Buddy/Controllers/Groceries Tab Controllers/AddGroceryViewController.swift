@@ -65,12 +65,12 @@ extension AddGroceryViewController: AddGroceryDelegate {
         
     }
     
-    func uploadToVC(Grocery groceryInformation: Grocery) {
+    func uploadToVC(Grocery groceryInformation: Grocery, for user: String) {
         
         let groceryToAddToList: Grocery = groceryInformation
         
         if let del = self.addGroceryToListDelegate {
-            del.addToAllItemsList(Grocery: groceryToAddToList)
+            del.addToAllItemsList(Grocery: groceryToAddToList, for: user)
         }
         
         self.navigationController?.popViewController(animated: true)
@@ -81,7 +81,7 @@ extension AddGroceryViewController: AddGroceryDelegate {
 
 protocol AddGroceryToListDelegate: class {
     
-    func addToAllItemsList(Grocery groceryModel: Grocery)
+    func addToAllItemsList(Grocery groceryModel: Grocery, for user: String)
     
     func groceryAlreadyInList(grocery: String) -> Bool
     

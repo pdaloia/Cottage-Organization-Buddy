@@ -106,6 +106,11 @@ class AddGroceryView: UIView {
         let groceryPrice: Double = Double(pricePerGroceryInput.text!) ?? 0
         let groceryQuantity: Int = Int(quantityOfGroceryInput.text!) ?? 0
         
+        var assignedUserID = ""
+        if attendeePicker.selectedRow(inComponent: 0) != 0 {
+            assignedUserID = attendeesToPick[attendeePicker.selectedRow(inComponent: 0) - 1].firebaseUserID
+        }
+        
         var validated: Bool = false
         
         if let del = self.uploadGroceryDelegate {
@@ -120,7 +125,7 @@ class AddGroceryView: UIView {
         let groceryToAdd = Grocery(productName: groceryName, price: groceryPrice, quantity: groceryQuantity)
         
         if let del = self.uploadGroceryDelegate {
-            del.uploadToVC(Grocery: groceryToAdd)
+            del.uploadToVC(Grocery: groceryToAdd, for: assignedUserID)
         }
         
     }
@@ -156,7 +161,7 @@ extension AddGroceryView: UIPickerViewDelegate, UIPickerViewDataSource {
 
 protocol AddGroceryDelegate: class {
     
-    func uploadToVC(Grocery groceryInformation: Grocery)
+    func uploadToVC(Grocery groceryInformation: Grocery, for user: String)
     
     func validateInputs(name: String, price: Double, quantity: Int) -> Bool
     

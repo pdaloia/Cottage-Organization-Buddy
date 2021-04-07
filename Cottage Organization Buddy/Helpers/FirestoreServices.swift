@@ -241,7 +241,7 @@ class FirestoreServices {
         
     }
     
-    func upload(grocery: Grocery, to cottage: String) {
+    func upload(grocery: Grocery, for user: String, to cottage: String) {
         
         //get a reference to the firestore
         let db = Firestore.firestore()
@@ -254,7 +254,7 @@ class FirestoreServices {
         
         //add the document to the groceries collection
         groceriesCollection.document(grocery.productName).setData([
-            "assignedTo" : "",
+            "assignedTo" : user,
             "price" : grocery.price,
             "quantity" : grocery.quantity
         ]) { err in

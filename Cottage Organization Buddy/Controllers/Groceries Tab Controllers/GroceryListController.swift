@@ -94,11 +94,11 @@ extension GroceryListController: AddGroceryToListDelegate {
         
     }
     
-    func addToAllItemsList(Grocery groceryModel: Grocery) {
+    func addToAllItemsList(Grocery groceryModel: Grocery, for user: String) {
         
         //add to firebase
         let firestoreService = FirestoreServices()
-        firestoreService.upload(grocery: groceryModel, to: cottageModel!.cottageID)
+        firestoreService.upload(grocery: groceryModel, for: user, to: cottageModel!.cottageID)
         
         //add to currently loaded model
         self.cottageModel?.groceryList.allItems.append(groceryModel)
