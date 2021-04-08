@@ -100,6 +100,14 @@ extension GroceryListController: AddGroceryToListDelegate {
         let firestoreService = FirestoreServices()
         firestoreService.upload(grocery: groceryModel, for: user, to: cottageModel!.cottageID)
         
+        //add to grocery list of user if assigned
+        if user != "" {
+            
+            let assignedAttendee: Attendee = cottageModel!.attendeesList.first(where: { $0.firebaseUserID == user } )!
+            cottageModel?.groceryList.groceryLists[assignedAttendee]?.append(groceryModel)
+            
+        }
+        
         //add to currently loaded model
         self.cottageModel?.groceryList.allItems.append(groceryModel)
         self.groceryListToDisplay = self.cottageModel?.groceryList.allItems
