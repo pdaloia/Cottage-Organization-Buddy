@@ -21,11 +21,13 @@ class Grocery: Codable {
     var productName: String
     var price: Double
     var quantity: Int
+    var assignedTo: String
     
-    init(productName: String, price: Double, quantity: Int) {
+    init(productName: String, price: Double, quantity: Int, assignedTo: String) {
         self.productName = productName
         self.price = price
         self.quantity = quantity
+        self.assignedTo = assignedTo
     }
 }
 

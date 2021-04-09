@@ -122,7 +122,7 @@ class AddGroceryView: UIView {
             return
         }
         
-        let groceryToAdd = Grocery(productName: groceryName, price: groceryPrice, quantity: groceryQuantity)
+        let groceryToAdd = Grocery(productName: groceryName, price: groceryPrice, quantity: groceryQuantity, assignedTo: assignedUserID)
         
         if let del = self.uploadGroceryDelegate {
             del.uploadToVC(Grocery: groceryToAdd, for: assignedUserID)

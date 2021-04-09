@@ -79,6 +79,48 @@ extension GroceryListController: UITableViewDelegate, UITableViewDataSource {
         
     }
     
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        
+        if !UserService.checkIfOrganiser(model: cottageModel!) || groceryListTitle != "All Items" {
+            return nil
+        }
+        
+        let deleteItem = UIContextualAction(style: .destructive, title: "Delete", handler: {action, view, success in
+            print("deleting \(self.groceryListToDisplay![indexPath.row].productName)")
+            
+            let groceryToDelete: Grocery = self.groceryListToDisplay![indexPath.row]
+            
+            //get the firestore service and delete the document for the selected grocery to delete
+            let firestoreServices = FirestoreServices()
+            firestoreServices.delete(grocery: self.groceryListToDisplay![indexPath.row], in: self.cottageModel!.cottageID)
+            
+            //remove the grocery from this lists table view data source and reload it to remove it
+            self.groceryListToDisplay!.remove(at: indexPath.row)
+            self.groceryListTableView?.reloadData()
+            
+            //get the assigned user for this grocery and remove from this persons list
+            if let assignedUser = self.cottageModel!.attendeesList.first(where: { $0.firebaseUserID == groceryToDelete.assignedTo } ) {
+                self.cottageModel!.groceryList.groceryLists[assignedUser]?.removeAll(where: { $0.productName == groceryToDelete.productName } )
+            }
+            
+            //delete it from the model
+            self.cottageModel!.groceryList.allItems.removeAll(where: { $0.productName == groceryToDelete.productName } )
+            
+        })
+        deleteItem.backgroundColor = .red
+        
+        let editItem = UIContextualAction(style: .normal, title: "Edit", handler: {action, view, success in
+            print("editing")
+        })
+        editItem.backgroundColor = .yellow
+        
+        let swipeActions = UISwipeActionsConfiguration(actions: [deleteItem, editItem])
+        swipeActions.performsFirstActionWithFullSwipe = false
+        
+        return swipeActions
+        
+    }
+    
 }
 
 extension GroceryListController: AddGroceryToListDelegate {

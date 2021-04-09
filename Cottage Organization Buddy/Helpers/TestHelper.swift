@@ -56,10 +56,10 @@ class TestHelper {
         modelToLoad.address = "19 Ann Street"
         
         //load the groceries
-        let bananas: Grocery = Grocery(productName: "Banana", price: 2.00, quantity: 5)
-        let apples: Grocery = Grocery(productName: "Apple", price: 1.50, quantity: 10)
-        let burgers: Grocery = Grocery(productName: "Burger", price: 5.00, quantity: 10)
-        let popsicles: Grocery = Grocery(productName: "Popsicle", price: 2.50, quantity: 20)
+        let bananas: Grocery = Grocery(productName: "Banana", price: 2.00, quantity: 5, assignedTo: phil.firebaseUserID)
+        let apples: Grocery = Grocery(productName: "Apple", price: 1.50, quantity: 10, assignedTo: phil.firebaseUserID)
+        let burgers: Grocery = Grocery(productName: "Burger", price: 5.00, quantity: 10, assignedTo: vic.firebaseUserID)
+        let popsicles: Grocery = Grocery(productName: "Popsicle", price: 2.50, quantity: 20, assignedTo: medei.firebaseUserID)
         
         let allGroceries = [bananas, apples, burgers, popsicles]
         var groceryListsDict = [Attendee:[Grocery]]()
