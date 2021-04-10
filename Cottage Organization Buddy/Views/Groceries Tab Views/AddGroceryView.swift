@@ -23,13 +23,25 @@ class AddGroceryView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        //self.backgroundColor = .systemBackground
+        //Looks for single or multiple taps.
+        let tap = UITapGestureRecognizer(target: self, action: #selector(UIInputViewController.dismissKeyboard))
+
+        //Uncomment the line below if you want the tap not not interfere and cancel other interactions.
+        //tap.cancelsTouchesInView = false
+
+        self.addGestureRecognizer(tap)
         
         initializeView()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    //Calls this function when the tap is recognized.
+    @objc func dismissKeyboard() {
+        //Causes the view (or one of its embedded text fields) to resign the first responder status.
+        self.endEditing(true)
     }
     
     func initializeView() {
