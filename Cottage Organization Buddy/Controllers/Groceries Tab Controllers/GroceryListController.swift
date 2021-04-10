@@ -146,7 +146,10 @@ extension GroceryListController: AddGroceryToListDelegate {
         if user != "" {
             
             let assignedAttendee: Attendee = cottageModel!.attendeesList.first(where: { $0.firebaseUserID == user } )!
-            cottageModel?.groceryList.groceryLists[assignedAttendee]?.append(groceryModel)
+            if cottageModel!.groceryList.groceryLists[assignedAttendee] == nil {
+                cottageModel!.groceryList.groceryLists[assignedAttendee] = []
+            }
+            cottageModel!.groceryList.groceryLists[assignedAttendee]?.append(groceryModel)
             
         }
         
