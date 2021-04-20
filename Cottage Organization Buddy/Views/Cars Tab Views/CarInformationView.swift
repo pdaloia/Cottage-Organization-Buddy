@@ -12,9 +12,6 @@ class CarInformationView: UIView {
     //model
     var currentlySelectedCarModel: Car?
     
-    //variable to see if a cell has not been selected yet
-    var cellWasSelected: Bool = false
-    
     //display labels
     var driverDisplayNameLabel = UILabel()
     var passengersDisplayNamesLabel = UILabel()

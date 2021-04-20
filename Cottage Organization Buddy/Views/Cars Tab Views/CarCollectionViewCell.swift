@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import GoogleSignIn
+import FirebaseAuth
 
 class CarCollectionViewCell: UICollectionViewCell {
     
@@ -16,7 +18,6 @@ class CarCollectionViewCell: UICollectionViewCell {
     var disclosureButton = UIButton()
     
     var carInformationView: CarInformationView?
-    var requestSpotButton: UIButton?
     
     var indexPath: IndexPath!
     var isExpanded: Bool = false
@@ -137,40 +138,43 @@ class CarCollectionViewCell: UICollectionViewCell {
         let carCellButtonsStackView = UIStackView()
         carCellButtonsStackView.axis = .horizontal
         carCellButtonsStackView.alignment = .center
-        carCellButtonsStackView.distribution = .fill
+        carCellButtonsStackView.distribution = .equalSpacing
         
         //create the buttons
-        requestSpotButton = UIButton()
-        requestSpotButton?.setTitle("Request", for: .normal)
-        requestSpotButton?.setTitleColor(.systemBlue, for: .normal)
-        requestSpotButton?.addTarget(self, action: #selector(requestCarSpotButtonPressed), for: .touchUpInside)
+        let requestSpotButton = UIButton()
+        requestSpotButton.setTitle("Request", for: .normal)
+        requestSpotButton.setTitleColor(.systemBlue, for: .normal)
+        requestSpotButton.addTarget(self, action: #selector(requestCarSpotButtonPressed), for: .touchUpInside)
+        carCellButtonsStackView.addArrangedSubview(requestSpotButton)
         
-        let deleteCarButton = UIButton()
-        deleteCarButton.setTitle("Delete", for: .normal)
-        deleteCarButton.setTitleColor(.systemBlue, for: .normal)
-        deleteCarButton.addTarget(self, action: #selector(deleteCarButtonPressed), for: .touchUpInside)
+        if cellsCarModel!.driver.firebaseUserID == Auth.auth().currentUser?.uid {
+            let deleteCarButton = UIButton()
+            deleteCarButton.setTitle("Delete", for: .normal)
+            deleteCarButton.setTitleColor(.systemBlue, for: .normal)
+            deleteCarButton.addTarget(self, action: #selector(deleteCarButtonPressed), for: .touchUpInside)
+            carCellButtonsStackView.addArrangedSubview(deleteCarButton)
+            
+            let removePassengerButton = UIButton()
+            removePassengerButton.setTitle("Remove", for: .normal)
+            removePassengerButton.setTitleColor(.systemBlue, for: .normal)
+            removePassengerButton.addTarget(self, action: #selector(removePassengerButtonPressed), for: .touchUpInside)
+            carCellButtonsStackView.addArrangedSubview(removePassengerButton)
+        }
         
-        let removePassengerButton = UIButton()
-        removePassengerButton.setTitle("Remove", for: .normal)
-        removePassengerButton.setTitleColor(.systemBlue, for: .normal)
-        removePassengerButton.addTarget(self, action: #selector(removePassengerButtonPressed), for: .touchUpInside)
-        
-        let leaveCarButton = UIButton()
-        leaveCarButton.setTitle("Leave", for: .normal)
-        leaveCarButton.setTitleColor(.systemBlue, for: .normal)
-        leaveCarButton.addTarget(self, action: #selector(leaveCarButtonPressed), for: .touchUpInside)
-        
-        //add the appropriate buttons to the stack view
-        carCellButtonsStackView.addArrangedSubview(requestSpotButton!)
-        carCellButtonsStackView.addArrangedSubview(deleteCarButton)
-        carCellButtonsStackView.addArrangedSubview(removePassengerButton)
-        carCellButtonsStackView.addArrangedSubview(leaveCarButton)
+        if cellsCarModel!.passengers.contains(where: { $0.firebaseUserID == Auth.auth().currentUser?.uid }) {
+            let leaveCarButton = UIButton()
+            leaveCarButton.setTitle("Leave", for: .normal)
+            leaveCarButton.setTitleColor(.systemBlue, for: .normal)
+            leaveCarButton.addTarget(self, action: #selector(leaveCarButtonPressed), for: .touchUpInside)
+            carCellButtonsStackView.addArrangedSubview(leaveCarButton)
+        }
         
         //add the constraints on the stack view
         self.contentView.addSubview(carCellButtonsStackView)
         carCellButtonsStackView.translatesAutoresizingMaskIntoConstraints = false
         carCellButtonsStackView.topAnchor.constraint(equalTo: carInformationView!.bottomAnchor).isActive = true
         carCellButtonsStackView.bottomAnchor.constraint(equalTo: disclosureButton.topAnchor).isActive = true
+        carCellButtonsStackView.widthAnchor.constraint(equalTo: self.contentView.widthAnchor, multiplier: 0.8).isActive = true
         carCellButtonsStackView.centerXAnchor.constraint(equalTo: self.contentView.centerXAnchor).isActive = true
         
     }
