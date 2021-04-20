@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Firebase
 
 class CarsController: UIViewController, TabBarItemControllerProtocol {
     
@@ -312,6 +313,22 @@ extension CarsController: CarCollectionViewDelegate {
         }))
         
         present(confirmationAlert, animated: true, completion: nil)
+        
+    }
+    
+    
+    func remove(passengerID: String, in car: Car) {
+        
+        print("Removing \(passengerID) in car driven by \(car.driver.name)")
+        
+    }
+    
+    func deleteCar() {
+        
+        let driverRequestingDelete: Attendee = cottageModel!.attendeesList.first(where: { $0.firebaseUserID == Auth.auth().currentUser!.uid })!
+        let carToDelete: Car = cottageModel!.carsList.first(where: { $0.driver == driverRequestingDelete })!
+        
+        print("Deleting car driven by \(driverRequestingDelete.name)")
         
     }
     

@@ -189,19 +189,27 @@ class CarCollectionViewCell: UICollectionViewCell {
     
     @objc func deleteCarButtonPressed() {
         
-        print("test")
+        if let delegate = self.expandCellDelegate {
+            delegate.deleteCar()
+        }
         
     }
     
     @objc func removePassengerButtonPressed() {
         
-        print("test")
+        let passengerIDToRemove = ""
+        
+        if let delegate = self.expandCellDelegate {
+            delegate.remove(passengerID: passengerIDToRemove, in: self.cellsCarModel!)
+        }
         
     }
     
     @objc func leaveCarButtonPressed() {
         
-        print("test")
+        if let delegate = self.expandCellDelegate {
+            delegate.remove(passengerID: Auth.auth().currentUser!.uid, in: self.cellsCarModel!)
+        }
         
     }
     
@@ -222,5 +230,9 @@ protocol ExpandedCarCollectionViewCellDelegate {
     func expandButtonTouched(indexPath: IndexPath)
     
     func requestSpot(in car: Car)
+    
+    func remove(passengerID: String, in car: Car)
+    
+    func deleteCar()
     
 }
