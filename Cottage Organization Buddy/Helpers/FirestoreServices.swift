@@ -290,4 +290,26 @@ class FirestoreServices {
         
     }
     
+    func deleteCar(drivenBy passengerID: String, in cottage: String) {
+        
+        //get a reference to the firestore
+        let db = Firestore.firestore()
+        
+        //get the references to the collections
+        let cottageRef = db.collection("cottages").document(cottage)
+        
+        //get the groceries collection
+        let carsCollection = cottageRef.collection("cars")
+        
+        //remove the car from the collection
+        carsCollection.document(passengerID).delete() { err in
+            if let err = err {
+                print("Error deleting grocery: \(err)")
+            } else {
+                print("Grocery successfully deleted!")
+            }
+        }
+        
+    }
+    
 }

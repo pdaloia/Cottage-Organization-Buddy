@@ -190,7 +190,7 @@ class CarCollectionViewCell: UICollectionViewCell {
     @objc func deleteCarButtonPressed() {
         
         if let delegate = self.expandCellDelegate {
-            delegate.deleteCar()
+            delegate.delete(car: self.cellsCarModel!)
         }
         
     }
@@ -233,6 +233,6 @@ protocol ExpandedCarCollectionViewCellDelegate {
     
     func remove(passengerID: String, in car: Car)
     
-    func deleteCar()
+    func delete(car: Car)
     
 }

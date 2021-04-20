@@ -323,12 +323,39 @@ extension CarsController: CarCollectionViewDelegate {
         
     }
     
-    func deleteCar() {
+    func delete(car: Car) {
         
-        let driverRequestingDelete: Attendee = cottageModel!.attendeesList.first(where: { $0.firebaseUserID == Auth.auth().currentUser!.uid })!
-        let carToDelete: Car = cottageModel!.carsList.first(where: { $0.driver == driverRequestingDelete })!
-        
-        print("Deleting car driven by \(driverRequestingDelete.name)")
+        if Auth.auth().currentUser!.uid != car.driver.firebaseUserID {
+            ToastMessageDisplayer.showToast(controller: self, message: "Error deleting car", seconds: 2)
+            return
+        }
+        else {
+            
+            let deleteCarAlert = UIAlertController(title: "Delete Car", message: "Are you sure you want to delete the car?", preferredStyle: .alert)
+            
+            let confirmDeleteAction = UIAlertAction(title: "Confirm", style: .destructive, handler: {_ in
+                
+                //get the firestore service and delete the car from firestore
+                let firestoreService = FirestoreServices()
+                firestoreService.deleteCar(drivenBy: Auth.auth().currentUser!.uid, in: self.cottageModel!.cottageID)
+                
+                //if successful delete the car from the model and reload the collection view
+                self.cottageModel!.carsList.removeAll(where: { $0.driver.firebaseUserID == Auth.auth().currentUser!.uid })
+                self.carsCollectionView!.isExpanded = Array(repeating: false, count: self.cottageModel!.carsList.count)
+                self.carsCollectionView!.reloadData()
+                                
+            })
+            
+            let cancelDeleteAction = UIAlertAction(title: "Cancel", style: .cancel, handler: {_ in
+                //do nothing
+            })
+            
+            deleteCarAlert.addAction(confirmDeleteAction)
+            deleteCarAlert.addAction(cancelDeleteAction)
+            
+            present(deleteCarAlert, animated: true, completion: nil)
+            
+        }
         
     }
     
