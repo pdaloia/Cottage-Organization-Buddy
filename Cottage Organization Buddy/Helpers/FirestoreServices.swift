@@ -358,8 +358,41 @@ class FirestoreServices {
                 for document in querySnapshot!.documents {
                     document.reference.updateData([
                         "requests": FieldValue.arrayRemove([passengerID])
-                    ])
+                    ]) { err in
+                        if let err = err {
+                            print("Error updating document: \(err)")
+                        } else {
+                            print("Document successfully updated")
+                        }
+                    }
                 }
+            }
+        }
+        
+    }
+    
+    func create(requestFor userID: String, for car: Car, in cottage: String) {
+        
+        //get a reference to the firestore
+        let db = Firestore.firestore()
+        
+        //get the references to the collections
+        let cottageRef = db.collection("cottages").document(cottage)
+        
+        //get the groceries collection
+        let carsCollection = cottageRef.collection("cars")
+        
+        //get the car document reference
+        let carReference = carsCollection.document(car.driver.firebaseUserID)
+        
+        //add the requester to the requests
+        carReference.updateData([
+            "requests": FieldValue.arrayUnion([userID])
+        ]) { err in
+            if let err = err {
+                print("Error updating document: \(err)")
+            } else {
+                print("Document successfully updated")
             }
         }
         

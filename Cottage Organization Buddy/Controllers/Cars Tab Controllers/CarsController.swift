@@ -275,6 +275,9 @@ extension CarsController: CarCollectionViewDelegate {
         }))
         confirmationAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: {_ in
             car.createRequest(for: loggedInUser)
+            
+            let firestoreService = FirestoreServices()
+            firestoreService.create(requestFor: Auth.auth().currentUser!.uid, for: car, in: self.cottageModel!.cottageID)
         }))
         
         present(confirmationAlert, animated: true, completion: nil)
