@@ -398,4 +398,50 @@ class FirestoreServices {
         
     }
     
+    func acceptRequest(for user: String, in car: Car, in cottage: String) {
+        
+        //get a reference to the firestore
+        let db = Firestore.firestore()
+        
+        //get the references to the collections
+        let cottageRef = db.collection("cottages").document(cottage)
+        
+        //get the groceries collection
+        let carsCollection = cottageRef.collection("cars")
+        
+        //get the car document reference
+        let carReference = carsCollection.document(car.driver.firebaseUserID)
+        
+        //make sure that the requster actually requested a spot in this car
+        carReference.getDocument() { (document, error) in
+            
+            var requests: [String] = []
+            if let document = document, document.exists {
+                requests = document.get("requests") as! [String]
+            }
+            
+            //if the user is not in the requests, return
+            if !requests.contains(user) {
+                return
+            }
+            
+            //add the user as a passenger to the car
+            carReference.updateData([
+                "passengers": FieldValue.arrayUnion([user])
+            ]) { err in
+                if let err = err {
+                    print("Error updating document: \(err)")
+                } else {
+                    print("Document successfully updated")
+                }
+            }
+            
+            //remove all requests by this user in all cars
+            self.removeAll(requestsFrom: user, in: cottage)
+            
+        }
+        
+        
+    }
+    
 }

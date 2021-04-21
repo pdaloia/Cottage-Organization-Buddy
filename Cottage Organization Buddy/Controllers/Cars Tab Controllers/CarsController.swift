@@ -188,12 +188,16 @@ extension CarsController: RequestInboxDelegate {
         }
         
         //get the necessary information
-        let currentCar = cottageModel?.carsList.last(where: { $0.driver === loggedInUser } )
+        let currentCar = cottageModel!.carsList.last(where: { $0.driver === loggedInUser } )!
         let attendeeToAddToPassengers = request.requester
         
         //add the requester to the passengers and remove the attendee's request
-        currentCar?.passengers.append(attendeeToAddToPassengers)
-        currentCar?.requests.removeAll(where: { $0.requester === attendeeToAddToPassengers } )
+        currentCar.passengers.append(attendeeToAddToPassengers)
+        currentCar.requests.removeAll(where: { $0.requester === attendeeToAddToPassengers } )
+        
+        //perform the firebase action
+        let firestoreService = FirestoreServices()
+        firestoreService.acceptRequest(for: request.requester.firebaseUserID, in: currentCar, in: self.cottageModel!.cottageID)
         
         //reload the collection view and recreate the nav bar buttons
         self.carsCollectionView!.reloadData()
