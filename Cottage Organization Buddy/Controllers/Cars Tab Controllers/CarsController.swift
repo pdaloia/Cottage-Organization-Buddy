@@ -58,7 +58,6 @@ class CarsController: UIViewController, TabBarItemControllerProtocol {
         
         //add and remove buttons
         let addDriverButton = UIBarButtonItem(title: "Add", style: .plain, target: self, action: #selector(addDriverButtonPressed))
-        let removeDriverButton = UIBarButtonItem(title: "Remove", style: .plain, target: self, action: #selector(removeDriverButtonPressed))
         
         //get the currently logged in user
         var currentlyLoggedInUser: Attendee
@@ -73,12 +72,12 @@ class CarsController: UIViewController, TabBarItemControllerProtocol {
         }
         
         //check to see if the currently logged in user is a driver, then add the proper nav bar button
-        let isADriver = cottageModel?.carsList.contains(where: { $0.driver === currentlyLoggedInUser })
-        if isADriver == true {
-            self.navigationItem.rightBarButtonItems = [removeDriverButton]
+        let isADriver = cottageModel!.carsList.contains(where: { $0.driver === currentlyLoggedInUser })
+        if !isADriver {
+            self.navigationItem.rightBarButtonItems = [addDriverButton]
         }
         else {
-            self.navigationItem.rightBarButtonItems = [addDriverButton]
+            self.navigationItem.rightBarButtonItems = []
         }
         
         //create the request inbox navbar button
@@ -123,45 +122,6 @@ class CarsController: UIViewController, TabBarItemControllerProtocol {
         addDriverVC.cottageModel = self.cottageModel
         addDriverVC.addDriverDelegate = self
         self.navigationController?.pushViewController(addDriverVC, animated: true)
-        
-    }
-    
-    //function for when the remove button is pressed
-    @objc func removeDriverButtonPressed() {
-        
-        //create the alert for removing the driver
-        let removeAlert = UIAlertController(title: "Remove yourself as a driver?", message: "Are you sure?", preferredStyle: .alert)
-        
-        //create the action for if the removal is confirmed
-        removeAlert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (action: UIAlertAction!) in
-            
-            //get the currently logged in user
-            let currentlyLoggedInUser: Attendee
-            do {
-                try currentlyLoggedInUser = UserService.GetLoggedInUser(model: self.cottageModel!)
-            } catch UserError.cantFindUserError {
-                ToastMessageDisplayer.showToast(controller: self, message: "Can not find your user in this trip", seconds: 2)
-                return
-            } catch {
-                ToastMessageDisplayer.showToast(controller: self, message: "Unknown error, please restart app", seconds: 2)
-                return
-            }
-            
-            //remove the car in which the driver is the currently logged in user (if it exists) and then reload the views
-            self.cottageModel?.carsList.removeAll(where: { $0.driver === currentlyLoggedInUser })
-            self.carsCollectionView!.reloadData()
-            
-            //recreate the nav bar buttons
-            self.createNavBarButtons()
-            
-        }))
-        
-        removeAlert.addAction(UIAlertAction(title: "Cancel", style: .default, handler: { (action: UIAlertAction!) in
-            //do nothing
-        }))
-        
-        //present the confirmation pop-up
-        present(removeAlert, animated: true, completion: nil)
         
     }
     
@@ -341,7 +301,8 @@ extension CarsController: CarCollectionViewDelegate {
                 
                 //if successful delete the car from the model and reload the collection view
                 self.cottageModel!.carsList.removeAll(where: { $0.driver.firebaseUserID == Auth.auth().currentUser!.uid })
-                self.carsCollectionView!.isExpanded = Array(repeating: false, count: self.cottageModel!.carsList.count)
+                self.carsCollectionView!.isExpanded = Array(repeating: false, count: self.cottageModel!.carsList.count + 1)
+                self.createNavBarButtons()
                 self.carsCollectionView!.reloadData()
                                 
             })

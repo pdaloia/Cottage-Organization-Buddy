@@ -304,9 +304,9 @@ class FirestoreServices {
         //remove the car from the collection
         carsCollection.document(passengerID).delete() { err in
             if let err = err {
-                print("Error deleting grocery: \(err)")
+                print("Error deleting car: \(err)")
             } else {
-                print("Grocery successfully deleted!")
+                print("Car successfully deleted!")
             }
         }
         

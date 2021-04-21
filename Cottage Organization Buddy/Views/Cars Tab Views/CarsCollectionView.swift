@@ -18,7 +18,7 @@ class CarsCollectionView: UICollectionView {
     init(frame: CGRect, collectionViewLayout layout: UICollectionViewLayout, cellCount: Int) {
         super.init(frame: frame, collectionViewLayout: layout)
         
-        isExpanded = Array(repeating: false, count: cellCount)
+        isExpanded = Array(repeating: false, count: cellCount + 1)
     }
     
     required init?(coder: NSCoder) {
