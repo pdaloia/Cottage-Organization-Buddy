@@ -59,6 +59,9 @@ class CarsController: UIViewController, TabBarItemControllerProtocol {
         //add and remove buttons
         let addDriverButton = UIBarButtonItem(title: "Add", style: .plain, target: self, action: #selector(addDriverButtonPressed))
         
+        //create the request inbox navbar button
+        let requestInbox = UIBarButtonItem(title: "Requests", style: .plain, target: self, action: #selector(requestInboxButtonPressed))
+        
         //get the currently logged in user
         var currentlyLoggedInUser: Attendee
         do {
@@ -77,12 +80,8 @@ class CarsController: UIViewController, TabBarItemControllerProtocol {
             self.navigationItem.rightBarButtonItems = [addDriverButton]
         }
         else {
-            self.navigationItem.rightBarButtonItems = []
+            self.navigationItem.rightBarButtonItems = [requestInbox]
         }
-        
-        //create the request inbox navbar button
-        let requestInbox = UIBarButtonItem(title: "Requests", style: .plain, target: self, action: #selector(requestInboxButtonPressed))
-        self.navigationItem.rightBarButtonItems?.append(requestInbox)
         
     }
     
