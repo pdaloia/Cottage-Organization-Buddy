@@ -290,6 +290,34 @@ class FirestoreServices {
         
     }
     
+    func addCar(drivenBy passengerID: String, holding numberOfSeats: Int, in cottage: String) {
+        
+        //get a reference to the firestore
+        let db = Firestore.firestore()
+        
+        //get the references to the collections
+        let cottageRef = db.collection("cottages").document(cottage)
+        
+        //get the cars collection
+        let groceriesCollection = cottageRef.collection("cars")
+        
+        //add the document to the groceries collection
+        groceriesCollection.document(passengerID).setData([
+            "numberOfSeats" : numberOfSeats,
+            "passengers" : [],
+            "requests" : []
+        ]) { err in
+            
+            if let err = err {
+                print("Error writing document: \(err)")
+            } else {
+                print("Document successfully written!")
+            }
+            
+        }
+        
+    }
+    
     func deleteCar(drivenBy passengerID: String, in cottage: String) {
         
         //get a reference to the firestore
