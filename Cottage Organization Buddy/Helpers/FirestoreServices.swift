@@ -340,4 +340,29 @@ class FirestoreServices {
         
     }
     
+    func removeAll(requestsFrom passengerID: String, in cottage: String) {
+        
+        //get a reference to the firestore
+        let db = Firestore.firestore()
+        
+        //get the references to the collections
+        let cottageRef = db.collection("cottages").document(cottage)
+        
+        //get the groceries collection
+        let carsCollection = cottageRef.collection("cars")
+        
+        carsCollection.getDocuments() { (querySnapshot, err) in
+            if let err = err {
+                    print("Error getting documents: \(err)")
+            } else {
+                for document in querySnapshot!.documents {
+                    document.reference.updateData([
+                        "requests": FieldValue.arrayRemove([passengerID])
+                    ])
+                }
+            }
+        }
+        
+    }
+    
 }

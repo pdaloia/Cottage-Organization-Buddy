@@ -156,6 +156,7 @@ extension CarsController: AddDriverDelegate {
         firestoreSerive.addCar(drivenBy: Auth.auth().currentUser!.uid, holding: numberOfPassengers, in: self.cottageModel!.cottageID)
         
         cottageModel!.removeAllCarRequests(for: loggedInUser)
+        firestoreSerive.removeAll(requestsFrom: Auth.auth().currentUser!.uid, in: self.cottageModel!.cottageID)
                 
         //reload the collection view and recreate the nav bar buttons
         self.carsCollectionView!.reloadData()
