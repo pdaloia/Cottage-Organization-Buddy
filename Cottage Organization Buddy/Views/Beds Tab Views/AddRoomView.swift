@@ -11,6 +11,13 @@ class AddRoomView: UIView {
     
     let labelStackView = UIStackView()
     let inputStackView = UIStackView()
+    
+    let kingInput = UITextField()
+    let queenInput = UITextField()
+    let doubleInput = UITextField()
+    let singleInput = UITextField()
+    
+    var addRoomDelegate: AddRoomDelegate?
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -57,19 +64,15 @@ class AddRoomView: UIView {
     
     func createNumberInputs() {
         
-        let kingInput = UITextField()
         kingInput.backgroundColor = .green
         kingInput.keyboardType = .numberPad
         
-        let queenInput = UITextField()
         queenInput.backgroundColor = .green
         queenInput.keyboardType = .numberPad
 
-        let doubleInput = UITextField()
         doubleInput.backgroundColor = .green
         doubleInput.keyboardType = .numberPad
 
-        let singleInput = UITextField()
         singleInput.backgroundColor = .green
         singleInput.keyboardType = .numberPad
         
@@ -107,14 +110,21 @@ class AddRoomView: UIView {
     
     @objc func addButtonPressed() {
         
-        print("add button pressed")
+        let numberOfKings: Int = Int(kingInput.text!) ?? 0
+        let numberOfQueens: Int = Int(queenInput.text!) ?? 0
+        let numbersOfDoubles: Int = Int(doubleInput.text!) ?? 0
+        let numberOfSingles: Int = Int(singleInput.text!) ?? 0
+        
+        if let addRoomDelegate = self.addRoomDelegate {
+            addRoomDelegate.addRoom(kings: numberOfKings, queens: numberOfQueens, doubles: numbersOfDoubles, singles: numberOfSingles)
+        }
         
     }
     
 }
 
-protocol addRoomDelegate {
+protocol AddRoomDelegate {
     
-    func addRoom()
+    func addRoom(kings: Int, queens: Int, doubles: Int, singles: Int)
     
 }

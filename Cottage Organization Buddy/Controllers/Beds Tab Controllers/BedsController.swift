@@ -62,8 +62,20 @@ class BedsController: UIViewController, TabBarItemControllerProtocol {
     @objc func addRoomButtonPressed() {
         
         let addRoomVC = AddRoomViewController()
+        addRoomVC.addRoomDelegate = self
         self.navigationController?.pushViewController(addRoomVC, animated: true)
         
     }
 
+}
+
+
+extension BedsController: AddRoomDelegate {
+    
+    func addRoom(kings: Int, queens: Int, doubles: Int, singles: Int) {
+        
+        print("Adding room")
+        
+    }
+    
 }
