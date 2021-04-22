@@ -9,11 +9,11 @@ import Foundation
 
 class Room: Codable, CottageModelProtocol {
     
-    var bedList: [Bed]
+    var bedDict: [String : Int]
     
-    init(bedList: [Bed]) {
+    init(bedDict: [String : Int]) {
         
-        self.bedList = bedList
+        self.bedDict = bedDict
         
     }
     

@@ -64,7 +64,7 @@ class RoomCollectionViewCell: UICollectionViewCell {
         roomLabel.translatesAutoresizingMaskIntoConstraints = false
         roomLabel.topAnchor.constraint(equalTo: self.contentView.topAnchor).isActive = true
         if isExpanded == true {
-            let multiplier: CGFloat = CGFloat(Float(1) / Float(4 + cellsRoomModel!.bedList.count))
+            let multiplier: CGFloat = CGFloat(Float(1) / Float(4 + cellsRoomModel!.bedDict.count))
             roomLabel.heightAnchor.constraint(equalTo: self.contentView.heightAnchor, multiplier: multiplier).isActive = true
         }
         else {
@@ -81,7 +81,7 @@ class RoomCollectionViewCell: UICollectionViewCell {
         bedImageView.translatesAutoresizingMaskIntoConstraints = false
         bedImageView.topAnchor.constraint(equalTo: self.roomLabel.bottomAnchor).isActive = true
         if isExpanded == true {
-            let multiplier: CGFloat = CGFloat(Float(1) / Float(4 + cellsRoomModel!.bedList.count)) * 2
+            let multiplier: CGFloat = CGFloat(Float(1) / Float(4 + cellsRoomModel!.bedDict.count)) * 2
             bedImageView.heightAnchor.constraint(equalTo: self.contentView.heightAnchor, multiplier: multiplier).isActive = true
         }
         else {
@@ -107,7 +107,7 @@ class RoomCollectionViewCell: UICollectionViewCell {
         disclosureButton.translatesAutoresizingMaskIntoConstraints = false
         disclosureButton.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor).isActive = true
         if isExpanded == true {
-            let multiplier: CGFloat = CGFloat(Float(1) / Float(4 + cellsRoomModel!.bedList.count))
+            let multiplier: CGFloat = CGFloat(Float(1) / Float(4 + cellsRoomModel!.bedDict.count))
             disclosureButton.heightAnchor.constraint(equalTo: self.contentView.heightAnchor, multiplier: multiplier).isActive = true
         }
         else {
@@ -127,28 +127,63 @@ class RoomCollectionViewCell: UICollectionViewCell {
     
     func setExpandableSection() {
         
-        let bedStackView = UIStackView()
-        bedStackView.axis = .vertical
-        bedStackView.distribution = .fillEqually
-        bedStackView.alignment = .center
+        //adding the bed labels into a stack view
+        let bedLabelStackView = UIStackView()
+        bedLabelStackView.axis = .vertical
+        bedLabelStackView.distribution = .fillEqually
+        bedLabelStackView.alignment = .trailing
         
-        for bed in self.cellsRoomModel!.bedList {
-            let bedLabel = UILabel()
-            bedLabel.text = String(describing: bed.size)
-            bedStackView.addArrangedSubview(bedLabel)
-        }
+        let singleBedLabel = UILabel()
+        singleBedLabel.text = "Singles: "
+        bedLabelStackView.addArrangedSubview(singleBedLabel)
         
-        self.contentView.addSubview(bedStackView)
-        bedStackView.translatesAutoresizingMaskIntoConstraints = false
-        bedStackView.topAnchor.constraint(equalTo: bedImageView.bottomAnchor).isActive = true
-        bedStackView.bottomAnchor.constraint(equalTo: disclosureButton.topAnchor).isActive = true
-        bedStackView.widthAnchor.constraint(equalTo: self.contentView.widthAnchor).isActive = true
+        let doubleBedLabel = UILabel()
+        doubleBedLabel.text = "Doubles: "
+        bedLabelStackView.addArrangedSubview(doubleBedLabel)
         
-    }
-    
-    @objc func requestBedButtonPressed() {
+        let queenBedLabel = UILabel()
+        queenBedLabel.text = "Queens: "
+        bedLabelStackView.addArrangedSubview(queenBedLabel)
         
-        print("test")
+        let kingBedLabel = UILabel()
+        kingBedLabel.text = "Kings: "
+        bedLabelStackView.addArrangedSubview(kingBedLabel)
+        
+        self.contentView.addSubview(bedLabelStackView)
+        bedLabelStackView.translatesAutoresizingMaskIntoConstraints = false
+        bedLabelStackView.topAnchor.constraint(equalTo: bedImageView.bottomAnchor).isActive = true
+        bedLabelStackView.bottomAnchor.constraint(equalTo: disclosureButton.topAnchor).isActive = true
+        bedLabelStackView.leadingAnchor.constraint(equalTo: self.leadingAnchor).isActive = true
+        bedLabelStackView.trailingAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
+        
+        //adding the bed count labels into a stack view
+        let bedCountStackView = UIStackView()
+        bedCountStackView.axis = .vertical
+        bedCountStackView.distribution = .fillEqually
+        bedCountStackView.alignment = .leading
+        
+        let singleCountLabel = UILabel()
+        singleCountLabel.text = String(self.cellsRoomModel!.bedDict["Singles"] ?? 0)
+        bedCountStackView.addArrangedSubview(singleCountLabel)
+        
+        let doubleCountLabel = UILabel()
+        doubleCountLabel.text = String(self.cellsRoomModel!.bedDict["Doubles"] ?? 0)
+        bedCountStackView.addArrangedSubview(doubleCountLabel)
+        
+        let queenCountLabel = UILabel()
+        queenCountLabel.text = String(self.cellsRoomModel!.bedDict["Queens"] ?? 0)
+        bedCountStackView.addArrangedSubview(queenCountLabel)
+        
+        let kingCountLabel = UILabel()
+        kingCountLabel.text = String(self.cellsRoomModel!.bedDict["Kings"] ?? 0)
+        bedCountStackView.addArrangedSubview(kingCountLabel)
+        
+        self.contentView.addSubview(bedCountStackView)
+        bedCountStackView.translatesAutoresizingMaskIntoConstraints = false
+        bedCountStackView.topAnchor.constraint(equalTo: bedImageView.bottomAnchor).isActive = true
+        bedCountStackView.bottomAnchor.constraint(equalTo: disclosureButton.topAnchor).isActive = true
+        bedCountStackView.leadingAnchor.constraint(equalTo: self.centerXAnchor, constant: 10).isActive = true
+        bedCountStackView.trailingAnchor.constraint(equalTo: self.trailingAnchor).isActive = true
         
     }
     

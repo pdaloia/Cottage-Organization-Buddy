@@ -202,12 +202,13 @@ class FirestoreServices {
                                 
                                 for document in querySnapshot!.documents {
                                     
-                                    let roomToAdd = Room(bedList: [])
-                                    let bedsToAdd = document.get("beds") as! [String]
-                                    for bed in bedsToAdd {
-                                        let bedToAdd = Bed(size: BedSize(rawValue: bed)!)
-                                        roomToAdd.bedList.append(bedToAdd)
-                                    }
+                                    var bedDict = [String : Int]()
+                                    bedDict["Singles"] = document.get("singles") as? Int
+                                    bedDict["Doubles"] = document.get("doubles") as? Int
+                                    bedDict["Queens"] = document.get("queens") as? Int
+                                    bedDict["Kings"] = document.get("kings") as? Int
+                                    
+                                    let roomToAdd = Room(bedDict: bedDict)
                                     
                                     cottageModel.roomsList.append(roomToAdd)
                                     
