@@ -22,6 +22,8 @@ class BedsController: UIViewController, TabBarItemControllerProtocol {
         
         setupBedCollectionView()
         
+        createNavBarButtons()
+        
     }
     
     func setupBedCollectionView() {
@@ -45,6 +47,21 @@ class BedsController: UIViewController, TabBarItemControllerProtocol {
         roomCollectionView?.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor).isActive = true
         roomCollectionView?.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor).isActive = true
         roomCollectionView?.widthAnchor.constraint(equalTo: self.view.widthAnchor).isActive = true
+        
+    }
+    
+    func createNavBarButtons() {
+        
+        if UserService.checkIfOrganiser(model: self.cottageModel!) {
+            let addRoomButton = UIBarButtonItem(title: "Add", style: .plain, target: self, action: #selector(addRoomButtonPressed))
+            self.navigationItem.rightBarButtonItems = [addRoomButton]
+        }
+        
+    }
+    
+    @objc func addRoomButtonPressed() {
+        
+        print("Add room button pressed")
         
     }
 
