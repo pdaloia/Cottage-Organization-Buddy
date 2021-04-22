@@ -470,4 +470,31 @@ class FirestoreServices {
         
     }
     
+    func add(room: Room, to cottage: String) {
+        
+        //get a reference to the firestore
+        let db = Firestore.firestore()
+        
+        //get the references to the collections
+        let cottageRef = db.collection("cottages").document(cottage)
+        
+        //get the groceries collection
+        let roomsCollection = cottageRef.collection("rooms")
+        
+        //create the new document
+        roomsCollection.addDocument(data: [
+            "singles": room.bedDict["Singles"] ?? 0,
+            "doubles": room.bedDict["Doubles"] ?? 0,
+            "queens": room.bedDict["Queens"] ?? 0,
+            "kings": room.bedDict["Kings"] ?? 0
+        ]) { err in
+            if let err = err {
+                print("Error writing document: \(err)")
+            } else {
+                print("Document successfully written!")
+            }
+        }
+        
+    }
+    
 }

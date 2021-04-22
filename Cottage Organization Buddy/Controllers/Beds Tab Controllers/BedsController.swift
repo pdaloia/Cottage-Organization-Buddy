@@ -87,6 +87,10 @@ extension BedsController: AddRoomDelegate {
         self.roomCollectionView!.isExpanded.append(false)
         self.roomCollectionView!.reloadData()
         
+        //firestore add
+        let firestoreService = FirestoreServices()
+        firestoreService.add(room: roomToAdd, to: self.cottageModel!.cottageID)
+        
         //pop the add room view from the nav controller
         self.navigationController?.popViewController(animated: true)
         
