@@ -74,7 +74,21 @@ extension BedsController: AddRoomDelegate {
     
     func addRoom(kings: Int, queens: Int, doubles: Int, singles: Int) {
         
-        print("Adding room")
+        //create the dict of beds in the room
+        var newRoomBedsDict = [String : Int]()
+        newRoomBedsDict["Singles"] = singles
+        newRoomBedsDict["Doubles"] = doubles
+        newRoomBedsDict["Queens"] = queens
+        newRoomBedsDict["Kings"] = kings
+        
+        //create the room and append it to the model, reload the collection view to refresh
+        let roomToAdd = Room(bedDict: newRoomBedsDict)
+        self.cottageModel!.roomsList.append(roomToAdd)
+        self.roomCollectionView!.isExpanded.append(false)
+        self.roomCollectionView!.reloadData()
+        
+        //pop the add room view from the nav controller
+        self.navigationController?.popViewController(animated: true)
         
     }
     
