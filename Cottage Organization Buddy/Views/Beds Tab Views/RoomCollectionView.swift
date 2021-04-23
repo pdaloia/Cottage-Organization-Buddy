@@ -11,6 +11,8 @@ class RoomCollectionView: UICollectionView {
     
     var cottageModel: CottageTrip?
     
+    var deleteRoomDelegate: DeleteRoomDelegate?
+    
     var isExpanded = [Bool]()
 
     init(frame: CGRect, collectionViewLayout layout: UICollectionViewLayout, cellCount: Int) {
@@ -86,5 +88,19 @@ extension RoomCollectionView: ExpandedBedCollectionViewCellDelegate {
         })
         
     }
+    
+    func delete(room id: String) {
         
+        if let deleteRoomDelegate = self.deleteRoomDelegate {
+            deleteRoomDelegate.delete(room: id)
+        }
+        
+    }
+        
+}
+
+protocol DeleteRoomDelegate {
+    
+    func delete(room id: String)
+    
 }

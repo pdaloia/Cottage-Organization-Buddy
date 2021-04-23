@@ -39,6 +39,7 @@ class BedsController: UIViewController, TabBarItemControllerProtocol {
         
         roomCollectionView?.dataSource = roomCollectionView.self
         roomCollectionView?.delegate = roomCollectionView.self
+        roomCollectionView?.deleteRoomDelegate = self
         
         roomCollectionView?.backgroundColor = .clear
         view.addSubview(roomCollectionView!)
@@ -93,6 +94,41 @@ extension BedsController: AddRoomDelegate {
         
         //pop the add room view from the nav controller
         self.navigationController?.popViewController(animated: true)
+        
+    }
+    
+}
+
+extension BedsController: DeleteRoomDelegate {
+    
+    func delete(room id: String) {
+        
+        //create an alert to confirm the delete
+        let deleteRoomAlert = UIAlertController(title: "Confirm Delete", message: "Are you sure you want to delete this room?", preferredStyle: .alert)
+        
+        //alert actions
+        let deleteRoomConfirm = UIAlertAction(title: "Confirm", style: .destructive) {_ in
+            
+            //delete the room from the model
+            self.cottageModel!.roomsList.removeAll(where: { $0.roomID == id })
+            
+            //delete the room from the firestore
+            let firestoreService = FirestoreServices()
+            firestoreService.delete(room: id, in: self.cottageModel!.cottageID)
+            
+            //reload the collection view
+            self.roomCollectionView!.isExpanded = Array(repeating: false, count: self.cottageModel!.roomsList.count)
+            self.roomCollectionView!.reloadData()
+            
+        }
+        let deleteRoomCancel = UIAlertAction(title: "Cancel", style: .cancel) {_ in
+            //do nothing
+        }
+        
+        deleteRoomAlert.addAction(deleteRoomConfirm)
+        deleteRoomAlert.addAction(deleteRoomCancel)
+        
+        self.present(deleteRoomAlert, animated: true, completion: nil)
         
     }
     

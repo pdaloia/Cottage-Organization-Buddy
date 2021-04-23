@@ -192,8 +192,8 @@ class RoomCollectionViewCell: UICollectionViewCell {
         bedCountStackView.trailingAnchor.constraint(equalTo: self.trailingAnchor).isActive = true
         
         if UserService.checkIfOrganiser(model: cottageModel!) {
-            bedLabelStackView.heightAnchor.constraint(equalToConstant: self.frame.height * 0.4).isActive = true
-            bedCountStackView.heightAnchor.constraint(equalToConstant: self.frame.height * 0.4).isActive = true
+            bedLabelStackView.heightAnchor.constraint(equalTo: self.contentView.heightAnchor, multiplier: 0.4).isActive = true
+            bedCountStackView.heightAnchor.constraint(equalTo: self.contentView.heightAnchor, multiplier: 0.4).isActive = true
             
             self.contentView.addSubview(deleteRoomButton)
             deleteRoomButton.translatesAutoresizingMaskIntoConstraints = false
@@ -210,7 +210,9 @@ class RoomCollectionViewCell: UICollectionViewCell {
     
     @objc func deleteRoomButtonPressed() {
         
-        print("Deleting room")
+        if let expandCellDelegate = self.expandCellDelegate {
+            expandCellDelegate.delete(room: self.cellsRoomModel!.roomID)
+        }
         
     }
     
@@ -229,5 +231,7 @@ class RoomCollectionViewCell: UICollectionViewCell {
 protocol ExpandedBedCollectionViewCellDelegate {
     
     func expandButtonTouched(indexPath: IndexPath)
+    
+    func delete(room id: String)
     
 }

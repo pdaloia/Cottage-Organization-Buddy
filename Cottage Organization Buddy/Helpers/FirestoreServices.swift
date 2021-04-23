@@ -501,4 +501,25 @@ class FirestoreServices {
         
     }
     
+    func delete(room id: String, in cottage: String) {
+        
+        //get a reference to the firestore
+        let db = Firestore.firestore()
+        
+        //get the references to the collections
+        let cottageRef = db.collection("cottages").document(cottage)
+        
+        //get the groceries collection
+        let roomsCollection = cottageRef.collection("rooms")
+        
+        roomsCollection.document(id).delete() { err in
+            if let err = err {
+                print("Error deleting room: \(err)")
+            } else {
+                print("Room successfully deleted!")
+            }
+        }
+        
+    }
+    
 }
