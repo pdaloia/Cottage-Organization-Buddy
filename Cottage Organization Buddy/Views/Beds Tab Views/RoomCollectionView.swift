@@ -39,6 +39,7 @@ extension RoomCollectionView: UICollectionViewDataSource, UICollectionViewDelega
         
         bedCell.expandCellDelegate = self
         bedCell.cellsRoomModel = cottageModel!.roomsList[indexPath.item]
+        bedCell.cottageModel = cottageModel!
         bedCell.indexPath = indexPath
         bedCell.isExpanded = isExpanded[indexPath.row]
         bedCell.setupBedCell()

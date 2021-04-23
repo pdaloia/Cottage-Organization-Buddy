@@ -10,6 +10,7 @@ import UIKit
 class RoomCollectionViewCell: UICollectionViewCell {
     
     var cellsRoomModel: Room?
+    var cottageModel: CottageTrip?
     
     //view objects to place in the cell
     var bedImageView = UIImageView()
@@ -149,13 +150,6 @@ class RoomCollectionViewCell: UICollectionViewCell {
         kingBedLabel.text = "Kings: "
         bedLabelStackView.addArrangedSubview(kingBedLabel)
         
-        self.contentView.addSubview(bedLabelStackView)
-        bedLabelStackView.translatesAutoresizingMaskIntoConstraints = false
-        bedLabelStackView.topAnchor.constraint(equalTo: bedImageView.bottomAnchor).isActive = true
-        bedLabelStackView.bottomAnchor.constraint(equalTo: disclosureButton.topAnchor).isActive = true
-        bedLabelStackView.leadingAnchor.constraint(equalTo: self.leadingAnchor).isActive = true
-        bedLabelStackView.trailingAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
-        
         //adding the bed count labels into a stack view
         let bedCountStackView = UIStackView()
         bedCountStackView.axis = .vertical
@@ -178,12 +172,45 @@ class RoomCollectionViewCell: UICollectionViewCell {
         kingCountLabel.text = String(self.cellsRoomModel!.bedDict["Kings"] ?? 0)
         bedCountStackView.addArrangedSubview(kingCountLabel)
         
+        //create the delete room button
+        let deleteRoomButton = UIButton()
+        deleteRoomButton.setTitle("Delete Room", for: .normal)
+        deleteRoomButton.setTitleColor(.systemBlue, for: .normal)
+        deleteRoomButton.addTarget(self, action: #selector(deleteRoomButtonPressed), for: .touchUpInside)
+        
+        //add the contents and set the constraints
+        self.contentView.addSubview(bedLabelStackView)
+        bedLabelStackView.translatesAutoresizingMaskIntoConstraints = false
+        bedLabelStackView.topAnchor.constraint(equalTo: bedImageView.bottomAnchor).isActive = true
+        bedLabelStackView.leadingAnchor.constraint(equalTo: self.leadingAnchor).isActive = true
+        bedLabelStackView.trailingAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
+        
         self.contentView.addSubview(bedCountStackView)
         bedCountStackView.translatesAutoresizingMaskIntoConstraints = false
         bedCountStackView.topAnchor.constraint(equalTo: bedImageView.bottomAnchor).isActive = true
-        bedCountStackView.bottomAnchor.constraint(equalTo: disclosureButton.topAnchor).isActive = true
         bedCountStackView.leadingAnchor.constraint(equalTo: self.centerXAnchor, constant: 10).isActive = true
         bedCountStackView.trailingAnchor.constraint(equalTo: self.trailingAnchor).isActive = true
+        
+        if UserService.checkIfOrganiser(model: cottageModel!) {
+            bedLabelStackView.heightAnchor.constraint(equalToConstant: self.frame.height * 0.4).isActive = true
+            bedCountStackView.heightAnchor.constraint(equalToConstant: self.frame.height * 0.4).isActive = true
+            
+            self.contentView.addSubview(deleteRoomButton)
+            deleteRoomButton.translatesAutoresizingMaskIntoConstraints = false
+            deleteRoomButton.centerXAnchor.constraint(equalTo: self.contentView.centerXAnchor).isActive = true
+            deleteRoomButton.topAnchor.constraint(equalTo: bedLabelStackView.bottomAnchor).isActive = true
+            deleteRoomButton.bottomAnchor.constraint(equalTo: self.disclosureButton.topAnchor).isActive = true
+        }
+        else {
+            bedLabelStackView.bottomAnchor.constraint(equalTo: disclosureButton.topAnchor).isActive = true
+            bedCountStackView.bottomAnchor.constraint(equalTo: disclosureButton.topAnchor).isActive = true
+        }
+        
+    }
+    
+    @objc func deleteRoomButtonPressed() {
+        
+        print("Deleting room")
         
     }
     
