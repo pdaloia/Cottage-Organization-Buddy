@@ -82,7 +82,7 @@ extension BedsController: AddRoomDelegate {
         newRoomBedsDict["Kings"] = kings
         
         //create the room and append it to the model, reload the collection view to refresh
-        let roomToAdd = Room(bedDict: newRoomBedsDict)
+        let roomToAdd = Room(bedDict: newRoomBedsDict, roomID: "")
         self.cottageModel!.roomsList.append(roomToAdd)
         self.roomCollectionView!.isExpanded.append(false)
         self.roomCollectionView!.reloadData()

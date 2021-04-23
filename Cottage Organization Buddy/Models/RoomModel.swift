@@ -10,10 +10,12 @@ import Foundation
 class Room: Codable, CottageModelProtocol {
     
     var bedDict: [String : Int]
+    var roomID: String
     
-    init(bedDict: [String : Int]) {
+    init(bedDict: [String : Int], roomID: String) {
         
         self.bedDict = bedDict
+        self.roomID = roomID
         
     }
     

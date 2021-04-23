@@ -208,7 +208,7 @@ class FirestoreServices {
                                     bedDict["Queens"] = document.get("queens") as? Int
                                     bedDict["Kings"] = document.get("kings") as? Int
                                     
-                                    let roomToAdd = Room(bedDict: bedDict)
+                                    let roomToAdd = Room(bedDict: bedDict, roomID: document.documentID)
                                     
                                     cottageModel.roomsList.append(roomToAdd)
                                     
@@ -481,8 +481,12 @@ class FirestoreServices {
         //get the groceries collection
         let roomsCollection = cottageRef.collection("rooms")
         
+        let newRoomReference = roomsCollection.document()
+        
+        room.roomID = newRoomReference.documentID
+        
         //create the new document
-        roomsCollection.addDocument(data: [
+        newRoomReference.setData([
             "singles": room.bedDict["Singles"] ?? 0,
             "doubles": room.bedDict["Doubles"] ?? 0,
             "queens": room.bedDict["Queens"] ?? 0,

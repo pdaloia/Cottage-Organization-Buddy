@@ -92,8 +92,8 @@ class TestHelper {
         secondRoomDict["King"] = 1
         
         
-        let firstRoom: Room = Room(bedDict: firstRoomDict)
-        let secondRoom: Room = Room(bedDict: secondRoomDict)
+        let firstRoom: Room = Room(bedDict: firstRoomDict, roomID: "abc")
+        let secondRoom: Room = Room(bedDict: secondRoomDict, roomID: "def")
         
         modelToLoad.roomsList = [secondRoom, firstRoom]
         
