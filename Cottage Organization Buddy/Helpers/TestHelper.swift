@@ -109,11 +109,9 @@ class TestHelper {
         let lcboDrink3 = Drink(name: "Drink that shows I work at LCBO", isAlcoholic: true, forSharing: true)
         let mikesHard = Drink(name: "Mike's hard", isAlcoholic: true, forSharing: false)
         
-        let philsList: PersonalDrinksList = PersonalDrinksList(person: phil, drinkNames: [tequila, cranberryJuice, Vodka])
-        let medeisList: PersonalDrinksList = PersonalDrinksList(person: medei, drinkNames: [lcboDrink, lcboDrink2, lcboDrink3, mikesHard])
-        let julesList: PersonalDrinksList = PersonalDrinksList(person: jules, drinkNames: [water, moreWater, waterWithExtraH2O])
-        
-        modelToLoad.drinksList = [philsList, medeisList, julesList]
+        modelToLoad.drinksList[phil] = [tequila, cranberryJuice, Vodka]
+        modelToLoad.drinksList[medei] = [lcboDrink, lcboDrink2, lcboDrink3, mikesHard]
+        modelToLoad.drinksList[jules] = [water, moreWater, waterWithExtraH2O]
         
     }
     

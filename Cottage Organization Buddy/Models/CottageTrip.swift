@@ -16,7 +16,7 @@ class CottageTrip: Codable, CottageModelProtocol {
     var address: String = ""
     var attendeesList: [Attendee] = []
     var groceryList: GroceryLists = GroceryLists(allItems: [], groceryLists: [Attendee:[Grocery]]())
-    var drinksList: [PersonalDrinksList] = []
+    var drinksList: [Attendee:[Drink]] = [Attendee:[Drink]]()
     var carsList: [Car] = []
     var roomsList: [Room] = []
 }
@@ -29,9 +29,10 @@ extension CottageTrip {
         var allSharedDrinks: [Drink]
         allSharedDrinks = []
         
-        for personalList in drinksList {
-            for drink in personalList.drinkNames {
-                if drink.forSharing{
+        for attendee in attendeesList {
+            let currentUserDrinkList: [Drink] = drinksList[attendee] ?? []
+            for drink in currentUserDrinkList {
+                if drink.forSharing {
                     allSharedDrinks.append(drink)
                 }
             }

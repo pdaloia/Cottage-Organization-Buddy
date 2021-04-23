@@ -68,15 +68,7 @@ extension DrinksController: DrinksCollectionViewDelegate, AddDrinkToModelDelegat
     
     func upload(drink: Drink) {
         
-        //this is where you will have to check for the list of the currently logged in attendee and add to their list
-        //for now, just add to list that matches my name
-        
-        if let newDrinksList = cottageModel!.drinksList.first(where: {$0.person.name == "Phil"}) {
-            newDrinksList.drinkNames.append(drink)
-        }
-        else {
-            ToastMessageDisplayer.showToast(controller: self, message: "Error", seconds: 1)
-        }
+        //redo this whole thing lol
         
     }
     

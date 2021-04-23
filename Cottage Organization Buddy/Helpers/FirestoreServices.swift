@@ -146,8 +146,7 @@ class FirestoreServices {
                                         userDrinks.append(drinkToAdd)
                                     }
                                     
-                                    let currentUserDrinkList: PersonalDrinksList = PersonalDrinksList(person: drinkListAttendee, drinkNames: userDrinks)
-                                    cottageModel.drinksList.append(currentUserDrinkList)
+                                    cottageModel.drinksList[drinkListAttendee] = userDrinks
                                     
                                 }
                             }

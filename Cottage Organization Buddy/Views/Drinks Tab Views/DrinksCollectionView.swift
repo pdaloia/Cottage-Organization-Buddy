@@ -30,7 +30,7 @@ extension DrinksCollectionView: UICollectionViewDataSource, UICollectionViewDele
         case 0:
             return 1
         case 1:
-            return cottageModel!.drinksList.count
+            return cottageModel!.attendeesList.count
         default:
             return 0
         }
@@ -46,7 +46,7 @@ extension DrinksCollectionView: UICollectionViewDataSource, UICollectionViewDele
         case 0:
             currentCell.cellTitle = "Shared Drinks List"
         case 1:
-            currentCell.cellTitle = cottageModel!.drinksList[indexPath.row].person.name + "'s list"
+            currentCell.cellTitle = cottageModel!.attendeesList[indexPath.row].name + "'s list"
         default:
             currentCell.cellTitle = "Error"
         }
@@ -97,8 +97,10 @@ extension DrinksCollectionView: UICollectionViewDataSource, UICollectionViewDele
             drinkListController.drinksToDisplay = cottageModel?.returnSharedDrinksList()
             drinkListController.title = "Shared Drinks"
         case 1:
-            drinkListController.drinksToDisplay = cottageModel?.drinksList[indexPath.item].drinkNames
-            drinkListController.title = "\(cottageModel?.drinksList[indexPath.item].person.name ?? "Error")'s list"
+            let attendee: Attendee = cottageModel!.attendeesList[indexPath.item]
+            let drinksListToDisplay: [Drink] = cottageModel!.drinksList[attendee] ?? []
+            drinkListController.drinksToDisplay = drinksListToDisplay
+            drinkListController.title = "\(attendee.name)'s list"
         default:
             drinkListController.drinksToDisplay = []
         }
