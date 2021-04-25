@@ -11,6 +11,7 @@ import FirebaseAuth
 
 class CarCollectionViewCell: UICollectionViewCell {
     
+    var cottageModel: CottageTrip?
     var cellsCarModel: Car?
     
     var carImageView = UIImageView()
@@ -141,11 +142,14 @@ class CarCollectionViewCell: UICollectionViewCell {
         carCellButtonsStackView.distribution = .equalSpacing
         
         //create the buttons
-        let requestSpotButton = UIButton()
-        requestSpotButton.setTitle("Request", for: .normal)
-        requestSpotButton.setTitleColor(.systemBlue, for: .normal)
-        requestSpotButton.addTarget(self, action: #selector(requestCarSpotButtonPressed), for: .touchUpInside)
-        carCellButtonsStackView.addArrangedSubview(requestSpotButton)
+        
+        if !self.cottageModel!.carsList.contains(where: { $0.passengers.contains(where: { $0.firebaseUserID == Auth.auth().currentUser!.uid }) }) {
+            let requestSpotButton = UIButton()
+            requestSpotButton.setTitle("Request", for: .normal)
+            requestSpotButton.setTitleColor(.systemBlue, for: .normal)
+            requestSpotButton.addTarget(self, action: #selector(requestCarSpotButtonPressed), for: .touchUpInside)
+            carCellButtonsStackView.addArrangedSubview(requestSpotButton)
+        }
         
         if cellsCarModel!.driver.firebaseUserID == Auth.auth().currentUser?.uid {
             let deleteCarButton = UIButton()

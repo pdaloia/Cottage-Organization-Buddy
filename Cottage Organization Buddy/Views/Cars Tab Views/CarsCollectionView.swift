@@ -44,6 +44,7 @@ extension CarsCollectionView: UICollectionViewDataSource, UICollectionViewDelega
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CarCell", for: indexPath) as! CarCollectionViewCell
         
         //setup the cell with the information from the cottage model
+        cell.cottageModel = self.cottageModel!
         cell.cellsCarModel = cottageModel!.carsList[indexPath.item]
         cell.indexPath = indexPath
         cell.expandCellDelegate = self
