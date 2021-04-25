@@ -469,6 +469,32 @@ class FirestoreServices {
         
     }
     
+    func remove(passenger id: String, from car: Car, in cottageID: String) {
+        
+        //get a reference to the firestore
+        let db = Firestore.firestore()
+        
+        //get the references to the collections
+        let cottageRef = db.collection("cottages").document(cottageID)
+        
+        //get the groceries collection
+        let carsCollection = cottageRef.collection("cars")
+        
+        //get the car document reference
+        let carReference = carsCollection.document(car.driver.firebaseUserID)
+        
+        carReference.updateData([
+            "passengers": FieldValue.arrayRemove([id])
+        ]) { err in
+            if let err = err {
+                print("Error updating document: \(err)")
+            } else {
+                print("Document successfully updated")
+            }
+        }
+        
+    }
+    
     func add(room: Room, to cottage: String) {
         
         //get a reference to the firestore

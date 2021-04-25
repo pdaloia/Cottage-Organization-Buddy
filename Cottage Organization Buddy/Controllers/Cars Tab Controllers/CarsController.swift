@@ -295,7 +295,25 @@ extension CarsController: CarCollectionViewDelegate {
     
     func remove(passengerID: String, in car: Car) {
         
-        print("Removing \(passengerID) in car driven by \(car.driver.name)")
+        //create the alert actions and present them
+        let confirmLeaveAction = UIAlertAction(title: "Confirm", style: .destructive) {_ in
+            //remove the passenger from the cars model and reload the collection view
+            car.passengers.removeAll(where: { $0.firebaseUserID == passengerID })
+            self.carsCollectionView!.reloadData()
+            
+            //remove the passenger from the car document in firestore
+            let firestoreService = FirestoreServices()
+            firestoreService.remove(passenger: passengerID, from: car, in: self.cottageModel!.cottageID)
+        }
+        let cancelLeaveAction = UIAlertAction(title: "Cancel", style: .cancel) {_ in
+            //do nothing
+        }
+        
+        let leaveAlert = UIAlertController(title: "Leave car?", message: "Are you sure you want to leave this car?", preferredStyle: .alert)
+        leaveAlert.addAction(confirmLeaveAction)
+        leaveAlert.addAction(cancelLeaveAction)
+        
+        self.present(leaveAlert, animated: true, completion: nil)
         
     }
     
