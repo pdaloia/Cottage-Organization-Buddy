@@ -297,6 +297,26 @@ extension CarsController: CarCollectionViewDelegate {
         
         //create the alert actions and present them
         let confirmLeaveAction = UIAlertAction(title: "Confirm", style: .destructive) {_ in
+            
+            //must reimplement
+            
+        }
+        let cancelLeaveAction = UIAlertAction(title: "Cancel", style: .cancel) {_ in
+            //do nothing
+        }
+        
+        let leaveAlert = UIAlertController(title: "Remove passenger?", message: "Are you sure you want to remove this passenger?", preferredStyle: .alert)
+        leaveAlert.addAction(confirmLeaveAction)
+        leaveAlert.addAction(cancelLeaveAction)
+        
+        self.present(leaveAlert, animated: true, completion: nil)
+        
+    }
+    
+    func leave(passengerID: String, in car: Car) {
+     
+        //create the alert actions and present them
+        let confirmLeaveAction = UIAlertAction(title: "Confirm", style: .destructive) {_ in
             //remove the passenger from the cars model and reload the collection view
             car.passengers.removeAll(where: { $0.firebaseUserID == passengerID })
             self.carsCollectionView!.reloadData()

@@ -212,7 +212,7 @@ class CarCollectionViewCell: UICollectionViewCell {
     @objc func leaveCarButtonPressed() {
         
         if let delegate = self.expandCellDelegate {
-            delegate.remove(passengerID: Auth.auth().currentUser!.uid, in: self.cellsCarModel!)
+            delegate.leave(passengerID: Auth.auth().currentUser!.uid, in: self.cellsCarModel!)
         }
         
     }
@@ -236,6 +236,8 @@ protocol ExpandedCarCollectionViewCellDelegate {
     func requestSpot(in car: Car)
     
     func remove(passengerID: String, in car: Car)
+    
+    func leave(passengerID: String, in car: Car)
     
     func delete(car: Car)
     
