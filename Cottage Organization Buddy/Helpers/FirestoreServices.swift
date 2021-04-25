@@ -535,8 +535,9 @@ class FirestoreServices {
         //get the users collection of drinks or create it if it doesnt exist
         let userDrinksDocument = drinksCollection.document(userID)
         
+        let drinkArray = [drink.isAlcoholic, drink.forSharing]
         userDrinksDocument.updateData([
-            drink.name: FieldValue.arrayUnion([drink.isAlcoholic, drink.forSharing])
+            drink.name: drinkArray
         ]) { err in
             if let err = err {
                 print("Error updating document: \(err)")
