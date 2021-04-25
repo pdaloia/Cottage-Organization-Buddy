@@ -548,4 +548,30 @@ class FirestoreServices {
         
     }
     
+    func delete(drink: Drink, for userID: String, in cottageID: String) {
+        
+        //get a reference to the firestore
+        let db = Firestore.firestore()
+        
+        //get the references to the collections
+        let cottageRef = db.collection("cottages").document(cottageID)
+        
+        //get the groceries collection
+        let drinksCollection = cottageRef.collection("drinks")
+        
+        //get the users collection of drinks or create it if it doesnt exist
+        let userDrinksDocument = drinksCollection.document(userID)
+        
+        userDrinksDocument.updateData([
+            drink.name: FieldValue.delete()
+        ]) { err in
+            if let err = err {
+                print("Error updating document: \(err)")
+            } else {
+                print("Document successfully updated")
+            }
+        }
+        
+    }
+    
 }

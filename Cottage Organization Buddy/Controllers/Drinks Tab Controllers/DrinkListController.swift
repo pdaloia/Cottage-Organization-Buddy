@@ -6,10 +6,14 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 class DrinkListController: UIViewController {
     
+    var cottageModel: CottageTrip?
+    
     var drinkTableView: UITableView?
+    var attendee: Attendee?
     var drinksToDisplay: [Drink]?
     var titleOfDrinkList: String?
 
@@ -54,6 +58,38 @@ extension DrinkListController: UITableViewDelegate, UITableViewDataSource {
         currentDrinkCell.textLabel?.text = drinksToDisplay?[indexPath.item].name
         
         return currentDrinkCell
+        
+    }
+    
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        
+        if self.attendee == nil || self.attendee?.firebaseUserID != Auth.auth().currentUser!.uid {
+            return nil
+        }
+        
+        let deleteItem = UIContextualAction(style: .destructive, title: "Delete") {action, view, success in
+            
+            //get the drink to delete
+            let drinkToDelete = self.drinksToDisplay![indexPath.row]
+            
+            //remove it from the drink list and reload the table view
+            self.drinksToDisplay?.removeAll(where: { $0.name == drinkToDelete.name })
+            self.drinkTableView?.reloadData()
+            
+            //delete the itam from the cottage model
+            self.cottageModel!.drinksList[self.attendee!]?.removeAll(where: { $0.name == drinkToDelete.name })
+            
+            //delete the item from the firestore
+            let firestoreService = FirestoreServices()
+            firestoreService.delete(drink: drinkToDelete, for: Auth.auth().currentUser!.uid, in: self.cottageModel!.cottageID)
+            
+        }
+        deleteItem.backgroundColor = .red
+        
+        let swipeItems = UISwipeActionsConfiguration(actions: [deleteItem])
+        swipeItems.performsFirstActionWithFullSwipe = true
+        
+        return swipeItems
         
     }
     

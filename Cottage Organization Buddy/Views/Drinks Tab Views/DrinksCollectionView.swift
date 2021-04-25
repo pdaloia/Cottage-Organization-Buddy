@@ -100,6 +100,8 @@ extension DrinksCollectionView: UICollectionViewDataSource, UICollectionViewDele
             let attendee: Attendee = cottageModel!.attendeesList[indexPath.item]
             let drinksListToDisplay: [Drink] = cottageModel!.drinksList[attendee] ?? []
             drinkListController.drinksToDisplay = drinksListToDisplay
+            drinkListController.attendee = attendee
+            drinkListController.cottageModel = self.cottageModel
             drinkListController.title = "\(attendee.name)'s list"
         default:
             drinkListController.drinksToDisplay = []
