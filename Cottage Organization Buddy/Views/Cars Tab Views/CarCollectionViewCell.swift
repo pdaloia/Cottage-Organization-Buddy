@@ -204,7 +204,7 @@ class CarCollectionViewCell: UICollectionViewCell {
         let passengerIDToRemove = ""
         
         if let delegate = self.expandCellDelegate {
-            delegate.remove(passengerID: passengerIDToRemove, in: self.cellsCarModel!)
+            delegate.removePassengerButtonPressed(for: self.cellsCarModel!)
         }
         
     }
@@ -235,7 +235,7 @@ protocol ExpandedCarCollectionViewCellDelegate {
     
     func requestSpot(in car: Car)
     
-    func remove(passengerID: String, in car: Car)
+    func removePassengerButtonPressed(for car: Car)
     
     func leave(passengerID: String, in car: Car)
     

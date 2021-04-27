@@ -103,10 +103,10 @@ extension CarsCollectionView: ExpandedCarCollectionViewCellDelegate {
         
     }
     
-    func remove(passengerID: String, in car: Car) {
+    func removePassengerButtonPressed(for car: Car) {
         
         if let delegate = self.collectionViewDelegate {
-            delegate.remove(passengerID: passengerID, in: car)
+            delegate.removePassengerButtonPressed(for: car)
         }
         
     }
@@ -133,7 +133,7 @@ protocol CarCollectionViewDelegate {
     
     func createRequest(for car: Car)
     
-    func remove(passengerID: String, in car: Car)
+    func removePassengerButtonPressed(for car: Car)
     
     func leave(passengerID: String, in car: Car)
     

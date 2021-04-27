@@ -11,9 +11,11 @@ import Firebase
 class CarsController: UIViewController, TabBarItemControllerProtocol {
     
     var cottageModel: CottageTrip?
-    
+
     //views for the tab
     var carsCollectionView: CarsCollectionView?
+    var hiddenTextField: UITextField?
+    var passengerPicker: CarPassengerPickerView?
     
     override func viewDidLoad() {
         
@@ -292,14 +294,61 @@ extension CarsController: CarCollectionViewDelegate {
         
     }
     
+    func removePassengerButtonPressed(for car: Car) {
+        
+        if car.passengers.count == 0 {
+            ToastMessageDisplayer.showToast(controller: self, message: "No passengers in car", seconds: 2)
+            return
+        }
+        
+        //create the new custom picker view
+        passengerPicker = CarPassengerPickerView()
+        passengerPicker!.passengersToChooseFrom = car.passengers
+        passengerPicker!.dataSource = passengerPicker.self
+        passengerPicker!.delegate = passengerPicker.self
+        
+        //create the toolbar for the picker view
+        let passengerPickerToolbar = UIToolbar()
+        passengerPickerToolbar.barStyle = UIBarStyle.default
+        passengerPickerToolbar.isTranslucent = true
+        //passengerPickerToolbar.tintColor = UIColor(red: 76/255, green: 217/255, blue: 100/255, alpha: 1)
+        passengerPickerToolbar.sizeToFit()
+        passengerPickerToolbar.isUserInteractionEnabled = true
+        
+        let removeButton = UIBarButtonItem(title: "Remove", style: .done, target: self, action: #selector(removePassengerPickerButtonPressed(sender:)))
+        let cancelButton = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(cancelPassengerPickerButtonPressed))
+        passengerPickerToolbar.setItems([cancelButton, removeButton], animated: true)
+        
+        //create the text field that will be hidden to bring up the picker view
+        self.hiddenTextField = UITextField(frame: CGRect.zero)
+        self.view.addSubview(hiddenTextField!)
+        
+        //make the hidden text field input the picker and make it the first responder
+        hiddenTextField!.inputView = passengerPicker
+        hiddenTextField!.inputAccessoryView = passengerPickerToolbar
+        hiddenTextField!.becomeFirstResponder()
+        
+    }
     
-    func remove(passengerID: String, in car: Car) {
+    @objc func removePassengerPickerButtonPressed(sender: UIBarButtonItem) {
         
         //create the alert actions and present them
         let confirmLeaveAction = UIAlertAction(title: "Confirm", style: .destructive) {_ in
+            //get the user id from the picker view
+            let selectedID = self.passengerPicker!.getSelectedUserID()
             
-            //must reimplement
+            //get the logged in users car
+            let currentUserCar: Car = self.cottageModel!.carsList.first(where: { $0.driver.firebaseUserID == Auth.auth().currentUser!.uid })!
             
+            //remove the passenger from the model and reload the data
+            currentUserCar.passengers.removeAll(where: { $0.firebaseUserID == selectedID })
+            self.carsCollectionView!.reloadData()
+            
+            //remove the passenger from the firestore
+            let firestoreService = FirestoreServices()
+            firestoreService.remove(passenger: selectedID, from: currentUserCar, in: self.cottageModel!.cottageID)
+            
+            self.hiddenTextField?.endEditing(true)
         }
         let cancelLeaveAction = UIAlertAction(title: "Cancel", style: .cancel) {_ in
             //do nothing
@@ -310,6 +359,12 @@ extension CarsController: CarCollectionViewDelegate {
         leaveAlert.addAction(cancelLeaveAction)
         
         self.present(leaveAlert, animated: true, completion: nil)
+        
+    }
+    
+    @objc func cancelPassengerPickerButtonPressed() {
+        
+        self.hiddenTextField?.endEditing(true)
         
     }
     

@@ -17,6 +17,7 @@
 		FE30D2F625E88DC700ACC441 /* RoomCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE30D2F525E88DC700ACC441 /* RoomCollectionView.swift */; };
 		FE318471263106FE0053457F /* AddRoomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE318470263106FE0053457F /* AddRoomViewController.swift */; };
 		FE318474263107300053457F /* AddRoomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE318473263107300053457F /* AddRoomView.swift */; };
+		FE32377A2636590F002C1607 /* CarPassengerPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE3237792636590F002C1607 /* CarPassengerPickerView.swift */; };
 		FE42A3212578826200538A99 /* DrinkListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE42A3202578826200538A99 /* DrinkListController.swift */; };
 		FE4383342583150600FE3FFB /* GroceriesCollectionViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE4383332583150600FE3FFB /* GroceriesCollectionViewDelegate.swift */; };
 		FE681D112593FE4E007B4DEC /* AddDrinkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE681D102593FE4E007B4DEC /* AddDrinkViewController.swift */; };
@@ -80,6 +81,7 @@
 		FE30D2F525E88DC700ACC441 /* RoomCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomCollectionView.swift; sourceTree = "<group>"; };
 		FE318470263106FE0053457F /* AddRoomViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddRoomViewController.swift; sourceTree = "<group>"; };
 		FE318473263107300053457F /* AddRoomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddRoomView.swift; sourceTree = "<group>"; };
+		FE3237792636590F002C1607 /* CarPassengerPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarPassengerPickerView.swift; sourceTree = "<group>"; };
 		FE42A3202578826200538A99 /* DrinkListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkListController.swift; sourceTree = "<group>"; };
 		FE4383332583150600FE3FFB /* GroceriesCollectionViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroceriesCollectionViewDelegate.swift; sourceTree = "<group>"; };
 		FE681D102593FE4E007B4DEC /* AddDrinkViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddDrinkViewController.swift; sourceTree = "<group>"; };
@@ -331,6 +333,7 @@
 				FE724F442543E97B00764387 /* CarInformationView.swift */,
 				FE724F4025431F1F00764387 /* CarCollectionViewCell.swift */,
 				FEABB59A25953F9700D60A66 /* AddCarView.swift */,
+				FE3237792636590F002C1607 /* CarPassengerPickerView.swift */,
 			);
 			path = "Cars Tab Views";
 			sourceTree = "<group>";
@@ -588,6 +591,7 @@
 				FEABB59B25953F9700D60A66 /* AddCarView.swift in Sources */,
 				FE724F13253CF08200764387 /* CarsController.swift in Sources */,
 				FEDCEEE0259A747400C7AAB1 /* UserService.swift in Sources */,
+				FE32377A2636590F002C1607 /* CarPassengerPickerView.swift in Sources */,
 				FE724EF72537D40200764387 /* BedModel.swift in Sources */,
 				FEBC424E25FEDEFD00C35FE1 /* FirestoreServices.swift in Sources */,
 			);
