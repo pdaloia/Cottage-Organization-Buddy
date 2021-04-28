@@ -38,6 +38,7 @@ class TripInformationController: UIViewController, TabBarItemControllerProtocol 
         
         tripInformationCollectionView?.delegate = tripInformationCollectionView
         tripInformationCollectionView?.dataSource = tripInformationCollectionView
+        tripInformationCollectionView?.tripInformationDelegate = self
         
         tripInformationCollectionView?.backgroundColor = .clear
         view.addSubview(tripInformationCollectionView!)
@@ -46,6 +47,25 @@ class TripInformationController: UIViewController, TabBarItemControllerProtocol 
         tripInformationCollectionView?.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor).isActive = true
         tripInformationCollectionView?.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor).isActive = true
         tripInformationCollectionView?.widthAnchor.constraint(equalTo: self.view.widthAnchor).isActive = true
+        
+    }
+    
+}
+
+extension TripInformationController: TripInformationDelegate, AttendeesViewDataSource {
+    
+    func displayAttendeesView() {
+        
+        let attendeesViewController = AttendeesViewController()
+        attendeesViewController.attendeesDataSource = self
+        
+        self.navigationController?.pushViewController(attendeesViewController, animated: true)
+        
+    }
+    
+    func setAttendees() -> [Attendee] {
+        
+        return self.cottageModel!.attendeesList
         
     }
     

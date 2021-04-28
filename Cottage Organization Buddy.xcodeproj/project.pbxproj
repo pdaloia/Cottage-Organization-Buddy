@@ -8,10 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		5B845ED74E255734FECD287D /* Pods_Cottage_Organization_Buddy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 414733A00BAD505C886D5A4E /* Pods_Cottage_Organization_Buddy.framework */; };
-		FE034C43257DB04D00822907 /* AttendeesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE034C42257DB04D00822907 /* AttendeesView.swift */; };
+		FE034C43257DB04D00822907 /* AttendeesTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE034C42257DB04D00822907 /* AttendeesTableView.swift */; };
 		FE034C47257DB34B00822907 /* TripInformationCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE034C46257DB34B00822907 /* TripInformationCollectionView.swift */; };
 		FE034C4A257DD15C00822907 /* TripInformationCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE034C49257DD15C00822907 /* TripInformationCollectionViewCell.swift */; };
 		FE0C79B025EC498E00AB92ED /* RoomModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE0C79AF25EC498E00AB92ED /* RoomModel.swift */; };
+		FE0D91122638F24700B17BC8 /* AttendeesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE0D91112638F24600B17BC8 /* AttendeesViewController.swift */; };
 		FE12953725829CFD00043F41 /* GroceriesCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE12953625829CFD00043F41 /* GroceriesCollectionView.swift */; };
 		FE148E892547C94C00DA5A16 /* RoomCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE148E882547C94C00DA5A16 /* RoomCollectionViewCell.swift */; };
 		FE30D2F625E88DC700ACC441 /* RoomCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE30D2F525E88DC700ACC441 /* RoomCollectionView.swift */; };
@@ -72,10 +73,11 @@
 		05632C5855D6080366031E51 /* Pods-Cottage Organization Buddy.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Cottage Organization Buddy.release.xcconfig"; path = "Target Support Files/Pods-Cottage Organization Buddy/Pods-Cottage Organization Buddy.release.xcconfig"; sourceTree = "<group>"; };
 		414733A00BAD505C886D5A4E /* Pods_Cottage_Organization_Buddy.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Cottage_Organization_Buddy.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A02D09AE9600F819FA10CD75 /* Pods-Cottage Organization Buddy.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Cottage Organization Buddy.debug.xcconfig"; path = "Target Support Files/Pods-Cottage Organization Buddy/Pods-Cottage Organization Buddy.debug.xcconfig"; sourceTree = "<group>"; };
-		FE034C42257DB04D00822907 /* AttendeesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttendeesView.swift; sourceTree = "<group>"; };
+		FE034C42257DB04D00822907 /* AttendeesTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttendeesTableView.swift; sourceTree = "<group>"; };
 		FE034C46257DB34B00822907 /* TripInformationCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripInformationCollectionView.swift; sourceTree = "<group>"; };
 		FE034C49257DD15C00822907 /* TripInformationCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripInformationCollectionViewCell.swift; sourceTree = "<group>"; };
 		FE0C79AF25EC498E00AB92ED /* RoomModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomModel.swift; sourceTree = "<group>"; };
+		FE0D91112638F24600B17BC8 /* AttendeesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttendeesViewController.swift; sourceTree = "<group>"; };
 		FE12953625829CFD00043F41 /* GroceriesCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroceriesCollectionView.swift; sourceTree = "<group>"; };
 		FE148E882547C94C00DA5A16 /* RoomCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomCollectionViewCell.swift; sourceTree = "<group>"; };
 		FE30D2F525E88DC700ACC441 /* RoomCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomCollectionView.swift; sourceTree = "<group>"; };
@@ -322,6 +324,7 @@
 			isa = PBXGroup;
 			children = (
 				FE724F2F253E7A4E00764387 /* TripInformationController.swift */,
+				FE0D91112638F24600B17BC8 /* AttendeesViewController.swift */,
 			);
 			path = "Trip Information Tab Controllers";
 			sourceTree = "<group>";
@@ -373,7 +376,7 @@
 		FEE82BAC2579E0DB00058A5A /* Trip Information Tab Views */ = {
 			isa = PBXGroup;
 			children = (
-				FE034C42257DB04D00822907 /* AttendeesView.swift */,
+				FE034C42257DB04D00822907 /* AttendeesTableView.swift */,
 				FE034C46257DB34B00822907 /* TripInformationCollectionView.swift */,
 				FE034C49257DD15C00822907 /* TripInformationCollectionViewCell.swift */,
 			);
@@ -560,7 +563,7 @@
 				FEEA1DE625C76B2C0050E6FA /* RequestCell.swift in Sources */,
 				FE90989A258ABB4D002E00FB /* AddGroceryView.swift in Sources */,
 				FE148E892547C94C00DA5A16 /* RoomCollectionViewCell.swift in Sources */,
-				FE034C43257DB04D00822907 /* AttendeesView.swift in Sources */,
+				FE034C43257DB04D00822907 /* AttendeesTableView.swift in Sources */,
 				FE724ED625375D7C00764387 /* AppDelegate.swift in Sources */,
 				FE724F19253CF0AB00764387 /* DrinksController.swift in Sources */,
 				FE724ED825375D7C00764387 /* SceneDelegate.swift in Sources */,
@@ -571,6 +574,7 @@
 				FEEA1DE125C7685C0050E6FA /* RequestInboxViewController.swift in Sources */,
 				FE724F0D253A081C00764387 /* CottageTabsController.swift in Sources */,
 				FEEA1DD225C738250050E6FA /* RequestProtocol.swift in Sources */,
+				FE0D91122638F24700B17BC8 /* AttendeesViewController.swift in Sources */,
 				FE034C4A257DD15C00822907 /* TripInformationCollectionViewCell.swift in Sources */,
 				FE0C79B025EC498E00AB92ED /* RoomModel.swift in Sources */,
 				FE724F10253CF06C00764387 /* GroceriesController.swift in Sources */,

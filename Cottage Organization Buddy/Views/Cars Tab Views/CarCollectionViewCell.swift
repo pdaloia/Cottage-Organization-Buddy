@@ -201,8 +201,6 @@ class CarCollectionViewCell: UICollectionViewCell {
     
     @objc func removePassengerButtonPressed() {
         
-        let passengerIDToRemove = ""
-        
         if let delegate = self.expandCellDelegate {
             delegate.removePassengerButtonPressed(for: self.cellsCarModel!)
         }

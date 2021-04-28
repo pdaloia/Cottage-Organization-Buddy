@@ -334,6 +334,8 @@ extension CarsController: CarCollectionViewDelegate {
         
         //create the alert actions and present them
         let confirmLeaveAction = UIAlertAction(title: "Confirm", style: .destructive) {_ in
+            self.hiddenTextField?.endEditing(true)
+            
             //get the user id from the picker view
             let selectedID = self.passengerPicker!.getSelectedUserID()
             
@@ -347,8 +349,6 @@ extension CarsController: CarCollectionViewDelegate {
             //remove the passenger from the firestore
             let firestoreService = FirestoreServices()
             firestoreService.remove(passenger: selectedID, from: currentUserCar, in: self.cottageModel!.cottageID)
-            
-            self.hiddenTextField?.endEditing(true)
         }
         let cancelLeaveAction = UIAlertAction(title: "Cancel", style: .cancel) {_ in
             //do nothing

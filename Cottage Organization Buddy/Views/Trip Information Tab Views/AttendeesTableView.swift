@@ -7,14 +7,15 @@
 
 import UIKit
 
-class AttendeesView: UITableView {
+class AttendeesTableView: UITableView {
     
     var attendeesList: [Attendee]?
 
-    var attendeeTableView = UITableView()
-
     override init(frame: CGRect, style: UITableView.Style) {
         super.init(frame: frame, style: style)
+        
+        self.dataSource = self
+        self.delegate = self
     }
     
     required init?(coder: NSCoder) {
@@ -23,18 +24,16 @@ class AttendeesView: UITableView {
     
 }
 
-extension AttendeesView: UITableViewDelegate, UITableViewDataSource {
+extension AttendeesTableView: UITableViewDelegate, UITableViewDataSource {
     
     //UITable data source methods
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 2
+        return 1
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
         case 0:
-            return 1
-        case 1:
             return attendeesList!.count
         default:
             return 0
@@ -44,7 +43,7 @@ extension AttendeesView: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let currentCell = UITableViewCell()
-        var currentAttendee: Attendee!
+        var currentAttendee = Attendee(name: "", firebaseUserID: "")
         
         switch indexPath.section {
         case 0:
@@ -56,17 +55,6 @@ extension AttendeesView: UITableViewDelegate, UITableViewDataSource {
         currentCell.textLabel?.text = currentAttendee.name
         
         return currentCell
-        
-    }
-    
-    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        
-        switch(section) {
-        case 0:
-            return "Attendees"
-        default:
-            return ""
-        }
         
     }
     

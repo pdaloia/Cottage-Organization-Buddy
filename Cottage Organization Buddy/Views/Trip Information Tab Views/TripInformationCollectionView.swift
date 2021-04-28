@@ -11,6 +11,8 @@ class TripInformationCollectionView: UICollectionView {
     
     var cottageModel: CottageTrip?
     
+    var tripInformationDelegate: TripInformationDelegate?
+    
     private let tripInformationItems = ["Trip Organiser", "Cottage Address", "Trip Dates", "Attendees"]
 
     override init(frame: CGRect, collectionViewLayout layout: UICollectionViewLayout) {
@@ -62,5 +64,23 @@ extension TripInformationCollectionView: UICollectionViewDelegateFlowLayout, UIC
         return CGSize(width: width, height: height)
         
     }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        if indexPath.item == 3 {
+            
+            if let delegate = self.tripInformationDelegate {
+                delegate.displayAttendeesView()
+            }
+            
+        }
+        
+    }
+    
+}
+
+protocol TripInformationDelegate: class {
+    
+    func displayAttendeesView()
     
 }
