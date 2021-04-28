@@ -18,6 +18,7 @@ class RequestInboxViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.title = "Requests"
         self.view.backgroundColor = .systemBackground
         
         setupRequestViewController()

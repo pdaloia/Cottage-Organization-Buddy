@@ -106,6 +106,11 @@ class CarsController: UIViewController, TabBarItemControllerProtocol {
             return
         }
         
+        if requestList.count <= 0 {
+            ToastMessageDisplayer.showToast(controller: self, message: "No requests for your car", seconds: 2)
+            return
+        }
+        
         //create the VC for the request inbox
         let requestInbox = RequestInboxViewController(requests: requestList)
         requestInbox.requestInboxDelegate = self
