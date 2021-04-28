@@ -11,7 +11,7 @@ class TripInformationCollectionViewCell: UICollectionViewCell {
         
     var cottageModel: CottageTrip?
     
-    private let tripInformationItems = ["Trip Organiser", "Cottage Address", "Trip Dates", "Attendees"]
+    private let tripInformationItems = ["Trip Organiser", "Cottage Address", "Trip Dates", "Attendees - Tap to View"]
     
     var cellDataLabel: UILabel?
     
@@ -105,7 +105,12 @@ class TripInformationCollectionViewCell: UICollectionViewCell {
             cellsData.text = cottageModel?.address
         case 2:
             cellsImage = UIImage(systemName: "calendar")!
-            cellsData.text = "\(cottageModel?.startDate.description ?? "Error") - \(cottageModel?.endDate.description ?? "Error")"
+            
+            let formatter = DateFormatter()
+            formatter.dateFormat = "MMM d, r"
+            let formattedStartDate = formatter.string(from: self.cottageModel!.startDate)
+            let formattedEndDate = formatter.string(from: self.cottageModel!.endDate)
+            cellsData.text = "\(formattedStartDate) - \(formattedEndDate)"
         case 3:
             cellsImage = UIImage(systemName: "person.3")!
             cellsData.text = "Number of Attendees: \(cottageModel?.attendeesList.count.description ?? "Error")"
