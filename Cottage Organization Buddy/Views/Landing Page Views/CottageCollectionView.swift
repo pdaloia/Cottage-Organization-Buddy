@@ -48,10 +48,12 @@ extension CottageCollectionView: UICollectionViewDelegateFlowLayout, UICollectio
         case 0:
             collectionView.register(NewCottageCollectionViewCell.self, forCellWithReuseIdentifier: "NewCottageCell")
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "NewCottageCell", for: indexPath) as! NewCottageCollectionViewCell
+            cell.layer.cornerRadius = 10
             return cell
         case 1:
             collectionView.register(CottageCollectionViewCell.self, forCellWithReuseIdentifier: "CottageCell")
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CottageCell", for: indexPath) as! CottageCollectionViewCell
+            cell.layer.cornerRadius = 10
             cell.cottageInfo = userCottages![indexPath.row]
             cell.initializeContent()
             return cell

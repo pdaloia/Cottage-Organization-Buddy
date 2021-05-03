@@ -50,7 +50,7 @@ extension LandingPageViewController: LandingPageViewDelegate {
         df.dateFormat = "yyyy-MM-dd"
         
         let service = FirestoreServices()
-        service.get(cottage: "test123456789") { model in
+        service.get(cottage: cottageID) { model in
             
             nextViewController.cottageModel = model!
             self.present(nextViewController, animated:true, completion:nil)
