@@ -15,6 +15,70 @@ class FirestoreServices {
         
     }
     
+    func getCottages(for userID: String, completionHandler: @escaping ([CottageInfo]) -> ()){
+        
+        //get a reference to the firestore
+        let db = Firestore.firestore()
+        
+        //get the references to the user collection
+        let userRef = db.collection("users").document(userID)
+        
+        let cottagesRef = db.collection("cottages")
+        
+        //get the user document and get the data
+        var userCottages: [CottageInfo] = []
+        
+        //get the user reference document
+        userRef.getDocument() { (document, error) in
+            if let document = document, document.exists {
+                
+                //get the cottage IDs of the user
+                let userCottageIDs = document.get("cottageIDs") as! [String]
+                
+                //create a dispatch group with a lock for each cottage ID
+                let group = DispatchGroup()
+                for _ in userCottageIDs {
+                    group.enter()
+                }
+                
+                //iterate over all IDs of user
+                for id in userCottageIDs {
+                    
+                    //get the document in conttage collection
+                    cottagesRef.document(id).getDocument() { (document, error) in
+                        if let document = document, document.exists {
+                            print("Getting info for cottage: \(id)")
+                            let cottageID = id
+                            let cottageName: String = document.get("tripName") as! String
+                            let cottageOrganizer = Attendee(name: document.get("organiserName") as! String, firebaseUserID: document.get("organiserID") as! String)
+                            let cottageInfo = CottageInfo(cottageID: cottageID, cottageName: cottageName, cottageOrganiser: cottageOrganizer)
+                            userCottages.append(cottageInfo)
+                            
+                            print("Done getting info for cottage: \(id)")
+                            group.leave()
+                        }
+                        else {
+                            print("Document does not exist")
+                            group.leave()
+                        }
+                    }
+                    
+                }
+                
+                //return the cottage info list to the completion handler only when all tasks are complete
+                group.notify(queue: .main) {
+                    print("notifying with completion handler")
+                    completionHandler(userCottages)
+                }
+            }
+            else {
+                print("Document does not exist")
+                completionHandler([])
+            }
+        }
+        
+    }
+    
     func get(cottage: String, completionHandler: @escaping (CottageTrip?) -> ()) {
         
         //get a reference to the firestore

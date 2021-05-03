@@ -52,6 +52,22 @@ class HomeController: UIViewController {
         
     }
     
+    func pushLandingPageController() {
+        
+        let landingPageVC = LandingPageViewController()
+        landingPageVC.modalPresentationStyle = .fullScreen
+        
+        let firestoreService = FirestoreServices()
+        firestoreService.getCottages(for: Auth.auth().currentUser!.uid) { cottageInfos in
+            
+            landingPageVC.userCottages = cottageInfos
+            
+            self.present(landingPageVC, animated: true, completion: nil)
+            
+        }
+                
+    }
+    
     func pushCottageTabsController() {
         
         let storyBoard : UIStoryboard = UIStoryboard(name: "CottageTabs", bundle:nil)
@@ -109,7 +125,7 @@ extension HomeController: GIDSignInDelegate{
             }
         }
         
-        pushCottageTabsController()
+        pushLandingPageController()
         
     }
     
