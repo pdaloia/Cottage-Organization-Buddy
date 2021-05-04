@@ -41,6 +41,14 @@ extension LandingPageViewController: LandingPageViewDelegate {
     
     func cottageCellPressed(for cottageID: String) {
         
+        let spinner = UIActivityIndicatorView(style: .large)
+        self.view.addSubview(spinner)
+        spinner.translatesAutoresizingMaskIntoConstraints = false
+        spinner.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
+        spinner.centerYAnchor.constraint(equalTo: self.view.centerYAnchor).isActive = true
+        self.view.bringSubviewToFront(spinner)
+        spinner.startAnimating()
+        
         let storyBoard : UIStoryboard = UIStoryboard(name: "CottageTabs", bundle:nil)
         
         let nextViewController = storyBoard.instantiateViewController(withIdentifier: "CottageTabsView") as! CottageTabsController
@@ -53,6 +61,8 @@ extension LandingPageViewController: LandingPageViewDelegate {
         service.get(cottage: cottageID) { model in
             
             nextViewController.cottageModel = model!
+            spinner.stopAnimating()
+            
             self.present(nextViewController, animated:true, completion:nil)
             
         }
