@@ -13,6 +13,7 @@ class HomeController: UIViewController {
     
     var googleSignInbutton = GIDSignInButton()
     var homeLabel: UILabel?
+    var spinner = UIActivityIndicatorView(style: .large)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,7 +34,7 @@ class HomeController: UIViewController {
         googleSignInbutton.translatesAutoresizingMaskIntoConstraints = false
         googleSignInbutton.topAnchor.constraint(equalTo: self.homeLabel!.bottomAnchor).isActive = true
         googleSignInbutton.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
-                
+               
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -62,31 +63,12 @@ class HomeController: UIViewController {
             
             landingPageVC.userCottages = cottageInfos
             
+            self.spinner.stopAnimating()
+            
             self.present(landingPageVC, animated: true, completion: nil)
             
         }
                 
-    }
-    
-    func pushCottageTabsController() {
-        
-        let storyBoard : UIStoryboard = UIStoryboard(name: "CottageTabs", bundle:nil)
-        
-        let nextViewController = storyBoard.instantiateViewController(withIdentifier: "CottageTabsView") as! CottageTabsController
-        nextViewController.modalPresentationStyle = .fullScreen
-        
-        let df = DateFormatter()
-        df.dateFormat = "yyyy-MM-dd"
-        
-        let service = FirestoreServices()
-        service.get(cottage: "test123456789") { model in
-            
-            nextViewController.cottageModel = model!
-            self.present(nextViewController, animated:true, completion:nil)
-            
-        }
-        
-        
     }
 
 }
@@ -96,8 +78,16 @@ extension HomeController: GIDSignInDelegate{
     
     func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
         
+        self.view.addSubview(spinner)
+        spinner.translatesAutoresizingMaskIntoConstraints = false
+        spinner.topAnchor.constraint(equalTo: googleSignInbutton.bottomAnchor).isActive = true
+        spinner.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
+        
+        spinner.startAnimating()
+        
         if let error = error {
             print("\(error.localizedDescription)")
+            spinner.stopAnimating()
             return
         } else {
             let userId = user.userID                  // For client-side use only!
@@ -115,7 +105,10 @@ extension HomeController: GIDSignInDelegate{
             print("Email: ", email!)
         }
 
-        guard let authentication = user.authentication else { return }
+        guard let authentication = user.authentication else {
+            spinner.stopAnimating()
+            return
+        }
         let credential = GoogleAuthProvider.credential(withIDToken: authentication.idToken, accessToken: authentication.accessToken)
         
         // Authenticate with Firebase using the credential object
