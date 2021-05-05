@@ -21,6 +21,7 @@ class CreateCottageViewController: UIViewController {
     func initializeViewController() {
         
         let createCottageView = CreateCottageView()
+        createCottageView.createCottageViewDelegate = self
         self.view.addSubview(createCottageView)
         createCottageView.translatesAutoresizingMaskIntoConstraints = false
         createCottageView.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor).isActive = true
@@ -32,4 +33,44 @@ class CreateCottageViewController: UIViewController {
         
     }
 
+}
+
+extension CreateCottageViewController: CreateCottageViewDelegate {
+    
+    func validateInputs(cottageName: String, cottageAddress: String, startDate: Date, endDate: Date) -> Bool {
+        
+        //name validation
+        if cottageName == "" {
+            ToastMessageDisplayer.showToast(controller: self, message: "Cottage name can't be empty", seconds: 2)
+            return false
+        }
+        
+        //address validation
+        if cottageAddress == "" {
+            ToastMessageDisplayer.showToast(controller: self, message: "Cottage address can't be empty", seconds: 2)
+            return false
+        }
+        
+        //end date before start date
+        if endDate < startDate {
+            ToastMessageDisplayer.showToast(controller: self, message: "Start date must be before end date", seconds: 2)
+            return false
+        }
+        
+        //end date before current date
+        if endDate.timeIntervalSinceNow.sign == .minus {
+            ToastMessageDisplayer.showToast(controller: self, message: "End date can't be before current time", seconds: 2)
+            return false
+        }
+        
+        return true
+        
+    }
+    
+    func uploadCottage(cottageName: String, cottageAddress: String, startDate: Date, endDate: Date) {
+        
+        print("uploading the firestore")
+        
+    }
+    
 }
