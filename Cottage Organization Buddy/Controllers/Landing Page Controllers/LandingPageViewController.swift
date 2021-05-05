@@ -14,6 +14,7 @@ class LandingPageViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.title = "Cottages"
         self.view.backgroundColor = .systemBackground
 
         initializeView()
@@ -68,9 +69,13 @@ extension LandingPageViewController: LandingPageViewDelegate {
         }
         
     }
-    
+
     func newCottageCellPressed() {
-        print("new cottage pressed")
+        
+        let createCottageVC = CreateCottageViewController()
+        
+        self.navigationController?.pushViewController(createCottageVC, animated: true)
+        
     }
     
 }
