@@ -72,6 +72,29 @@ class HomeController: UIViewController {
         }
                 
     }
+    
+    func checkForUserDocument(id: String, email: String, firstName: String, lastName: String, fullName: String) {
+        
+        let firestoreService = FirestoreServices()
+        
+        firestoreService.checkForUserDocument(id: id) { found in
+            if found {
+                self.pushLandingPageController()
+            }
+            else {
+                firestoreService.createUserDocument(for: id, email: email, firstName: firstName, lastName: lastName, fullName: fullName) { successfullyCreated in
+                    if successfullyCreated {
+                        self.pushLandingPageController()
+                    }
+                    else {
+                        self.spinner.stopAnimating()
+                        ToastMessageDisplayer.showToast(controller: self, message: "Error creating user document on initial login", seconds: 2)
+                    }
+                }
+            }
+        }
+        
+    }
 
 }
 
@@ -120,7 +143,7 @@ extension HomeController: GIDSignInDelegate{
             }
         }
         
-        pushLandingPageController()
+        checkForUserDocument(id: Auth.auth().currentUser!.uid, email: user.profile.email, firstName: user.profile.givenName, lastName: user.profile.familyName, fullName: user.profile.name)
         
     }
     

@@ -15,6 +15,51 @@ class FirestoreServices {
         
     }
     
+    func checkForUserDocument(id: String, completionHandler: @escaping (Bool) -> ()) {
+        
+        //get a reference to the firestore
+        let db = Firestore.firestore()
+        
+        //get the references to the user collection
+        let userDocRef = db.collection("users").document(id)
+        
+        userDocRef.getDocument() { (doc, error) in
+            if let doc = doc, doc.exists{
+                completionHandler(true)
+            }
+            else {
+                completionHandler(false)
+            }
+        }
+        
+    }
+    
+    func createUserDocument(for userID: String, email: String, firstName: String, lastName: String, fullName: String, completionHandler: @escaping (Bool) -> ()) {
+        
+        //get a reference to the firestore
+        let db = Firestore.firestore()
+        
+        //get the references to the user collection
+        db.collection("users").document(userID).setData([
+            "cottageIDs" : [],
+            "email" : email,
+            "firstName" : firstName,
+            "fullName" : fullName,
+            "lastName" : lastName
+        ]) { err in
+            if let err = err {
+                print("Error writing document: \(err)")
+                completionHandler(false)
+            } else {
+                print("Document successfully written!")
+                completionHandler(true)
+            }
+        }
+        
+        
+        
+    }
+    
     func getCottages(for userID: String, completionHandler: @escaping ([CottageInfo]) -> ()){
         
         //get a reference to the firestore
@@ -100,20 +145,39 @@ class FirestoreServices {
                     "tripName" : name,
                     "startDate" : startDate,
                     "endDate" : endDate,
-                ])
+                ]) { err in
+                    if let err = err {
+                        print("Error writing document: \(err)")
+                    } else {
+                        print("Document successfully written!")
+                    }
+                }
+                
                 newCottageDoc.collection("attendees").document(userID).setData([
                     "name" : organiserName
-                ])
+                ]) { err in
+                    if let err = err {
+                        print("Error writing document: \(err)")
+                    } else {
+                        print("Document successfully written!")
+                    }
+                }
                 
                 userDoc.updateData([
                     "cottageIDs" : FieldValue.arrayUnion([newCottageDoc.documentID])
-                ])
+                ]) { err in
+                    if let err = err {
+                        print("Error updating document: \(err)")
+                    } else {
+                        print("Document successfully updated")
+                    }
+                }
                 
                 completionHandler(newCottageDoc.documentID)
             }
             else {
                 print("document does not exist for user id: \(userID)")
-                //create the document
+                completionHandler(nil)
             }
         }
         
@@ -130,12 +194,6 @@ class FirestoreServices {
         //get the user document
         let userDocument = usersRef.document(userID)
         return userDocument
-        
-    }
-    
-    func createUserDocument(for userID: String, completionHandler: @escaping (DocumentSnapshot?) -> ()) {
-        
-        //to implement
         
     }
     
