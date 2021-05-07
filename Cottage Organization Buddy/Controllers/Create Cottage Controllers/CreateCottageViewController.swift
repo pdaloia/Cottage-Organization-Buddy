@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 class CreateCottageViewController: UIViewController {
 
@@ -69,7 +70,48 @@ extension CreateCottageViewController: CreateCottageViewDelegate {
     
     func uploadCottage(cottageName: String, cottageAddress: String, startDate: Date, endDate: Date) {
         
-        print("uploading the firestore")
+        let firestoreService = FirestoreServices()
+        
+        //date formatting
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        let startDateFormatted = dateFormatter.string(from: startDate)
+        let endDateFormatted = dateFormatter.string(from: endDate)
+        
+        //create the spinner
+        let spinner = UIActivityIndicatorView(style: .large)
+        self.view.addSubview(spinner)
+        spinner.translatesAutoresizingMaskIntoConstraints = false
+        spinner.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
+        spinner.centerYAnchor.constraint(equalTo: self.view.centerYAnchor).isActive = true
+        self.view.bringSubviewToFront(spinner)
+        spinner.startAnimating()
+        
+        //create the view controller to display the newly created cottage
+        let storyBoard : UIStoryboard = UIStoryboard(name: "CottageTabs", bundle:nil)
+        let nextViewController = storyBoard.instantiateViewController(withIdentifier: "CottageTabsView") as! CottageTabsController
+        nextViewController.modalPresentationStyle = .fullScreen
+        
+        //sending info to the firestore
+        firestoreService.createCottage(name: cottageName, address: cottageAddress, startDate: startDateFormatted, endDate: endDateFormatted, userID: Auth.auth().currentUser!.uid, organiserName: Auth.auth().currentUser!.displayName!) { cottageID in
+            
+            //if there is a valid cottage id get the cottage using the service and present it
+            if let id = cottageID {
+                firestoreService.get(cottage: id) { model in
+                    
+                    nextViewController.cottageModel = model!
+                    spinner.stopAnimating()
+                    
+                    self.present(nextViewController, animated:true, completion:nil)
+                    
+                }
+            }
+            else {
+                spinner.stopAnimating()
+                ToastMessageDisplayer.showToast(controller: self, message: "Error creating cottage", seconds: 2)
+            }
+            
+        }
         
     }
     

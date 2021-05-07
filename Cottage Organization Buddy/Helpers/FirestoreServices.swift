@@ -79,6 +79,97 @@ class FirestoreServices {
         
     }
     
+    func createCottage(name: String, address: String, startDate: String, endDate: String, userID: String, organiserName: String, completionHandler: @escaping (String?) -> ()) {
+        
+        //firestore reference
+        let db = Firestore.firestore()
+        
+        //collections references
+        let cottagesCollection = db.collection("cottages")
+        
+        //get the user document
+        let userDoc = self.getUserDocument(for: userID)
+        
+        userDoc.getDocument() { (document, error) in
+            if let document = document, document.exists {
+                let newCottageDoc = cottagesCollection.document()
+                newCottageDoc.setData([
+                    "address" : address,
+                    "organiserName" : organiserName,
+                    "organiserID" : userID,
+                    "tripName" : name,
+                    "startDate" : startDate,
+                    "endDate" : endDate,
+                ])
+                newCottageDoc.collection("attendees").document(userID).setData([
+                    "name" : organiserName
+                ])
+                
+                userDoc.updateData([
+                    "cottageIDs" : FieldValue.arrayUnion([newCottageDoc.documentID])
+                ])
+                
+                completionHandler(newCottageDoc.documentID)
+            }
+            else {
+                print("document does not exist for user id: \(userID)")
+                //create the document
+            }
+        }
+        
+    }
+    
+    func getUserDocument(for userID: String) -> DocumentReference {
+        
+        //get a reference to the firestore
+        let db = Firestore.firestore()
+        
+        //get the references to the collections
+        let usersRef = db.collection("users")
+        
+        //get the user document
+        let userDocument = usersRef.document(userID)
+        return userDocument
+        
+    }
+    
+    func createUserDocument(for userID: String, completionHandler: @escaping (DocumentSnapshot?) -> ()) {
+        
+        //to implement
+        
+    }
+    
+    func add(user id: String, to cottageID: String) {
+        
+        //get a reference to the firestore
+        let db = Firestore.firestore()
+        
+        //get the references to the collections
+        let usersRef = db.collection("users")
+        
+        //get the user document
+        let userDocument = usersRef.document(id)
+        
+        //append new cottage to user cottage array
+        userDocument.updateData([
+            "cottageIDs" : FieldValue.arrayUnion([cottageID])
+        ]) { err in
+            if let err = err {
+                print("Error adding \(cottageID) to user document: \(err)")
+            } else {
+                print("Document successfully updated")
+            }
+        
+        }
+        
+    }
+    
+    func remove(user id: String, from cottageID: String) {
+        
+        //to implement
+        
+    }
+    
     func get(cottage: String, completionHandler: @escaping (CottageTrip?) -> ()) {
         
         //get a reference to the firestore
