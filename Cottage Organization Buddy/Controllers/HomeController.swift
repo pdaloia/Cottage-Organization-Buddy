@@ -141,9 +141,10 @@ extension HomeController: GIDSignInDelegate{
             if let error = error {
                 print("authentication error \(error.localizedDescription)")
             }
+            else {
+                self.checkForUserDocument(id: Auth.auth().currentUser!.uid, email: user.profile.email, firstName: user.profile.givenName, lastName: user.profile.familyName, fullName: user.profile.name)
+            }
         }
-        
-        checkForUserDocument(id: Auth.auth().currentUser!.uid, email: user.profile.email, firstName: user.profile.givenName, lastName: user.profile.familyName, fullName: user.profile.name)
         
     }
     
