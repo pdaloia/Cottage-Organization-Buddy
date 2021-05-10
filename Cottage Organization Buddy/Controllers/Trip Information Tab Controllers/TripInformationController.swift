@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 class TripInformationController: UIViewController, TabBarItemControllerProtocol {
     
@@ -21,6 +22,7 @@ class TripInformationController: UIViewController, TabBarItemControllerProtocol 
         self.view.backgroundColor = .systemBackground
         
         initializeCollectionView()
+        setupNavBarButtons()
     }
     
     func initializeCollectionView() {
@@ -47,6 +49,23 @@ class TripInformationController: UIViewController, TabBarItemControllerProtocol 
         tripInformationCollectionView?.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor).isActive = true
         tripInformationCollectionView?.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor).isActive = true
         tripInformationCollectionView?.widthAnchor.constraint(equalTo: self.view.widthAnchor).isActive = true
+        
+    }
+    
+    func setupNavBarButtons() {
+        
+        if self.cottageModel!.tripOrganiser.firebaseUserID == Auth.auth().currentUser!.uid {
+            let inviteUsersButton = UIBarButtonItem(title: "Invite", style: .plain, target: self, action: #selector(inviteUsersButtonsPressed))
+            self.navigationItem.rightBarButtonItem = inviteUsersButton
+        }
+        
+    }
+    
+    @objc func inviteUsersButtonsPressed() {
+        
+        let inviteUsersVC = InviteUsersViewController()
+        
+        self.present(inviteUsersVC, animated: true, completion: nil)
         
     }
     
