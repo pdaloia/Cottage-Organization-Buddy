@@ -9,6 +9,8 @@ import UIKit
 
 class InviteUsersView: UIView {
     
+    var inviteDelegate: InviteUsersViewDelegate?
+    
     var emailInput: UITextField?
 
     override init(frame: CGRect) {
@@ -25,7 +27,9 @@ class InviteUsersView: UIView {
         
         //create the input field with constraints
         emailInput = UITextField()
-        emailInput?.placeholder = "Email of user"
+        emailInput!.placeholder = "Email of user"
+        emailInput!.autocorrectionType = .no
+        emailInput!.autocapitalizationType = .none
         self.addSubview(emailInput!)
         emailInput!.translatesAutoresizingMaskIntoConstraints = false
         emailInput!.topAnchor.constraint(equalTo: self.topAnchor, constant: 50).isActive = true
@@ -48,9 +52,23 @@ class InviteUsersView: UIView {
     
     @objc func sendInviteButtonPressed() {
         
-        print("send invite button pressed")
-        //to implement
+        if let delegate = self.inviteDelegate {
+            
+            let validated = delegate.validate(email: emailInput!.text!)
+            if validated {
+                delegate.emailSubmitted(email: emailInput!.text!)
+            }
+            
+        }
         
     }
 
+}
+
+protocol InviteUsersViewDelegate {
+    
+    func emailSubmitted(email: String)
+    
+    func validate(email: String) -> Bool
+        
 }

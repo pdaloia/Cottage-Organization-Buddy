@@ -64,6 +64,7 @@ class TripInformationController: UIViewController, TabBarItemControllerProtocol 
     @objc func inviteUsersButtonsPressed() {
         
         let inviteUsersVC = InviteUsersViewController()
+        inviteUsersVC.cottageID = self.cottageModel!.cottageID
         
         self.present(inviteUsersVC, animated: true, completion: nil)
         

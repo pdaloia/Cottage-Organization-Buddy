@@ -34,6 +34,83 @@ class FirestoreServices {
         
     }
     
+    func sendInvite(to email: String, for cottageID: String, completionHandler: @escaping (String?) -> ()) {
+        
+        //get a reference to the firestore
+        let db = Firestore.firestore()
+        
+        //get the references to the user document
+        let userDocRef = db.collection("users").whereField("email", isEqualTo: email)
+        
+        userDocRef.getDocuments() { (querySnapshot, err) in
+            if let err = err {
+                print("Error getting documents: \(err)")
+                completionHandler("Firestore Error")
+            }
+            else {
+                //if the document is not found for this user email, they are not registered case
+                if querySnapshot!.documents.count == 0 {
+                    print("no documents found for this email")
+                    completionHandler("Not Registered")
+                }
+                //case if there are two user documents with the same email for some reason, hopefully never happens but just in case
+                else if querySnapshot!.documents.count > 1 {
+                    print("more than one document found for this email")
+                    completionHandler("More Than One User Document")
+                }
+                //if a single document with this email is found registered for the app
+                else {
+                    let document = querySnapshot!.documents[0]
+                    let cottageIDs = document.data()["cottageIDs"] as! [String]
+                    //case where the email document already has this cottage id accepted
+                    if cottageIDs.contains(cottageID) {
+                        print("user already in cottage")
+                        completionHandler("Already In Cottage")
+                    }
+                    //case where we successfully invite the user 
+                    else {
+                        db.collection("users").document(document.documentID).updateData([
+                            "invitedCottageIDs" : FieldValue.arrayUnion([cottageID])
+                        ]) { err in
+                            if let err = err {
+                                print("Error updating document: \(err)")
+                            } else {
+                                print("Document successfully updated")
+                                completionHandler(nil)
+                            }
+                        }
+                    }
+                }
+            }
+            
+        }
+        
+    }
+    
+    func createPendingInvites(for email: String, in cottageID: String) {
+        
+        //get a reference to the firestore
+        let db = Firestore.firestore()
+        
+        //get the references to the user document
+        let uncreatedCollectionRef = db.collection("uncreated")
+        
+        //get the document for an uncreated user
+        let uncreatedDoc = uncreatedCollectionRef.document(email)
+        
+        //update the document
+        uncreatedDoc.setData([
+            "pendingInvites" : FieldValue.arrayUnion([cottageID])
+        ], merge: true)  { err in
+            if let err = err {
+                print("Error writing uncreated account document: \(err)")
+            } else {
+                print("Uncreated account document successfully written!")
+            }
+        }
+        
+    }
+    
     func createUserDocument(for userID: String, email: String, firstName: String, lastName: String, fullName: String, completionHandler: @escaping (Bool) -> ()) {
         
         //get a reference to the firestore
