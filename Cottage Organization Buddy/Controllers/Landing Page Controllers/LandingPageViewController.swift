@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 class LandingPageViewController: UIViewController {
     
@@ -22,6 +23,7 @@ class LandingPageViewController: UIViewController {
     
     func initializeView() {
         
+        //initializing the landing page view
         let landingPageView = LandingPageView()
         landingPageView.userCottages = userCottages!
         landingPageView.initializeCollectionView()
@@ -33,6 +35,26 @@ class LandingPageViewController: UIViewController {
         landingPageView.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor).isActive = true
         landingPageView.leadingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leadingAnchor).isActive = true
         landingPageView.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor).isActive = true
+        
+        //creating the nav bar button
+        let invitesBarButton = UIBarButtonItem(title: "Invites", style: .plain, target: self, action: #selector(invitesBarButtonPressed))
+        self.navigationItem.rightBarButtonItem = invitesBarButton
+        
+    }
+    
+    @objc func invitesBarButtonPressed() {
+        
+        let firestoreService = FirestoreServices()
+        
+        firestoreService.getInvitedCottages(for: Auth.auth().currentUser!.uid) { invitedCottages in
+            
+            let inviteInboxVC = CottageInviteInboxViewController()
+            inviteInboxVC.invitedCottages = invitedCottages
+            inviteInboxVC.modalPresentationStyle = .fullScreen
+            
+            self.navigationController!.pushViewController(inviteInboxVC, animated: true)
+            
+        }
         
     }
 
