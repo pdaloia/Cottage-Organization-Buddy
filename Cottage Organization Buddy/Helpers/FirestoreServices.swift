@@ -178,6 +178,65 @@ class FirestoreServices {
         
     }
     
+    func acceptInvite(for cottageID: String, userID: String, name: String) {
+        
+        //get the reference to the firestore
+        let db = Firestore.firestore()
+        
+        //get the users and cottage collection references
+        let usersCollection = db.collection("users")
+        let cottagesCollection = db.collection("cottages")
+        
+        //remove the cottage id from the invited array and add it to the cottages array
+        let userDoc = usersCollection.document(userID)
+        userDoc.updateData([
+            "invitedCottageIDs" : FieldValue.arrayRemove([cottageID]),
+            "cottageIDs" : FieldValue.arrayUnion([cottageID])
+        ]) { err in
+            if let err = err {
+                print("Error updating document: \(err)")
+            } else {
+                print("Document successfully updated")
+            }
+        }
+        
+        //add the user to the cottages attendees collection
+        let cottageDoc = cottagesCollection.document(cottageID)
+        let attendeesCollection = cottageDoc.collection("attendees")
+        attendeesCollection.document(userID).setData([
+            "name" : name
+        ]) { err in
+            if let err = err {
+                print("Error writing document: \(err)")
+            } else {
+                print("Document successfully written!")
+            }
+        }
+        
+    }
+    
+    func declineInvite(for cottageID: String, userID: String) {
+        
+        //get the reference to the firestore
+        let db = Firestore.firestore()
+        
+        //get the users and cottage collection references
+        let usersCollection = db.collection("users")
+        
+        //remove the cottage id from the invited array and add it to the cottages array
+        let userDoc = usersCollection.document(userID)
+        userDoc.updateData([
+            "invitedCottageIDs" : FieldValue.arrayRemove([cottageID])
+        ]) { err in
+            if let err = err {
+                print("Error updating document: \(err)")
+            } else {
+                print("Document successfully updated")
+            }
+        }
+        
+    }
+    
     func createUserDocument(for userID: String, email: String, firstName: String, lastName: String, fullName: String, completionHandler: @escaping (Bool) -> ()) {
         
         //get a reference to the firestore
