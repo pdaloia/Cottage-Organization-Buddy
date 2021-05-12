@@ -10,6 +10,8 @@ import UIKit
 class InvitedCottagesCollectionView: UICollectionView {
     
     var invitedCottages: [CottageInfo]?
+    
+    var invitedCottageCVDelegate: InvitedCottagesCollectionViewDelegate?
 
     override init(frame: CGRect, collectionViewLayout layout: UICollectionViewLayout) {
         super.init(frame: frame, collectionViewLayout: layout)
@@ -68,5 +70,21 @@ extension InvitedCottagesCollectionView: UICollectionViewDataSource, UICollectio
         return CGSize(width: width, height: height)
         
     }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        let selectedCottageInfo = self.invitedCottages![indexPath.item]
+        
+        if let delegate = self.invitedCottageCVDelegate {
+            delegate.inviteSelected(invite: selectedCottageInfo)
+        }
+        
+    }
+    
+}
+
+protocol InvitedCottagesCollectionViewDelegate {
+    
+    func inviteSelected(invite: CottageInfo)
     
 }
