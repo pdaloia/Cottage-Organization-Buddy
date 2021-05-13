@@ -12,6 +12,7 @@ class CottageInviteInboxViewController: UIViewController {
     
     var invitedCottages: [CottageInfo]?
     var inviteInboxView: CottageInviteInboxView?
+    var cottageInviteInboxVCDelegate: CottageInviteInboxVCDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -52,6 +53,10 @@ extension CottageInviteInboxViewController: CottageInviteInboxViewDelegate {
             self.inviteInboxView!.invitedCottages = self.invitedCottages!
             self.inviteInboxView!.invitedCottageCollectionView!.invitedCottages = self.invitedCottages!
             self.inviteInboxView?.invitedCottageCollectionView!.reloadData()
+            
+            if let delegate = self.cottageInviteInboxVCDelegate {
+                delegate.accepted(invite: invite)
+            }
         }
         
         let declineAlertAction = UIAlertAction(title: "Decline", style: .destructive) { _ in
@@ -69,5 +74,11 @@ extension CottageInviteInboxViewController: CottageInviteInboxViewDelegate {
         self.present(inviteApprovalAlert, animated: true, completion: nil)
         
     }
+    
+}
+
+protocol CottageInviteInboxVCDelegate {
+    
+    func accepted(invite: CottageInfo)
     
 }

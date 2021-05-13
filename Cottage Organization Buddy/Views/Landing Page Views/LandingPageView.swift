@@ -11,6 +11,7 @@ class LandingPageView: UIView {
     
     var userCottages: [CottageInfo]?
     
+    var cottageCollectionView: CottageCollectionView?
     var landingPageViewDelegate: LandingPageViewDelegate?
 
     override init(frame: CGRect) {
@@ -27,20 +28,20 @@ class LandingPageView: UIView {
         flowLayout.sectionInset = UIEdgeInsets(top: 10, left: 3, bottom: 10, right: 3)
         flowLayout.itemSize = CGSize(width: 60, height: 60)
         
-        let cottageCollectionView = CottageCollectionView(frame: self.frame, collectionViewLayout: flowLayout)
-        cottageCollectionView.backgroundColor = .clear
+        cottageCollectionView = CottageCollectionView(frame: self.frame, collectionViewLayout: flowLayout)
+        cottageCollectionView!.backgroundColor = .clear
         
-        cottageCollectionView.dataSource = cottageCollectionView.self
-        cottageCollectionView.delegate = cottageCollectionView.self
-        cottageCollectionView.cottageCollectionViewDelegate = self
-        cottageCollectionView.userCottages = self.userCottages
+        cottageCollectionView!.dataSource = cottageCollectionView.self
+        cottageCollectionView!.delegate = cottageCollectionView.self
+        cottageCollectionView!.cottageCollectionViewDelegate = self
+        cottageCollectionView!.userCottages = self.userCottages
         
-        self.addSubview(cottageCollectionView)
-        cottageCollectionView.translatesAutoresizingMaskIntoConstraints = false
-        cottageCollectionView.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
-        cottageCollectionView.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
-        cottageCollectionView.leadingAnchor.constraint(equalTo: self.leadingAnchor).isActive = true
-        cottageCollectionView.trailingAnchor.constraint(equalTo: self.trailingAnchor).isActive = true
+        self.addSubview(cottageCollectionView!)
+        cottageCollectionView!.translatesAutoresizingMaskIntoConstraints = false
+        cottageCollectionView!.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
+        cottageCollectionView!.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
+        cottageCollectionView!.leadingAnchor.constraint(equalTo: self.leadingAnchor).isActive = true
+        cottageCollectionView!.trailingAnchor.constraint(equalTo: self.trailingAnchor).isActive = true
         
     }
     
@@ -62,7 +63,7 @@ extension LandingPageView: CottageCollectionViewDelegate{
     
 }
 
-protocol LandingPageViewDelegate: class {
+protocol LandingPageViewDelegate {
     
     func cottageCellPressed(for cottageID: String)
     

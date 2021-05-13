@@ -11,6 +11,8 @@ import FirebaseAuth
 class LandingPageViewController: UIViewController {
     
     var userCottages: [CottageInfo]?
+    
+    var landingPageView: LandingPageView?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,17 +26,17 @@ class LandingPageViewController: UIViewController {
     func initializeView() {
         
         //initializing the landing page view
-        let landingPageView = LandingPageView()
-        landingPageView.userCottages = userCottages!
-        landingPageView.initializeCollectionView()
-        landingPageView.landingPageViewDelegate = self
+        landingPageView = LandingPageView()
+        landingPageView!.userCottages = userCottages!
+        landingPageView!.initializeCollectionView()
+        landingPageView!.landingPageViewDelegate = self
         
-        self.view.addSubview(landingPageView)
-        landingPageView.translatesAutoresizingMaskIntoConstraints = false
-        landingPageView.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor).isActive = true
-        landingPageView.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor).isActive = true
-        landingPageView.leadingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leadingAnchor).isActive = true
-        landingPageView.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor).isActive = true
+        self.view.addSubview(landingPageView!)
+        landingPageView!.translatesAutoresizingMaskIntoConstraints = false
+        landingPageView!.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor).isActive = true
+        landingPageView!.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor).isActive = true
+        landingPageView!.leadingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leadingAnchor).isActive = true
+        landingPageView!.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor).isActive = true
         
         //creating the nav bar button
         let invitesBarButton = UIBarButtonItem(title: "Invites", style: .plain, target: self, action: #selector(invitesBarButtonPressed))
@@ -50,6 +52,7 @@ class LandingPageViewController: UIViewController {
             
             let inviteInboxVC = CottageInviteInboxViewController()
             inviteInboxVC.invitedCottages = invitedCottages
+            inviteInboxVC.cottageInviteInboxVCDelegate = self
             inviteInboxVC.modalPresentationStyle = .fullScreen
             
             self.navigationController!.pushViewController(inviteInboxVC, animated: true)
@@ -97,6 +100,19 @@ extension LandingPageViewController: LandingPageViewDelegate {
         let createCottageVC = CreateCottageViewController()
         
         self.navigationController?.pushViewController(createCottageVC, animated: true)
+        
+    }
+    
+}
+
+extension LandingPageViewController: CottageInviteInboxVCDelegate {
+    
+    func accepted(invite: CottageInfo) {
+        
+        self.userCottages!.append(invite)
+        self.landingPageView!.userCottages!.append(invite)
+        self.landingPageView!.cottageCollectionView!.userCottages!.append(invite)
+        self.landingPageView!.cottageCollectionView!.reloadData()
         
     }
     
