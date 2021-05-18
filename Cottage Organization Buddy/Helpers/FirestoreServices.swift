@@ -61,7 +61,7 @@ class FirestoreServices {
                 //if a single document with this email is found registered for the app
                 else {
                     let document = querySnapshot!.documents[0]
-                    let cottageIDs = document.data()["cottageIDs"] as! [String]
+                    let cottageIDs = document.data()["cottageIDs"] as? [String] ?? []
                     //case where the email document already has this cottage id accepted
                     if cottageIDs.contains(cottageID) {
                         print("user already in cottage")
@@ -148,12 +148,20 @@ class FirestoreServices {
                             print("Getting info for cottage: \(id)")
                             let cottageID = id
                             let cottageName: String = document.get("tripName") as! String
-                            let cottageOrganizer = Attendee(name: document.get("organiserName") as! String, firebaseUserID: document.get("organiserID") as! String)
-                            let cottageInfo = CottageInfo(cottageID: cottageID, cottageName: cottageName, cottageOrganiser: cottageOrganizer)
-                            invitedCottages.append(cottageInfo)
                             
-                            print("Done getting info for cottage: \(id)")
-                            group.leave()
+                            let organizerDoc: DocumentReference = document.get("organizer") as! DocumentReference
+                            organizerDoc.getDocument() { document, error in
+                                if let document = document, document.exists {
+                                    let organizerName = document.get("fullName") as! String
+                                    let organizerID = document.documentID
+                                    let cottageOrganizerModel = Attendee(name: organizerName, firebaseUserID: organizerID)
+                                    let cottageInfo = CottageInfo(cottageID: cottageID, cottageName: cottageName, cottageOrganiser: cottageOrganizerModel)
+                                    invitedCottages.append(cottageInfo)
+                                    
+                                    print("Done getting info for cottage: \(id)")
+                                    group.leave()
+                                }
+                            }
                         }
                         else {
                             print("Document does not exist")
@@ -321,12 +329,19 @@ class FirestoreServices {
                             print("Getting info for cottage: \(id)")
                             let cottageID = id
                             let cottageName: String = document.get("tripName") as! String
-                            let cottageOrganizer = Attendee(name: document.get("organiserName") as! String, firebaseUserID: document.get("organiserID") as! String)
-                            let cottageInfo = CottageInfo(cottageID: cottageID, cottageName: cottageName, cottageOrganiser: cottageOrganizer)
-                            userCottages.append(cottageInfo)
                             
-                            print("Done getting info for cottage: \(id)")
-                            group.leave()
+                            let organizerDoc: DocumentReference = document.get("organizer") as! DocumentReference
+                            organizerDoc.getDocument() { document, error in
+                                if let document = document, document.exists {
+                                    let organizerName = document.get("fullName") as! String
+                                    let organizerID = document.documentID
+                                    let cottageOrganizerModel = Attendee(name: organizerName, firebaseUserID: organizerID)
+                                    let cottageInfo = CottageInfo(cottageID: cottageID, cottageName: cottageName, cottageOrganiser: cottageOrganizerModel)
+                                    userCottages.append(cottageInfo)
+                                    print("Done getting info for cottage: \(id)")
+                                    group.leave()
+                                }
+                            }
                         }
                         else {
                             print("Document does not exist")
@@ -361,13 +376,15 @@ class FirestoreServices {
         //get the user document
         let userDoc = self.getUserDocument(for: userID)
         
+        //create the reference for the organizer's user document
+        let organizerAttendeeRef: DocumentReference = db.document("users/\(userID)")
+        
         userDoc.getDocument() { (document, error) in
             if let document = document, document.exists {
                 let newCottageDoc = cottagesCollection.document()
                 newCottageDoc.setData([
                     "address" : address,
-                    "organiserName" : organiserName,
-                    "organiserID" : userID,
+                    "organizer" : organizerAttendeeRef,
                     "tripName" : name,
                     "startDate" : startDate,
                     "endDate" : endDate,
@@ -379,7 +396,6 @@ class FirestoreServices {
                     }
                 }
                 
-                let organizerAttendeeRef: DocumentReference = db.document("users/\(userID)")
                 newCottageDoc.collection("attendees").document(userID).setData([
                     "userDoc" : organizerAttendeeRef
                 ]) { err in
@@ -480,8 +496,6 @@ class FirestoreServices {
                 
                 //get the necessary trip information
                 let tripName: String = document.get("tripName") as! String
-                let organiserID: String = document.get("organiserID") as! String
-                let organiserName: String = document.get("organiserName") as! String
                 let address: String = document.get("address") as! String
                 
                 //date conversions
@@ -496,7 +510,6 @@ class FirestoreServices {
                 
                 //load them into the model
                 cottageModel.tripName = tripName
-                cottageModel.tripOrganiser = Attendee(name: organiserName, firebaseUserID: organiserID)
                 cottageModel.startDate = startDate
                 cottageModel.endDate = endDate
                 cottageModel.address = address
@@ -505,9 +518,26 @@ class FirestoreServices {
                 let group = DispatchGroup()
                 let attendeesGroup = DispatchGroup()
                 
+                //group enter for getting organizer user doc and data
                 //group enter for the attendess get documents async task
                 group.enter()
+                group.enter()
                 print("group enter")
+                print("group enter")
+                
+                //organizer user get doc async call
+                let organizerUserDoc: DocumentReference = document.get("organizer") as! DocumentReference
+                organizerUserDoc.getDocument() { document, error in
+                    if let document = document, document.exists {
+                        let organizerName = document.get("fullName") as! String
+                        let organizerID = document.documentID
+                        let organizerAttendeeModel = Attendee(name: organizerName, firebaseUserID: organizerID)
+                        cottageModel.tripOrganiser = organizerAttendeeModel
+                        group.leave()
+                    }
+                }
+                
+                //attendees get document async call
                 attendeesCollection.getDocuments() { (querySnapshot, err) in
                     if let err = err {
                             print("Error getting documents: \(err)")
@@ -679,6 +709,7 @@ class FirestoreServices {
                             print("group leave")
                             group.leave()
                             
+                        //end of attendees group notify
                         }
                         
                     //end of attendees collection get documents else (no error)
