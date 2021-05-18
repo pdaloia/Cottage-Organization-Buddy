@@ -243,25 +243,46 @@ class FirestoreServices {
         //get a reference to the firestore
         let db = Firestore.firestore()
         
-        //get the references to the user collection
-        db.collection("users").document(userID).setData([
-            "cottageIDs" : [],
-            "invitedCottageIDs" : [],
-            "email" : email,
-            "firstName" : firstName,
-            "fullName" : fullName,
-            "lastName" : lastName
-        ]) { err in
-            if let err = err {
-                print("Error writing document: \(err)")
-                completionHandler(false)
-            } else {
-                print("Document successfully written!")
-                completionHandler(true)
+        //dispatch group to wait for uncreated user doc check
+        let uncreatedGroup = DispatchGroup()
+        
+        //check if there are pending invites for this email in the uncreated collection
+        let uncreatedCollectionRef = db.collection("uncreated")
+        let userUncreatedDoc = uncreatedCollectionRef.document(email)
+        var userPendingInvites: [String] = []
+        uncreatedGroup.enter()
+        userUncreatedDoc.getDocument() { document, error in
+            if let document = document, document.exists {
+                userPendingInvites = document.get("pendingInvites") as! [String]
+                userUncreatedDoc.delete()
             }
+            else {
+                userPendingInvites = []
+            }
+            uncreatedGroup.leave()
         }
         
-        
+        uncreatedGroup.notify(queue: .main) {
+            
+            //get the references to the user collection
+            db.collection("users").document(userID).setData([
+                "cottageIDs" : [],
+                "invitedCottageIDs" : userPendingInvites,
+                "email" : email,
+                "firstName" : firstName,
+                "fullName" : fullName,
+                "lastName" : lastName
+            ]) { err in
+                if let err = err {
+                    print("Error writing document: \(err)")
+                    completionHandler(false)
+                } else {
+                    print("Document successfully written!")
+                    completionHandler(true)
+                }
+            }
+            
+        }
         
     }
     
