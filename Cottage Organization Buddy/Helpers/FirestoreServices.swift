@@ -131,7 +131,7 @@ class FirestoreServices {
             if let document = document, document.exists {
                 
                 //get the cottage IDs of the user
-                let invitedCottageIDs = document.get("invitedCottageIDs") as! [String]
+                let invitedCottageIDs = document.get("invitedCottageIDs") as? [String] ?? []
                 
                 //create a dispatch group with a lock for each cottage ID
                 let group = DispatchGroup()
@@ -246,6 +246,7 @@ class FirestoreServices {
         //get the references to the user collection
         db.collection("users").document(userID).setData([
             "cottageIDs" : [],
+            "invitedCottageIDs" : [],
             "email" : email,
             "firstName" : firstName,
             "fullName" : fullName,
