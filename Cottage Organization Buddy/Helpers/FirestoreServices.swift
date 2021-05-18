@@ -203,8 +203,9 @@ class FirestoreServices {
         //add the user to the cottages attendees collection
         let cottageDoc = cottagesCollection.document(cottageID)
         let attendeesCollection = cottageDoc.collection("attendees")
+        let attendeeRef: DocumentReference = db.document("users/\(userID)")
         attendeesCollection.document(userID).setData([
-            "name" : name
+            "userDoc" : attendeeRef
         ]) { err in
             if let err = err {
                 print("Error writing document: \(err)")
@@ -356,8 +357,9 @@ class FirestoreServices {
                     }
                 }
                 
+                let organizerAttendeeRef: DocumentReference = db.document("users/\(userID)")
                 newCottageDoc.collection("attendees").document(userID).setData([
-                    "name" : organiserName
+                    "userDoc" : organizerAttendeeRef
                 ]) { err in
                     if let err = err {
                         print("Error writing document: \(err)")
@@ -477,181 +479,205 @@ class FirestoreServices {
                 cottageModel.endDate = endDate
                 cottageModel.address = address
                 
+                //creat the dispatch groups
                 let group = DispatchGroup()
+                let attendeesGroup = DispatchGroup()
                 
-                //get the attendees
+                //group enter for the attendess get documents async task
                 group.enter()
+                print("group enter")
                 attendeesCollection.getDocuments() { (querySnapshot, err) in
                     if let err = err {
                             print("Error getting documents: \(err)")
                     } else {
                         
                         //first get the attendees
-                        print("attendees data")
                         for document in querySnapshot!.documents {
-                            let attendeeToAdd = Attendee(name: document.get("name") as! String, firebaseUserID: document.documentID)
-                            cottageModel.attendeesList.append(attendeeToAdd)
-                        }
-                        print("after attendees data")
-                        
-                        //get the cars
-                        group.enter()
-                        carsCollection.getDocuments() { (querySnapshot, err) in
-                            if let err = err {
-                                    print("Error getting documents: \(err)")
-                            } else {
-                                print("car data")
-                                for document in querySnapshot!.documents {
-                                    //get the driver attendee model
-                                    let driverID = document.documentID
-                                    let driverAttendeeModel: Attendee? = cottageModel.attendeesList.first(where: { $0.firebaseUserID == driverID } )
-                                    
-                                    //get number of seats
-                                    let numberOfSeats: Int = document.get("numberOfSeats") as! Int
-                                    
-                                    //get the passengers
-                                    let passengerIDs = document.get("passengers") as! [String]
-                                    var passengers: [Attendee] = []
-                                    for passengerID in passengerIDs {
-                                        let passenger: Attendee? = cottageModel.attendeesList.first(where: { $0.firebaseUserID == passengerID } )
-                                        passengers.append(passenger!)
-                                    }
-                                    
-                                    //get the requests
-                                    let requesterIDs = document.get("requests") as! [String]
-                                    var requests: [CarRequest] = []
-                                    for requestID in requesterIDs {
-                                        let requester: Attendee? = cottageModel.attendeesList.first(where: { $0.firebaseUserID == requestID } )
-                                        let request = CarRequest(requester: requester!)
-                                        requests.append(request)
-                                    }
-                                    
-                                    let carToAdd = Car(driver: driverAttendeeModel!, numberOfSeats: numberOfSeats, passengers: passengers, requests: requests)
-                                    
-                                    cottageModel.carsList.append(carToAdd)
+                            
+                            print("attendees group enter")
+                            attendeesGroup.enter()
+                            
+                            let attendeeDocument = document.get("userDoc") as! DocumentReference
+                            attendeeDocument.getDocument() { document, error in
+                                if let document = document, document.exists {
+                                    let attendeeName = document.get("fullName") as! String
+                                    let attendeeFirebaseID = document.documentID
+                                    let attendeeToAdd = Attendee(name: attendeeName, firebaseUserID: attendeeFirebaseID)
+                                    cottageModel.attendeesList.append(attendeeToAdd)
+                                    print("attendees group leave")
+                                    attendeesGroup.leave()
                                 }
                             }
-                            print("done car data")
-                            group.leave()
+                            
                         }
                         
-                        //get the drinks
-                        group.enter()
-                        drinksCollection.getDocuments() { (querySnapshot, err) in
-                            if let err = err {
-                                    print("Error getting documents: \(err)")
-                            } else {
-                                //drink data manipulation
-                                print("drink data")
-                                
-                                for document in querySnapshot!.documents {
-                                    
-                                    let drinkListUserID = document.documentID
-                                    let drinkListAttendee: Attendee = cottageModel.attendeesList.first(where: { $0.firebaseUserID == drinkListUserID } )!
-                                    
-                                    var userDrinks: [Drink] = []
-                                    
-                                    let drinks = document.data()
-                                    for (key, values) in drinks {
-                                        let drinkName: String = key
-                                        let drinkInfo: [Bool] = values as! [Bool]
-                                        let isAlcoholic: Bool = drinkInfo[0]
-                                        let isForSharing: Bool = drinkInfo[1]
+                        //this is where the attendees group should be finished with tasks before continuing
+                        attendeesGroup.notify(queue: .main) {
+                            print("entering attendeesGroup notify block")
+                        
+                            //get the cars
+                            print("group enter")
+                            group.enter()
+                            carsCollection.getDocuments() { (querySnapshot, err) in
+                                if let err = err {
+                                        print("Error getting documents: \(err)")
+                                } else {
+                                    for document in querySnapshot!.documents {
+                                        //get the driver attendee model
+                                        let driverID = document.documentID
+                                        let driverAttendeeModel: Attendee? = cottageModel.attendeesList.first(where: { $0.firebaseUserID == driverID } )
                                         
-                                        let drinkToAdd: Drink = Drink(name: drinkName, isAlcoholic: isAlcoholic, forSharing: isForSharing)
-                                        userDrinks.append(drinkToAdd)
-                                    }
-                                    
-                                    cottageModel.drinksList[drinkListAttendee] = userDrinks
-                                    
-                                }
-                            }
-                            print("done drink data")
-                            group.leave()
-                        }
-                        
-                        //get the groceries
-                        group.enter()
-                        groceriesCollection.getDocuments() { (querySnapshot, err) in
-                            if let err = err {
-                                    print("Error getting documents: \(err)")
-                            } else {
-                                //groceries data manipulation
-                                print("groceries data")
-                                
-                                for document in querySnapshot!.documents {
-                                    
-                                    let groceryName = document.documentID
-                                    let price: Double = document.get("price") as! Double
-                                    let quantity: Int = document.get("quantity") as! Int
-                                    let assignedUserId = document.get("assignedTo") as! String
-                                    
-                                    let groceryToAdd = Grocery(productName: groceryName, price: price, quantity: quantity, assignedTo: assignedUserId)
-                                    
-                                    if assignedUserId != "" {
-                                        let assignedAttendee: Attendee = cottageModel.attendeesList.first(where: { $0.firebaseUserID == assignedUserId } )!
-                                        if cottageModel.groceryList.groceryLists[assignedAttendee] == nil {
-                                            cottageModel.groceryList.groceryLists[assignedAttendee] = []
+                                        //get number of seats
+                                        let numberOfSeats: Int = document.get("numberOfSeats") as! Int
+                                        
+                                        //get the passengers
+                                        let passengerIDs = document.get("passengers") as! [String]
+                                        var passengers: [Attendee] = []
+                                        for passengerID in passengerIDs {
+                                            let passenger: Attendee? = cottageModel.attendeesList.first(where: { $0.firebaseUserID == passengerID } )
+                                            passengers.append(passenger!)
                                         }
-                                        cottageModel.groceryList.groceryLists[assignedAttendee]!.append(groceryToAdd)
-                                        cottageModel.groceryList.allItems.append(groceryToAdd)
+                                        
+                                        //get the requests
+                                        let requesterIDs = document.get("requests") as! [String]
+                                        var requests: [CarRequest] = []
+                                        for requestID in requesterIDs {
+                                            let requester: Attendee? = cottageModel.attendeesList.first(where: { $0.firebaseUserID == requestID } )
+                                            let request = CarRequest(requester: requester!)
+                                            requests.append(request)
+                                        }
+                                        
+                                        let carToAdd = Car(driver: driverAttendeeModel!, numberOfSeats: numberOfSeats, passengers: passengers, requests: requests)
+                                        
+                                        cottageModel.carsList.append(carToAdd)
                                     }
-                                    else {
-                                        cottageModel.groceryList.allItems.append(groceryToAdd)
-                                    }
-                                    
                                 }
+                                print("group leave")
+                                group.leave()
                             }
-                            print("done groceries data")
+                            
+                            //get the drinks
+                            print("group enter")
+                            group.enter()
+                            drinksCollection.getDocuments() { (querySnapshot, err) in
+                                if let err = err {
+                                        print("Error getting documents: \(err)")
+                                } else {
+                                    //drink data manipulation
+                                    
+                                    for document in querySnapshot!.documents {
+                                        
+                                        let drinkListUserID = document.documentID
+                                        let drinkListAttendee: Attendee = cottageModel.attendeesList.first(where: { $0.firebaseUserID == drinkListUserID } )!
+                                        
+                                        var userDrinks: [Drink] = []
+                                        
+                                        let drinks = document.data()
+                                        for (key, values) in drinks {
+                                            let drinkName: String = key
+                                            let drinkInfo: [Bool] = values as! [Bool]
+                                            let isAlcoholic: Bool = drinkInfo[0]
+                                            let isForSharing: Bool = drinkInfo[1]
+                                            
+                                            let drinkToAdd: Drink = Drink(name: drinkName, isAlcoholic: isAlcoholic, forSharing: isForSharing)
+                                            userDrinks.append(drinkToAdd)
+                                        }
+                                        
+                                        cottageModel.drinksList[drinkListAttendee] = userDrinks
+                                        
+                                    }
+                                }
+                                print("group leave")
+                                group.leave()
+                            }
+                            
+                            //get the groceries
+                            print("group enter")
+                            group.enter()
+                            groceriesCollection.getDocuments() { (querySnapshot, err) in
+                                if let err = err {
+                                        print("Error getting documents: \(err)")
+                                } else {
+                                    //groceries data manipulation
+                                    
+                                    for document in querySnapshot!.documents {
+                                        
+                                        let groceryName = document.documentID
+                                        let price: Double = document.get("price") as! Double
+                                        let quantity: Int = document.get("quantity") as! Int
+                                        let assignedUserId = document.get("assignedTo") as! String
+                                        
+                                        let groceryToAdd = Grocery(productName: groceryName, price: price, quantity: quantity, assignedTo: assignedUserId)
+                                        
+                                        if assignedUserId != "" {
+                                            let assignedAttendee: Attendee = cottageModel.attendeesList.first(where: { $0.firebaseUserID == assignedUserId } )!
+                                            if cottageModel.groceryList.groceryLists[assignedAttendee] == nil {
+                                                cottageModel.groceryList.groceryLists[assignedAttendee] = []
+                                            }
+                                            cottageModel.groceryList.groceryLists[assignedAttendee]!.append(groceryToAdd)
+                                            cottageModel.groceryList.allItems.append(groceryToAdd)
+                                        }
+                                        else {
+                                            cottageModel.groceryList.allItems.append(groceryToAdd)
+                                        }
+                                        
+                                    }
+                                }
+                                print("group leave")
+                                group.leave()
+                            }
+                            
+                            //get the rooms/beds
+                            print("group enter")
+                            group.enter()
+                            roomsCollection.getDocuments() { (querySnapshot, err) in
+                                if let err = err {
+                                        print("Error getting documents: \(err)")
+                                } else {
+                                    //room/bed data manipulation
+                                    
+                                    for document in querySnapshot!.documents {
+                                        
+                                        var bedDict = [String : Int]()
+                                        bedDict["Singles"] = document.get("singles") as? Int
+                                        bedDict["Doubles"] = document.get("doubles") as? Int
+                                        bedDict["Queens"] = document.get("queens") as? Int
+                                        bedDict["Kings"] = document.get("kings") as? Int
+                                        
+                                        let roomToAdd = Room(bedDict: bedDict, roomID: document.documentID)
+                                        
+                                        cottageModel.roomsList.append(roomToAdd)
+                                        
+                                    }
+                                }
+                                print("group leave")
+                                group.leave()
+                            }
+                            
+                            print("group leave")
                             group.leave()
+                            
                         }
                         
-                        //get the rooms/beds
-                        group.enter()
-                        roomsCollection.getDocuments() { (querySnapshot, err) in
-                            if let err = err {
-                                    print("Error getting documents: \(err)")
-                            } else {
-                                //room/bed data manipulation
-                                print("room data")
-                                
-                                for document in querySnapshot!.documents {
-                                    
-                                    var bedDict = [String : Int]()
-                                    bedDict["Singles"] = document.get("singles") as? Int
-                                    bedDict["Doubles"] = document.get("doubles") as? Int
-                                    bedDict["Queens"] = document.get("queens") as? Int
-                                    bedDict["Kings"] = document.get("kings") as? Int
-                                    
-                                    let roomToAdd = Room(bedDict: bedDict, roomID: document.documentID)
-                                    
-                                    cottageModel.roomsList.append(roomToAdd)
-                                    
-                                }
-                            }
-                            print("done room data")
-                            group.leave()
-                        }
-                        
+                    //end of attendees collection get documents else (no error)
                     }
-                    print("done attendees data")
-                    group.leave()
+                    
+                    //return the cottage model to the completion handler only when all tasks are complete
+                    group.notify(queue: .main) {
+                        print("group notify block entered, ending with completion handler")
+                        completionHandler(cottageModel)
+                    }
+                    
+                //end of attendeesCollection.getDocuments()
                 }
                 
-                //create the cars
-                
-                
-                //return the cottage model to the completion handler only when all tasks are complete
-                group.notify(queue: .main) {
-                    print("notifying with completion handler")
-                    completionHandler(cottageModel)
-                }
-                
+            // end of cottageRef.getDocument if let document = document, document.exists
             } else {
                 print("Document does not exist")
                 completionHandler(nil)
             }
             
+        //end of cottageRef.getDocument
         }
         
     }
