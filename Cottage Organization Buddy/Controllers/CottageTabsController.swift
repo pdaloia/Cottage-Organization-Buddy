@@ -15,7 +15,7 @@ class CottageTabsController: UITabBarController {
         
         super.viewDidLoad()
         
-        loadViewControllersIntoTabBarController()
+        //loadViewControllersIntoTabBarController()
         
     }
     

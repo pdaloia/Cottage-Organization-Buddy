@@ -37,7 +37,6 @@
 		FE724EF42537D3EE00764387 /* CarModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE724EF32537D3EE00764387 /* CarModel.swift */; };
 		FE724EF72537D40200764387 /* BedModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE724EF62537D40200764387 /* BedModel.swift */; };
 		FE724EFA2537DEEA00764387 /* CottageTrip.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE724EF92537DEEA00764387 /* CottageTrip.swift */; };
-		FE724F0A253A07F800764387 /* CottageTabs.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FE724F09253A07F800764387 /* CottageTabs.storyboard */; };
 		FE724F0D253A081C00764387 /* CottageTabsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE724F0C253A081C00764387 /* CottageTabsController.swift */; };
 		FE724F10253CF06C00764387 /* GroceriesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE724F0F253CF06C00764387 /* GroceriesController.swift */; };
 		FE724F13253CF08200764387 /* CarsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE724F12253CF08200764387 /* CarsController.swift */; };
@@ -116,7 +115,6 @@
 		FE724EF32537D3EE00764387 /* CarModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarModel.swift; sourceTree = "<group>"; };
 		FE724EF62537D40200764387 /* BedModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BedModel.swift; sourceTree = "<group>"; };
 		FE724EF92537DEEA00764387 /* CottageTrip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CottageTrip.swift; sourceTree = "<group>"; };
-		FE724F09253A07F800764387 /* CottageTabs.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CottageTabs.storyboard; sourceTree = "<group>"; };
 		FE724F0C253A081C00764387 /* CottageTabsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CottageTabsController.swift; sourceTree = "<group>"; };
 		FE724F0F253CF06C00764387 /* GroceriesController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroceriesController.swift; sourceTree = "<group>"; };
 		FE724F12253CF08200764387 /* CarsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarsController.swift; sourceTree = "<group>"; };
@@ -276,7 +274,6 @@
 				FEE82BA82579E0A200058A5A /* Groceries Tab Views */,
 				FEE82BA72579E09100058A5A /* Cars Tab Views */,
 				FE724F3F25431ED600764387 /* Custom Cell Objects */,
-				FE724F09253A07F800764387 /* CottageTabs.storyboard */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -565,7 +562,6 @@
 				FE724EE225375D8000764387 /* LaunchScreen.storyboard in Resources */,
 				FE724EDF25375D8000764387 /* Assets.xcassets in Resources */,
 				FEB7F0DE25F07F3B00CAACB1 /* GoogleService-Info.plist in Resources */,
-				FE724F0A253A07F800764387 /* CottageTabs.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

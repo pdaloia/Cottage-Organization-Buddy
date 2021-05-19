@@ -75,9 +75,7 @@ extension LandingPageViewController: LandingPageViewDelegate {
         self.view.bringSubviewToFront(spinner)
         spinner.startAnimating()
         
-        let storyBoard : UIStoryboard = UIStoryboard(name: "CottageTabs", bundle:nil)
-        
-        let nextViewController = storyBoard.instantiateViewController(withIdentifier: "CottageTabsView") as! CottageTabsController
+        let nextViewController = CottageTabsController()
         nextViewController.modalPresentationStyle = .fullScreen
         
         let df = DateFormatter()
@@ -87,6 +85,7 @@ extension LandingPageViewController: LandingPageViewDelegate {
         service.get(cottage: cottageID) { model in
             
             nextViewController.cottageModel = model!
+            nextViewController.loadViewControllersIntoTabBarController()
             spinner.stopAnimating()
             
             self.present(nextViewController, animated:true, completion:nil)
