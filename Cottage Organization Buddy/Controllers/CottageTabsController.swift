@@ -47,10 +47,22 @@ class CottageTabsController: UITabBarController {
         //create a list of all the controllers that will be loaded into the tab bar
         let tabBarList = [groceriesViewController, carsViewController, bedsViewController, drinksViewController, tripInformationViewController]
         
+        //create the menu side bar button that will be used by each tab nav controller
+        let sideMenuNavBarButton = UIBarButtonItem(title: "Menu", style: .plain, target: self, action: #selector(sideMenuButtonPressed))
+        for controller in tabBarList {
+            controller.navigationItem.leftBarButtonItem = sideMenuNavBarButton
+        }
+        
         //Create a navigation controller for each tab and assign the respective tab as it's root view controller
         self.viewControllers = tabBarList.map {
             UINavigationController(rootViewController: $0)
         }
+        
+    }
+    
+    @objc func sideMenuButtonPressed() {
+        
+        print("Side menu bar button pressed")
         
     }
 
