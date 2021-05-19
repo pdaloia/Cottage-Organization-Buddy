@@ -71,6 +71,8 @@
 		FEDB6E3B264B1D5100392C2E /* CottageInviteInboxViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEDB6E3A264B1D5100392C2E /* CottageInviteInboxViewController.swift */; };
 		FEDB6E3D264B1D6B00392C2E /* CottageInviteInboxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEDB6E3C264B1D6B00392C2E /* CottageInviteInboxView.swift */; };
 		FEDB6E3F264B54AE00392C2E /* InvitedCottagesCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEDB6E3E264B54AE00392C2E /* InvitedCottagesCollectionView.swift */; };
+		FEDCC4E526557D3A00C5FADB /* CottageContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEDCC4E426557D3A00C5FADB /* CottageContainerViewController.swift */; };
+		FEDCC4E726557DE900C5FADB /* SideMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEDCC4E626557DE900C5FADB /* SideMenuViewController.swift */; };
 		FEDCEEE0259A747400C7AAB1 /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEDCEEDF259A747300C7AAB1 /* UserService.swift */; };
 		FEEA1DD225C738250050E6FA /* RequestProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEEA1DD125C738250050E6FA /* RequestProtocol.swift */; };
 		FEEA1DD625C752760050E6FA /* BedRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEEA1DD525C752760050E6FA /* BedRequest.swift */; };
@@ -149,6 +151,8 @@
 		FEDB6E3A264B1D5100392C2E /* CottageInviteInboxViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CottageInviteInboxViewController.swift; sourceTree = "<group>"; };
 		FEDB6E3C264B1D6B00392C2E /* CottageInviteInboxView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CottageInviteInboxView.swift; sourceTree = "<group>"; };
 		FEDB6E3E264B54AE00392C2E /* InvitedCottagesCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvitedCottagesCollectionView.swift; sourceTree = "<group>"; };
+		FEDCC4E426557D3A00C5FADB /* CottageContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CottageContainerViewController.swift; sourceTree = "<group>"; };
+		FEDCC4E626557DE900C5FADB /* SideMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuViewController.swift; sourceTree = "<group>"; };
 		FEDCEEDF259A747300C7AAB1 /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
 		FEEA1DD125C738250050E6FA /* RequestProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestProtocol.swift; sourceTree = "<group>"; };
 		FEEA1DD525C752760050E6FA /* BedRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BedRequest.swift; sourceTree = "<group>"; };
@@ -281,6 +285,7 @@
 		FE724F0225394B6500764387 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				FEDCC4E326557C9300C5FADB /* Cottage Controllers */,
 				FE80B5B92648A55500B093B4 /* Invite Users Controllers */,
 				FEB727BF2641C9490093061B /* Create Cottage Controllers */,
 				FE3DD32226399F57001ECFC6 /* Landing Page Controllers */,
@@ -291,7 +296,6 @@
 				FEE82BA22579DFFE00058A5A /* Groceries Tab Controllers */,
 				FE724F36253E899B00764387 /* Controller Protocols */,
 				FE724ED925375D7D00764387 /* HomeController.swift */,
-				FE724F0C253A081C00764387 /* CottageTabsController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -369,6 +373,16 @@
 				FEB727C42641CC200093061B /* CreateCottageView.swift */,
 			);
 			path = "Create Cottage Views";
+			sourceTree = "<group>";
+		};
+		FEDCC4E326557C9300C5FADB /* Cottage Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				FE724F0C253A081C00764387 /* CottageTabsController.swift */,
+				FEDCC4E426557D3A00C5FADB /* CottageContainerViewController.swift */,
+				FEDCC4E626557DE900C5FADB /* SideMenuViewController.swift */,
+			);
+			path = "Cottage Controllers";
 			sourceTree = "<group>";
 		};
 		FEE82BA22579DFFE00058A5A /* Groceries Tab Controllers */ = {
@@ -647,8 +661,10 @@
 				FEBD42B02585A927002D81A6 /* DrinksCollectionView.swift in Sources */,
 				FE4383342583150600FE3FFB /* GroceriesCollectionViewDelegate.swift in Sources */,
 				FE724EFA2537DEEA00764387 /* CottageTrip.swift in Sources */,
+				FEDCC4E526557D3A00C5FADB /* CottageContainerViewController.swift in Sources */,
 				FE80B5BC2648A59800B093B4 /* InviteUsersViewController.swift in Sources */,
 				FEEA1DE925C76DF60050E6FA /* RequestCollectionView.swift in Sources */,
+				FEDCC4E726557DE900C5FADB /* SideMenuViewController.swift in Sources */,
 				FEAC9744254BB4EA007B83B1 /* DrinksCollectionViewCell.swift in Sources */,
 				FE945265263B09E5003EB5AE /* NewCottageCollectionViewCell.swift in Sources */,
 				FEEA1DE625C76B2C0050E6FA /* RequestCell.swift in Sources */,
