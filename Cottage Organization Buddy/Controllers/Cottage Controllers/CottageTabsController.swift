@@ -10,6 +10,8 @@ import UIKit
 class CottageTabsController: UITabBarController {
     
     var cottageModel: CottageTrip = CottageTrip()
+    
+    var cottageTabsDelegate: CottageTabsControllerDelegate?
 
     override func viewDidLoad() {
         
@@ -62,8 +64,14 @@ class CottageTabsController: UITabBarController {
     
     @objc func sideMenuButtonPressed() {
         
-        print("Side menu bar button pressed")
+        cottageTabsDelegate!.handleMenuToggle()
         
     }
 
+}
+
+protocol CottageTabsControllerDelegate {
+    
+    func handleMenuToggle()
+    
 }

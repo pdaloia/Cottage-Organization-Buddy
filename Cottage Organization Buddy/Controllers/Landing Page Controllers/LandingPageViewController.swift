@@ -75,7 +75,7 @@ extension LandingPageViewController: LandingPageViewDelegate {
         self.view.bringSubviewToFront(spinner)
         spinner.startAnimating()
         
-        let nextViewController = CottageTabsController()
+        let nextViewController = CottageContainerViewController()
         nextViewController.modalPresentationStyle = .fullScreen
         
         let df = DateFormatter()
@@ -85,7 +85,7 @@ extension LandingPageViewController: LandingPageViewDelegate {
         service.get(cottage: cottageID) { model in
             
             nextViewController.cottageModel = model!
-            nextViewController.loadViewControllersIntoTabBarController()
+            nextViewController.configureCottageTabsController()
             spinner.stopAnimating()
             
             self.present(nextViewController, animated:true, completion:nil)
