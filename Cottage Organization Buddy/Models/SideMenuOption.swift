@@ -19,7 +19,7 @@ enum SideMenuOption: Int, CustomStringConvertible {
         case .Profile:
             return "Profile"
         case .SelectCottage:
-            return "SelectCottage"
+            return "Select Cottage"
         case .Settings:
             return "Settings"
         case .Logout:

@@ -14,6 +14,8 @@ class SideMenuViewController: UIViewController {
     //MARK: - Properties
     var tableView: UITableView!
     
+    var cottageTabsDelegate: CottageTabsControllerDelegate?
+    
     //MARK: - Init
 
     override func viewDidLoad() {
@@ -65,6 +67,13 @@ extension SideMenuViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         return 4
+        
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        let sideMenuOption = SideMenuOption(rawValue: indexPath.row)
+        cottageTabsDelegate?.handleMenuToggle(forMenuOption: sideMenuOption)
         
     }
     

@@ -64,7 +64,7 @@ class CottageTabsController: UITabBarController {
     
     @objc func sideMenuButtonPressed() {
         
-        cottageTabsDelegate!.handleMenuToggle()
+        cottageTabsDelegate!.handleMenuToggle(forMenuOption: nil)
         
     }
 
@@ -72,6 +72,6 @@ class CottageTabsController: UITabBarController {
 
 protocol CottageTabsControllerDelegate {
     
-    func handleMenuToggle()
+    func handleMenuToggle(forMenuOption menuOption: SideMenuOption?)
     
 }

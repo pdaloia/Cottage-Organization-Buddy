@@ -11,7 +11,7 @@ class CottageContainerViewController: UIViewController {
     
     //MARK: - Properties
 
-    var sideMenuController: UIViewController!
+    var sideMenuController: SideMenuViewController!
     var centerController: UIViewController!
     var isExpanded = false
     
@@ -45,6 +45,7 @@ class CottageContainerViewController: UIViewController {
         
         if sideMenuController == nil {
             sideMenuController = SideMenuViewController()
+            sideMenuController.cottageTabsDelegate = self
             view.insertSubview(sideMenuController.view, at: 0)
             self.addChild(sideMenuController)
             sideMenuController.didMove(toParent: self)
@@ -53,7 +54,7 @@ class CottageContainerViewController: UIViewController {
         
     }
     
-    func showMenuController(shouldExpand: Bool) {
+    func animateSideMenuController(shouldExpand: Bool, menuOption: SideMenuOption?) {
         
         if shouldExpand {
             
@@ -68,8 +69,26 @@ class CottageContainerViewController: UIViewController {
             //hide menu
             UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0, options: .curveEaseInOut, animations: {
                 self.centerController.view.frame.origin.x = 0
-            }, completion: nil)
+            }) { _ in
+                guard let menuOption = menuOption else { return }
+                self.didSelectMenuOption(menuOption: menuOption)
+            }
             
+        }
+        
+    }
+    
+    func didSelectMenuOption(menuOption: SideMenuOption) {
+        
+        switch menuOption {
+        case .Profile:
+            print("Show Profile")
+        case .SelectCottage:
+            print("Go To Landing Page")
+        case .Settings:
+            print("Show Settings")
+        case .Logout:
+            print("Logging out")
         }
         
     }
@@ -78,14 +97,14 @@ class CottageContainerViewController: UIViewController {
 
 extension CottageContainerViewController: CottageTabsControllerDelegate {
     
-    func handleMenuToggle() {
+    func handleMenuToggle(forMenuOption menuOption: SideMenuOption?) {
         
         if !isExpanded {
             configureSideMenuController()
         }
         
         self.isExpanded.toggle()
-        showMenuController(shouldExpand: self.isExpanded)
+        animateSideMenuController(shouldExpand: self.isExpanded, menuOption: menuOption)
         
     }
     
