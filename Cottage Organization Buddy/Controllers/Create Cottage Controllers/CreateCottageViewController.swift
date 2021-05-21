@@ -9,6 +9,8 @@ import UIKit
 import FirebaseAuth
 
 class CreateCottageViewController: UIViewController {
+    
+    var createCottageDelegate: CreateCottageVCDelegate?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -98,6 +100,10 @@ extension CreateCottageViewController: CreateCottageViewDelegate {
             if let id = cottageID {
                 firestoreService.get(cottage: id) { model in
                     
+                    let newCottageInfo = CottageInfo(cottageID: model!.cottageID, cottageName: model!.tripName, cottageOrganiser: model!.tripOrganiser)
+                    self.createCottageDelegate?.created(cottage: newCottageInfo)
+                    
+                    
                     nextViewController.cottageModel = model!
                     nextViewController.configureCottageTabsController()
                     spinner.stopAnimating()
@@ -114,5 +120,11 @@ extension CreateCottageViewController: CreateCottageViewDelegate {
         }
         
     }
+    
+}
+
+protocol CreateCottageVCDelegate {
+    
+    func created(cottage: CottageInfo)
     
 }

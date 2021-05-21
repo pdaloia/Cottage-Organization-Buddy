@@ -97,6 +97,7 @@ extension LandingPageViewController: LandingPageViewDelegate {
     func newCottageCellPressed() {
         
         let createCottageVC = CreateCottageViewController()
+        createCottageVC.createCottageDelegate = self
         
         self.navigationController?.pushViewController(createCottageVC, animated: true)
         
@@ -111,6 +112,19 @@ extension LandingPageViewController: CottageInviteInboxVCDelegate {
         self.userCottages!.append(invite)
         self.landingPageView!.userCottages!.append(invite)
         self.landingPageView!.cottageCollectionView!.userCottages!.append(invite)
+        self.landingPageView!.cottageCollectionView!.reloadData()
+        
+    }
+    
+}
+
+extension LandingPageViewController: CreateCottageVCDelegate {
+    
+    func created(cottage: CottageInfo) {
+        
+        self.userCottages!.append(cottage)
+        self.landingPageView!.userCottages!.append(cottage)
+        self.landingPageView!.cottageCollectionView!.userCottages!.append(cottage)
         self.landingPageView!.cottageCollectionView!.reloadData()
         
     }
