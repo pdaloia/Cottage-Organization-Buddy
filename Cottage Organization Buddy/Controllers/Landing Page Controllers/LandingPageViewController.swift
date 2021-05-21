@@ -120,12 +120,23 @@ extension LandingPageViewController: CottageInviteInboxVCDelegate {
 
 extension LandingPageViewController: CreateCottageVCDelegate {
     
-    func created(cottage: CottageInfo) {
+    func created(cottage: CottageTrip) {
         
-        self.userCottages!.append(cottage)
-        self.landingPageView!.userCottages!.append(cottage)
-        self.landingPageView!.cottageCollectionView!.userCottages!.append(cottage)
+        let cottageInfoToAdd = CottageInfo(cottageID: cottage.cottageID, cottageName: cottage.tripName, cottageOrganiser: cottage.tripOrganiser)
+        
+        self.userCottages!.append(cottageInfoToAdd)
+        self.landingPageView!.userCottages!.append(cottageInfoToAdd)
+        self.landingPageView!.cottageCollectionView!.userCottages!.append(cottageInfoToAdd)
         self.landingPageView!.cottageCollectionView!.reloadData()
+        
+        //create the view controller to display the newly created cottage
+        let nextViewController = CottageContainerViewController()
+        nextViewController.modalPresentationStyle = .fullScreen
+        nextViewController.cottageModel = cottage
+        nextViewController.configureCottageTabsController()
+        self.present(nextViewController, animated: true, completion: nil)
+        
+        self.navigationController?.popViewController(animated: true)
         
     }
     

@@ -89,10 +89,6 @@ extension CreateCottageViewController: CreateCottageViewDelegate {
         self.view.bringSubviewToFront(spinner)
         spinner.startAnimating()
         
-        //create the view controller to display the newly created cottage
-        let nextViewController = CottageContainerViewController()
-        nextViewController.modalPresentationStyle = .fullScreen
-        
         //sending info to the firestore
         firestoreService.createCottage(name: cottageName, address: cottageAddress, startDate: startDateFormatted, endDate: endDateFormatted, userID: Auth.auth().currentUser!.uid, organiserName: Auth.auth().currentUser!.displayName!) { cottageID in
             
@@ -100,15 +96,8 @@ extension CreateCottageViewController: CreateCottageViewDelegate {
             if let id = cottageID {
                 firestoreService.get(cottage: id) { model in
                     
-                    let newCottageInfo = CottageInfo(cottageID: model!.cottageID, cottageName: model!.tripName, cottageOrganiser: model!.tripOrganiser)
-                    self.createCottageDelegate?.created(cottage: newCottageInfo)
-                    
-                    
-                    nextViewController.cottageModel = model!
-                    nextViewController.configureCottageTabsController()
-                    spinner.stopAnimating()
-                    
-                    self.present(nextViewController, animated:true, completion:nil)
+                    spinner.stopAnimating()                    
+                    self.createCottageDelegate?.created(cottage: model!)
                     
                 }
             }
@@ -125,6 +114,6 @@ extension CreateCottageViewController: CreateCottageViewDelegate {
 
 protocol CreateCottageVCDelegate {
     
-    func created(cottage: CottageInfo)
+    func created(cottage: CottageTrip)
     
 }
