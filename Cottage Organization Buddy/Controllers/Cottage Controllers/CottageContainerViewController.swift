@@ -21,8 +21,6 @@ class CottageContainerViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        configureCottageTabsController()
     }
     
     //MARK: - Handlers

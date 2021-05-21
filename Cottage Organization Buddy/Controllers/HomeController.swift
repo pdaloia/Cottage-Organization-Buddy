@@ -57,19 +57,19 @@ class HomeController: UIViewController {
     
     func pushLandingPageController() {
         
-        let landingPageVC = LandingPageViewController()
+        let landingPageContainerVC = LandingPageContainerViewController()
         
-        let navController = UINavigationController(rootViewController: landingPageVC)
-        navController.modalPresentationStyle = .fullScreen
+        //let navController = UINavigationController(rootViewController: landingPageContainerVC)
+        landingPageContainerVC.modalPresentationStyle = .fullScreen
         
         let firestoreService = FirestoreServices()
         firestoreService.getCottages(for: Auth.auth().currentUser!.uid) { cottageInfos in
             
-            landingPageVC.userCottages = cottageInfos
+            landingPageContainerVC.configureLandingPageViewController(with: cottageInfos)
             
             self.spinner.stopAnimating()
             
-            self.present(navController, animated: true, completion: nil)
+            self.present(landingPageContainerVC, animated: true, completion: nil)
             
         }
                 

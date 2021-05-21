@@ -54,6 +54,7 @@
 		FE80B5BC2648A59800B093B4 /* InviteUsersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE80B5BB2648A59800B093B4 /* InviteUsersViewController.swift */; };
 		FE80B5BE2648A5B300B093B4 /* InviteUsersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE80B5BD2648A5B300B093B4 /* InviteUsersView.swift */; };
 		FE82990C2658324E00404443 /* SideMenuButtonDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE82990B2658324E00404443 /* SideMenuButtonDelegate.swift */; };
+		FE82990E2658426F00404443 /* LandingPageContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE82990D2658426F00404443 /* LandingPageContainerViewController.swift */; };
 		FE909897258ABB38002E00FB /* AddGroceryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE909896258ABB38002E00FB /* AddGroceryViewController.swift */; };
 		FE90989A258ABB4D002E00FB /* AddGroceryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE909899258ABB4D002E00FB /* AddGroceryView.swift */; };
 		FE945265263B09E5003EB5AE /* NewCottageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE945264263B09E5003EB5AE /* NewCottageCollectionViewCell.swift */; };
@@ -137,6 +138,7 @@
 		FE80B5BB2648A59800B093B4 /* InviteUsersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "\U0010InviteUsersViewController.swift"; sourceTree = "<group>"; };
 		FE80B5BD2648A5B300B093B4 /* InviteUsersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InviteUsersView.swift; sourceTree = "<group>"; };
 		FE82990B2658324E00404443 /* SideMenuButtonDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuButtonDelegate.swift; sourceTree = "<group>"; };
+		FE82990D2658426F00404443 /* LandingPageContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingPageContainerViewController.swift; sourceTree = "<group>"; };
 		FE909896258ABB38002E00FB /* AddGroceryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddGroceryViewController.swift; sourceTree = "<group>"; };
 		FE909899258ABB4D002E00FB /* AddGroceryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddGroceryView.swift; sourceTree = "<group>"; };
 		FE945264263B09E5003EB5AE /* NewCottageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewCottageCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -202,6 +204,7 @@
 			children = (
 				FE3DD32426399F7E001ECFC6 /* LandingPageViewController.swift */,
 				FEDB6E3A264B1D5100392C2E /* CottageInviteInboxViewController.swift */,
+				FE82990D2658426F00404443 /* LandingPageContainerViewController.swift */,
 			);
 			path = "Landing Page Controllers";
 			sourceTree = "<group>";
@@ -734,6 +737,7 @@
 				FEDB6E3D264B1D6B00392C2E /* CottageInviteInboxView.swift in Sources */,
 				FE724EF12537D3DF00764387 /* DrinksModel.swift in Sources */,
 				FEABB59B25953F9700D60A66 /* AddCarView.swift in Sources */,
+				FE82990E2658426F00404443 /* LandingPageContainerViewController.swift in Sources */,
 				FE6856D12656F516006C3729 /* SideMenuTableViewCell.swift in Sources */,
 				FE724F13253CF08200764387 /* CarsController.swift in Sources */,
 				FEDCEEE0259A747400C7AAB1 /* UserService.swift in Sources */,
