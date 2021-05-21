@@ -69,10 +69,10 @@ class CottageContainerViewController: UIViewController {
             //hide menu
             UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0, options: .curveEaseInOut, animations: {
                 self.centerController.view.frame.origin.x = 0
-            }) { _ in
+            }, completion: { _ in
                 guard let menuOption = menuOption else { return }
                 self.didSelectMenuOption(menuOption: menuOption)
-            }
+            })
             
         }
         

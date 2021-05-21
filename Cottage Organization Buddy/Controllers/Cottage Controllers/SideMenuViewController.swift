@@ -75,6 +75,8 @@ extension SideMenuViewController: UITableViewDataSource, UITableViewDelegate {
         let sideMenuOption = SideMenuOption(rawValue: indexPath.row)
         cottageTabsDelegate?.handleMenuToggle(forMenuOption: sideMenuOption)
         
+        tableView.deselectRow(at: indexPath, animated: true)
+        
     }
     
 }
