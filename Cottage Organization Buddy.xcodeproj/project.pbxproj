@@ -53,6 +53,7 @@
 		FE724F452543E97C00764387 /* CarInformationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE724F442543E97B00764387 /* CarInformationView.swift */; };
 		FE80B5BC2648A59800B093B4 /* InviteUsersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE80B5BB2648A59800B093B4 /* InviteUsersViewController.swift */; };
 		FE80B5BE2648A5B300B093B4 /* InviteUsersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE80B5BD2648A5B300B093B4 /* InviteUsersView.swift */; };
+		FE82990C2658324E00404443 /* SideMenuButtonDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE82990B2658324E00404443 /* SideMenuButtonDelegate.swift */; };
 		FE909897258ABB38002E00FB /* AddGroceryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE909896258ABB38002E00FB /* AddGroceryViewController.swift */; };
 		FE90989A258ABB4D002E00FB /* AddGroceryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE909899258ABB4D002E00FB /* AddGroceryView.swift */; };
 		FE945265263B09E5003EB5AE /* NewCottageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE945264263B09E5003EB5AE /* NewCottageCollectionViewCell.swift */; };
@@ -135,6 +136,7 @@
 		FE724F442543E97B00764387 /* CarInformationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarInformationView.swift; sourceTree = "<group>"; };
 		FE80B5BB2648A59800B093B4 /* InviteUsersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "\U0010InviteUsersViewController.swift"; sourceTree = "<group>"; };
 		FE80B5BD2648A5B300B093B4 /* InviteUsersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InviteUsersView.swift; sourceTree = "<group>"; };
+		FE82990B2658324E00404443 /* SideMenuButtonDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuButtonDelegate.swift; sourceTree = "<group>"; };
 		FE909896258ABB38002E00FB /* AddGroceryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddGroceryViewController.swift; sourceTree = "<group>"; };
 		FE909899258ABB4D002E00FB /* AddGroceryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddGroceryView.swift; sourceTree = "<group>"; };
 		FE945264263B09E5003EB5AE /* NewCottageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewCottageCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -299,6 +301,7 @@
 		FE724F0225394B6500764387 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				FE82990A26582F0600404443 /* Side Menu Controllers */,
 				FEDCC4E326557C9300C5FADB /* Cottage Controllers */,
 				FE80B5B92648A55500B093B4 /* Invite Users Controllers */,
 				FEB727BF2641C9490093061B /* Create Cottage Controllers */,
@@ -365,6 +368,15 @@
 			path = "Invite Users Views";
 			sourceTree = "<group>";
 		};
+		FE82990A26582F0600404443 /* Side Menu Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				FEDCC4E626557DE900C5FADB /* SideMenuViewController.swift */,
+				FE82990B2658324E00404443 /* SideMenuButtonDelegate.swift */,
+			);
+			path = "Side Menu Controllers";
+			sourceTree = "<group>";
+		};
 		FE94526A263F884C003EB5AE /* DTOs */ = {
 			isa = PBXGroup;
 			children = (
@@ -394,7 +406,6 @@
 			children = (
 				FE724F0C253A081C00764387 /* CottageTabsController.swift */,
 				FEDCC4E426557D3A00C5FADB /* CottageContainerViewController.swift */,
-				FEDCC4E626557DE900C5FADB /* SideMenuViewController.swift */,
 			);
 			path = "Cottage Controllers";
 			sourceTree = "<group>";
@@ -715,6 +726,7 @@
 				FE724F38253E89E000764387 /* TabBarItemControllerProtocol.swift in Sources */,
 				FE724F30253E7A4E00764387 /* TripInformationController.swift in Sources */,
 				FE94526C263F886B003EB5AE /* CottageInfo.swift in Sources */,
+				FE82990C2658324E00404443 /* SideMenuButtonDelegate.swift in Sources */,
 				FE681D142593FE72007B4DEC /* AddDrinkView.swift in Sources */,
 				FE318471263106FE0053457F /* AddRoomViewController.swift in Sources */,
 				FE30D2F625E88DC700ACC441 /* RoomCollectionView.swift in Sources */,

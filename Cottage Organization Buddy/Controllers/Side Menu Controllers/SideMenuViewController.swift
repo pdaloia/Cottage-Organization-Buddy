@@ -14,7 +14,7 @@ class SideMenuViewController: UIViewController {
     //MARK: - Properties
     var tableView: UITableView!
     
-    var cottageTabsDelegate: CottageTabsControllerDelegate?
+    var cottageTabsDelegate: SideMenuButtonDelegate?
     
     //MARK: - Init
 

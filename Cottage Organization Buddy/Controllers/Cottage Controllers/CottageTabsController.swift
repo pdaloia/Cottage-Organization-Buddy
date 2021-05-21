@@ -11,7 +11,7 @@ class CottageTabsController: UITabBarController {
     
     var cottageModel: CottageTrip = CottageTrip()
     
-    var cottageTabsDelegate: CottageTabsControllerDelegate?
+    var menuButtonDelegate: SideMenuButtonDelegate?
 
     override func viewDidLoad() {
         
@@ -64,14 +64,8 @@ class CottageTabsController: UITabBarController {
     
     @objc func sideMenuButtonPressed() {
         
-        cottageTabsDelegate!.handleMenuToggle(forMenuOption: nil)
+        menuButtonDelegate!.handleMenuToggle(forMenuOption: nil)
         
     }
 
-}
-
-protocol CottageTabsControllerDelegate {
-    
-    func handleMenuToggle(forMenuOption menuOption: SideMenuOption?)
-    
 }

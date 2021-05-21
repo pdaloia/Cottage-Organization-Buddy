@@ -31,7 +31,7 @@ class CottageContainerViewController: UIViewController {
         
         let cottageTabsController = CottageTabsController()
         cottageTabsController.cottageModel = self.cottageModel!
-        cottageTabsController.cottageTabsDelegate = self
+        cottageTabsController.menuButtonDelegate = self
         cottageTabsController.loadViewControllersIntoTabBarController()
         centerController = cottageTabsController
         
@@ -96,7 +96,7 @@ class CottageContainerViewController: UIViewController {
 
 }
 
-extension CottageContainerViewController: CottageTabsControllerDelegate {
+extension CottageContainerViewController: SideMenuButtonDelegate {
     
     func handleMenuToggle(forMenuOption menuOption: SideMenuOption?) {
         
