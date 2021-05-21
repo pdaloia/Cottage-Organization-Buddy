@@ -85,6 +85,7 @@ class CottageContainerViewController: UIViewController {
             print("Show Profile")
         case .SelectCottage:
             print("Go To Landing Page")
+            self.dismiss(animated: true, completion: nil)
         case .Settings:
             print("Show Settings")
         case .Logout:
