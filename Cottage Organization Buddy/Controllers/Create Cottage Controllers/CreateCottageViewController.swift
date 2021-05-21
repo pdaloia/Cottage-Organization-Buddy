@@ -88,8 +88,7 @@ extension CreateCottageViewController: CreateCottageViewDelegate {
         spinner.startAnimating()
         
         //create the view controller to display the newly created cottage
-        let storyBoard : UIStoryboard = UIStoryboard(name: "CottageTabs", bundle:nil)
-        let nextViewController = storyBoard.instantiateViewController(withIdentifier: "CottageTabsView") as! CottageTabsController
+        let nextViewController = CottageContainerViewController()
         nextViewController.modalPresentationStyle = .fullScreen
         
         //sending info to the firestore
@@ -100,6 +99,7 @@ extension CreateCottageViewController: CreateCottageViewDelegate {
                 firestoreService.get(cottage: id) { model in
                     
                     nextViewController.cottageModel = model!
+                    nextViewController.configureCottageTabsController()
                     spinner.stopAnimating()
                     
                     self.present(nextViewController, animated:true, completion:nil)
