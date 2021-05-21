@@ -11,10 +11,20 @@ class CottageCollectionViewCell: UICollectionViewCell {
     
     var cottageInfo: CottageInfo?
     
+    let label: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         
         self.backgroundColor = .green
+        
+        self.contentView.addSubview(label)
+        label.centerYAnchor.constraint(equalTo: self.contentView.centerYAnchor).isActive = true
+        label.centerXAnchor.constraint(equalTo: self.contentView.centerXAnchor).isActive = true
     }
     
     required init?(coder: NSCoder) {
@@ -23,13 +33,8 @@ class CottageCollectionViewCell: UICollectionViewCell {
     
     func initializeContent() {
         
-        let label = UILabel()
         label.text = cottageInfo!.CottageName
         
-        self.contentView.addSubview(label)
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.centerYAnchor.constraint(equalTo: self.contentView.centerYAnchor).isActive = true
-        label.centerXAnchor.constraint(equalTo: self.contentView.centerXAnchor).isActive = true
     }
     
 }
