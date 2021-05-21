@@ -13,6 +13,7 @@ class LandingPageViewController: UIViewController {
     var userCottages: [CottageInfo]?
     
     var landingPageView: LandingPageView?
+    var sideMenuButtonDelegate: SideMenuButtonDelegate?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,6 +42,8 @@ class LandingPageViewController: UIViewController {
         //creating the nav bar button
         let invitesBarButton = UIBarButtonItem(title: "Invites", style: .plain, target: self, action: #selector(invitesBarButtonPressed))
         self.navigationItem.rightBarButtonItem = invitesBarButton
+        let sideMenuBarButton = UIBarButtonItem(title: "Menu", style: .plain, target: self, action: #selector(sideMenuButtonPressed))
+        self.navigationItem.leftBarButtonItem = sideMenuBarButton
         
     }
     
@@ -57,6 +60,14 @@ class LandingPageViewController: UIViewController {
             
             self.navigationController!.pushViewController(inviteInboxVC, animated: true)
             
+        }
+        
+    }
+    
+    @objc func sideMenuButtonPressed() {
+        
+        if let delegate = sideMenuButtonDelegate {
+            delegate.handleMenuToggle(forMenuOption: nil)
         }
         
     }
