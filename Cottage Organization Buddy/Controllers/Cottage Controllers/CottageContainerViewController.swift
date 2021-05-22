@@ -43,7 +43,7 @@ class CottageContainerViewController: UIViewController {
         
         if sideMenuController == nil {
             sideMenuController = SideMenuViewController()
-            sideMenuController.cottageTabsDelegate = self
+            sideMenuController.sideMenuDelegate = self
             view.insertSubview(sideMenuController.view, at: 0)
             self.addChild(sideMenuController)
             sideMenuController.didMove(toParent: self)

@@ -14,7 +14,7 @@ class SideMenuViewController: UIViewController {
     //MARK: - Properties
     var tableView: UITableView!
     
-    var cottageTabsDelegate: SideMenuButtonDelegate?
+    var sideMenuDelegate: SideMenuButtonDelegate?
     
     //MARK: - Init
 
@@ -73,7 +73,7 @@ extension SideMenuViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         let sideMenuOption = SideMenuOption(rawValue: indexPath.row)
-        cottageTabsDelegate?.handleMenuToggle(forMenuOption: sideMenuOption)
+        sideMenuDelegate?.handleMenuToggle(forMenuOption: sideMenuOption)
         
         tableView.deselectRow(at: indexPath, animated: true)
         
