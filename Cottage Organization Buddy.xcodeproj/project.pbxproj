@@ -55,6 +55,7 @@
 		FE80B5BE2648A5B300B093B4 /* InviteUsersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE80B5BD2648A5B300B093B4 /* InviteUsersView.swift */; };
 		FE82990C2658324E00404443 /* SideMenuButtonDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE82990B2658324E00404443 /* SideMenuButtonDelegate.swift */; };
 		FE82990E2658426F00404443 /* LandingPageContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE82990D2658426F00404443 /* LandingPageContainerViewController.swift */; };
+		FE82991126598ABE00404443 /* SignOutProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE82991026598ABD00404443 /* SignOutProtocol.swift */; };
 		FE909897258ABB38002E00FB /* AddGroceryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE909896258ABB38002E00FB /* AddGroceryViewController.swift */; };
 		FE90989A258ABB4D002E00FB /* AddGroceryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE909899258ABB4D002E00FB /* AddGroceryView.swift */; };
 		FE945265263B09E5003EB5AE /* NewCottageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE945264263B09E5003EB5AE /* NewCottageCollectionViewCell.swift */; };
@@ -139,6 +140,7 @@
 		FE80B5BD2648A5B300B093B4 /* InviteUsersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InviteUsersView.swift; sourceTree = "<group>"; };
 		FE82990B2658324E00404443 /* SideMenuButtonDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuButtonDelegate.swift; sourceTree = "<group>"; };
 		FE82990D2658426F00404443 /* LandingPageContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingPageContainerViewController.swift; sourceTree = "<group>"; };
+		FE82991026598ABD00404443 /* SignOutProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignOutProtocol.swift; sourceTree = "<group>"; };
 		FE909896258ABB38002E00FB /* AddGroceryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddGroceryViewController.swift; sourceTree = "<group>"; };
 		FE909899258ABB4D002E00FB /* AddGroceryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddGroceryView.swift; sourceTree = "<group>"; };
 		FE945264263B09E5003EB5AE /* NewCottageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewCottageCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -269,6 +271,7 @@
 		FE724EEB2537D37B00764387 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				FE82990F26598A9A00404443 /* Firebase Protocols */,
 				FE94526A263F884C003EB5AE /* DTOs */,
 				FEEA1DD025C737FB0050E6FA /* Request Models */,
 				FE724F3B253E8A5A00764387 /* Model Protocols */,
@@ -378,6 +381,14 @@
 				FE82990B2658324E00404443 /* SideMenuButtonDelegate.swift */,
 			);
 			path = "Side Menu Controllers";
+			sourceTree = "<group>";
+		};
+		FE82990F26598A9A00404443 /* Firebase Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				FE82991026598ABD00404443 /* SignOutProtocol.swift */,
+			);
+			path = "Firebase Protocols";
 			sourceTree = "<group>";
 		};
 		FE94526A263F884C003EB5AE /* DTOs */ = {
@@ -704,6 +715,7 @@
 				FE724F19253CF0AB00764387 /* DrinksController.swift in Sources */,
 				FE724ED825375D7C00764387 /* SceneDelegate.swift in Sources */,
 				FE945268263B09F2003EB5AE /* CottageCollectionViewCell.swift in Sources */,
+				FE82991126598ABE00404443 /* SignOutProtocol.swift in Sources */,
 				FE724EED2537D3A700764387 /* GroceryModel.swift in Sources */,
 				FE42A3212578826200538A99 /* DrinkListController.swift in Sources */,
 				FE724F452543E97C00764387 /* CarInformationView.swift in Sources */,
