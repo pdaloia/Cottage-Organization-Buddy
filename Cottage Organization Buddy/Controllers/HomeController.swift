@@ -158,3 +158,21 @@ extension HomeController: GIDSignInDelegate{
     
 }
 
+extension HomeController: SignOutProtocol {
+    
+    func signOutCurrentUser() {
+        
+        do { try Auth.auth().signOut() }
+        catch { print("already logged out") }
+        
+        DismissAndPopAllViewControllers()
+        
+    }
+    
+    func DismissAndPopAllViewControllers() {
+        
+        self.view.window?.rootViewController?.dismiss(animated: true, completion: nil)
+        
+    }
+    
+}
