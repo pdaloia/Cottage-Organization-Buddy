@@ -28,6 +28,10 @@ class GroceryListController: UIViewController {
             self.navigationItem.rightBarButtonItem = addButton
         }
         
+        self.groceryListToDisplay?.sort(by: { grocery1, grocery2 in
+            grocery1.productName.lowercased() < grocery2.productName.lowercased()
+        })
+        
         groceryListTableView = UITableView()
         groceryListTableView?.dataSource = self
         groceryListTableView?.delegate = self
