@@ -58,6 +58,7 @@ class HomeController: UIViewController {
     func pushLandingPageController() {
         
         let landingPageContainerVC = LandingPageContainerViewController()
+        landingPageContainerVC.signOutProtocol = self
         
         //let navController = UINavigationController(rootViewController: landingPageContainerVC)
         landingPageContainerVC.modalPresentationStyle = .fullScreen
@@ -162,8 +163,13 @@ extension HomeController: SignOutProtocol {
     
     func signOutCurrentUser() {
         
-        do { try Auth.auth().signOut() }
-        catch { print("already logged out") }
+        do {
+            try Auth.auth().signOut()
+            GIDSignIn.sharedInstance().signOut()
+        }
+        catch {
+            print("already logged out")
+        }
         
         DismissAndPopAllViewControllers()
         
@@ -171,7 +177,7 @@ extension HomeController: SignOutProtocol {
     
     func DismissAndPopAllViewControllers() {
         
-        self.view.window?.rootViewController?.dismiss(animated: true, completion: nil)
+        self.dismiss(animated: true, completion: nil)
         
     }
     

@@ -13,6 +13,7 @@ class LandingPageContainerViewController: UIViewController {
     
     var sideMenuVC: SideMenuViewController!
     var centerVC: UIViewController!
+    var signOutProtocol: SignOutProtocol?
     
     var isExpanded: Bool = false
     
@@ -79,6 +80,7 @@ class LandingPageContainerViewController: UIViewController {
             print("Show Settings")
         case .Logout:
             print("Logging out")
+            signOutProtocol?.signOutCurrentUser()
         }
         
     }
