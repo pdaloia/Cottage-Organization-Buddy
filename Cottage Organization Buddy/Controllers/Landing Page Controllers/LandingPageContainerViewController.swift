@@ -74,10 +74,12 @@ class LandingPageContainerViewController: UIViewController {
         switch menuOption {
         case .Profile:
             print("Show Profile")
+            ToastMessageDisplayer.showToast(controller: self, message: "Profile not implemented yet, sorry :(", seconds: 2)
         case .SelectCottage:
             print("Go To Landing Page")
         case .Settings:
             print("Show Settings")
+            ToastMessageDisplayer.showToast(controller: self, message: "Settings not implemented yet, sorry :(", seconds: 2)
         case .Logout:
             print("Logging out")
             signOutProtocol?.signOutCurrentUser()
