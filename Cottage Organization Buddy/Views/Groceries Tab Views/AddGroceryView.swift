@@ -114,6 +114,8 @@ class AddGroceryView: UIView {
         let attendeePickerInput = UITextField()
         attendeePickerInput.placeholder = "Assign this grocery to a user"
         attendeePickerInput.text = "Unassigned"
+        attendeePickerInput.tintColor = .clear
+        attendeePickerInput.autocorrectionType = .no
         
         //create the toolbar
         let toolbar = UIToolbar()
