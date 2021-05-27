@@ -15,6 +15,7 @@ class AddGroceryViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.title = "Add Grocery"
         self.view.backgroundColor = .systemBackground
 
         initializeViewController()
