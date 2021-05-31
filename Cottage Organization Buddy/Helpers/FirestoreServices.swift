@@ -657,12 +657,12 @@ class FirestoreServices {
                                         let groceryName = document.documentID
                                         let price: Double = document.get("price") as! Double
                                         let quantity: Int = document.get("quantity") as! Int
-                                        let assignedUserId = document.get("assignedTo") as! String
+                                        let assignedUserId: String = document.get("assignedTo") as! String
+                                        let assignedAttendee: Attendee = cottageModel.attendeesList.first(where: { $0.firebaseUserID == assignedUserId } ) ?? Attendee(name: "", firebaseUserID: "")
                                         
-                                        let groceryToAdd = Grocery(productName: groceryName, price: price, quantity: quantity, assignedTo: assignedUserId)
+                                        let groceryToAdd = Grocery(productName: groceryName, price: price, quantity: quantity, assignedTo: assignedAttendee)
                                         
                                         if assignedUserId != "" {
-                                            let assignedAttendee: Attendee = cottageModel.attendeesList.first(where: { $0.firebaseUserID == assignedUserId } )!
                                             if cottageModel.groceryList.groceryLists[assignedAttendee] == nil {
                                                 cottageModel.groceryList.groceryLists[assignedAttendee] = []
                                             }

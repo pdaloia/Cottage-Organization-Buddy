@@ -65,11 +65,11 @@ class GroceryListTableViewCell: UITableViewCell {
         self.groceryLabel.text = self.cellsGroceryModel!.productName
         self.quantityLabel.text = String(self.cellsGroceryModel!.quantity)
         
-        if self.cellsGroceryModel?.assignedTo == "" {
+        if self.cellsGroceryModel?.assignedTo.firebaseUserID == "" {
             self.assignedUserLabel.text = "Unassigned"
         }
         else{
-            self.assignedUserLabel.text = self.cellsGroceryModel!.assignedTo
+            self.assignedUserLabel.text = self.cellsGroceryModel!.assignedTo.name
         }
         
         //add all views to the content view

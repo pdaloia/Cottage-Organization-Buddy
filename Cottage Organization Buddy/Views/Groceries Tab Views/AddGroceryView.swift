@@ -315,9 +315,13 @@ class AddGroceryView: UIView {
         let groceryPrice: Double = Double(pricePerGroceryInput.text!) ?? 0
         let groceryQuantity: Int = Int(quantityOfGroceryInput.text!) ?? 0
         
-        var assignedUserID = ""
+        /* var assignedUserID = ""
         if attendeePicker.selectedRow(inComponent: 0) != 0 {
             assignedUserID = attendeesToPick[attendeePicker.selectedRow(inComponent: 0) - 1].firebaseUserID
+        } */
+        var assignedUser = Attendee(name: "", firebaseUserID: "")
+        if attendeePicker.selectedRow(inComponent: 0) != 0 {
+            assignedUser = attendeesToPick[attendeePicker.selectedRow(inComponent: 0) - 1]
         }
         
         var validated: Bool = false
@@ -331,10 +335,10 @@ class AddGroceryView: UIView {
             return
         }
         
-        let groceryToAdd = Grocery(productName: groceryName, price: groceryPrice, quantity: groceryQuantity, assignedTo: assignedUserID)
+        let groceryToAdd = Grocery(productName: groceryName, price: groceryPrice, quantity: groceryQuantity, assignedTo: assignedUser)
         
         if let del = self.uploadGroceryDelegate {
-            del.uploadToVC(Grocery: groceryToAdd, for: assignedUserID)
+            del.uploadToVC(Grocery: groceryToAdd, for: assignedUser.firebaseUserID)
         }
         
     }

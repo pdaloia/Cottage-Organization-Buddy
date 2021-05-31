@@ -114,7 +114,7 @@ extension GroceryListController: UITableViewDelegate, UITableViewDataSource {
             self.groceryListTableView?.reloadData()
             
             //get the assigned user for this grocery and remove from this persons list
-            if let assignedUser = self.cottageModel!.attendeesList.first(where: { $0.firebaseUserID == groceryToDelete.assignedTo } ) {
+            if let assignedUser = self.cottageModel!.attendeesList.first(where: { $0.firebaseUserID == groceryToDelete.assignedTo.firebaseUserID } ) {
                 self.cottageModel!.groceryList.groceryLists[assignedUser]?.removeAll(where: { $0.productName == groceryToDelete.productName } )
             }
             
