@@ -16,6 +16,9 @@ class GroceryListController: UIViewController {
     var groceryListToDisplay: [Grocery]?
     var groceryListTitle: String?
     var groceryListTableView: UITableView?
+    
+    //table view data
+    let reuseIdentifier = "cell"
 
     override func viewDidLoad() {
         
@@ -35,6 +38,7 @@ class GroceryListController: UIViewController {
         groceryListTableView = UITableView()
         groceryListTableView?.dataSource = self
         groceryListTableView?.delegate = self
+        groceryListTableView?.register(GroceryListTableViewCell.self, forCellReuseIdentifier: self.reuseIdentifier)
         setupGroceryListTableView()
 
     }
@@ -75,11 +79,18 @@ extension GroceryListController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let currentCell = UITableViewCell()
+        let currentCell: GroceryListTableViewCell = self.groceryListTableView!.dequeueReusableCell(withIdentifier: self.reuseIdentifier) as! GroceryListTableViewCell
         
-        currentCell.textLabel?.text = groceryListToDisplay?[indexPath.item].productName
+        currentCell.cellsGroceryModel = groceryListToDisplay?[indexPath.item]
+        currentCell.setCellsContents()
         
         return currentCell
+        
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        
+        return 80
         
     }
     
