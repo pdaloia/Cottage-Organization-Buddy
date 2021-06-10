@@ -9,11 +9,48 @@ import UIKit
 
 class AddDrinkView: UIView {
     
+    //MARK: - Properties
+    
     weak var addDrinkDelegate: DrinkInformationDelegate?
     
-    private let drinkNameTextField = UITextField()
-    private let isAlcoholicSwitch = UISwitch()
-    private let isForSharingSwitch = UISwitch()
+    //MARK: - Views
+    
+    let drinkNameTextField: UITextField = {
+        let drinkNameTextField = UITextField()
+        drinkNameTextField.placeholder = "Enter name of drink"
+        drinkNameTextField.addTarget(self, action: #selector(nameFieldEdited(sender:)), for: .editingChanged)
+        return drinkNameTextField
+    }()
+    
+    let drinkNameLabel: UILabel = {
+        let label = UILabel()
+        label.text = "Name of drink"
+        label.textColor = .green
+        label.font = label.font.withSize(14)
+        label.isHidden = true
+        return label
+    }()
+    
+    let isForSharingSwitch: UISwitch = {
+        let isForSharingSwitch = UISwitch()
+        return isForSharingSwitch
+    }()
+    
+    let isForSharingLabel: UILabel = {
+        let isForSharingLabel = UILabel()
+        isForSharingLabel.text = "Is this drink for sharing?"
+        return isForSharingLabel
+    }()
+    
+    let addButton: UIButton = {
+        let addButton = UIButton()
+        addButton.setTitleColor(.blue, for: .normal)
+        addButton.setTitle("Add", for: .normal)
+        addButton.addTarget(self, action: #selector(addButtonPressed(sender:)), for: .touchUpInside)
+        return addButton
+    }()
+    
+    //MARK: - Init
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -25,62 +62,41 @@ class AddDrinkView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    //MARK: - Functions
+    
     func initializeView() {
-                
-        //create the add button
-        let addButton = UIButton()
-        addButton.setTitleColor(.blue, for: .normal)
-        addButton.setTitle("Add", for: .normal)
-        addButton.addTarget(self, action: #selector(addButtonPressed(sender:)), for: .touchUpInside)
         
-        //configure the name text field
-        drinkNameTextField.placeholder = "Enter name of drink"
-        drinkNameTextField.backgroundColor = .green
-        drinkNameTextField.borderStyle = .roundedRect
-        
-        //create the switch labels
-        let isAlcoholicLabel = UILabel()
-        isAlcoholicLabel.text = "Is this drink alcoholic?"
-        let isForSharingLabel = UILabel()
-        isForSharingLabel.text = "Is this drink for sharing?"
-        
-        //pair the switches and labels in stack views to place in view
-        let isAlcoholicStack = UIStackView()
-        isAlcoholicStack.axis = .horizontal
-        isAlcoholicStack.alignment = .fill
-        isAlcoholicStack.distribution = .fillEqually
-        isAlcoholicStack.addArrangedSubview(isAlcoholicLabel)
-        isAlcoholicStack.addArrangedSubview(isAlcoholicSwitch)
-        
-        let isForSharingStack = UIStackView()
-        isForSharingStack.axis = .horizontal
-        isForSharingStack.alignment = .fill
-        isForSharingStack.distribution = .fillEqually
-        isForSharingStack.addArrangedSubview(isForSharingLabel)
-        isForSharingStack.addArrangedSubview(isForSharingSwitch)
-        
-        //add the contents to the view
-        let allFieldsStack = UIStackView()
-        allFieldsStack.axis = .vertical
-        allFieldsStack.alignment = .fill
-        allFieldsStack.distribution = .equalSpacing
-        allFieldsStack.addArrangedSubview(drinkNameTextField)
-        allFieldsStack.addArrangedSubview(isAlcoholicStack)
-        allFieldsStack.addArrangedSubview(isForSharingStack)
-        
-        //add the full stack to the view
-        self.addSubview(allFieldsStack)
-        allFieldsStack.translatesAutoresizingMaskIntoConstraints = false
-        allFieldsStack.topAnchor.constraint(equalTo: self.topAnchor, constant: 10).isActive = true
-        allFieldsStack.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 20).isActive = true
-        allFieldsStack.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -20).isActive = true
-        allFieldsStack.heightAnchor.constraint(equalTo: self.heightAnchor, multiplier: 1/3).isActive = true
-        
-        //add the add button below the stack view
+        //add the subviews
+        self.addSubview(drinkNameLabel)
+        self.addSubview(drinkNameTextField)
+        self.addSubview(isForSharingLabel)
+        self.addSubview(isForSharingSwitch)
         self.addSubview(addButton)
+        
+        //create the constraints
+        
+        drinkNameLabel.translatesAutoresizingMaskIntoConstraints = false
+        drinkNameLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: 20).isActive = true
+        drinkNameLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 10).isActive = true
+        
+        drinkNameTextField.translatesAutoresizingMaskIntoConstraints = false
+        drinkNameTextField.topAnchor.constraint(equalTo: self.drinkNameLabel.bottomAnchor).isActive = true
+        drinkNameTextField.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 10).isActive = true
+        drinkNameTextField.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: 10).isActive = true
+        
+        isForSharingLabel.translatesAutoresizingMaskIntoConstraints = false
+        isForSharingLabel.topAnchor.constraint(equalTo: drinkNameTextField.bottomAnchor, constant: 20).isActive = true
+        isForSharingLabel.heightAnchor.constraint(equalToConstant: 31).isActive = true
+        isForSharingLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 10).isActive = true
+        isForSharingLabel.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.75).isActive = true
+        
+        isForSharingSwitch.translatesAutoresizingMaskIntoConstraints = false
+        isForSharingSwitch.topAnchor.constraint(equalTo: drinkNameTextField.bottomAnchor, constant: 20).isActive = true
+        isForSharingSwitch.leadingAnchor.constraint(equalTo: isForSharingLabel.trailingAnchor).isActive = true
+        isForSharingSwitch.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: 10).isActive = true
+        
         addButton.translatesAutoresizingMaskIntoConstraints = false
-        addButton.topAnchor.constraint(equalTo: allFieldsStack.bottomAnchor, constant: 50).isActive = true
-        addButton.widthAnchor.constraint(equalToConstant: 100).isActive = true
+        addButton.topAnchor.constraint(equalTo: isForSharingLabel.bottomAnchor, constant: 10).isActive = true
         addButton.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
         
     }
@@ -100,7 +116,30 @@ class AddDrinkView: UIView {
         }
      
         if let del = self.addDrinkDelegate {
-            del.uploadDrinkInformation(drinkName: drinkName, isAlcoholic: isAlcoholicSwitch.isOn, isForSharing: isForSharingSwitch.isOn)
+            del.uploadDrinkInformation(drinkName: drinkName, isAlcoholic: false, isForSharing: isForSharingSwitch.isOn)
+        }
+        
+    }
+    
+    @objc func nameFieldEdited(sender: UITextField) {
+        
+        if sender.text!.count > 1 {
+            return
+        }
+        
+        if sender.text != "" {
+            UIView.transition(with: drinkNameLabel, duration: 0.6,
+                              options: .transitionCrossDissolve,
+                              animations: {
+                                self.drinkNameLabel.isHidden = false
+                          })
+        }
+        else {
+            UIView.transition(with: drinkNameLabel, duration: 0.6,
+                              options: .transitionCrossDissolve,
+                              animations: {
+                                self.drinkNameLabel.isHidden = true
+                          })
         }
         
     }
