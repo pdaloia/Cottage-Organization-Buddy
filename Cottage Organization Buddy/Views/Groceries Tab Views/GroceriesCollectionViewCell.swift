@@ -27,7 +27,7 @@ class GroceriesCollectionViewCell: UICollectionViewCell {
         let cellTitleLabel = UILabel()
         cellTitleLabel.text = cellTitle!
         cellTitleLabel.textAlignment = .center
-        cellTitleLabel.backgroundColor = .green
+        cellTitleLabel.backgroundColor = UIColor(named: "Cottage Green")
         
         self.contentView.addSubview(cellTitleLabel)
         cellTitleLabel.translatesAutoresizingMaskIntoConstraints = false

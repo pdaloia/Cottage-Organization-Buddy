@@ -53,7 +53,7 @@ extension GroceriesCollectionView: UICollectionViewDelegateFlowLayout, UICollect
         
         let currentCell = collectionView.dequeueReusableCell(withReuseIdentifier: "GroceriesCell", for: indexPath) as! GroceriesCollectionViewCell
         
-        //currentCell.backgroundColor = .green
+        currentCell.backgroundColor = UIColor(named: "Cottage Beige Secondary")
         currentCell.layer.cornerRadius = 10
         
         switch indexPath.section {

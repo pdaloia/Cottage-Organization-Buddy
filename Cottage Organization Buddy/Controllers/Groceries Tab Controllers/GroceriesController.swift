@@ -38,7 +38,7 @@ class GroceriesController: UIViewController, GroceriesCollectionViewDelegate, Ta
         groceriesCollectionView?.delegate = groceriesCollectionView
         groceriesCollectionView?.dataSource = groceriesCollectionView
         
-        groceriesCollectionView?.backgroundColor = .clear
+        groceriesCollectionView?.backgroundColor = UIColor(named: "Cottage Green Tertiary")
         view.addSubview(groceriesCollectionView!)
         
         groceriesCollectionView?.translatesAutoresizingMaskIntoConstraints = false
