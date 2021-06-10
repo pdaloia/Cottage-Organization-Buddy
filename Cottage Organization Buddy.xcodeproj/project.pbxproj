@@ -61,6 +61,7 @@
 		FE945268263B09F2003EB5AE /* CottageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE945267263B09F2003EB5AE /* CottageCollectionViewCell.swift */; };
 		FE94526C263F886B003EB5AE /* CottageInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE94526B263F886B003EB5AE /* CottageInfo.swift */; };
 		FE959BDE259290870087A046 /* ToastMessageDisplayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE959BDD259290870087A046 /* ToastMessageDisplayer.swift */; };
+		FE99504826725BDF00A050EE /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FE99504726725BDF00A050EE /* Colors.xcassets */; };
 		FEABB59825953F8100D60A66 /* AddCarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEABB59725953F8100D60A66 /* AddCarViewController.swift */; };
 		FEABB59B25953F9700D60A66 /* AddCarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEABB59A25953F9700D60A66 /* AddCarView.swift */; };
 		FEAC9744254BB4EA007B83B1 /* DrinksCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEAC9743254BB4EA007B83B1 /* DrinksCollectionViewCell.swift */; };
@@ -146,6 +147,7 @@
 		FE945267263B09F2003EB5AE /* CottageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CottageCollectionViewCell.swift; sourceTree = "<group>"; };
 		FE94526B263F886B003EB5AE /* CottageInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CottageInfo.swift; sourceTree = "<group>"; };
 		FE959BDD259290870087A046 /* ToastMessageDisplayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastMessageDisplayer.swift; sourceTree = "<group>"; };
+		FE99504726725BDF00A050EE /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 		FEABB59725953F8100D60A66 /* AddCarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCarViewController.swift; sourceTree = "<group>"; };
 		FEABB59A25953F9700D60A66 /* AddCarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCarView.swift; sourceTree = "<group>"; };
 		FEAC9743254BB4EA007B83B1 /* DrinksCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinksCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -261,6 +263,7 @@
 				FE724ED525375D7C00764387 /* AppDelegate.swift */,
 				FE724ED725375D7C00764387 /* SceneDelegate.swift */,
 				FE724EDE25375D8000764387 /* Assets.xcassets */,
+				FE99504726725BDF00A050EE /* Colors.xcassets */,
 				FE724EE025375D8000764387 /* LaunchScreen.storyboard */,
 				FE724EE325375D8000764387 /* Info.plist */,
 				FEB7F0DD25F07F3B00CAACB1 /* GoogleService-Info.plist */,
@@ -613,6 +616,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FE724EE225375D8000764387 /* LaunchScreen.storyboard in Resources */,
+				FE99504826725BDF00A050EE /* Colors.xcassets in Resources */,
 				FE724EDF25375D8000764387 /* Assets.xcassets in Resources */,
 				FEB7F0DE25F07F3B00CAACB1 /* GoogleService-Info.plist in Resources */,
 			);
