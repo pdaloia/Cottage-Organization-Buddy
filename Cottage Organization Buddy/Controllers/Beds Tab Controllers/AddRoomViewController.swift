@@ -15,7 +15,7 @@ class AddRoomViewController: UIViewController {
         super.viewDidLoad()
         
         self.title = "Add Room"
-        self.view.backgroundColor = .systemBackground
+        self.view.backgroundColor = UIColor(named: "Cottage Green Tertiary")
         
         initializeView()
         

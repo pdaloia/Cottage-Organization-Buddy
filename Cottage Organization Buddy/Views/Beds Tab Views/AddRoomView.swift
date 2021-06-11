@@ -64,16 +64,20 @@ class AddRoomView: UIView {
     
     func createNumberInputs() {
         
-        kingInput.backgroundColor = .green
+        kingInput.backgroundColor = UIColor(named: "Cottage Green")
+        kingInput.placeholder = "Kings"
         kingInput.keyboardType = .numberPad
         
-        queenInput.backgroundColor = .green
+        queenInput.backgroundColor = UIColor(named: "Cottage Green")
+        queenInput.placeholder = "Queens"
         queenInput.keyboardType = .numberPad
 
-        doubleInput.backgroundColor = .green
+        doubleInput.backgroundColor = UIColor(named: "Cottage Green")
+        doubleInput.placeholder = "Doubles"
         doubleInput.keyboardType = .numberPad
 
-        singleInput.backgroundColor = .green
+        singleInput.backgroundColor = UIColor(named: "Cottage Green")
+        singleInput.placeholder = "Singles"
         singleInput.keyboardType = .numberPad
         
         inputStackView.axis = .vertical
