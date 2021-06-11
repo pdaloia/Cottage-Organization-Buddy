@@ -15,7 +15,14 @@ class InviteUsersView: UIView {
     
     //MARK: - Views
     
-    var emailInput: UITextField?
+    var emailInput: UITextField = {
+        let emailInput = UITextField()
+        emailInput.placeholder = "Email of user"
+        emailInput.autocorrectionType = .no
+        emailInput.autocapitalizationType = .none
+        emailInput.addTarget(self, action: #selector(emailFieldEdited(sender:)), for: .editingChanged)
+        return emailInput
+    }()
     
     let emailLabel: UILabel = {
         let label = UILabel()
@@ -24,6 +31,14 @@ class InviteUsersView: UIView {
         label.textColor = UIColor(named: "Cottage Dark Green")
         label.isHidden = true
         return label
+    }()
+    
+    let sendButton: UIButton = {
+        let sendButton = UIButton()
+        sendButton.setTitle("Send Invite", for: .normal)
+        sendButton.setTitleColor(.systemBlue, for: .normal)
+        sendButton.addTarget(self, action: #selector(sendInviteButtonPressed), for: .touchUpInside)
+        return sendButton
     }()
 
     //MARK: - Init
@@ -44,35 +59,21 @@ class InviteUsersView: UIView {
         
         //add subview
         self.addSubview(emailLabel)
-        
-        //create the input field with constraints
-        emailInput = UITextField()
-        emailInput!.placeholder = "Email of user"
-        emailInput!.autocorrectionType = .no
-        emailInput!.autocapitalizationType = .none
-        emailInput?.addTarget(self, action: #selector(emailFieldEdited(sender:)), for: .editingChanged)
-        self.addSubview(emailInput!)
+        self.addSubview(emailInput)
         
         //constraints
         emailLabel.translatesAutoresizingMaskIntoConstraints = false
         emailLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: 20).isActive = true
         emailLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 20).isActive = true
         
-        emailInput!.translatesAutoresizingMaskIntoConstraints = false
-        emailInput!.topAnchor.constraint(equalTo: self.emailLabel.bottomAnchor).isActive = true
-        emailInput!.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 20).isActive = true
-        emailInput!.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: 20).isActive = true
+        emailInput.translatesAutoresizingMaskIntoConstraints = false
+        emailInput.topAnchor.constraint(equalTo: self.emailLabel.bottomAnchor).isActive = true
+        emailInput.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 20).isActive = true
+        emailInput.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: 20).isActive = true
         
-        //create the send invite button
-        let sendButton = UIButton()
-        sendButton.setTitle("Send Invite", for: .normal)
-        sendButton.setTitleColor(.systemBlue, for: .normal)
-        sendButton.addTarget(self, action: #selector(sendInviteButtonPressed), for: .touchUpInside)
-        
-        //create the constraints on the button
         self.addSubview(sendButton)
         sendButton.translatesAutoresizingMaskIntoConstraints = false
-        sendButton.topAnchor.constraint(equalTo: emailInput!.bottomAnchor, constant: 20).isActive = true
+        sendButton.topAnchor.constraint(equalTo: emailInput.bottomAnchor, constant: 20).isActive = true
         sendButton.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
         
     }
@@ -81,9 +82,9 @@ class InviteUsersView: UIView {
         
         if let delegate = self.inviteDelegate {
             
-            let validated = delegate.validate(email: emailInput!.text!)
+            let validated = delegate.validate(email: emailInput.text!)
             if validated {
-                delegate.emailSubmitted(email: emailInput!.text!)
+                delegate.emailSubmitted(email: emailInput.text!)
             }
             
         }
