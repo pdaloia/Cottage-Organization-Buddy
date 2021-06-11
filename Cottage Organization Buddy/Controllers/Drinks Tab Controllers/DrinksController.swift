@@ -19,7 +19,7 @@ class DrinksController: UIViewController, TabBarItemControllerProtocol {
         
         title = "Drinks"
         
-        self.view.backgroundColor = .systemBackground
+        self.view.backgroundColor = UIColor(named: "Cottage Green Tertiary")
         
         initializeDrinksCollectionView()
         createNavBarButtons()

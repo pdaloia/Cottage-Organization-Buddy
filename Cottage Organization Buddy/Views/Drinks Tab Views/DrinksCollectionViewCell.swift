@@ -27,7 +27,7 @@ class DrinksCollectionViewCell: UICollectionViewCell {
         let cellTitleLabel = UILabel()
         cellTitleLabel.text = cellTitle!
         cellTitleLabel.textAlignment = .center
-        cellTitleLabel.backgroundColor = .green
+        cellTitleLabel.backgroundColor = UIColor(named: "Cottage Green")
         
         self.contentView.addSubview(cellTitleLabel)
         cellTitleLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -47,7 +47,8 @@ class DrinksCollectionViewCell: UICollectionViewCell {
         default:
             cellImage = UIImage(systemName: "drop")!
         }
-        let cellImageView = UIImageView(image: cellImage.withRenderingMode(.alwaysOriginal))
+        let cellImageView = UIImageView(image: cellImage.withRenderingMode(.alwaysTemplate))
+        cellImageView.tintColor = UIColor(named: "Cottage Dark Green")
         cellImageView.contentMode = .scaleAspectFit
         
         self.contentView.addSubview(cellImageView)
