@@ -51,7 +51,7 @@ extension DrinksCollectionView: UICollectionViewDataSource, UICollectionViewDele
             currentCell.cellTitle = "Error"
         }
         
-        currentCell.backgroundColor = UIColor(named: "Cottage Beige")
+        currentCell.backgroundColor = UIColor(named: "Cottage Green Tertiary")
         currentCell.initializeDrinksCell(forSection: indexPath.section)
         
         return currentCell
