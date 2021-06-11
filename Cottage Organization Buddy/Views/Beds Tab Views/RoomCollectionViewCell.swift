@@ -35,8 +35,9 @@ class RoomCollectionViewCell: UICollectionViewCell {
     func setupBedCell() {
         
         //create the cell's bed image and place it in the image view
-        let bedImage = UIImage(systemName: "bed.double")
+        let bedImage = UIImage(systemName: "bed.double")?.withRenderingMode(.alwaysTemplate)
         bedImageView.image = bedImage
+        bedImageView.tintColor = UIColor(named: "Cottage Dark Green")
         bedImageView.contentMode = .scaleAspectFit
         
         contentView.backgroundColor = .clear
@@ -44,7 +45,7 @@ class RoomCollectionViewCell: UICollectionViewCell {
         //set the label's contents
         roomLabel.text = "Room #" + String(indexPath.row + 1)
         roomLabel.textAlignment = .center
-        roomLabel.backgroundColor = .green
+        roomLabel.backgroundColor = UIColor(named: "Cottage Green")
         roomLabel.textColor = .black
         
         //set the cell's content constraints

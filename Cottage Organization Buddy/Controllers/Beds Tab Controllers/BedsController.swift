@@ -18,7 +18,7 @@ class BedsController: UIViewController, TabBarItemControllerProtocol {
         
         title = "Beds"
         
-        self.view.backgroundColor = .systemBackground
+        self.view.backgroundColor = UIColor(named: "Cottage Green Tertiary")
         
         setupBedCollectionView()
         
