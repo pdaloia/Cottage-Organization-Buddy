@@ -53,7 +53,7 @@ class CarCollectionViewCell: UICollectionViewCell {
         cellLabel.text = String(describing: cellsCarModel!.driver.name) + "'s car"
         cellLabel.textAlignment = .center
         cellLabel.textColor = .black
-        cellLabel.backgroundColor = .green
+        cellLabel.backgroundColor = UIColor(named: "Cottage Green")
         
         //add the cell label to the cell
         contentView.addSubview(cellLabel)
@@ -72,9 +72,10 @@ class CarCollectionViewCell: UICollectionViewCell {
     
     func setImageViewConstraints() {
         //create the car image
-        let carImage = UIImage(systemName: "car")
+        let carImage = UIImage(systemName: "car")?.withRenderingMode(.alwaysTemplate)
         //add to the cell
         carImageView.image = carImage
+        carImageView.tintColor = UIColor(named: "Cottage Dark Green")
         contentView.addSubview(carImageView)
         
         //add constraints

@@ -23,7 +23,7 @@ class CarsController: UIViewController, TabBarItemControllerProtocol {
         
         title = "Cars"
         
-        self.view.backgroundColor = .systemBackground
+        self.view.backgroundColor = UIColor(named: "Cottage Green Tertiary")
         
         createNavBarButtons()
         initializeCollectionView()
