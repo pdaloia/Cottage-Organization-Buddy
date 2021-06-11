@@ -18,7 +18,7 @@ class AddGroceryView: UIView {
     private let groceryNameLabel: UILabel = {
         let groceryNameLabel = UILabel()
         groceryNameLabel.text = "Name"
-        groceryNameLabel.textColor = .green
+        groceryNameLabel.textColor = UIColor(named: "Cottage Dark Green")
         groceryNameLabel.font = groceryNameLabel.font.withSize(14)
         groceryNameLabel.isHidden = true
         return groceryNameLabel
@@ -46,7 +46,7 @@ class AddGroceryView: UIView {
     private let pricePerGroceryLabel: UILabel = {
         let pricePerGroceryLabel = UILabel()
         pricePerGroceryLabel.text = "Price"
-        pricePerGroceryLabel.textColor = .green
+        pricePerGroceryLabel.textColor = UIColor(named: "Cottage Dark Green")
         pricePerGroceryLabel.font = pricePerGroceryLabel.font.withSize(14)
         pricePerGroceryLabel.isHidden = true
         return pricePerGroceryLabel
@@ -75,7 +75,7 @@ class AddGroceryView: UIView {
     private let quantityOfGroceryLabel: UILabel = {
         let quantityOfGroceryLabel = UILabel()
         quantityOfGroceryLabel.text = "Quantity"
-        quantityOfGroceryLabel.textColor = .green
+        quantityOfGroceryLabel.textColor = UIColor(named: "Cottage Dark Green")
         quantityOfGroceryLabel.font = quantityOfGroceryLabel.font.withSize(14)
         quantityOfGroceryLabel.isHidden = true
         return quantityOfGroceryLabel
@@ -104,7 +104,7 @@ class AddGroceryView: UIView {
     private let attendeePickerLabel: UILabel = {
         let attendeePickerLabel = UILabel()
         attendeePickerLabel.text = "Assign grocery to user"
-        attendeePickerLabel.textColor = .green
+        attendeePickerLabel.textColor = UIColor(named: "Cottage Dark Green")
         attendeePickerLabel.font = attendeePickerLabel.font.withSize(14)
         //attendeePickerLabel.isHidden = true
         return attendeePickerLabel

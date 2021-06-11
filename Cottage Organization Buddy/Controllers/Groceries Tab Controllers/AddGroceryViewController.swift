@@ -16,7 +16,7 @@ class AddGroceryViewController: UIViewController {
         super.viewDidLoad()
         
         self.title = "Add Grocery"
-        self.view.backgroundColor = .systemBackground
+        self.view.backgroundColor = UIColor(named: "Cottage Green Secondary")
 
         initializeViewController()
     }
