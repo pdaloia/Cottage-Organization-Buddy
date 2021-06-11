@@ -19,7 +19,7 @@ class TripInformationController: UIViewController, TabBarItemControllerProtocol 
 
         title = "Trip Info"
         
-        self.view.backgroundColor = .systemBackground
+        self.view.backgroundColor = UIColor(named: "Cottage Green Tertiary")
         
         initializeCollectionView()
         setupNavBarButtons()

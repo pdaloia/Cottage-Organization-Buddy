@@ -46,12 +46,13 @@ class TripInformationCollectionViewCell: UICollectionViewCell {
         let cellsContents = getCellContents(forCell: index)
         let image = cellsContents.0
         let titleLabel = cellsContents.1
-        titleLabel.backgroundColor = .green
+        titleLabel.backgroundColor = UIColor(named: "Cottage Green")
         let dataLabel = cellsContents.2
         
         //setup the image and image view
-        let imageView = UIImageView(image: image.withRenderingMode(.alwaysOriginal))
+        let imageView = UIImageView(image: image.withRenderingMode(.alwaysTemplate))
         imageView.backgroundColor = .clear
+        imageView.tintColor = UIColor(named: "Cottage Dark Green")
         
         //set the picture and data in another view to go below the title
         let bottomView = UIView()
