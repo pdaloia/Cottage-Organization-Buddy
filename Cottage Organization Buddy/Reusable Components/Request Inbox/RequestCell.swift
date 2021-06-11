@@ -24,7 +24,7 @@ class RequestCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        self.backgroundColor = .green
+        self.backgroundColor = UIColor(named: "Cottage Green")
         
         //add the contents and set its autolayout constraints
         setAutoLayoutConstraints()

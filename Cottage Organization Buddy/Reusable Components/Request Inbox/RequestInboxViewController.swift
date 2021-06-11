@@ -19,7 +19,7 @@ class RequestInboxViewController: UIViewController {
         super.viewDidLoad()
         
         self.title = "Requests"
-        self.view.backgroundColor = .systemBackground
+        self.view.backgroundColor = UIColor(named: "Cottage Green Tertiary")
         
         setupRequestViewController()
 
