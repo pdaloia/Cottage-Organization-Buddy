@@ -21,7 +21,7 @@ class SideMenuViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.view.backgroundColor = .lightGray
+        self.view.backgroundColor = UIColor(named: "Cottage Dark Green")
         configureTableView()
     }
     
@@ -35,7 +35,7 @@ class SideMenuViewController: UIViewController {
         
         tableView.register(SideMenuTableViewCell.self, forCellReuseIdentifier: reuseIdentifier)
         
-        tableView.backgroundColor = .lightGray
+        tableView.backgroundColor = UIColor(named: "Cottage Dark Green")
         tableView.separatorStyle = .none
         tableView.rowHeight = 80
         
@@ -58,7 +58,8 @@ extension SideMenuViewController: UITableViewDataSource, UITableViewDelegate {
         
         let sideMenuOption = SideMenuOption(rawValue: indexPath.row)
         cell.descriptionLabel.text = sideMenuOption?.description
-        cell.iconImageView.image = sideMenuOption?.image
+        cell.iconImageView.image = sideMenuOption?.image.withRenderingMode(.alwaysTemplate)
+        cell.iconImageView.tintColor = UIColor(named: "Cottage Brown Secondary")
         
         return cell
         

@@ -30,7 +30,7 @@ class SideMenuTableViewCell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
-        self.backgroundColor = .lightGray
+        self.backgroundColor = UIColor(named: "Cottage Dark Green")
         
         addSubview(iconImageView)
         iconImageView.translatesAutoresizingMaskIntoConstraints = false
