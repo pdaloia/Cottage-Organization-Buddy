@@ -38,6 +38,7 @@ class GroceryListController: UIViewController {
         groceryListTableView = UITableView()
         groceryListTableView?.dataSource = self
         groceryListTableView?.delegate = self
+        groceryListTableView?.backgroundColor = UIColor(named: "Cottage Green Tertiary")
         groceryListTableView?.register(GroceryListTableViewCell.self, forCellReuseIdentifier: self.reuseIdentifier)
         setupGroceryListTableView()
 
@@ -80,6 +81,8 @@ extension GroceryListController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let currentCell: GroceryListTableViewCell = self.groceryListTableView!.dequeueReusableCell(withIdentifier: self.reuseIdentifier) as! GroceryListTableViewCell
+        
+        currentCell.backgroundColor = UIColor(named: "Cottage Green Tertiary")
         
         currentCell.cellsGroceryModel = groceryListToDisplay?[indexPath.item]
         currentCell.setCellsContents()

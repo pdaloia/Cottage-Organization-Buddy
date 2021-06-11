@@ -17,7 +17,7 @@ class GroceryListTableViewCell: UITableViewCell {
     let groceryLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 24)
-        label.textColor = .green
+        label.textColor = UIColor(named: "Cottage Dark Green")
         return label
     }()
     
@@ -34,16 +34,18 @@ class GroceryListTableViewCell: UITableViewCell {
     let quantityImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFit
-        let image = UIImage(systemName: "cart.fill.badge.plus")
+        let image = UIImage(systemName: "cart.fill.badge.plus")?.withRenderingMode(.alwaysTemplate)
         imageView.image = image
+        imageView.tintColor = UIColor(named: "Cottage Brown Secondary")
         return imageView
     }()
     
     let assignedToImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFit
-        let image = UIImage(systemName: "person.fill")
+        let image = UIImage(systemName: "person.fill")?.withRenderingMode(.alwaysTemplate)
         imageView.image = image
+        imageView.tintColor = UIColor(named: "Cottage Brown Secondary")
         return imageView
     }()
     
