@@ -25,6 +25,7 @@ class DrinkListController: UIViewController {
         
         drinkTableView?.dataSource = self
         drinkTableView?.delegate = self
+        drinkTableView?.backgroundColor = UIColor(named: "Cottage Green Tertiary")
         
         self.view.addSubview(drinkTableView!)
         setupDrinkTableView()
@@ -56,6 +57,7 @@ extension DrinkListController: UITableViewDelegate, UITableViewDataSource {
         let currentDrinkCell = UITableViewCell()
         
         currentDrinkCell.textLabel?.text = drinksToDisplay?[indexPath.item].name
+        currentDrinkCell.backgroundColor = UIColor(named: "Cottage Green Tertiary")
         
         return currentDrinkCell
         
@@ -84,7 +86,7 @@ extension DrinkListController: UITableViewDelegate, UITableViewDataSource {
             firestoreService.delete(drink: drinkToDelete, for: Auth.auth().currentUser!.uid, in: self.cottageModel!.cottageID)
             
         }
-        deleteItem.backgroundColor = .red
+        deleteItem.backgroundColor = UIColor(named: "Cottage Burgundy")
         
         let swipeItems = UISwipeActionsConfiguration(actions: [deleteItem])
         swipeItems.performsFirstActionWithFullSwipe = true
