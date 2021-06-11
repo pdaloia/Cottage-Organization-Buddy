@@ -125,12 +125,12 @@ extension GroceryListController: UITableViewDelegate, UITableViewDataSource {
             self.cottageModel!.groceryList.allItems.removeAll(where: { $0.productName == groceryToDelete.productName } )
             
         })
-        deleteItem.backgroundColor = .red
+        deleteItem.backgroundColor = UIColor(named: "Cottage Burgundy")
         
         let editItem = UIContextualAction(style: .normal, title: "Edit", handler: {action, view, success in
             print("editing")
         })
-        editItem.backgroundColor = .yellow
+        editItem.backgroundColor = UIColor(named: "Cottage Yellow")
         
         let swipeActions = UISwipeActionsConfiguration(actions: [deleteItem, editItem])
         swipeActions.performsFirstActionWithFullSwipe = false
