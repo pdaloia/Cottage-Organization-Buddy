@@ -20,7 +20,7 @@ class CottageCollectionViewCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        self.backgroundColor = .green
+        self.backgroundColor = UIColor(named: "Cottage Green")
         
         self.contentView.addSubview(label)
         label.centerYAnchor.constraint(equalTo: self.contentView.centerYAnchor).isActive = true

@@ -19,7 +19,8 @@ class LandingPageViewController: UIViewController {
         super.viewDidLoad()
         
         self.title = "Cottages"
-        self.view.backgroundColor = .systemBackground
+        self.view.backgroundColor = UIColor(named: "Cottage Green Tertiary")
+        self.navigationController?.navigationBar.barTintColor = UIColor(named: "Cottage Beige")
 
         initializeView()
     }
