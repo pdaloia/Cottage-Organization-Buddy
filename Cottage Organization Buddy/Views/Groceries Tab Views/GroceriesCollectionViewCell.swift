@@ -47,7 +47,8 @@ class GroceriesCollectionViewCell: UICollectionViewCell {
         default:
             cellImage = UIImage(systemName: "cart")!
         }
-        let cellImageView = UIImageView(image: cellImage.withRenderingMode(.alwaysOriginal))
+        let cellImageView = UIImageView(image: cellImage.withRenderingMode(.alwaysTemplate))
+        cellImageView.tintColor = UIColor(named: "Cottage Dark Green")
         cellImageView.contentMode = .scaleAspectFit
         
         self.contentView.addSubview(cellImageView)
