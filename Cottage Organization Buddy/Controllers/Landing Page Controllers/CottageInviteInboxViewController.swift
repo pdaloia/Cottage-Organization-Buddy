@@ -18,7 +18,7 @@ class CottageInviteInboxViewController: UIViewController {
         super.viewDidLoad()
         
         self.title = "Cottage Invites"
-        self.view.backgroundColor = .systemBackground
+        self.view.backgroundColor = UIColor(named: "Cottage Green Tertiary")
 
         setupViewController()
     }
