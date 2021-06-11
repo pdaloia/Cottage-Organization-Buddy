@@ -25,7 +25,7 @@ class AddDrinkView: UIView {
     let drinkNameLabel: UILabel = {
         let label = UILabel()
         label.text = "Name of drink"
-        label.textColor = .green
+        label.textColor = UIColor(named: "Cottage Dark Green")
         label.font = label.font.withSize(14)
         label.isHidden = true
         return label

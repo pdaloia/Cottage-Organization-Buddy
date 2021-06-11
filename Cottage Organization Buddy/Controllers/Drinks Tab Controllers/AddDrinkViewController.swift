@@ -14,7 +14,8 @@ class AddDrinkViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.view.backgroundColor = .systemBackground
+        self.title = "Add Drink"
+        self.view.backgroundColor = UIColor(named: "Cottage Green Tertiary")
 
         initializeViewController()
     }
