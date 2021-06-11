@@ -16,6 +16,8 @@ class AttendeesTableView: UITableView {
         
         self.dataSource = self
         self.delegate = self
+        self.backgroundColor = UIColor(named: "Cottage Green Tertiary")
+        
     }
     
     required init?(coder: NSCoder) {
@@ -53,6 +55,7 @@ extension AttendeesTableView: UITableViewDelegate, UITableViewDataSource {
         }
         
         currentCell.textLabel?.text = currentAttendee.name
+        currentCell.backgroundColor = UIColor(named: "Cottage Green Tertiary")
         
         return currentCell
         

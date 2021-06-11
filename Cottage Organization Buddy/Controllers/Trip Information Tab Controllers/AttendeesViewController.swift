@@ -18,7 +18,7 @@ class AttendeesViewController: UIViewController {
         super.viewDidLoad()
         
         self.title = "Attendees"
-        self.view.backgroundColor = .systemBackground
+        self.view.backgroundColor = UIColor(named: "Cottage Green Tertiary")
         
         if let dataSource = self.attendeesDataSource {
             self.attendeesToDisplay = dataSource.setAttendees()
