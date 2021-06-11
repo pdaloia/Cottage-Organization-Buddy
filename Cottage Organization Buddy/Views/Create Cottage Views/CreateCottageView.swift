@@ -36,7 +36,7 @@ class CreateCottageView: UIView {
         //cottage name label
         cottageNameLabel = UILabel()
         cottageNameLabel!.text = "Name of cottage"
-        cottageNameLabel!.textColor = .green
+        cottageNameLabel!.textColor = UIColor(named: "Cottage Dark Green")
         cottageNameLabel!.font = cottageNameLabel!.font.withSize(14)
         cottageNameLabel!.isHidden = true
         self.addSubview(cottageNameLabel!)
@@ -58,7 +58,7 @@ class CreateCottageView: UIView {
         //cottage address label
         cottageAddressLabel = UILabel()
         cottageAddressLabel!.text = "Address of cottage"
-        cottageAddressLabel!.textColor = .green
+        cottageAddressLabel!.textColor = UIColor(named: "Cottage Dark Green")
         cottageAddressLabel!.font = cottageAddressLabel!.font.withSize(14)
         cottageAddressLabel!.isHidden = true
         self.addSubview(cottageAddressLabel!)
@@ -79,7 +79,7 @@ class CreateCottageView: UIView {
         //start date label
         startDateLabel = UILabel()
         startDateLabel!.text = "Start Date"
-        startDateLabel!.textColor = .green
+        startDateLabel!.textColor = UIColor(named: "Cottage Dark Green")
         startDateLabel!.font = startDateLabel!.font.withSize(14)
         self.addSubview(startDateLabel!)
         startDateLabel!.translatesAutoresizingMaskIntoConstraints = false
@@ -98,7 +98,7 @@ class CreateCottageView: UIView {
         //start date label
         endDateLabel = UILabel()
         endDateLabel!.text = "End Date"
-        endDateLabel!.textColor = .green
+        endDateLabel!.textColor = UIColor(named: "Cottage Dark Green")
         endDateLabel!.font = endDateLabel!.font.withSize(14)
         self.addSubview(endDateLabel!)
         endDateLabel!.translatesAutoresizingMaskIntoConstraints = false

@@ -16,7 +16,7 @@ class CreateCottageViewController: UIViewController {
         super.viewDidLoad()
         
         self.title = "Create Cottage"
-        self.view.backgroundColor = .systemBackground
+        self.view.backgroundColor = UIColor(named: "Cottage Green Tertiary")
         
         initializeViewController()
     }
