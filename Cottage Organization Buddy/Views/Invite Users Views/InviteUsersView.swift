@@ -9,10 +9,25 @@ import UIKit
 
 class InviteUsersView: UIView {
     
+    //MARK: - Properties
+    
     var inviteDelegate: InviteUsersViewDelegate?
     
+    //MARK: - Views
+    
     var emailInput: UITextField?
+    
+    let emailLabel: UILabel = {
+        let label = UILabel()
+        label.text = "Email"
+        label.font = label.font.withSize(14)
+        label.textColor = UIColor(named: "Cottage Dark Green")
+        label.isHidden = true
+        return label
+    }()
 
+    //MARK: - Init
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         
@@ -23,16 +38,28 @@ class InviteUsersView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    //MARK: - Functions
+    
     func setupView() {
+        
+        //add subview
+        self.addSubview(emailLabel)
         
         //create the input field with constraints
         emailInput = UITextField()
         emailInput!.placeholder = "Email of user"
         emailInput!.autocorrectionType = .no
         emailInput!.autocapitalizationType = .none
+        emailInput?.addTarget(self, action: #selector(emailFieldEdited(sender:)), for: .editingChanged)
         self.addSubview(emailInput!)
+        
+        //constraints
+        emailLabel.translatesAutoresizingMaskIntoConstraints = false
+        emailLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: 20).isActive = true
+        emailLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 20).isActive = true
+        
         emailInput!.translatesAutoresizingMaskIntoConstraints = false
-        emailInput!.topAnchor.constraint(equalTo: self.topAnchor, constant: 50).isActive = true
+        emailInput!.topAnchor.constraint(equalTo: self.emailLabel.bottomAnchor).isActive = true
         emailInput!.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 20).isActive = true
         emailInput!.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: 20).isActive = true
         
@@ -59,6 +86,29 @@ class InviteUsersView: UIView {
                 delegate.emailSubmitted(email: emailInput!.text!)
             }
             
+        }
+        
+    }
+    
+    @objc func emailFieldEdited(sender: UITextField) {
+        
+        if sender.text!.count > 1 {
+            return
+        }
+        
+        if sender.text != "" {
+            UIView.transition(with: emailLabel, duration: 0.6,
+                              options: .transitionCrossDissolve,
+                              animations: {
+                                self.emailLabel.isHidden = false
+                          })
+        }
+        else {
+            UIView.transition(with: emailLabel, duration: 0.6,
+                              options: .transitionCrossDissolve,
+                              animations: {
+                                self.emailLabel.isHidden = true
+                          })
         }
         
     }

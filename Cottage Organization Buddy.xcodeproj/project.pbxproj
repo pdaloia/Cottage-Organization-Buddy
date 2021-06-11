@@ -51,7 +51,6 @@
 		FE724F4125431F2000764387 /* CarCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE724F4025431F1F00764387 /* CarCollectionViewCell.swift */; };
 		FE724F452543E97C00764387 /* CarInformationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE724F442543E97B00764387 /* CarInformationView.swift */; };
 		FE80B5BC2648A59800B093B4 /* InviteUsersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE80B5BB2648A59800B093B4 /* InviteUsersViewController.swift */; };
-		FE80B5BE2648A5B300B093B4 /* InviteUsersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE80B5BD2648A5B300B093B4 /* InviteUsersView.swift */; };
 		FE82990C2658324E00404443 /* SideMenuButtonDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE82990B2658324E00404443 /* SideMenuButtonDelegate.swift */; };
 		FE82990E2658426F00404443 /* LandingPageContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE82990D2658426F00404443 /* LandingPageContainerViewController.swift */; };
 		FE82991126598ABE00404443 /* SignOutProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE82991026598ABD00404443 /* SignOutProtocol.swift */; };
@@ -62,6 +61,7 @@
 		FE94526C263F886B003EB5AE /* CottageInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE94526B263F886B003EB5AE /* CottageInfo.swift */; };
 		FE959BDE259290870087A046 /* ToastMessageDisplayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE959BDD259290870087A046 /* ToastMessageDisplayer.swift */; };
 		FE99504826725BDF00A050EE /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FE99504726725BDF00A050EE /* Colors.xcassets */; };
+		FE9950492673E4BC00A050EE /* InviteUsersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE80B5BD2648A5B300B093B4 /* InviteUsersView.swift */; };
 		FEABB59825953F8100D60A66 /* AddCarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEABB59725953F8100D60A66 /* AddCarViewController.swift */; };
 		FEABB59B25953F9700D60A66 /* AddCarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEABB59A25953F9700D60A66 /* AddCarView.swift */; };
 		FEAC9744254BB4EA007B83B1 /* DrinksCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEAC9743254BB4EA007B83B1 /* DrinksCollectionViewCell.swift */; };
@@ -701,7 +701,6 @@
 				FE6856D32656FC9C006C3729 /* SideMenuOption.swift in Sources */,
 				FE3DD32526399F7E001ECFC6 /* LandingPageViewController.swift in Sources */,
 				FEAC9747254BB8C7007B83B1 /* GroceriesCollectionViewCell.swift in Sources */,
-				FE80B5BE2648A5B300B093B4 /* InviteUsersView.swift in Sources */,
 				FEBD42B02585A927002D81A6 /* DrinksCollectionView.swift in Sources */,
 				FE4383342583150600FE3FFB /* GroceriesCollectionViewDelegate.swift in Sources */,
 				FE724EFA2537DEEA00764387 /* CottageTrip.swift in Sources */,
@@ -733,6 +732,7 @@
 				FE034C4A257DD15C00822907 /* TripInformationCollectionViewCell.swift in Sources */,
 				FE0C79B025EC498E00AB92ED /* RoomModel.swift in Sources */,
 				FE724F10253CF06C00764387 /* GroceriesController.swift in Sources */,
+				FE9950492673E4BC00A050EE /* InviteUsersView.swift in Sources */,
 				FE3DD32C2639ACE4001ECFC6 /* CottageCollectionView.swift in Sources */,
 				FEC156142577299E004FB37E /* GroceryListController.swift in Sources */,
 				FE6BAA8025D2142D0054282D /* CarsCollectionView.swift in Sources */,
