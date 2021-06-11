@@ -16,7 +16,8 @@ class AddCarViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.view.backgroundColor = .systemBackground
+        self.title = "Add Car"
+        self.view.backgroundColor = UIColor(named: "Cottage Green Tertiary")
 
         initializeVC()
     }

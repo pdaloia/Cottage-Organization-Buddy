@@ -40,7 +40,7 @@ class AddCarView: UIView {
         
         //configure input boxes
         numberOfAvailableSeatsInput.placeholder = "Enter number of available seats"
-        numberOfAvailableSeatsInput.backgroundColor = .green
+        numberOfAvailableSeatsInput.backgroundColor = UIColor(named: "Cottage Green")
         numberOfAvailableSeatsInput.borderStyle = .roundedRect
         numberOfAvailableSeatsInput.keyboardType = .numberPad
         
