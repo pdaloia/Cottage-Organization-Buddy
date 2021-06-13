@@ -47,17 +47,24 @@ class HomePageView: UIView {
     
     func setupView() {
         
+        //add subviews
         self.addSubview(homeTitleLabel)
+        self.addSubview(googleSignInButton)
+        self.addSubview(activitySpinner)
+        
+        //add color pallets necessary
+        googleSignInButton.backgroundColor = UIColor(named: "Cottage Green")
+        googleSignInButton.tintColor = UIColor(named: "Cottage Green")
+        
+        //add constraints
         homeTitleLabel.translatesAutoresizingMaskIntoConstraints = false
         homeTitleLabel.bottomAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
         homeTitleLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
         
-        self.addSubview(googleSignInButton)
         googleSignInButton.translatesAutoresizingMaskIntoConstraints = false
         googleSignInButton.topAnchor.constraint(equalTo: self.homeTitleLabel.bottomAnchor).isActive = true
         googleSignInButton.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
         
-        self.addSubview(activitySpinner)
         activitySpinner.translatesAutoresizingMaskIntoConstraints = false
         activitySpinner.topAnchor.constraint(equalTo: googleSignInButton.bottomAnchor).isActive = true
         activitySpinner.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
