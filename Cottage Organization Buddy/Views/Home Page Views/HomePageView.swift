@@ -17,12 +17,17 @@ class HomePageView: UIView {
     let homeTitleLabel: UILabel = {
         let label = UILabel()
         label.text = "Cottage Buddy"
-        label.font = label.font.withSize(23)
+        label.font = UIFont(name: "AvenirNextCondensed-DemiBold", size: 50)
+        label.textColor = UIColor(named: "Cottage Dark Green")
+        label.textAlignment = .center
         return label
     }()
     
     let homeImageView: UIImageView = {
         let imageView = UIImageView()
+        let cottageImage = UIImage(named: "Cartoon Cottage")
+        imageView.image = cottageImage
+        imageView.contentMode = .scaleAspectFit
         return imageView
     }()
     
@@ -48,6 +53,7 @@ class HomePageView: UIView {
     func setupView() {
         
         //add subviews
+        self.addSubview(homeImageView)
         self.addSubview(homeTitleLabel)
         self.addSubview(googleSignInButton)
         self.addSubview(activitySpinner)
@@ -58,11 +64,17 @@ class HomePageView: UIView {
         
         //add constraints
         homeTitleLabel.translatesAutoresizingMaskIntoConstraints = false
-        homeTitleLabel.bottomAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
-        homeTitleLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
+        homeTitleLabel.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
+        homeTitleLabel.heightAnchor.constraint(equalTo: self.heightAnchor, multiplier: 1/4).isActive = true
+        homeTitleLabel.widthAnchor.constraint(equalTo: self.widthAnchor).isActive = true
+        
+        homeImageView.translatesAutoresizingMaskIntoConstraints = false
+        homeImageView.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
+        homeImageView.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
+        self.heightAnchor.constraint(equalTo: self.heightAnchor, multiplier: 0.5).isActive = true
         
         googleSignInButton.translatesAutoresizingMaskIntoConstraints = false
-        googleSignInButton.topAnchor.constraint(equalTo: self.homeTitleLabel.bottomAnchor).isActive = true
+        googleSignInButton.topAnchor.constraint(equalTo: self.homeImageView.bottomAnchor).isActive = true
         googleSignInButton.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
         
         activitySpinner.translatesAutoresizingMaskIntoConstraints = false
