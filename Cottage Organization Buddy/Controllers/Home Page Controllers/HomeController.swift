@@ -11,9 +11,11 @@ import GoogleSignIn
 
 class HomeController: UIViewController {
     
-    var googleSignInbutton = GIDSignInButton()
-    var homeLabel: UILabel?
-    var spinner = UIActivityIndicatorView(style: .large)
+    //MARK: - Views
+    
+    let homePageView = HomePageView()
+    
+    //MARK: - Init
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,19 +25,12 @@ class HomeController: UIViewController {
         GIDSignIn.sharedInstance()?.delegate = self
         GIDSignIn.sharedInstance()?.presentingViewController = self
                        
-        homeLabel = UILabel()
-        homeLabel!.text = "Cottage Organization Buddy"
-        homeLabel!.font = homeLabel!.font.withSize(23)
-        
-        self.view.addSubview(homeLabel!)
-        homeLabel?.translatesAutoresizingMaskIntoConstraints = false
-        homeLabel?.bottomAnchor.constraint(equalTo: self.view.centerYAnchor).isActive = true
-        homeLabel?.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
-        
-        self.view.addSubview(googleSignInbutton)
-        googleSignInbutton.translatesAutoresizingMaskIntoConstraints = false
-        googleSignInbutton.topAnchor.constraint(equalTo: self.homeLabel!.bottomAnchor).isActive = true
-        googleSignInbutton.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
+        self.view.addSubview(homePageView)
+        homePageView.translatesAutoresizingMaskIntoConstraints = false
+        homePageView.topAnchor.constraint(equalTo: self.view.topAnchor).isActive = true
+        homePageView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor).isActive = true
+        homePageView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor).isActive = true
+        homePageView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor).isActive = true
                
     }
     
@@ -55,6 +50,8 @@ class HomeController: UIViewController {
         
     }
     
+    //MARK: - Functions
+    
     func pushLandingPageController() {
         
         let landingPageContainerVC = LandingPageContainerViewController()
@@ -68,7 +65,7 @@ class HomeController: UIViewController {
             
             landingPageContainerVC.configureLandingPageViewController(with: cottageInfos)
             
-            self.spinner.stopAnimating()
+            self.homePageView.stopAnimatingActivitySpinner()
             
             self.present(landingPageContainerVC, animated: true, completion: nil)
             
@@ -90,7 +87,7 @@ class HomeController: UIViewController {
                         self.pushLandingPageController()
                     }
                     else {
-                        self.spinner.stopAnimating()
+                        self.homePageView.stopAnimatingActivitySpinner()
                         ToastMessageDisplayer.showToast(controller: self, message: "Error creating user document on initial login", seconds: 2)
                     }
                 }
@@ -106,16 +103,11 @@ extension HomeController: GIDSignInDelegate{
     
     func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
         
-        self.view.addSubview(spinner)
-        spinner.translatesAutoresizingMaskIntoConstraints = false
-        spinner.topAnchor.constraint(equalTo: googleSignInbutton.bottomAnchor).isActive = true
-        spinner.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
-        
-        spinner.startAnimating()
+        self.homePageView.startAnimatingActivitySpinner()
         
         if let error = error {
             print("\(error.localizedDescription)")
-            spinner.stopAnimating()
+            self.homePageView.stopAnimatingActivitySpinner()
             return
         } else {
             let userId = user.userID                  // For client-side use only!
@@ -134,7 +126,7 @@ extension HomeController: GIDSignInDelegate{
         }
 
         guard let authentication = user.authentication else {
-            spinner.stopAnimating()
+            self.homePageView.stopAnimatingActivitySpinner()
             return
         }
         let credential = GoogleAuthProvider.credential(withIDToken: authentication.idToken, accessToken: authentication.accessToken)

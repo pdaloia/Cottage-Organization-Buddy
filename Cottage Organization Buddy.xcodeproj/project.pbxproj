@@ -13,6 +13,7 @@
 		FE034C4A257DD15C00822907 /* TripInformationCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE034C49257DD15C00822907 /* TripInformationCollectionViewCell.swift */; };
 		FE0C79B025EC498E00AB92ED /* RoomModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE0C79AF25EC498E00AB92ED /* RoomModel.swift */; };
 		FE0D91122638F24700B17BC8 /* AttendeesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE0D91112638F24600B17BC8 /* AttendeesViewController.swift */; };
+		FE123B872676820800DB4019 /* HomePageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE123B862676820800DB4019 /* HomePageView.swift */; };
 		FE12953725829CFD00043F41 /* GroceriesCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE12953625829CFD00043F41 /* GroceriesCollectionView.swift */; };
 		FE148E892547C94C00DA5A16 /* RoomCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE148E882547C94C00DA5A16 /* RoomCollectionViewCell.swift */; };
 		FE30D2F625E88DC700ACC441 /* RoomCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE30D2F525E88DC700ACC441 /* RoomCollectionView.swift */; };
@@ -97,6 +98,7 @@
 		FE034C49257DD15C00822907 /* TripInformationCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripInformationCollectionViewCell.swift; sourceTree = "<group>"; };
 		FE0C79AF25EC498E00AB92ED /* RoomModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomModel.swift; sourceTree = "<group>"; };
 		FE0D91112638F24600B17BC8 /* AttendeesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttendeesViewController.swift; sourceTree = "<group>"; };
+		FE123B862676820800DB4019 /* HomePageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePageView.swift; sourceTree = "<group>"; };
 		FE12953625829CFD00043F41 /* GroceriesCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroceriesCollectionView.swift; sourceTree = "<group>"; };
 		FE148E882547C94C00DA5A16 /* RoomCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomCollectionViewCell.swift; sourceTree = "<group>"; };
 		FE30D2F525E88DC700ACC441 /* RoomCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomCollectionView.swift; sourceTree = "<group>"; };
@@ -203,6 +205,22 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		FE123B852676815400DB4019 /* Home Page Views */ = {
+			isa = PBXGroup;
+			children = (
+				FE123B862676820800DB4019 /* HomePageView.swift */,
+			);
+			path = "Home Page Views";
+			sourceTree = "<group>";
+		};
+		FE123B88267696A700DB4019 /* Home Page Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				FE724ED925375D7D00764387 /* HomeController.swift */,
+			);
+			path = "Home Page Controllers";
+			sourceTree = "<group>";
+		};
 		FE3DD32226399F57001ECFC6 /* Landing Page Controllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -293,6 +311,7 @@
 		FE724F0125394B3A00764387 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				FE123B852676815400DB4019 /* Home Page Views */,
 				FE6856CF2656F4F4006C3729 /* Side Menu Views */,
 				FE80B5BA2648A56D00B093B4 /* Invite Users Views */,
 				FEB727C32641CA230093061B /* Create Cottage Views */,
@@ -310,6 +329,7 @@
 		FE724F0225394B6500764387 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				FE123B88267696A700DB4019 /* Home Page Controllers */,
 				FE82990A26582F0600404443 /* Side Menu Controllers */,
 				FEDCC4E326557C9300C5FADB /* Cottage Controllers */,
 				FE80B5B92648A55500B093B4 /* Invite Users Controllers */,
@@ -321,7 +341,6 @@
 				FEE82BA32579E02E00058A5A /* Drinks Tab Controllers */,
 				FEE82BA22579DFFE00058A5A /* Groceries Tab Controllers */,
 				FE724F36253E899B00764387 /* Controller Protocols */,
-				FE724ED925375D7D00764387 /* HomeController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -692,6 +711,7 @@
 				FE034C47257DB34B00822907 /* TripInformationCollectionView.swift in Sources */,
 				FE724EF42537D3EE00764387 /* CarModel.swift in Sources */,
 				FEABB59825953F8100D60A66 /* AddCarViewController.swift in Sources */,
+				FE123B872676820800DB4019 /* HomePageView.swift in Sources */,
 				FE959BDE259290870087A046 /* ToastMessageDisplayer.swift in Sources */,
 				FE724F3D253E8A6D00764387 /* CottageModelProtocol.swift in Sources */,
 				FE724F28253E773F00764387 /* AttendeeModel.swift in Sources */,
