@@ -17,7 +17,8 @@ class CottageTabsController: UITabBarController {
         
         super.viewDidLoad()
         
-        self.tabBar.barTintColor = UIColor(named: "Cottage Beige")
+        self.tabBar.barTintColor = UIColor(named: "Cottage Green Tertiary")
+        self.tabBar.tintColor = UIColor(named: "Cottage Dark Green")
         
         //loadViewControllersIntoTabBarController()
         
