@@ -65,6 +65,7 @@ class HomeController: UIViewController {
             
             landingPageContainerVC.configureLandingPageViewController(with: cottageInfos)
             
+            self.homePageView.isUserInteractionEnabled = true
             self.homePageView.stopAnimatingActivitySpinner()
             
             self.present(landingPageContainerVC, animated: true, completion: nil)
@@ -87,6 +88,7 @@ class HomeController: UIViewController {
                         self.pushLandingPageController()
                     }
                     else {
+                        self.homePageView.isUserInteractionEnabled = true
                         self.homePageView.stopAnimatingActivitySpinner()
                         ToastMessageDisplayer.showToast(controller: self, message: "Error creating user document on initial login", seconds: 2)
                     }
@@ -103,10 +105,12 @@ extension HomeController: GIDSignInDelegate{
     
     func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
         
+        self.homePageView.isUserInteractionEnabled = false
         self.homePageView.startAnimatingActivitySpinner()
         
         if let error = error {
             print("\(error.localizedDescription)")
+            self.homePageView.isUserInteractionEnabled = true
             self.homePageView.stopAnimatingActivitySpinner()
             return
         } else {
@@ -126,6 +130,7 @@ extension HomeController: GIDSignInDelegate{
         }
 
         guard let authentication = user.authentication else {
+            self.homePageView.isUserInteractionEnabled = true
             self.homePageView.stopAnimatingActivitySpinner()
             return
         }
