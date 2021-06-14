@@ -30,7 +30,7 @@ class LandingPageViewController: UIViewController {
         //initializing the landing page view
         landingPageView = LandingPageView()
         landingPageView!.userCottages = userCottages!
-        landingPageView!.initializeCollectionView()
+        landingPageView!.initializeView()
         landingPageView!.landingPageViewDelegate = self
         
         self.view.addSubview(landingPageView!)
@@ -50,6 +50,8 @@ class LandingPageViewController: UIViewController {
     
     @objc func invitesBarButtonPressed() {
         
+        self.landingPageView?.startAnimatingActivityIndicator()
+        
         let firestoreService = FirestoreServices()
         
         firestoreService.getInvitedCottages(for: Auth.auth().currentUser!.uid) { invitedCottages in
@@ -58,6 +60,8 @@ class LandingPageViewController: UIViewController {
             inviteInboxVC.invitedCottages = invitedCottages
             inviteInboxVC.cottageInviteInboxVCDelegate = self
             inviteInboxVC.modalPresentationStyle = .fullScreen
+            
+            self.landingPageView?.stopAnimatingActivityIndicator()
             
             self.navigationController!.pushViewController(inviteInboxVC, animated: true)
             
@@ -79,13 +83,7 @@ extension LandingPageViewController: LandingPageViewDelegate {
     
     func cottageCellPressed(for cottageID: String) {
         
-        let spinner = UIActivityIndicatorView(style: .large)
-        self.view.addSubview(spinner)
-        spinner.translatesAutoresizingMaskIntoConstraints = false
-        spinner.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
-        spinner.centerYAnchor.constraint(equalTo: self.view.centerYAnchor).isActive = true
-        self.view.bringSubviewToFront(spinner)
-        spinner.startAnimating()
+        self.landingPageView?.startAnimatingActivityIndicator()
         
         let nextViewController = CottageContainerViewController()
         nextViewController.modalPresentationStyle = .fullScreen
@@ -98,7 +96,7 @@ extension LandingPageViewController: LandingPageViewDelegate {
             
             nextViewController.cottageModel = model!
             nextViewController.configureCottageTabsController()
-            spinner.stopAnimating()
+            self.landingPageView?.stopAnimatingActivityIndicator()
             
             self.present(nextViewController, animated:true, completion:nil)
             

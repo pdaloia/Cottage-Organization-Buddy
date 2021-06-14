@@ -35,7 +35,7 @@ extension CottageCollectionView: UICollectionViewDelegateFlowLayout, UICollectio
             case 0:
                 return 1
             case 1:
-                return self.userCottages!.count
+                return self.userCottages?.count ?? 0
             default:
                 return 0
         }
