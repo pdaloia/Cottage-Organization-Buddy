@@ -1057,13 +1057,13 @@ class FirestoreServices {
         let userDrinksDocument = drinksCollection.document(userID)
         
         let drinkArray = [drink.isAlcoholic, drink.forSharing]
-        userDrinksDocument.updateData([
+        userDrinksDocument.setData([
             drink.name: drinkArray
-        ]) { err in
+        ], merge: true) { err in
             if let err = err {
-                print("Error updating document: \(err)")
+                print("Error writing document: \(err)")
             } else {
-                print("Document successfully updated")
+                print("Document successfully written")
             }
         }
         
