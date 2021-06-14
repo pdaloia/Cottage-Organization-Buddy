@@ -77,6 +77,7 @@ class LandingPageView: UIView {
     func startAnimatingActivityIndicator() {
         
         self.isUserInteractionEnabled = false
+        self.bringSubviewToFront(activityIndicator)
         activityIndicator.startAnimating()
         
     }
