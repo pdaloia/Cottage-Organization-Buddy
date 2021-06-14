@@ -1,31 +1,37 @@
 {
   "images" : [
     {
+      "filename" : "imgbin_log-cabin-cottage-cartoon-png (7).png",
       "idiom" : "iphone",
       "scale" : "2x",
       "size" : "20x20"
     },
     {
+      "filename" : "imgbin_log-cabin-cottage-cartoon-png (6).png",
       "idiom" : "iphone",
       "scale" : "3x",
       "size" : "20x20"
     },
     {
+      "filename" : "imgbin_log-cabin-cottage-cartoon-png (5).png",
       "idiom" : "iphone",
       "scale" : "2x",
       "size" : "29x29"
     },
     {
+      "filename" : "imgbin_log-cabin-cottage-cartoon-png (4).png",
       "idiom" : "iphone",
       "scale" : "3x",
       "size" : "29x29"
     },
     {
+      "filename" : "imgbin_log-cabin-cottage-cartoon-png (3).png",
       "idiom" : "iphone",
       "scale" : "2x",
       "size" : "40x40"
     },
     {
+      "filename" : "imgbin_log-cabin-cottage-cartoon-png (2).png",
       "idiom" : "iphone",
       "scale" : "3x",
       "size" : "40x40"
@@ -37,56 +43,67 @@
       "size" : "60x60"
     },
     {
+      "filename" : "imgbin_log-cabin-cottage-cartoon-png (1).png",
       "idiom" : "iphone",
       "scale" : "3x",
       "size" : "60x60"
     },
     {
+      "filename" : "imgbin_log-cabin-cottage-cartoon-png (5)-1.png",
       "idiom" : "ipad",
       "scale" : "1x",
       "size" : "20x20"
     },
     {
+      "filename" : "imgbin_log-cabin-cottage-cartoon-png (4)-1.png",
       "idiom" : "ipad",
       "scale" : "2x",
       "size" : "20x20"
     },
     {
+      "filename" : "imgbin_log-cabin-cottage-cartoon-png (3)-1.png",
       "idiom" : "ipad",
       "scale" : "1x",
       "size" : "29x29"
     },
     {
+      "filename" : "imgbin_log-cabin-cottage-cartoon-png (2)-1.png",
       "idiom" : "ipad",
       "scale" : "2x",
       "size" : "29x29"
     },
     {
+      "filename" : "imgbin_log-cabin-cottage-cartoon-png (1)-1.png",
       "idiom" : "ipad",
       "scale" : "1x",
       "size" : "40x40"
     },
     {
+      "filename" : "imgbin_log-cabin-cottage-cartoon-png (11).png",
       "idiom" : "ipad",
       "scale" : "2x",
       "size" : "40x40"
     },
     {
+      "filename" : "imgbin_log-cabin-cottage-cartoon-png (10).png",
       "idiom" : "ipad",
       "scale" : "1x",
       "size" : "76x76"
     },
     {
+      "filename" : "imgbin_log-cabin-cottage-cartoon-png (9).png",
       "idiom" : "ipad",
       "scale" : "2x",
       "size" : "76x76"
     },
     {
+      "filename" : "imgbin_log-cabin-cottage-cartoon-png (8).png",
       "idiom" : "ipad",
       "scale" : "2x",
       "size" : "83.5x83.5"
     },
     {
+      "filename" : "imgbin_log-cabin-cottage-cartoon-png.png",
       "idiom" : "ios-marketing",
       "scale" : "1x",
       "size" : "1024x1024"
