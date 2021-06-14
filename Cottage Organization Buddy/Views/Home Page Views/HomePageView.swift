@@ -71,7 +71,8 @@ class HomePageView: UIView {
         homeImageView.translatesAutoresizingMaskIntoConstraints = false
         homeImageView.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
         homeImageView.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
-        self.heightAnchor.constraint(equalTo: self.heightAnchor, multiplier: 0.5).isActive = true
+        homeImageView.topAnchor.constraint(equalTo: homeTitleLabel.bottomAnchor).isActive = true
+        homeImageView.heightAnchor.constraint(equalTo: self.heightAnchor, multiplier: 0.5).isActive = true
         
         googleSignInButton.translatesAutoresizingMaskIntoConstraints = false
         googleSignInButton.topAnchor.constraint(equalTo: self.homeImageView.bottomAnchor).isActive = true
