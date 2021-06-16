@@ -7,12 +7,15 @@
 
 import UIKit
 import GoogleSignIn
+import AuthenticationServices
 
 class HomePageView: UIView {
     
     //MARK: - Views
     
     let googleSignInButton = GIDSignInButton()
+    
+    let appleSignInButton = ASAuthorizationAppleIDButton()
     
     let homeTitleLabel: UILabel = {
         let label = UILabel()
@@ -57,6 +60,7 @@ class HomePageView: UIView {
         self.addSubview(homeTitleLabel)
         self.addSubview(googleSignInButton)
         self.addSubview(activitySpinner)
+        self.addSubview(appleSignInButton)
         
         //add color pallets necessary
         googleSignInButton.backgroundColor = UIColor(named: "Cottage Green")
@@ -76,7 +80,14 @@ class HomePageView: UIView {
         
         googleSignInButton.translatesAutoresizingMaskIntoConstraints = false
         googleSignInButton.topAnchor.constraint(equalTo: self.homeImageView.bottomAnchor).isActive = true
-        googleSignInButton.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
+        googleSignInButton.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 20).isActive = true
+        googleSignInButton.trailingAnchor.constraint(equalTo: self.centerXAnchor, constant: -10).isActive = true
+        
+        appleSignInButton.translatesAutoresizingMaskIntoConstraints = false
+        appleSignInButton.topAnchor.constraint(equalTo: self.homeImageView.bottomAnchor).isActive = true
+        appleSignInButton.leadingAnchor.constraint(equalTo: self.googleSignInButton.trailingAnchor, constant: 10).isActive = true
+        appleSignInButton.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -20).isActive = true
+        appleSignInButton.heightAnchor.constraint(equalTo: self.googleSignInButton.heightAnchor).isActive = true
         
         activitySpinner.translatesAutoresizingMaskIntoConstraints = false
         activitySpinner.topAnchor.constraint(equalTo: googleSignInButton.bottomAnchor).isActive = true

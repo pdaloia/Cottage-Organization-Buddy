@@ -143,6 +143,7 @@
 		FE82990B2658324E00404443 /* SideMenuButtonDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuButtonDelegate.swift; sourceTree = "<group>"; };
 		FE82990D2658426F00404443 /* LandingPageContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingPageContainerViewController.swift; sourceTree = "<group>"; };
 		FE82991026598ABD00404443 /* SignOutProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignOutProtocol.swift; sourceTree = "<group>"; };
+		FE8B06772679859C004E4F57 /* Cottage Organization Buddy.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Cottage Organization Buddy.entitlements"; sourceTree = "<group>"; };
 		FE909896258ABB38002E00FB /* AddGroceryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddGroceryViewController.swift; sourceTree = "<group>"; };
 		FE909899258ABB4D002E00FB /* AddGroceryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddGroceryView.swift; sourceTree = "<group>"; };
 		FE945264263B09E5003EB5AE /* NewCottageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewCottageCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -273,6 +274,7 @@
 		FE724ED425375D7C00764387 /* Cottage Organization Buddy */ = {
 			isa = PBXGroup;
 			children = (
+				FE8B06772679859C004E4F57 /* Cottage Organization Buddy.entitlements */,
 				FEEA1DDE25C7683D0050E6FA /* Reusable Components */,
 				FE724F32253E80CD00764387 /* Helpers */,
 				FE724F0225394B6500764387 /* Controllers */,
@@ -921,6 +923,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "Cottage Organization Buddy/Cottage Organization Buddy.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = 33VLBB4X9W;
@@ -942,6 +945,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "Cottage Organization Buddy/Cottage Organization Buddy.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = 33VLBB4X9W;
