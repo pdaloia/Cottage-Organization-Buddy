@@ -68,10 +68,10 @@ class HomeController: UIViewController {
             
             landingPageContainerVC.configureLandingPageViewController(with: cottageInfos)
             
+            self.present(landingPageContainerVC, animated: true, completion: nil)
+            
             self.homePageView.isUserInteractionEnabled = true
             self.homePageView.stopAnimatingActivitySpinner()
-            
-            self.present(landingPageContainerVC, animated: true, completion: nil)
             
         }
                 
@@ -163,25 +163,65 @@ extension HomeController: ASAuthorizationControllerDelegate, ASAuthorizationCont
     
     func authorizationController(controller: ASAuthorizationController, didCompleteWithAuthorization authorization: ASAuthorization) {
         
+        self.homePageView.isUserInteractionEnabled = false
+        self.homePageView.startAnimatingActivitySpinner()
+        
         if let appleIDCredential = authorization.credential as? ASAuthorizationAppleIDCredential {
             guard let nonce = currentNonce else {
                 fatalError("Invalid state: A login callback was received, but no login request was sent")
             }
             guard let appleIDToken = appleIDCredential.identityToken else {
                 print("Unable to fetch identity token")
+                self.homePageView.isUserInteractionEnabled = true
+                self.homePageView.stopAnimatingActivitySpinner()
                 return
             }
             guard let idTokenString = String(data: appleIDToken, encoding: .utf8) else {
                 print("Unable to serialize token string from data: \(appleIDToken.debugDescription)")
+                self.homePageView.isUserInteractionEnabled = true
+                self.homePageView.stopAnimatingActivitySpinner()
                 return
             }
             
             let credential = OAuthProvider.credential(withProviderID: "apple.com", idToken: idTokenString, rawNonce: nonce)
             
             Auth.auth().signIn(with: credential) { AuthDataResult, Error in
+                
                 if let user = AuthDataResult?.user {
                     print("Nice!. You're now signed in as \(user.uid), email: \(user.email ?? "unknown"), first name: \(appleIDCredential.fullName?.givenName ?? ""), last name: \(appleIDCredential.fullName?.familyName ?? "")")
+                    
+                    if let fullName = appleIDCredential.fullName {
+                        
+                        //if there is no given/family name (aka this user has logged in before)
+                        guard let givenName = fullName.givenName, let familyName = fullName.familyName else {
+                            // this is if there is no given/family name (aka not first time using apple sign in)
+                            self.pushLandingPageController()
+                            return
+                        }
+                
+                        //if there is a given and family name (aka when this is the first time logging in with apple sign in)
+                        let displayName = "\(givenName) \(familyName)"
+                        if let user = Auth.auth().currentUser {
+                            let changeRequest = user.createProfileChangeRequest()
+                            changeRequest.displayName = displayName
+                            changeRequest.commitChanges { error in
+                                if error != nil {
+                                    print(error.debugDescription)
+                                    self.homePageView.isUserInteractionEnabled = true
+                                    self.homePageView.stopAnimatingActivitySpinner()
+                                }
+                                else {
+                                    print("Successfully updated display name for user [\(user.uid)] to [\(displayName)]")
+                                    print("auth id: \(Auth.auth().currentUser!.uid)")
+                                    self.checkForUserDocument(id: Auth.auth().currentUser!.uid, email: Auth.auth().currentUser!.email!, firstName: givenName, lastName: familyName, fullName: displayName)
+                                }
+                            }
+                        }
+                        
+                    }
+                    
                 }
+                
             }
             
         }
