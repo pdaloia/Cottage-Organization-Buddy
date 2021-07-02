@@ -41,14 +41,19 @@ class HomeController: UIViewController {
         
         super.viewDidAppear(false)
         
-        //check if user is already signed in here
-        if GIDSignIn.sharedInstance().hasPreviousSignIn() {
+        //check if there is a user already logged in
+        if Auth.auth().currentUser != nil {
             
-            GIDSignIn.sharedInstance()?.restorePreviousSignIn()
+            self.homePageView.isUserInteractionEnabled = false
+            self.homePageView.startAnimatingActivitySpinner()
+            print("Signed in as: \(Auth.auth().currentUser!.uid), name: \(Auth.auth().currentUser?.displayName ?? "unknown"), email: \(Auth.auth().currentUser?.email ?? "unknown")")
+            self.pushLandingPageController()
             
         }
         else {
-            print("not signed in")
+            
+            print("User is logged out")
+            
         }
         
     }
@@ -271,7 +276,6 @@ extension HomeController: SignOutProtocol {
         
         do {
             try Auth.auth().signOut()
-            GIDSignIn.sharedInstance().signOut()
         }
         catch {
             print("already logged out")
